@@ -31,9 +31,17 @@ end
 
 # Clase para funciones de problema
 struct ProblemFunction <: Function
+    vars_::Vector{String}
+    func_base::FunctionBase
+
     function ProblemFunction(var_leader::Vector{String}, var_follower::Vector{String}, function_atomic::String, leader_level::Bool=true)
-        vars_ = vcat(var_leader, var_follower)
-        return FunctionBase(vars_, function_atomic)
+        func_base = FunctionBase(vcat(var_leader, var_follower), function_atomic)
+        return new(var_leader, func_base)
+    end
+
+    function eval(self, values::Vector{Float64})
+        
+        return self.func_base.eval(values)
     end
 end
 
@@ -67,28 +75,12 @@ struct RestrictionFunction <: Function
         lhs = self.left_part
         return lhs.subs(subs)
     end
-
-    function show_changes(self)
-        println("Printing the changes")
-        println("Leader restrictions")
-        for l_res in self.leader_restrictions
-            if l_res.const_add != 0
-                println("$l_res the constant is $l_res.const_add")
-            end
-        end
-        println("Follower restrictions")
-        for f_res in self.follower_restrictions
-            if f_res.const_add != 0
-                println("$f_res the constant is $f_res.const_add")
-            end
-        end
-    end
 end
 
 # Funciones auxiliares para ajustar restricciones
 function fix_eq0(restrictions::Vector{RestrictionFunction}, point::Vector{Float64})
     for restriction in restrictions
-        if restriction.type == RestrictionSetType.Normal
+        if restriction.restriction_type == RestrictionSetType.Normal
             continue
         end
         if !(restriction.restriction_type in [RestrictionSetType.J_0_g, RestrictionSetType.J_0_L0_v, RestrictionSetType.J_0_LP_v])
@@ -104,7 +96,7 @@ end
 
 function fix_lt0(restrictions::Vector{RestrictionFunction}, point::Vector{Float64})
     for restriction in restrictions
-        if restriction.type == RestrictionSetType.Normal
+        if restriction.restriction_type == RestrictionSetType.Normal
             continue
         end
         if !(restriction.restriction_type in [RestrictionSetType.J_Ne_L0_v])
@@ -140,4 +132,41 @@ struct Solver
 
         return (leader_val, follower_val)
     end
+
+    function show_changes(self)
+        println("Printing the changes")
+        println("Leader restrictions")
+        for l_res in self.leader_restrictions
+            if l_res.const_add != 0
+                println("$l_res the constant is $l_res.const_add")
+            end
+        end
+        println("Follower restrictions")
+        for f_res in self.follower_restrictions
+            if f_res.const_add != 0
+                println("$f_res the constant is $f_res.const_add")
+            end
+        end
+    end
 end
+
+# Función principal para ejecutar el solver
+function maain()
+    l_1 = "Eq(((x_1--2)),3)"
+
+    solver = Solver(
+        ProblemFunction(["x_1"], String[], "x_1^2", true),  # Cambiar x_1**2 por x_1^2
+        [RestrictionFunction(["x_1"], l_1, RestrictionSetType.J_0_g)],
+        ProblemFunction(["x_1"], String[], "x_1^2", false),  # Cambiar x_1**2 por x_1^2
+        [RestrictionFunction(["x_1"], "Gt(((x_1--2)),3)", RestrictionSetType.J_Ne_L0_v)]
+    )
+
+    leader_val, follower_val = solver.evaluate_point([22.0])  # Cambiar [22] por [22.0]
+    println("Leader Value: $leader_val")
+    println("Follower Value: $follower_val")
+
+    solver.show_changes()
+end
+
+# Ejecutar la función principal
+maain()

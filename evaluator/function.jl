@@ -131,12 +131,42 @@ function Restriction_init(expr_str::String, point::Dict, restriction_type::Restr
     Restriction_Func(vars_name=vars_name, expr_str=expr_str, expr=new_expr, point=point, evaluation_value=value, add_const=fix_value, restriction_type=restriction_type, restriction_set_type=restriction_set_type)
 
 end
+"""Estructura para guardar las expresiones de las restricciones"""
+struct Def_Restriction
+    expr_str::String
+    restriction_set_type::RestrictionSetType
+    restriction_type::RestrictionType
+    is_leader::Bool
+end
+
+struct Optimization_Problem
+    leader_fun::Func
+    leader_restrictions::Vector{Restriction_Func}
+    follower_fun::Func
+    follower_restrictions::Vector{Restriction_Func}
+end
+
+function Fix_Restrictions(Leader_str_expr::String,leader_def_restrictions::Vector{Def_Restriction},Follower_str_expr::String,follower_def_restrictions::Vector{Def_Restriction},point::Dict)
+    leader_fun=Func_init(Leader_str_expr,point,true)
+    leader_restrictions::Vector{Restriction_Func}=[]
+    for item::Def_Restriction in leader_def_restrictions
+        
+            temp::Restriction_Func=Restriction_init(item.expr_str,point,item.restriction_type,item.restriction_set_type)
+            push!(leader_restrictions,temp)
+    end
+
+    follower_fun=Func_init(Follower_str_expr,point,false)
+    follower_restrictions::Vector{Restriction_Func}=[]
+    for item::Def_Restriction in follower_def_restrictions
+        temp::Restriction_Func=Restriction_init(item.expr_str,point,item.restriction_type,item.restriction_set_type)
+        push!(follower_restrictions,temp)
+    end
+    return Optimization_Problem(leader_fun,leader_restrictions,follower_fun,follower_restrictions)
+end
+
+## Example
 
 
 
-a = Func_init("x_1+2", Dict("x_1" => 2),false)
-b= Restriction_init("x_1+y_1==3",Dict("x_1" => 2, "y_1"=>3),Eq,J_Ne_L0_v)
-println(a)
-println(b)
-println(b.add_const)
+
 #end

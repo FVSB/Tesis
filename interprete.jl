@@ -1,9 +1,11 @@
 using Symbolics
-
+#import Pkg; Pkg.add("Latexify")
+using Latexify
 # Declarar variables simbólicas
 @variables x y z
 
 # Crear una expresión simbólica
+
 expr = x + y^2 + z
 
 # Definir valores para las variables
@@ -14,3 +16,7 @@ resultado = substitute(expr, subs)
 
 # Imprimir el resultado
 println("Resultado: ", resultado)  # Debería imprimir: Resultado: 15
+
+using Latexify
+latexify(expr)
+

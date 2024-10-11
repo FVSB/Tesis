@@ -1,7 +1,0 @@
-Metadata-Version: 2.1
-Name: mi_modulo
-Version: 0.1
-Summary: Un ejemplo de módulo de Python
-Author: Tu Nombre
-Author-email: tuemail@example.com
-Requires-Dist: numpy

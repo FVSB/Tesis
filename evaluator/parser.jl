@@ -18,6 +18,8 @@ end
 
  """
  Función para separar la ecuación
+
+ Devuelve las expresiones: left,rigth
  """
 function separate_equation(equation::String)
     parts = split(equation, "==")  # Cambiar "==" por ">" o "<" si es necesario

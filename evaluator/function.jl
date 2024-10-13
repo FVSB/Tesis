@@ -123,6 +123,9 @@ end
     add_const::Num
     restriction_type::RestrictionType
     restriction_set_type::RestrictionSetType
+    miu::Number
+    beta::Number
+    lambda::Number
 end
 
 
@@ -143,13 +146,22 @@ function Base.show(io::IO,restr_func::Restriction_Func)
     println("Tipo de restriccion $restriction_type")
     restriction_set_type::RestrictionSetType = restr_func.restriction_set_type
     println("Cjt ind que pertenece $restriction_set_type")
+    miu=restr_func.miu
+    println("El valor de miu es $miu")
+    beta=restr_func.beta
+    println("El valor de Beta es $beta")
+    lambda=restr_func.lambda
+    println("El valor de lambda es $lambda")
+
 
 
 end
 """
 Crea una nueva restriccion
 """
-function Restriction_init(expr_str::String, point::Dict, restriction_type::RestrictionType, restriction_set_type::RestrictionSetType)::Restriction_Func
+function Restriction_init(expr_str::String, point::Dict, restriction_type::RestrictionType, restriction_set_type::RestrictionSetType, miu::Number,
+    beta::Number,
+    lambda::Number)::Restriction_Func
     # Tomar el nombre de las variables
     vars_name::Vector{Symbol} = MyParser.extract_variable_names(expr_str)
     # Registrar las variables
@@ -164,7 +176,7 @@ function Restriction_init(expr_str::String, point::Dict, restriction_type::Restr
     # Constante a añadir
     fix_value = Fix_value(value, restriction_set_type)
 
-    Restriction_Func(vars_name=vars_name, expr_str=expr_str, expr=new_expr, point=point, evaluation_value=value, add_const=fix_value, restriction_type=restriction_type, restriction_set_type=restriction_set_type)
+    Restriction_Func(vars_name=vars_name, expr_str=expr_str, expr=new_expr, point=point, evaluation_value=value, add_const=fix_value, restriction_type=restriction_type, restriction_set_type=restriction_set_type,miu=miu,beta=beta,lambda=lambda)
 
 end
 """Estructura para guardar las expresiones de las restricciones"""
@@ -173,22 +185,53 @@ struct Def_Restriction
     restriction_set_type::RestrictionSetType
     restriction_type::RestrictionType
     is_leader::Bool
+    miu::Number
+    beta::Number
+    lambda::Number
 end
+
+function Base.show(io::IO,obj::Def_Restriction)
+    println("Mostrar las definiciones de las restricciones")
+    println(repeat("-", 30))
+    restriction_type=obj.restriction_type
+    println("Tipo de restriccion $restriction_type")
+    println(repeat("-", 30))
+    restriction_type_set=obj.restriction_set_type
+    println("Conjunto de indices al que pertenece $restriction_type_set ")
+    println(repeat("-", 30))
+    is_leader=obj.is_leader
+    println("Es de la funcion lider $is_leader")
+    println(repeat("-", 30))
+    miu=obj.miu
+    println("El valor de miu es $miu")
+    println(repeat("-", 30))
+    beta=obj.beta
+    println("El valor de beta es $beta")
+    println(repeat("-", 30))
+    lambda=obj.lambda
+    println("El valor de lambda es $lambda")
+    println(repeat("-", 30))
+end
+
 
 """
 Funcion contructor de las definiciones de restricciones
 """
 function Def_Restriction_init(restriction_expr_str::String, restriction_set_type::RestrictionSetType,
     restriction_type::RestrictionType,
-    is_leader::Bool)
-    return Def_Restriction(restriction_expr_str, restriction_set_type, restriction_type, is_leader)
+    is_leader::Bool,miu::Number,
+    beta::Number,
+    lambda::Number)
+    return Def_Restriction(restriction_expr_str, restriction_set_type, restriction_type, is_leader,miu,beta,lambda)
 end
+
 
 struct Optimization_Problem
     leader_fun::Func
     leader_restrictions::Vector{Restriction_Func}
     follower_fun::Func
     follower_restrictions::Vector{Restriction_Func}
+    point::Dict
 end
 
 function Base.show(io::IO,obj::Optimization_Problem)
@@ -214,6 +257,9 @@ function Base.show(io::IO,obj::Optimization_Problem)
         println(repeat("+", 30))
     end
     println(repeat("-", 30))
+    point=obj.point
+    println("Evaluar en el punto $point")
+    println(repeat("-", 30))
     println("_")
 
 
@@ -223,17 +269,17 @@ function Fix_Restrictions(Leader_str_expr::String, leader_def_restrictions::Vect
     leader_restrictions::Vector{Restriction_Func} = []
     for item::Def_Restriction in leader_def_restrictions
 
-        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, item.restriction_set_type)
+        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, item.restriction_set_type,item.miu,item.beta,item.lambda)
         push!(leader_restrictions, temp)
     end
 
     follower_fun = Func_init(Follower_str_expr, point, false)
     follower_restrictions::Vector{Restriction_Func} = []
     for item::Def_Restriction in follower_def_restrictions
-        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, item.restriction_set_type)
+        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, item.restriction_set_type,item.miu,item.beta,item.lambda)
         push!(follower_restrictions, temp)
     end
-    return Optimization_Problem(leader_fun, leader_restrictions, follower_fun, follower_restrictions)
+    return Optimization_Problem(leader_fun, leader_restrictions, follower_fun, follower_restrictions,point)
 end
 
 # Export

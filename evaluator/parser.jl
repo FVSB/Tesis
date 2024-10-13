@@ -2,7 +2,7 @@ module MyParser
 
 using Symbolics
 
-export parse_expression, separate_equation, extract_variable_names,add_to_symbolics,convert_Symbol_to_symbolic_num
+export parse_expression, separate_equation, extract_variable_names,add_to_symbolics,convert_Symbol_to_symbolic_num,eval_point
 
 """
  Función para parsear una expresión matemática
@@ -118,6 +118,13 @@ function eval_point(expr,point::Dict)
     new_dicc=Dict(convert_Symbol_to_symbolic_num(key) => point[key] for key in keys(point))
     # Sustituir la expresion por el punto Para substitute se tiene que enviar en forma de tupla
     return substitute.(expr,(new_dicc,))[1]
+    
+end
+function substitute_point_in_vector(expr,point::Dict)::Union{Vector, Matrix}
+    # Convertir el diccionario desde strings a Symbolos
+    new_dicc=Dict(convert_Symbol_to_symbolic_num(key) => point[key] for key in keys(point))
+    # Sustituir la expresion por el punto Para substitute se tiene que enviar en forma de tupla
+    return substitute.(expr,(new_dicc,))
     
 end
 

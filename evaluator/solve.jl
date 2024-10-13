@@ -2,9 +2,11 @@ include("parser.jl")
 include("function.jl")
 push!(LOAD_PATH, @__DIR__)
 
+module SolveBF
+    
+
 using ..ProblemFunction
 using Symbolics
-
 """
 Dado un vector y las variables a elegir da el gradiente del vector con respecto a dichas variables
 """
@@ -33,19 +35,73 @@ function calculate_diff_F_xy(opt_problem::Optimization_Problem,problem_vars::Vec
 end
 
 """
-Devuelve el vector resultante de la suma de la suma de (diff g_i por miu_i)
+Enuncia que factor se va a utilizar
 """
-function calculate_g_s_active_mui_factor(opt_problem::Optimization_Problem,problem_vars::Vector{Num})::Vector{Num}
+@enum FactorType begin
+    miu_
+    lambda_
+    beta_
+end
+
+
+"""
+Dado una restriccion y un tipo de factor devuelve el valor del factor de este
+"""
+function get_factor_value(restr_func::ProblemFunction.Restriction_Func,factor_type::FactorType)
+    if factor_type == miu_
+        return restr_func.miu
+    elseif factor_type == lambda_
+        return restr_func.lambda
+    elseif factor_type == beta_
+        return restr_func.beta
+    else
+        throw(ArgumentError("El tipo de factor $factor_type es inválido"))
+    
+    end
+    
+    end
+
+"""
+Dado unas restricciones, las variables , el punto y el factor devuelve la sumatoria de las
+restricciones cada una multiplicada por el valor de su factor correspondiente evaluadas en dicho punto
+"""
+
+function calculate_grad_xy_restr_dot_factor(restrictions::Vector{Restriction_Func},problem_vars::Vector{Num},point::Dict,factor_type::FactorType)::Vector{Num}
     vector_value=zeros(length(problem_vars))
-    for g in opt_problem.leader_restrictions
+    for restriction in restrictions
         # Ahora debe sacar su expresion
-        g_expr=g.expr
-        grad_g=ProblemFunction.Symbolics.gradient(g_expr,problem_vars)
-        vector_result=MyParser.substitute_point_in_vector(grad_g,opt_problem.point)
-        vector_result=vector_result*g.miu
+        restr_expr=restriction.expr
+        grad_restriction=ProblemFunction.Symbolics.gradient(restr_expr,problem_vars)
+        vector_result=MyParser.substitute_point_in_vector(grad_restriction,point)
+        # Tomar el factor correspondiente
+        factor=get_factor_value(restriction,factor_type)
+        vector_result=vector_result* factor
         vector_value+=vector_result
     end
     return vector_value
+
+end
+
+"""
+Devuelve el vector resultante de la suma de la suma de (diff g_i por miu_i)
+"""
+function calculate_g_s_active_mui_factor(opt_problem::Optimization_Problem,problem_vars::Vector{Num})::Vector{Num}
+    restrictions=opt_problem.leader_restrictions
+    point=opt_problem.point
+
+    return calculate_grad_xy_restr_dot_factor(restrictions,problem_vars,point,miu_)
+
+end
+
+
+"""
+Calcula la suma de los gradientes xy de vj cada uno multiplicado por su beta
+"""
+function calculate_sum_vj_bj(opt_problem::ProblemFunction.Optimization_Problem,problem_vars::Vector{Num})
+# Tomar las restricciones del follower
+follower_restr=opt_problem.follower_restrictions
+point=opt_problem.point
+return calculate_grad_xy_restr_dot_factor(follower_restr,problem_vars,point,beta_)
 
 end
 
@@ -86,7 +142,7 @@ function calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem::ProblemFu
     
     end
 
-function Make_BF(lider_vars_str::Vector{String},leader_func_str::String,leader_restrictions::Vector{Def_Restriction},follower_vars_str::Vector{String},follower_func_str::String,follower_restrictions::Vector{Def_Restriction},point::Dict,alpha::Vector,index_vi::Int64)
+function Make_BF(lider_vars_str::Vector{String},leader_func_str::String,leader_restrictions::Vector{Def_Restriction},follower_vars_str::Vector{String},follower_func_str::String,follower_restrictions::Vector{Def_Restriction},point::Dict,alpha::Vector,index_vi::Int64)::Vector
     # Concatenar las variables del lider y las del follower en un vector de str
     problem_vars_str::Vector{String}=vcat(lider_vars_str,follower_vars_str)
     # Hacer las variables del problema simbolicas
@@ -102,5 +158,8 @@ function Make_BF(lider_vars_str::Vector{String},leader_func_str::String,leader_r
     # Calcular f der por y y despues por xy multiplicado por su lambda y despues por alpha
     vi_val=calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem,index_vi,problem_vars,follower_vars,alpha)
     # Calcular la sumatoria de vector de vj 
-    
+    vj_bj_sum=calculate_sum_vj_bj(opt_problem,problem_vars)
+    return - (f_grad+g_s_sum+vi_val+vj_bj_sum) # Este es el vector BF
+end
+
 end

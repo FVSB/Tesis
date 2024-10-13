@@ -2,7 +2,7 @@ include("parser.jl")
 include("function.jl")
 push!(LOAD_PATH, @__DIR__)
 
-module SolveBF
+#module SolveBF
     
 
 using ..ProblemFunction
@@ -127,7 +127,6 @@ function calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem::ProblemFu
     vi=opt_problem.follower_restrictions[index_vi]
     # Tomar la expresion de la funcion de restriccion
     vi_expr=vi.expr
-    println(vi_expr)
     # Tomar el punto a evaluar
     point=opt_problem.point
     # Calcular y evaluar el gradiente 
@@ -162,4 +161,27 @@ function Make_BF(lider_vars_str::Vector{String},leader_func_str::String,leader_r
     return - (f_grad+g_s_sum+vi_val+vj_bj_sum) # Este es el vector BF
 end
 
+"""
+Dado un problema de optimizacion el cual satisface el punto sus restriccionesm, las variables del lider y followers como vector 
+de str un vector alpha de longitud igual a la cant de variables ys y el indice de la vi que se quiere activar devuelve el vector BF
+"""
+function Make_BF(opt_problem::Optimization_Problem,leader_vars_str::Vector{String},follower_vars_str::Vector{String},alpha,index_vi::Int64)
+# Concatenar las variables del lider y las del follower en un vector de str
+problem_vars_str::Vector{String}=vcat(leader_vars_str,follower_vars_str)
+# Hacer las variables del problema simbolicas
+problem_vars=map(ProblemFunction.convert_Symbol_to_symbolic_num,problem_vars_str)
+# Hacer simbolicas las variables del follower
+follower_vars=map(ProblemFunction.convert_Symbol_to_symbolic_num,follower_vars_str)
+# Calcular y evaluar la F
+f_grad=calculate_diff_F_xy(opt_problem,problem_vars)
+# Calcular la sumatoria de los gradientes de las gs mult por su miu 
+g_s_sum=calculate_g_s_active_mui_factor(opt_problem,problem_vars)
+# Calcular f der por y y despues por xy multiplicado por su lambda y despues por alpha
+vi_val=calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem,index_vi,problem_vars,follower_vars,alpha)
+# Calcular la sumatoria de vector de vj 
+vj_bj_sum=calculate_sum_vj_bj(opt_problem,problem_vars)
+return - (f_grad+g_s_sum+vi_val+vj_bj_sum) # Este es el vector BF
 end
+
+#export  Make_BF,calculate_diff_F_xy,calculate_g_s_active_mui_factor,calculate_select_vi_der_xy_of_x_dot_lambda_alpha,calculate_sum_vj_bj
+#end

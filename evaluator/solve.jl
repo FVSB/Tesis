@@ -41,6 +41,7 @@ Enuncia que factor se va a utilizar
     miu_
     lambda_
     beta_
+    alpha_
 end
 
 
@@ -54,7 +55,9 @@ function get_factor_value(restr_func::ProblemFunction.Restriction_Func,factor_ty
         return restr_func.lambda
     elseif factor_type == beta_
         return restr_func.beta
+    elseif restr_func
     else
+
         throw(ArgumentError("El tipo de factor $factor_type es inválido"))
     
     end
@@ -118,30 +121,34 @@ function Calculate_diff_ys_xsys(func_expr::Num,vars::Vector{Num},vars_y::Vector{
     return MyParser.substitute_point_in_vector(concat_matrix,opt_problem.point)
 end
 
-function calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem::ProblemFunction.Optimization_Problem,index_vi::Int64,problems_vars::Vector{Num},ys_vars::Vector{Num},alpha::Vector)
+function calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem::ProblemFunction.Optimization_Problem,problems_vars::Vector{Num},ys_vars::Vector{Num},alpha::Vector)
     # Ver si la cant de variables y coincide con la dimension de alpha
     ys_len=length(ys_vars)
     alpha_len=length(alpha)
     @assert ys_len==alpha_len "El length de alpha es $alpha_len y el de las ys es $ys_len y deben ser iguales"
-    # Tomar la restriccion que se quiere
-    vi=opt_problem.follower_restrictions[index_vi]
-    # Tomar la expresion de la funcion de restriccion
-    vi_expr=vi.expr
     # Tomar el punto a evaluar
     point=opt_problem.point
+
+    # Crear una matriz vacia
+    A=zeros(length(problems_vars),ys_len)
+    # Iterar por todas las restricciones del follower
+    for vi in opt_problem.follower_restrictions
+    # Tomar la expresion de la funcion de restriccion
+    vi_expr=vi.expr
     # Calcular y evaluar el gradiente 
     vi_grad_val=Calculate_diff_ys_xsys(vi_expr,problems_vars,ys_vars,point)
     # Tomar el lambda de ese restriccion
     lambda_i=vi.lambda
     # Multiplicar el gradiente evaluado por lambda
-    vi_lambda=vi_grad_val*lambda_i
+    A+=vi_grad_val*lambda_i
     # Multiplicar Todo por alpha
-    return vi_lambda*alpha
+    end
+    return A*alpha
     
     
     end
 
-function Make_BF(lider_vars_str::Vector{String},leader_func_str::String,leader_restrictions::Vector{Def_Restriction},follower_vars_str::Vector{String},follower_func_str::String,follower_restrictions::Vector{Def_Restriction},point::Dict,alpha::Vector,index_vi::Int64)::Vector
+function Make_BF(lider_vars_str::Vector{String},leader_func_str::String,leader_restrictions::Vector{Def_Restriction},follower_vars_str::Vector{String},follower_func_str::String,follower_restrictions::Vector{Def_Restriction},point::Dict,alpha::Vector)::Vector
     # Concatenar las variables del lider y las del follower en un vector de str
     problem_vars_str::Vector{String}=vcat(lider_vars_str,follower_vars_str)
     # Hacer las variables del problema simbolicas
@@ -155,7 +162,7 @@ function Make_BF(lider_vars_str::Vector{String},leader_func_str::String,leader_r
     # Calcular la sumatoria de los gradientes de las gs mult por su miu 
     g_s_sum=calculate_g_s_active_mui_factor(opt_problem,problem_vars)
     # Calcular f der por y y despues por xy multiplicado por su lambda y despues por alpha
-    vi_val=calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem,index_vi,problem_vars,follower_vars,alpha)
+    vi_val=calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem,problem_vars,follower_vars,alpha)
     # Calcular la sumatoria de vector de vj 
     vj_bj_sum=calculate_sum_vj_bj(opt_problem,problem_vars)
     return - (f_grad+g_s_sum+vi_val+vj_bj_sum) # Este es el vector BF
@@ -165,7 +172,7 @@ end
 Dado un problema de optimizacion el cual satisface el punto sus restriccionesm, las variables del lider y followers como vector 
 de str un vector alpha de longitud igual a la cant de variables ys y el indice de la vi que se quiere activar devuelve el vector BF
 """
-function Make_BF(opt_problem::Optimization_Problem,leader_vars_str::Vector{String},follower_vars_str::Vector{String},alpha,index_vi::Int64)
+function Make_BF(opt_problem::Optimization_Problem,leader_vars_str::Vector{String},follower_vars_str::Vector{String},alpha)
 # Concatenar las variables del lider y las del follower en un vector de str
 problem_vars_str::Vector{String}=vcat(leader_vars_str,follower_vars_str)
 # Hacer las variables del problema simbolicas
@@ -177,7 +184,7 @@ f_grad=calculate_diff_F_xy(opt_problem,problem_vars)
 # Calcular la sumatoria de los gradientes de las gs mult por su miu 
 g_s_sum=calculate_g_s_active_mui_factor(opt_problem,problem_vars)
 # Calcular f der por y y despues por xy multiplicado por su lambda y despues por alpha
-vi_val=calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem,index_vi,problem_vars,follower_vars,alpha)
+vi_val=calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem,problem_vars,follower_vars,alpha)
 # Calcular la sumatoria de vector de vj 
 vj_bj_sum=calculate_sum_vj_bj(opt_problem,problem_vars)
 return - (f_grad+g_s_sum+vi_val+vj_bj_sum) # Este es el vector BF

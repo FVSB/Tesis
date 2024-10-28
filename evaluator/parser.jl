@@ -120,6 +120,9 @@ function eval_point(expr,point::Dict)
     return substitute.(expr,(new_dicc,))[1]
     
 end
+"""
+Dada una expresion en un vector y un punto devuelve el vector resultado de evaluar el punto en dicho vector
+"""
 function substitute_point_in_vector(expr,point::Dict)::Union{Vector, Matrix}
     # Convertir el diccionario desde strings a Symbolos
     new_dicc=Dict(convert_Symbol_to_symbolic_num(key) => point[key] for key in keys(point))

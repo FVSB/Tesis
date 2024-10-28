@@ -1,8 +1,9 @@
 
 include("parser.jl")
 push!(LOAD_PATH, @__DIR__)
-#module ProblemFunction
+module ProblemFunction
 using Symbolics
+using LinearAlgebra
 using ..MyParser
 # Definir los enums 
 # Definición del enum RestrictionType
@@ -168,9 +169,10 @@ Dada una restriccion de g activa halla su vector bj correspondiente
 
 """
 function compute_bj(restriction_expr,
-    alpha,point::Dict,
+    alpha::Vector,
+    point::Dict,
     ys_vars::Vector{Num},
-    restriction_set_type::RestrictionSetType,gamma::Number)::Vector
+    restriction_set_type::RestrictionSetType,gamma::Number)::Number
 
 # Decir que si no son indices activos del follower no deben estar aca
 if restriction_set_type in [Normal,J_0_g]
@@ -185,9 +187,9 @@ alpha_len=length(alpha)
 # Calcular el gradiente de la restricción
 grad_expr=Symbolics.gradient(restriction_expr,ys_vars)
 # Hallar el valor del vector gradiente en el punto
-vector_val=MyParser.eval_point(grad_expr,point)
+vector_val=MyParser.substitute_point_in_vector(grad_expr,point)
 # Calcular bj
-if restriction_set_type == J_0_LP_v && lambda==0 # En este  caso gamma debe ser 0
+if restriction_set_type == J_0_LP_v  # En este  caso gamma debe ser 0
     return dot(-vector_val,alpha)/alpha_norm
 else # Si entonces lambda = 0
     return (dot(-vector_val,alpha)+gamma)/alpha_norm
@@ -202,8 +204,8 @@ function Restriction_init(expr_str::String, point::Dict, restriction_type::Restr
     beta::Number,
     lambda::Number,
     gamma::Number,
-    alpha,
-    followers_vars_str::Vector{String},
+    alpha::Vector,
+    ys_vars::Vector{Num},
     )::Restriction_Func
     # Tomar el nombre de las variables
     vars_name::Vector{Symbol} = MyParser.extract_variable_names(expr_str)
@@ -217,11 +219,11 @@ function Restriction_init(expr_str::String, point::Dict, restriction_type::Restr
     if restriction_type in [GtEq,Gt] # Si es de mayor o mayor e igual multiplicar por menos uno los miembros
      new_expr=-new_expr
      end
-    ys_vars=MyParser.convert_Symbol_to_symbolic_num.(followers_vars_str)
+    
     # Ahora hallar su vector bj correspondiente
     bj=compute_bj(new_expr,alpha,point,ys_vars,restriction_set_type,gamma)
     # Mi nueva expresion es 
-    new_expr=new_expr+(ys_vars*bj)
+    new_expr=new_expr+(sum(ys_vars)*bj)
     # Obtener valor 
     value = MyParser.eval_point(new_expr, point)
     # Constante a añadir
@@ -291,6 +293,7 @@ struct Optimization_Problem
     follower_fun::Func
     follower_restrictions::Vector{Restriction_Func}
     point::Dict
+    bf::Vector # Vector que se computa al calcular grad y de f + sum lambda_i *  grad y v_i = vector 0
 end
 
 function Base.show(io::IO,obj::Optimization_Problem)
@@ -323,6 +326,44 @@ function Base.show(io::IO,obj::Optimization_Problem)
 
 
 end
+"""
+Dada una expresion un punto y las variables a derivar hallar el gradiente de esa expresion y la evalua en el puntio
+"""
+function calculate_grad_and_evaluate_in_point(func_expr,point::Dict,vars_grad::Vector{Num})::Vector
+grad=Symbolics.gradient(func_expr,vars_grad)
+return MyParser.substitute_point_in_vector(grad,point)
+end
+
+"""
+Dadas las restricciones el punto y las variables a calcular el gradiente 
+halla los gradientes de cada restriccion en ese punto evaluado y despues multiplica por el despues se suma todo (Cada uno multiplicasdo por su lambda)
+"""
+function calculate_sum_grad_y_dot_lambda(follower_restr::Vector{Restriction_Func},point::Dict,vars_grad::Vector{Num})::Vector
+    temp=zeros(length(vars_grad))
+    for restr::Restriction_Func in follower_restr
+        lambda=restr.lambda
+        if lambda==0
+            continue
+        end
+        temp+=lambda* calculate_grad_and_evaluate_in_point(restr.expr,point,vars_grad)
+    end
+    return temp
+end
+
+"""
+Dado la funcion del follower y las restricciones activas se calcula el vector bf del follower
+"""
+function calculate_bf(follower_fun::Func,follower_restrictions::Vector{Restriction_Func},point::Dict,ys_vars::Vector{Num})
+# Gradiente del follower
+follower_eval=calculate_grad_and_evaluate_in_point(follower_fun.expr,point,ys_vars)
+
+all_eval=calculate_sum_grad_y_dot_lambda(follower_restrictions,point,ys_vars)
+
+return -(follower_eval+all_eval)
+
+end
+
+
 function Fix_Restrictions(Leader_str_expr::String,
      leader_def_restrictions::Vector{Def_Restriction},
       Follower_str_expr::String,
@@ -330,28 +371,32 @@ function Fix_Restrictions(Leader_str_expr::String,
        point::Dict,
        lider_vars_str::Vector{String},
        follower_vars_str::Vector{String},
-       alpha # Vector alpha de dimension cantidad de valores de y
+       alpha::Vector # Vector alpha de dimension cantidad de valores de y
         )
+    
+    ys_vars::Vector{Num}=MyParser.convert_Symbol_to_symbolic_num.(follower_vars_str)
+    # Lider
     leader_fun = Func_init(Leader_str_expr, point, true)
     leader_restrictions::Vector{Restriction_Func} = []
     for item::Def_Restriction in leader_def_restrictions # Arreglar las restricciones del lider
 
-        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, item.restriction_set_type,item.miu,item.beta,item.lambda,item.gamma,alpha,follower_vars_str)
+        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, item.restriction_set_type,item.miu,item.beta,item.lambda,item.gamma,alpha,ys_vars)
         push!(leader_restrictions, temp)
     end
-
+    # Follower
     follower_fun = Func_init(Follower_str_expr, point, false) 
     follower_restrictions::Vector{Restriction_Func} = []
     for item::Def_Restriction in follower_def_restrictions # Arreglar las restricciones del follower
-        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, item.restriction_set_type,item.miu,item.beta,item.lambda,item.gamma,alpha,follower_vars_str)
+        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, item.restriction_set_type,item.miu,item.beta,item.lambda,item.gamma,alpha,ys_vars)
         push!(follower_restrictions, temp)
     end
-    return Optimization_Problem(leader_fun, leader_restrictions, follower_fun, follower_restrictions,point)
+
+    bf=calculate_bf(follower_fun,follower_restrictions,point,ys_vars)
+    return Optimization_Problem(leader_fun, leader_restrictions, follower_fun, follower_restrictions,point,bf)
 end
 
 # Export
 
-
 export Optimization_Problem, Fix_Restrictions, Def_Restriction, Def_Restriction_init, Func, Restriction_Func, RestrictionSetType, RestrictionType, description
 
-#end
+end

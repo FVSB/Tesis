@@ -222,8 +222,12 @@ function Restriction_init(expr_str::String, point::Dict, restriction_type::Restr
     
     # Ahora hallar su vector bj correspondiente
     bj=compute_bj(new_expr,alpha,point,ys_vars,restriction_set_type,gamma)
+    gg=bj*alpha
+    aa=dot((bj*alpha),ys_vars)
+    println("El valor del vector para despues multiplicar es $gg")
+    println("El valor del vector a sumar es $aa")
     # Mi nueva expresion es 
-    new_expr=new_expr+(sum(ys_vars)*bj)
+    new_expr=new_expr+dot((bj*alpha),ys_vars)
     # Obtener valor 
     value = MyParser.eval_point(new_expr, point)
     # Constante a añadir

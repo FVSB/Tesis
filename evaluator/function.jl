@@ -375,7 +375,8 @@ function Fix_Restrictions(Leader_str_expr::String,
        point::Dict,
        lider_vars_str::Vector{String},
        follower_vars_str::Vector{String},
-       alpha::Vector # Vector alpha de dimension cantidad de valores de y
+       alpha::Vector, # Vector alpha de dimension cantidad de valores de y
+       is_alpha_zero::Bool # True si alpha es zero False si no lo es
         )
     
     ys_vars::Vector{Num}=MyParser.convert_Symbol_to_symbolic_num.(follower_vars_str)
@@ -383,7 +384,7 @@ function Fix_Restrictions(Leader_str_expr::String,
     leader_fun = Func_init(Leader_str_expr, point, true)
     leader_restrictions::Vector{Restriction_Func} = []
     for item::Def_Restriction in leader_def_restrictions # Arreglar las restricciones del lider
-
+        
         temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, item.restriction_set_type,item.miu,item.beta,item.lambda,item.gamma,alpha,ys_vars)
         push!(leader_restrictions, temp)
     end
@@ -394,8 +395,10 @@ function Fix_Restrictions(Leader_str_expr::String,
         temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, item.restriction_set_type,item.miu,item.beta,item.lambda,item.gamma,alpha,ys_vars)
         push!(follower_restrictions, temp)
     end
-
-    bf=calculate_bf(follower_fun,follower_restrictions,point,ys_vars)
+    if is_alpha_zero # Si alpha es numericamente cero no se calcula el vector BF
+        return Optimization_Problem(leader_fun, leader_restrictions, follower_fun, follower_restrictions,point,zeros(length(ys_vars)))
+    end
+        bf=calculate_bf(follower_fun,follower_restrictions,point,ys_vars)
     return Optimization_Problem(leader_fun, leader_restrictions, follower_fun, follower_restrictions,point,bf)
 end
 

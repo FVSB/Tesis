@@ -206,6 +206,8 @@ function Restriction_init(expr_str::String, point::Dict, restriction_type::Restr
     gamma::Number,
     alpha::Vector,
     ys_vars::Vector{Num},
+    is_alpha_zero::Bool
+
     )::Restriction_Func
     # Tomar el nombre de las variables
     vars_name::Vector{Symbol} = MyParser.extract_variable_names(expr_str)
@@ -219,15 +221,12 @@ function Restriction_init(expr_str::String, point::Dict, restriction_type::Restr
     if restriction_type in [GtEq,Gt] # Si es de mayor o mayor e igual multiplicar por menos uno los miembros
      new_expr=-new_expr
      end
-    
+    if !is_alpha_zero
     # Ahora hallar su vector bj correspondiente
     bj=compute_bj(new_expr,alpha,point,ys_vars,restriction_set_type,gamma)
-    gg=bj*alpha
-    aa=dot((bj*alpha),ys_vars)
-    println("El valor del vector para despues multiplicar es $gg")
-    println("El valor del vector a sumar es $aa")
     # Mi nueva expresion es 
     new_expr=new_expr+dot((bj*alpha),ys_vars)
+    end
     # Obtener valor 
     value = MyParser.eval_point(new_expr, point)
     # Constante a añadir
@@ -384,19 +383,16 @@ function Fix_Restrictions(Leader_str_expr::String,
     leader_fun = Func_init(Leader_str_expr, point, true)
     leader_restrictions::Vector{Restriction_Func} = []
     for item::Def_Restriction in leader_def_restrictions # Arreglar las restricciones del lider
-        
-        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, item.restriction_set_type,item.miu,item.beta,item.lambda,item.gamma,alpha,ys_vars)
+        # Se dice que alpha es el vector nulo en este caso dado que alpha no tiene implicacion en estas restricciones
+        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, item.restriction_set_type,item.miu,item.beta,item.lambda,item.gamma,alpha,ys_vars,true) 
         push!(leader_restrictions, temp)
     end
     # Follower
     follower_fun = Func_init(Follower_str_expr, point, false) 
     follower_restrictions::Vector{Restriction_Func} = []
     for item::Def_Restriction in follower_def_restrictions # Arreglar las restricciones del follower
-        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, item.restriction_set_type,item.miu,item.beta,item.lambda,item.gamma,alpha,ys_vars)
+        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, item.restriction_set_type,item.miu,item.beta,item.lambda,item.gamma,alpha,ys_vars,is_alpha_zero)
         push!(follower_restrictions, temp)
-    end
-    if is_alpha_zero # Si alpha es numericamente cero no se calcula el vector BF
-        return Optimization_Problem(leader_fun, leader_restrictions, follower_fun, follower_restrictions,point,zeros(length(ys_vars)))
     end
         bf=calculate_bf(follower_fun,follower_restrictions,point,ys_vars)
     return Optimization_Problem(leader_fun, leader_restrictions, follower_fun, follower_restrictions,point,bf)

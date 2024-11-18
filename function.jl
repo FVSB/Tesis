@@ -1,10 +1,10 @@
 
 include("parser.jl")
 push!(LOAD_PATH, @__DIR__)
-module ProblemFunction
+
 using Symbolics
 using LinearAlgebra
-using ..MyParser
+
 # Definir los enums 
 # Definición del enum RestrictionType
 @enum RestrictionType begin
@@ -100,13 +100,13 @@ Funcion que inicializa la struct Fun
 """
 function Func_init(expr_str::String, point::Dict, is_leader::Bool)::Func
     # Tomar el nombre de las variables
-    vars_name::Vector{Symbol} = MyParser.extract_variable_names(expr_str)
+    vars_name::Vector{Symbol} = extract_variable_names(expr_str)
     # Registrar las variables
-    MyParser.add_to_symbolics(vars_name)
+    add_to_symbolics(vars_name)
     # Obtener la expresion
-    expr = MyParser.parse_expression(expr_str)
+    expr = parse_expression(expr_str)
     # Obtener Valor
-    value = MyParser.eval_point(expr, point)
+    value = eval_point(expr, point)
     # Obtener constante de aproximación
     #fix_value=Fix_value(value)
 
@@ -187,7 +187,7 @@ alpha_len=length(alpha)
 # Calcular el gradiente de la restricción
 grad_expr=Symbolics.gradient(restriction_expr,ys_vars)
 # Hallar el valor del vector gradiente en el punto
-vector_val=MyParser.substitute_point_in_vector(grad_expr,point)
+vector_val=substitute_point_in_vector(grad_expr,point)
 # Calcular bj
 if restriction_set_type == J_0_LP_v  # En este  caso gamma debe ser 0
     return dot(-vector_val,alpha)/alpha_norm
@@ -210,11 +210,11 @@ function Restriction_init(expr_str::String, point::Dict, restriction_type::Restr
 
     )::Restriction_Func
     # Tomar el nombre de las variables
-    vars_name::Vector{Symbol} = MyParser.extract_variable_names(expr_str)
+    vars_name::Vector{Symbol} = extract_variable_names(expr_str)
     # Registrar las variables
-    MyParser.add_to_symbolics(vars_name)
+    add_to_symbolics(vars_name)
     # Obtener las expresiones
-    left, rigth = MyParser.separate_equation(expr_str)
+    left, rigth = separate_equation(expr_str)
     # Nueva expresion de la ecuación
     new_expr = left - rigth
     # logica para virar las inecuaciones
@@ -228,7 +228,7 @@ function Restriction_init(expr_str::String, point::Dict, restriction_type::Restr
     new_expr=new_expr+dot((bj*alpha),ys_vars)
     end
     # Obtener valor 
-    value = MyParser.eval_point(new_expr, point)
+    value = eval_point(new_expr, point)
     # Constante a añadir
     fix_value = Fix_value(value, restriction_set_type)
 
@@ -334,7 +334,7 @@ Dada una expresion un punto y las variables a derivar hallar el gradiente de esa
 """
 function calculate_grad_and_evaluate_in_point(func_expr,point::Dict,vars_grad::Vector{Num})::Vector
 grad=Symbolics.gradient(func_expr,vars_grad)
-return MyParser.substitute_point_in_vector(grad,point)
+return substitute_point_in_vector(grad,point)
 end
 
 """
@@ -378,7 +378,7 @@ function Fix_Restrictions(Leader_str_expr::String,
        is_alpha_zero::Bool # True si alpha es zero False si no lo es
         )
     
-    ys_vars::Vector{Num}=MyParser.convert_Symbol_to_symbolic_num.(follower_vars_str)
+    ys_vars::Vector{Num}=convert_Symbol_to_symbolic_num.(follower_vars_str)
     # Lider
     leader_fun = Func_init(Leader_str_expr, point, true)
     leader_restrictions::Vector{Restriction_Func} = []
@@ -402,4 +402,3 @@ end
 
 export Optimization_Problem, Fix_Restrictions, Def_Restriction, Def_Restriction_init, Func, Restriction_Func, RestrictionSetType, RestrictionType, description
 
-end

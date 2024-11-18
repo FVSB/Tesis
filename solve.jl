@@ -5,7 +5,7 @@ push!(LOAD_PATH, @__DIR__)
 #module SolveBF
     
 
-using ..ProblemFunction
+
 using Symbolics
 """
 Dado un vector y las variables a elegir da el gradiente del vector con respecto a dichas variables
@@ -13,7 +13,7 @@ Dado un vector y las variables a elegir da el gradiente del vector con respecto 
 function gradient_from_vector_func(funcs::Vector{Num},vars::Vector{Num})
     resp=[]
     for item in funcs
-        push!(resp,ProblemFunction.Symbolics.gradient(item,vars))
+        push!(resp,Symbolics.gradient(item,vars))
     end
     return resp
 end
@@ -29,7 +29,7 @@ function calculate_diff_F_xy(opt_problem::Optimization_Problem,problem_vars::Vec
     # Hallar el gradiente de F
     grad_F=gradient_from_vector_func([leader_expr],problem_vars)[1]
     # Sustituir el gradiente en el punto
-    grad_val=MyParser.substitute_point_in_vector(grad_F,opt_problem.point)
+    grad_val=substitute_point_in_vector(grad_F,opt_problem.point)
     return grad_val
 
 end
@@ -48,7 +48,7 @@ end
 """
 Dado una restriccion y un tipo de factor devuelve el valor del factor de este
 """
-function get_factor_value(restr_func::ProblemFunction.Restriction_Func,factor_type::FactorType)
+function get_factor_value(restr_func::Restriction_Func,factor_type::FactorType)
     if factor_type == miu_
         return restr_func.miu
     elseif factor_type == lambda_
@@ -74,8 +74,8 @@ function calculate_grad_xy_restr_dot_factor(restrictions::Vector{Restriction_Fun
     for restriction in restrictions
         # Ahora debe sacar su expresion
         restr_expr=restriction.expr
-        grad_restriction=ProblemFunction.Symbolics.gradient(restr_expr,problem_vars)
-        vector_result=MyParser.substitute_point_in_vector(grad_restriction,point)
+        grad_restriction=Symbolics.gradient(restr_expr,problem_vars)
+        vector_result=substitute_point_in_vector(grad_restriction,point)
         # Tomar el factor correspondiente
         factor=get_factor_value(restriction,factor_type)
         vector_result=vector_result* factor
@@ -100,7 +100,7 @@ end
 """
 Calcula la suma de los gradientes xy de vj cada uno multiplicado por su beta
 """
-function calculate_sum_vj_bj(opt_problem::ProblemFunction.Optimization_Problem,problem_vars::Vector{Num})
+function calculate_sum_vj_bj(opt_problem::Optimization_Problem,problem_vars::Vector{Num})
 # Tomar las restricciones del follower
 follower_restr=opt_problem.follower_restrictions
 point=opt_problem.point
@@ -118,10 +118,10 @@ function Calculate_diff_ys_xsys(func_expr::Num,vars::Vector{Num},vars_y::Vector{
     # Calcular el gradiente de cada expresión en la matriz
     grad_matrix = [Symbolics.gradient(A[i, j], vars) for i in 1:size(A, 1), j in 1:size(A, 2)]
     concat_matrix= hcat(grad_matrix...)
-    return MyParser.substitute_point_in_vector(concat_matrix,opt_problem.point)
+    return substitute_point_in_vector(concat_matrix,opt_problem.point)
 end
 
-function calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem::ProblemFunction.Optimization_Problem,problems_vars::Vector{Num},ys_vars::Vector{Num},alpha::Vector)
+function calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem::Optimization_Problem,problems_vars::Vector{Num},ys_vars::Vector{Num},alpha::Vector)
     # Ver si la cant de variables y coincide con la dimension de alpha
     ys_len=length(ys_vars)
     alpha_len=length(alpha)
@@ -152,9 +152,9 @@ function Make_BF(lider_vars_str::Vector{String},leader_func_str::String,leader_r
     # Concatenar las variables del lider y las del follower en un vector de str
     problem_vars_str::Vector{String}=vcat(lider_vars_str,follower_vars_str)
     # Hacer las variables del problema simbolicas
-    problem_vars=map(ProblemFunction.convert_Symbol_to_symbolic_num,problem_vars_str)
+    problem_vars=map(convert_Symbol_to_symbolic_num,problem_vars_str)
     # Hacer simbolicas las variables del follower
-    follower_vars=map(ProblemFunction.convert_Symbol_to_symbolic_num,follower_vars_str)
+    follower_vars=map(convert_Symbol_to_symbolic_num,follower_vars_str)
     # Ajustar las restricciones para que el punto sea factible
     opt_problem=Fix_Restrictions(leader_func_str,leader_restrictions,follower_func_str,follower_restrictions,point)
     # Calcular y evaluar la F
@@ -176,9 +176,9 @@ function Make_BF(opt_problem::Optimization_Problem,leader_vars_str::Vector{Strin
 # Concatenar las variables del lider y las del follower en un vector de str
 problem_vars_str::Vector{String}=vcat(leader_vars_str,follower_vars_str)
 # Hacer las variables del problema simbolicas
-problem_vars=map(ProblemFunction.convert_Symbol_to_symbolic_num,problem_vars_str)
+problem_vars=map(convert_Symbol_to_symbolic_num,problem_vars_str)
 # Hacer simbolicas las variables del follower
-follower_vars=map(ProblemFunction.convert_Symbol_to_symbolic_num,follower_vars_str)
+follower_vars=map(convert_Symbol_to_symbolic_num,follower_vars_str)
 # Calcular y evaluar la F
 f_grad=calculate_diff_F_xy(opt_problem,problem_vars)
 # Calcular la sumatoria de los gradientes de las gs mult por su miu 

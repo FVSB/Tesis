@@ -1,6 +1,9 @@
 # script to define the struct for the functions and restrictions
 
 # Import 
+# Import restrictions types enums 
+include("restriction_types.jl")
+
 using Symbolics 
 using LinearAlgebra
 # Leader and Followers objetive functions 
@@ -50,8 +53,7 @@ end
 
 # Leader and Followers restrictions functions 
 
-# Import restrictions types enums 
-include("../restriction_types.jl")
+
 
 """
     @kwdef mutable struct Restriction_Func

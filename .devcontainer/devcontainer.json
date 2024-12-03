@@ -1,0 +1,8 @@
+{
+    "name": "Tesis Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "remoteUser": "root",
+    "shutdownAction": "none"
+}

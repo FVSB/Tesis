@@ -299,7 +299,7 @@ An `Optimization_Problem` object initialized with the leader's and follower's fu
 their respective constraints, the initial point, and the follower's `bf` vector.
 """
 function Fix_Restrictions(Leader_str_expr::String,
-    leader_def_restrictions::Vector{Def_Restriction},
+    leader_def_restrictions::Union{Vector{Def_Restriction}, Nothing},
     Follower_str_expr::String,
     follower_def_restrictions::Vector{Def_Restriction},
     point::Dict,

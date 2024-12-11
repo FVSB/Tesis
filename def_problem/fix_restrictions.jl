@@ -316,6 +316,7 @@ function Fix_Restrictions(Leader_str_expr::String,
     leader_restrictions::Vector{Restriction_Func} = []
 
     # Process the leader's constraints
+    if leader_def_restrictions!=nothing
     for item::Def_Restriction in leader_def_restrictions
         # Initialize each restriction with alpha treated as a zero vector
         temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, 

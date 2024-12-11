@@ -317,12 +317,13 @@ function Fix_Restrictions(Leader_str_expr::String,
 
     # Process the leader's constraints
     if leader_def_restrictions!=nothing
-    for item::Def_Restriction in leader_def_restrictions
-        # Initialize each restriction with alpha treated as a zero vector
-        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, 
-                                                  item.restriction_set_type, item.miu, item.beta, 
-                                                  item.lambda, item.gamma, alpha, ys_vars, true)
-        push!(leader_restrictions, temp)
+        for item::Def_Restriction in leader_def_restrictions
+            # Initialize each restriction with alpha treated as a zero vector
+            temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, 
+                                                      item.restriction_set_type, item.miu, item.beta, 
+                                                      item.lambda, item.gamma, alpha, ys_vars, true)
+            push!(leader_restrictions, temp)
+        end
     end
 
     # Initialize the follower's function

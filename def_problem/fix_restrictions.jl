@@ -301,7 +301,7 @@ their respective constraints, the initial point, and the follower's `bf` vector.
 function Fix_Restrictions(Leader_str_expr::String,
     leader_def_restrictions::Union{Vector{Def_Restriction}, Nothing},
     Follower_str_expr::String,
-    follower_def_restrictions::Vector{Def_Restriction},
+    follower_def_restrictions::Union{Vector{Def_Restriction}, Nothing},
     point::Dict,
     lider_vars_str::Vector{String},
     follower_vars_str::Vector{String},
@@ -331,11 +331,13 @@ function Fix_Restrictions(Leader_str_expr::String,
     follower_restrictions::Vector{Restriction_Func} = []
 
     # Process the follower's constraints
-    for item::Def_Restriction in follower_def_restrictions
-        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, 
-                                                  item.restriction_set_type, item.miu, item.beta, 
-                                                  item.lambda, item.gamma, alpha, ys_vars, is_alpha_zero)
-        push!(follower_restrictions, temp)
+    if follower_def_restrictions !=nothing
+        for item::Def_Restriction in follower_def_restrictions
+            temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, 
+                                                      item.restriction_set_type, item.miu, item.beta, 
+                                                      item.lambda, item.gamma, alpha, ys_vars, is_alpha_zero)
+            push!(follower_restrictions, temp)
+        end
     end
 
     # Calculate the `bf` vector for the follower

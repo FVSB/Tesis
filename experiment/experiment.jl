@@ -1,7 +1,7 @@
 using BenchmarkTools
 using XLSX
 using DataFrames
-using BilevelJuMP, HiGHS, Ipopt, SCIP
+using BilevelJuMP, HiGHS, Ipopt, SCIP,Gurobi
 using BenchmarkTools
 
 function serialize_in_xlsx(df,file_name::String)
@@ -144,10 +144,11 @@ function start_experiment(model,x_s,y_s,problem_name::String)
     try
     println("Resolviendo el problema con Product Mode")
 
-    set_optimizer(model, Ipopt.Optimizer)
+    #set_optimizer(model, Ipopt.Optimizer)
+    set_optimizer(model,Gurobi.Optimizer)
 
     BilevelJuMP.set_mode(model, BilevelJuMP.ProductMode())
-
+    set_optimizer_attribute(model, "NonConvex", 2)
     make_experiment(model,x_s,y_s,"Product_Mode",problem_name)
     catch e
         println("Ocurrió un error: ", e)  # Imprime el mensaje del error

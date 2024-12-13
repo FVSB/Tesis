@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.9.15)  13 DEC 2024 12:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.9.15)  13 DEC 2024 12:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1042,7 +1042,7 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (Tesis.aux (Title.aux)
 LaTeX Info: Redefining \. on input line 13.
 LaTeX Info: Redefining \% on input line 13.
-)
+ (Resumen.aux))
 \openout1 = `Tesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
@@ -1201,7 +1201,15 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 
-{C:/Users/dell/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <./img/logo.png>] (Tesis.toc
+{C:/Users/dell/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <./img/logo.png>]
+\openout2 = `Resumen.aux'.
+
+ (Resumen.tex [2
+
+
+] [3]) [4
+
+] [5] (Tesis.toc
 LaTeX Info: Redefining \sptext on input line 1.
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -1209,7 +1217,9 @@ LaTeX Info: Redefining \% on input line 1.
 \tf@toc=\write6
 \openout6 = `Tesis.toc'.
 
- [2
+ [6
+
+
 
 ]
 
@@ -1219,7 +1229,7 @@ LaTeX Warning: Empty bibliography on input line 115.
 LaTeX Info: Redefining \sptext on input line 13.
 LaTeX Info: Redefining \. on input line 13.
 LaTeX Info: Redefining \% on input line 13.
-)
+ (Resumen.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -1231,17 +1241,17 @@ Package logreq Info: Writing requests to 'Tesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36060 strings out of 474486
- 672088 string characters out of 5744227
+ 36099 strings out of 474486
+ 672846 string characters out of 5744227
  1931542 words of memory out of 5000000
- 57791 multiletter control sequences out of 15000+600000
- 583752 words of font info for 61 fonts, out of 8000000 for 9000
+ 57813 multiletter control sequences out of 15000+600000
+ 595609 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,8n,87p,572b,2817s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb>
-Output written on Tesis.pdf (2 pages, 164062 bytes).
+ 84i,8n,87p,1137b,2817s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsco10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb>
+Output written on Tesis.pdf (6 pages, 222411 bytes).
 PDF statistics:
- 34 PDF objects out of 1000 (max. 8388607)
- 5 named destinations out of 1000 (max. 500000)
+ 64 PDF objects out of 1000 (max. 8388607)
+ 11 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -16,5 +16,120 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{nyt/apasortcite//global/global}
+    \entry{ramos2016}{article}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=64c8504c698f80ca31c7e9830665b84b}{%
+           family={Ramos},
+           familyi={R\bibinitperiod},
+           given={Manuel},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f17598376c7a069bea852d4def27a7cc}{%
+           family={Boix},
+           familyi={B\bibinitperiod},
+           given={Marianne},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
+           family={Aussel},
+           familyi={A\bibinitperiod},
+           given={Didier},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1c31815adf7cdeea22888352a4772aa4}{%
+           family={Montastruc},
+           familyi={M\bibinitperiod},
+           given={Ludovic},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3830013093579f71994e57da97309d6c}{%
+           family={Domenech},
+           familyi={D\bibinitperiod},
+           given={Serge},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a6c82f7f0d17c046e205c65b04f5fbe0}
+      \strng{fullhash}{67b07d12eaab9493c85d2c38942379fd}
+      \strng{bibnamehash}{67b07d12eaab9493c85d2c38942379fd}
+      \strng{authorbibnamehash}{67b07d12eaab9493c85d2c38942379fd}
+      \strng{authornamehash}{a6c82f7f0d17c046e205c65b04f5fbe0}
+      \strng{authorfullhash}{67b07d12eaab9493c85d2c38942379fd}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computers and Chemical Engineering}
+      \field{title}{Water integration in eco-industrial parks using a multi-leader follower approach}
+      \field{volume}{87}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{pages}{190\bibrangedash 207}
+      \range{pages}{18}
+    \endentry
+  \enddatalist
+  \datalist[entry]{nyt/global//global/global}
+    \entry{ramos2016}{article}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=64c8504c698f80ca31c7e9830665b84b}{%
+           family={Ramos},
+           familyi={R\bibinitperiod},
+           given={Manuel},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f17598376c7a069bea852d4def27a7cc}{%
+           family={Boix},
+           familyi={B\bibinitperiod},
+           given={Marianne},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
+           family={Aussel},
+           familyi={A\bibinitperiod},
+           given={Didier},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1c31815adf7cdeea22888352a4772aa4}{%
+           family={Montastruc},
+           familyi={M\bibinitperiod},
+           given={Ludovic},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3830013093579f71994e57da97309d6c}{%
+           family={Domenech},
+           familyi={D\bibinitperiod},
+           given={Serge},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a6c82f7f0d17c046e205c65b04f5fbe0}
+      \strng{fullhash}{67b07d12eaab9493c85d2c38942379fd}
+      \strng{bibnamehash}{67b07d12eaab9493c85d2c38942379fd}
+      \strng{authorbibnamehash}{67b07d12eaab9493c85d2c38942379fd}
+      \strng{authornamehash}{a6c82f7f0d17c046e205c65b04f5fbe0}
+      \strng{authorfullhash}{67b07d12eaab9493c85d2c38942379fd}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computers and Chemical Engineering}
+      \field{title}{Water integration in eco-industrial parks using a multi-leader follower approach}
+      \field{volume}{87}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{pages}{190\bibrangedash 207}
+      \range{pages}{18}
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

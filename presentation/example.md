@@ -60,12 +60,12 @@ La optimización binivel también tiene aplicaciones fundamentales en la selecci
 ---
 ## Los biniveles son díficles: 
 
-Dado que los problemas de optimización binivel son inherentemente difíciles de resolver debido a su naturaleza - - - **NP-hard**:  **Stephan Dempe, Alain Zemkoho (2020). *Bilevel Optimization: Advances and Next Challenges*. Springer Optimization and Its Applications 161**. 
+Dado que los problemas de optimización binivel son inherentemente difíciles de resolver debido a su naturaleza 
+- NP-hard:  **Stephan Dempe, Alain Zemkoho (2020). *Bilevel Optimization: Advances and Next Challenges*. Springer Optimization and Its Applications 161**. 
+
+-  ΣP2-hard: **Martina Cerulli (2016). *Bilevel Optimization and Applications*. Tesis Doctoral, Universidad de Pisa**. 
  <!-- Continuar los bilevels son dificiles-->
 ---
-
--  ΣP2-hard: **Martina Cerulli (2016). *Bilevel Optimization and Applications*. Tesis Doctoral, Universidad de Pisa**.  
-
 
 - Algoritmos metaheurísticos, como los evolutivos, han ganado relevancia al proporcionar aproximaciones eficientes en casos no lineales o no convexos: **A Review on Bilevel Optimization: From Classical to Evolutionary Approaches and Applications**. 
 - Dividir el problema en subproblemas más manejables que pueden resolverse iterativamente: **A Collection of Test Problems for Constrained Global Optimization Algorithms**. 

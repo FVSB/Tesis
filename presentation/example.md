@@ -30,9 +30,9 @@ $$
 
 ## En el Mercados Eléctricos
 
-- **Multi-leader disjoint-follower game: formulation as a bilevel optimization problem (2018). Preprint 2018-10, TU Bergakademie Freiberg, Fakultät für Mathematik und Informatik**.
+- **Multi-leader disjoint-follower game: formulation as a bilevel optimization problem (2018)**.
 
--  **Some remarks about existence of equilibria, and the validity of the EPCC reformulation for multi-leader-follower games. J. Nonlinear Convex Anal. 19(7), 1141–1162 (2018)**.
+-  **Some remarks about existence of equilibria, and the validity of the EPCC reformulation for multi-leader-follower games. J. Nonlinear Convex. 19(7), 1141–1162 (2018)**.
 
 - **Nash equilibrium in a pay-as-bid electricity market: Part 2—best response of a producer. Optimization 66, 1027–1053 (2017)**.
 .

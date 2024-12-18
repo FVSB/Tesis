@@ -96,6 +96,4 @@ $$0<=y<=20$$
 - Valor de la función del líder $99.9$
 - $x=9.999$
 - $y=9.999$
---- 
-### Punto a evaluar
-$$(1,1)$$
+

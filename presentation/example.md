@@ -7,9 +7,9 @@ marp: true
 backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 ---
 
-# Título de la Presentación
+# Generador de problemas binivel para  probar funcionamiento de algoritmos
 
-Autor: Franciso Vicente Suárez Bellón
+
 
 
 ---
@@ -91,7 +91,11 @@ $$y<=20$$
 
 $$0<=x<=15$$
 $$0<=y<=20$$
- 
+---
+### Usando el módulo de BilvelJuMP
+- Valor de la función del líder $99.9$
+- $x=9.999$
+- $y=9.999$
 --- 
 ### Punto a evaluar
 $$(1,1)$$

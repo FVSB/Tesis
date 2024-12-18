@@ -75,19 +75,23 @@ Dado que los problemas de optimización binivel son inherentemente difíciles de
 
 # Ejemplo básico
 
- $${min } F(x, y) = $$x^2 + (y - 10)^2$$
+ $${min } F(x, y) = x^2 + (y - 10)^2$$
 
  $$st:$$
  $$-x+y<=0 $$
- $${min } f(x, y) =$$(x+2y-30)^2  $$
+ $${min } f(x, y) =(x+2y-30)^2  $$
 
 $$x+y<=20 $$
 $$-y<=0$$
 $$y<=20$$
+<!-- Continuación Presentación del modelo -->
+--- 
+
 
 
 $$0<=x<=15$$
 $$0<=y<=20$$
+ 
 --- 
 ### Punto a evaluar
-$$(1,1,1,1)$$
+$$(1,1)$$

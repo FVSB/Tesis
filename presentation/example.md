@@ -15,35 +15,35 @@ Autor: Franciso Vicente Suárez Bellón
 ---
 
 # Qué es la optimización binivel?
-La optimización binivel es un problema de optimización donde un subconjunto de variables está restringido a ser la solución óptima de otro problema de optimización, el cual está parametrizado por las variables restantes. El problema de optimización externo se conoce como problema de nivel superior o del líder, mientras que el problema interno es el problema de nivel inferior o del seguidor
+$$
+\begin{align*}
+\text{minimizar} & \quad F(x, y) \\
+\text{sujeto a} & \quad G(x, y) \leq 0 \quad (\text{restricciones de desigualdad}) \\
+& \quad H(x, y) = 0 \quad (\text{restricciones de igualdad}) \\
+& \quad y \in S(x) = \arg \min_{y} \{ f(x, y) \mid g(x, y) \leq 0, h(x, y) = 0 \}
+\end{align*}
+$$
 
 ---
 # Aplicaciones de la optimización Binivel:
 ---
 
-## En el Mercado Eléctrico
+## En el Mercados Eléctricos
 
-La optimización binivel se utiliza ampliamente para modelar y analizar mercados eléctricos debido a su capacidad para capturar la interacción estratégica entre diferentes agentes económicos. Algunos ejemplos destacados incluyen:
+- **Multi-leader disjoint-follower game: formulation as a bilevel optimization problem (2018). Preprint 2018-10, TU Bergakademie Freiberg, Fakultät für Mathematik und Informatik**.
+
+-  **Some remarks about existence of equilibria, and the validity of the EPCC reformulation for multi-leader-follower games. J. Nonlinear Convex Anal. 19(7), 1141–1162 (2018)**.
 
 - **Nash equilibrium in a pay-as-bid electricity market: Part 2—best response of a producer. Optimization 66, 1027–1053 (2017)**.
-- **Deregulated electricity markets with thermal losses and production bounds: models and optimality conditions. RAIRO Oper. Res. 50(1), 19–38 (2016)**.
-<!-- Continuar mercado electrico -->
---- 
-- **Electricity spot market with transmission losses. J. Ind. Manag. Optim. 9(2), 275–290 (2013)**.
-- **Multi-leader disjoint-follower game: formulation as a bilevel optimization problem (2018). Preprint 2018-10, TU Bergakademie Freiberg, Fakultät für Mathematik und Informatik**.
--  **Some remarks about existence of equilibria, and the validity of the EPCC reformulation for multi-leader-follower games. J. Nonlinear Convex Anal. 19(7), 1141–1162 (2018)**.
+.
 
  <!-- Empezar EPI -->
 ---
 
 ## En Parques Ecoindustriales
 
-La optimización binivel es una herramienta clave en el diseño y operación de redes industriales sostenibles. Ejemplos notables incluyen:
 
-- **Gang, J., Tu, Y., Lev, B., Xu, J., Shen, W., Yao, L. (2015). A multi-objective bi-level location planning problem for stone industrial parks**.
-- **Ramos, M.A., Boix, M., Aussel, D., Montastruc, L., Domenech, S. (2016b). Water integration in eco-industrial parks using a multi-leader-follower approach**.
- <!-- Continuar EPI -->
----
+
 - **Ramos, M.A., Boix, M., Aussel, D., Montastruc, L., Domenech, S. (2016a). Optimal design of water exchanges in eco-industrial parks through a game theory approach**.
 - **Ramos, M.A., Rocafull, M., Boix, M., Aussel, D., Montastruc, L., Domenech, S. (2018). Utility network optimization in eco-industrial parks by a multi-leader follower game methodology**.
 - **Gu, H., Li, Y., Yu, J., Wu, C., Song, T., Xu, J. (2020). Bi-level optimal low-carbon economic dispatch for an industrial park with consideration of multi-energy price incentives**.
@@ -53,7 +53,7 @@ La optimización binivel es una herramienta clave en el diseño y operación de 
 
 ## En Machine Learning
 
-La optimización binivel también tiene aplicaciones fundamentales en la selección de hiperparámetros en aprendizaje automático, como lo demuestra el trabajo de *Dempe y Zemkoho (2020)*:
+
 
 - **(Springer Optimization and Its Applications 161) Stephan Dempe, Alain Zemkoho - Bilevel Optimization_ Advances and Next Challenges-Springer International Publishing_Springer (2020).pdf - Capítulo 6: Bilevel Optimization of Regularization Hyperparameters in Machine Learning**
 .
@@ -70,10 +70,22 @@ Dado que los problemas de optimización binivel son inherentemente difíciles de
 - Algoritmos metaheurísticos, como los evolutivos, han ganado relevancia al proporcionar aproximaciones eficientes en casos no lineales o no convexos: **A Review on Bilevel Optimization: From Classical to Evolutionary Approaches and Applications**. 
 - Dividir el problema en subproblemas más manejables que pueden resolverse iterativamente: **A Collection of Test Problems for Constrained Global Optimization Algorithms**. 
 - Problemas escalabilidad: **Stephan Dempe, Alain Zemkoho (2020). *Bilevel Optimization: Advances and Next Challenges*. Springer Optimization and Its Applications 161**.
+<!-- Presentación del modelo -->
+---
+
+# Ejemplo básico
+
+ $${min } F(x, y) = (x_1^2 \cdot y_1^2 \cdot y_2) + x_2$$
+
+ $$st:$$
+ $$x_1 + y_2 - y_1 = 9 $$
+ $${min } f(x, y) = (x_2^2 \cdot y_1^2 \cdot y_2) + x_1 $$
+
+$$(x_1^2 \cdot y_1^2) + x_2 = 0 $$
+$$(x_1^2 \cdot y_1^2 \cdot y_2) + x_2 \leq 0$$
 
 
 
-
-
-
-
+--- 
+### Punto a evaluar
+$$(1,1,1,1)$$

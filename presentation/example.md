@@ -75,17 +75,19 @@ Dado que los problemas de optimización binivel son inherentemente difíciles de
 
 # Ejemplo básico
 
- $${min } F(x, y) = (x_1^2 \cdot y_1^2 \cdot y_2) + x_2$$
+ $${min } F(x, y) = $$x^2 + (y - 10)^2$$
 
  $$st:$$
- $$x_1 + y_2 - y_1 = 9 $$
- $${min } f(x, y) = (x_2^2 \cdot y_1^2 \cdot y_2) + x_1 $$
+ $$-x+y<=0 $$
+ $${min } f(x, y) =$$(x+2y-30)^2  $$
 
-$$(x_1^2 \cdot y_1^2) + x_2 = 0 $$
-$$(x_1^2 \cdot y_1^2 \cdot y_2) + x_2 \leq 0$$
+$$x+y<=20 $$
+$$-y<=0$$
+$$y<=20$$
 
 
-
+$$0<=x<=15$$
+$$0<=y<=20$$
 --- 
 ### Punto a evaluar
 $$(1,1,1,1)$$

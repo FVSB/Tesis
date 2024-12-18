@@ -55,12 +55,11 @@ $$
 
 
 
-- **(Springer Optimization and Its Applications 161) Stephan Dempe, Alain Zemkoho - Bilevel Optimization_ Advances and Next Challenges-Springer International Publishing_Springer (2020).pdf - Capítulo 6: Bilevel Optimization of Regularization Hyperparameters in Machine Learning**
-.
+- **(Springer Optimization and Its Applications 161) Stephan Dempe, Alain Zemkoho - Bilevel Optimization_ Advances and Next Challenges-Springer International Publishing_Springer (2020).pdf - Capítulo 6: Bilevel Optimization of Regularization Hyperparameters in Machine Learning**.
 ---
 ## Los biniveles son díficles: 
 
-Dado que los problemas de optimización binivel son inherentemente difíciles de resolver debido a su naturaleza 
+Dado que los problemas de optimización binivel son inherentemente difíciles de resolver debido a su naturaleza. 
 - NP-hard:  **Stephan Dempe, Alain Zemkoho (2020). *Bilevel Optimization: Advances and Next Challenges*. Springer Optimization and Its Applications 161**. 
 
 -  ΣP2-hard: **Martina Cerulli (2016). *Bilevel Optimization and Applications*. Tesis Doctoral, Universidad de Pisa**. 

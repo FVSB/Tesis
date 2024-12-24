@@ -1,5 +1,70 @@
 \chapter{Introducción}
 % Primer parráfo introductorio 
 La optimización binivel es una herramienta matemática que permite modelar situaciones complejas donde intervienen dos niveles de decisión jerárquicos. Este enfoque se utiliza en diversas áreas, desde la planificación de redes de distribución hasta la gestión de recursos en entornos industriales. La importancia de estos problemas radica en su capacidad para reflejar decisiones interdependientes, donde un decisor superior (o líder) establece un marco dentro del cual un decisor inferior (o seguidor) toma decisiones que afectan el resultado global.
-% Explicación de usos
-En \cite{ramos2016} se da un bosquejo de uso de estos 
+
+La optimización binivel es un problema de optimización en el cual un subconjunto de variables está restringido a ser la solución óptima de otro problema de optimización, el cual está parametrizado por las variables restantes. Este tipo de problema tiene dos niveles jerárquicos de decisión: el problema de nivel superior o del líder, y el problema de nivel inferior o del seguidor. 
+
+En términos abstractos, la optimización binivel busca minimizar una función objetivo de nivel superior, $F(x, y)$, donde $x$ son las variables de decisión del líder y $y$ son las variables del seguidor. Esta minimización está sujeta a dos tipos de restricciones: las restricciones explícitas para el líder, $x \in X$, donde $X$ es el conjunto de valores factibles para las variables del líder; y las restricciones implícitas impuestas por el seguidor, donde $y$ debe pertenecer al conjunto de soluciones óptimas del problema de optimización del seguidor, $\arg\min\{f(x, y) : y \in Y(x)\}$. En este contexto, $f(x, y)$ es la función objetivo del nivel inferior, y $Y(x)$ representa las restricciones del nivel inferior, las cuales pueden depender de las variables de decisión del líder, $x$.
+
+En otras palabras, el problema de optimización binivel se centra en que el líder (nivel superior) debe tomar decisiones ($x$) que optimicen su objetivo $F(x, y)$, anticipando que el seguidor (nivel inferior) responderá de manera óptima con respecto a su propio objetivo $f(x, y)$, dado el valor de $x$ elegido por el líder. Esta interacción jerárquica entre ambos niveles añade una gran complejidad al problema en comparación con los problemas de optimización de un solo nivel.
+
+Un problema de optimización binivel tiene dos características principales: en primer lugar, el problema del nivel inferior actúa como una restricción para el problema del nivel superior, y en segundo lugar, la solución del nivel inferior depende del valor de las variables del nivel superior, creando una interdependencia entre ambos niveles. Por ello, el líder debe anticipar la respuesta óptima del seguidor al tomar sus decisiones.
+
+La formulación general de un problema de optimización binivel se expresa matemáticamente como:  
+
+% Definición de problema binivel
+\begin{equation}
+\begin{aligned}
+\text{minimizar} & \quad F(x, y) \\
+\text{sujeto a} & \quad G(x, y) \leq 0 \quad (\text{restricciones de desigualdad}) \\
+& \quad H(x, y) = 0 \quad (\text{restricciones de igualdad}) \\
+& \quad y \in S(x) = \arg \min_{y} \{ f(x, y) \mid g(x, y) \leq 0, h(x, y) = 0 \}.
+\end{aligned}
+\end{equation}
+
+Los elementos clave en la optimización binivel incluyen las funciones objetivo $F(x, y)$ y $f(x, y)$, que corresponden a los objetivos del líder y del seguidor, respectivamente; las restricciones $G(x, y) \leq 0$ y $H(x, y) = 0$, que deben ser satisfechas por ambas partes; y el conjunto de soluciones del seguidor $S(x)$, el cual representa las soluciones óptimas del nivel inferior en función de las decisiones del líder.
+% Aplicaciones 
+
+La optimización binivel se presenta como una herramienta fundamental para modelar y analizar los complejos mercados eléctricos, ofreciendo una perspectiva única sobre las interacciones estratégicas entre diversos agentes económicos.
+% Mercado Eléctrico
+% Nash equilibrium in a pay-as-bid electricity market Part 2 - best response of a producer Didier
+En el trabajo de \cite{Aussel2017NashEI}, se profundiza en el análisis de los mercados de electricidad de pago por oferta, explorando cómo un productor puede ajustar su estrategia considerando las acciones de sus competidores. El estudio destaca la aplicación de conceptos de \textbf{equilibrio de Nash} y técnicas de mejor respuesta, proporcionando una metodología sofisticada para optimizar la participación de un productor en el mercado.
+% Deregulated electricity markets with thermal losses and production bounds: models and optimality conditions
+Continuando con esta línea de investigación, \cite{Aussel2016DeregulatedEM} desarrollaron un modelo innovador que aborda los mercados de electricidad desregulados. Su enfoque se distingue por incorporar restricciones de producción y pérdidas térmicas, lo que permite una modelización más precisa y realista. Mediante herramientas de \textbf{modelado de mercados y análisis de condiciones de optimalidad}, los investigadores pueden explorar escenarios más complejos y representativos del funcionamiento real de los mercados energéticos.
+% Electricity spot market with transmission losses
+Un trabajo posterior de \cite{Aussel2013ElectricitySM} introduce un elemento crítico en la modelización de mercados eléctricos: las pérdidas de transmisión. Esta contribución mejora significativamente la representación del sistema eléctrico, permitiendo un análisis más profundo del equilibrio estratégico mediante técnicas de \textbf{optimización de mercado}. Al considerar las pérdidas de transmisión, el modelo captura aspectos fundamentales de la distribución y comercialización de energía que anteriormente pasaban desapercibidos.
+
+
+% Machine Learning
+La optimización binivel también tiene aplicaciones fundamentales en la selección de hiperparámetros en aprendizaje automático, como lo demuestra el trabajo de \cite{DempeyZemkoho2020ML}. El capítulo 6 del libro aborda la optimización de hiperparámetros en problemas de clasificación y regresión. Se presentan algoritmos innovadores para manejar funciones objetivo no suaves y no convexas. La razón de uso de la optimización binivel radica en su capacidad para minimizar errores en modelos complejos, mejorando así la precisión general del aprendizaje automático. Además, se implementan algoritmos especializados para abordar problemas no convexos.
+% EPI
+La optimización binivel es una herramienta clave en el diseño y operación de redes industriales sostenibles. Ejemplos notables incluyen redes de agua industrial,
+% Water integration in eco-industrial parks using a multi-leader-follower approach
+donde en los estudios de \cite{Ramos2016WaterII} se optimizan redes de agua industrial mediante juegos de múltiples líderes-seguidores, priorizando objetivos ambientales y económicos; los resultados muestran que las empresas participantes lograron beneficios significativos en escenarios con formulaciones KKT.
+%  Utility network optimization in eco-industrial parks by a multi-leader follower game methodology
+Además, \cite{Ramos2018UtilityNO} introducen el concepto de autoridad ambiental en el diseño de redes de servicios públicos, utilizando juegos de múltiples líderes-seguidores y reformulaciones KKT.
+% Bi-level optimal low-carbon economic dispatch for an industrial park with consideration of multi-energy price incentive
+En el ámbito del despacho energético bajo restricciones de carbono, \cite{Gu2020BilevelOL} modela incentivos de precios de energía en un parque industrial, demostrando que un enfoque binivel puede simultáneamente mejorar el impacto ambiental y los beneficios económicos, utilizando un procedimiento iterativo primal-dual.
+
+% Bilevel Díficiles
+% NP-Hard
+% The polynomial hierarchy and a simple model for competitive analysis
+% Some properties of the bilevel programming problem
+Dado que los problemas de optimización binivel son inherentemente difíciles de resolver debido a su naturaleza \textbf{NP-hard} \cite{Jeroslow1985ThePHNP,jonathan_f__bard_1991NP}
+% Sigma P2Hard
+% Libro Dempe
+% Tesis doctoral Cerulli
+o incluso $\Sigma P2-hard$ \cite{phdthesisCerulli,DempeyZemkoho2020},
+se han desarrollado diversos enfoques para abordar su complejidad computacional. Entre los métodos exactos más utilizados se encuentran las reformulaciones basadas en las condiciones KKT (Karush-Kuhn-Tucker), que permiten transformar el problema binivel en un problema mononivel resoluble mediante técnicas tradicionales de programación matemática.
+Sin embargo, estos enfoques suelen ser computacionalmente intensivos para problemas de gran escala \cite{phdthesisCerulli}.
+%A Review on Bilevel Optimization: From Classical to Evolutionary Approaches and Applications
+En paralelo, los algoritmos metaheurísticos, como los evolutivos, han ganado relevancia al proporcionar aproximaciones eficientes en casos no lineales o no convexos, donde las soluciones exactas son inalcanzables en tiempos razonables \cite{Sinha2017ARO}.
+% Dividir en subproblemas y resolver iterativamente
+% Collection of Test Problems for Constrained Global Optimization Algorithms
+Otro enfoque destacado es el uso de métodos basados en descomposición, los cuales dividen el problema en subproblemas más manejables que pueden resolverse iterativamente \cite{Floudas1990ACO}.
+Además, los avances recientes han explorado el uso de técnicas probabilísticas, como las aproximaciones de máxima entropía, para problemas con incertidumbre en parámetros clave.
+% An SOS1-based approach for solving MPECs with a natural gas market application
+Estas técnicas son particularmente útiles en aplicaciones prácticas, como los mercados de energía o los modelos de sostenibilidad \cite{SadddiquiNaturalGasSOS1}.
+% Libro Dempe
+A pesar de estos avances, existen desafíos abiertos. La escalabilidad sigue siendo un problema crítico, ya que el crecimiento exponencial de las opciones posibles en problemas de gran tamaño limita la aplicabilidad de los métodos exactos \cite{DempeyZemkoho2020}.
+Asimismo, los problemas no convexos carecen de garantías de convergencia hacia el óptimo global, lo que los hace especialmente difíciles de abordar. Finalmente, la incorporación de incertidumbre en los modelos agrega una capa adicional de complejidad, lo que demanda nuevos enfoques híbridos que combinen algoritmos exactos y heurísticos para mejorar la eficiencia computacional sin sacrificar la calidad de las soluciones \cite{phdthesisCerulli,Sinha2017ARO}. Estos avances y desafíos reflejan la importancia de diseñar algoritmos personalizados que aprovechen las estructuras particulares de cada problema binivel. Las aplicaciones industriales, como el diseño de redes ecoindustriales o la gestión de mercados energéticos, destacan la necesidad de enfoques que equilibren precisión y tiempo de cálculo, haciendo de la optimización binivel un área de investigación activa y con un impacto significativo en la práctica.

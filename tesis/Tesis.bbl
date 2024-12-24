@@ -19,12 +19,492 @@
 
 \refsection{0}
   \datalist[entry]{nyt/apasortcite//global/global}
-    \entry{ramos2016}{article}{}
+    \entry{Aussel2013ElectricitySM}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
+           family={Aussel},
+           familyi={A\bibinitperiod},
+           given={Didier},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0fc0041305440ef3033098b88e57a81f}{%
+           family={Correa},
+           familyi={C\bibinitperiod},
+           given={Rafael},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=160a493b79595a50560200f84cf61cc6}{%
+           family={Marechal},
+           familyi={M\bibinitperiod},
+           given={Matthieu},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c079ef3e8f43a9e0709c134eeeb9f818}
+      \strng{fullhash}{9965bdf733d4c2212bb0a7a1cc3d1820}
+      \strng{bibnamehash}{9965bdf733d4c2212bb0a7a1cc3d1820}
+      \strng{authorbibnamehash}{9965bdf733d4c2212bb0a7a1cc3d1820}
+      \strng{authornamehash}{c079ef3e8f43a9e0709c134eeeb9f818}
+      \strng{authorfullhash}{9965bdf733d4c2212bb0a7a1cc3d1820}
+      \field{extraname}{1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Industrial and Management Optimization}
+      \field{title}{Electricity spot market with transmission losses}
+      \field{volume}{9}
+      \field{year}{2013}
+      \field{pages}{275\bibrangedash 290}
+      \range{pages}{16}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:123542662
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:123542662
+      \endverb
+    \endentry
+    \entry{Aussel2016DeregulatedEM}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
+           family={Aussel},
+           familyi={A\bibinitperiod},
+           given={Didier},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=611decc9bf7b945f7a39251278fc4e28}{%
+           family={Cervinka},
+           familyi={C\bibinitperiod},
+           given={Michal},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=160a493b79595a50560200f84cf61cc6}{%
+           family={Marechal},
+           familyi={M\bibinitperiod},
+           given={Matthieu},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c079ef3e8f43a9e0709c134eeeb9f818}
+      \strng{fullhash}{a6833cb019e9f35fcaf5cb6e4fddd116}
+      \strng{bibnamehash}{a6833cb019e9f35fcaf5cb6e4fddd116}
+      \strng{authorbibnamehash}{a6833cb019e9f35fcaf5cb6e4fddd116}
+      \strng{authornamehash}{c079ef3e8f43a9e0709c134eeeb9f818}
+      \strng{authorfullhash}{a6833cb019e9f35fcaf5cb6e4fddd116}
+      \field{extraname}{2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{RAIRO Oper. Res.}
+      \field{title}{Deregulated electricity markets with thermal losses and production bounds: models and optimality conditions}
+      \field{volume}{50}
+      \field{year}{2016}
+      \field{pages}{19\bibrangedash 38}
+      \range{pages}{20}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:41625879
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:41625879
+      \endverb
+    \endentry
+    \entry{Aussel2017NashEI}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
+           family={Aussel},
+           familyi={A\bibinitperiod},
+           given={Didier},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f50e7018cc647f8ad392f89264b2f391}{%
+           family={Bendotti},
+           familyi={B\bibinitperiod},
+           given={Pascale},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2c60fb3d7af6e125c076bfc27c331e04}{%
+           family={Pistek},
+           familyi={P\bibinitperiod},
+           given={Miroslav},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c079ef3e8f43a9e0709c134eeeb9f818}
+      \strng{fullhash}{4678d6731524e3e40fbdb090a547236d}
+      \strng{bibnamehash}{4678d6731524e3e40fbdb090a547236d}
+      \strng{authorbibnamehash}{4678d6731524e3e40fbdb090a547236d}
+      \strng{authornamehash}{c079ef3e8f43a9e0709c134eeeb9f818}
+      \strng{authorfullhash}{4678d6731524e3e40fbdb090a547236d}
+      \field{extraname}{3}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Optimization}
+      \field{title}{Nash equilibrium in a pay-as-bid electricity market Part 2 - best response of a producer}
+      \field{volume}{66}
+      \field{year}{2017}
+      \field{pages}{1027\bibrangedash 1053}
+      \range{pages}{27}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:18648572
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:18648572
+      \endverb
+    \endentry
+    \entry{jonathan_f__bard_1991NP}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1aba3969ebba4743bde2df4e3a363c52}{%
+           family={Bard},
+           familyi={B\bibinitperiod},
+           given={Jonathan\bibnamedelima F.},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Kluwer Academic Publishers-Plenum Publishers}%
+      }
+      \strng{namehash}{1aba3969ebba4743bde2df4e3a363c52}
+      \strng{fullhash}{1aba3969ebba4743bde2df4e3a363c52}
+      \strng{bibnamehash}{1aba3969ebba4743bde2df4e3a363c52}
+      \strng{authorbibnamehash}{1aba3969ebba4743bde2df4e3a363c52}
+      \strng{authornamehash}{1aba3969ebba4743bde2df4e3a363c52}
+      \strng{authorfullhash}{1aba3969ebba4743bde2df4e3a363c52}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Optimization Theory and Applications}
+      \field{number}{2}
+      \field{title}{Some properties of the bilevel programming problem}
+      \field{volume}{68}
+      \field{year}{1991}
+      \field{pages}{371\bibrangedash 378}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1007/BF00941574
+      \endverb
+    \endentry
+    \entry{phdthesisCerulli}{thesis}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3ae14002e9d0510dd3d9c8cbea2e2b3d}{%
+           family={Cerulli},
+           familyi={C\bibinitperiod},
+           given={Martina},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{3ae14002e9d0510dd3d9c8cbea2e2b3d}
+      \strng{fullhash}{3ae14002e9d0510dd3d9c8cbea2e2b3d}
+      \strng{bibnamehash}{3ae14002e9d0510dd3d9c8cbea2e2b3d}
+      \strng{authorbibnamehash}{3ae14002e9d0510dd3d9c8cbea2e2b3d}
+      \strng{authornamehash}{3ae14002e9d0510dd3d9c8cbea2e2b3d}
+      \strng{authorfullhash}{3ae14002e9d0510dd3d9c8cbea2e2b3d}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{12}
+      \field{title}{Bilevel optimization and applications}
+      \field{type}{phdthesis}
+      \field{year}{2021}
+    \endentry
+    \entry{DempeyZemkoho2020ML}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=66093c5bda09d3906847e1072f977351}{%
+           family={Dempe},
+           familyi={D\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1fb3533eeb943bd18a1a10e06c207a51}{%
+           family={Zemkoho},
+           familyi={Z\bibinitperiod},
+           given={Alain},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{fullhash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{bibnamehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{authorbibnamehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{authornamehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{authorfullhash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \field{extraname}{1}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{chapter}{6}
+      \field{isbn}{978-3-030-52119-6}
+      \field{title}{Bilevel Optimization: Advances and Next Challenges}
+      \field{year}{2020}
+    \endentry
+    \entry{DempeyZemkoho2020}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=66093c5bda09d3906847e1072f977351}{%
+           family={Dempe},
+           familyi={D\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1fb3533eeb943bd18a1a10e06c207a51}{%
+           family={Zemkoho},
+           familyi={Z\bibinitperiod},
+           given={Alain},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{fullhash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{bibnamehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{authorbibnamehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{authornamehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{authorfullhash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \field{extraname}{2}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-030-52119-6}
+      \field{title}{Bilevel Optimization: Advances and Next Challenges}
+      \field{year}{2020}
+    \endentry
+    \entry{Floudas1990ACO}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=35367efe517eadd05e6f0a359da55328}{%
+           family={Floudas},
+           familyi={F\bibinitperiod},
+           given={Christodoulos\bibnamedelima A.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d2d3f2408d645df2cf4e8142841c3647}{%
+           family={Pardalos},
+           familyi={P\bibinitperiod},
+           given={Panos\bibnamedelima M.},
+           giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{aa6be4d43dda8f689e8bcae9fdc20e2e}
+      \strng{fullhash}{aa6be4d43dda8f689e8bcae9fdc20e2e}
+      \strng{bibnamehash}{aa6be4d43dda8f689e8bcae9fdc20e2e}
+      \strng{authorbibnamehash}{aa6be4d43dda8f689e8bcae9fdc20e2e}
+      \strng{authornamehash}{aa6be4d43dda8f689e8bcae9fdc20e2e}
+      \strng{authorfullhash}{aa6be4d43dda8f689e8bcae9fdc20e2e}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Lecture Notes in Computer Science}
+      \field{title}{A Collection of Test Problems for Constrained Global Optimization Algorithms}
+      \field{year}{1990}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:139191
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:139191
+      \endverb
+    \endentry
+    \entry{Gu2020BilevelOL}{article}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=82c7f68e3cf2dd65d9cb473b0d0f5743}{%
+           family={Gu},
+           familyi={G\bibinitperiod},
+           given={Haifei},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2af761d9bef859ea29248418adce0dd7}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yang},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f833275ec96740e157e5397ded247c1c}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Jie},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ead75a0b172b3c2b5b2b374d2d0b98e3}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Chen},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dba4f78fc32d8f505948594229023c15}{%
+           family={Song},
+           familyi={S\bibinitperiod},
+           given={Tianli},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0a091ca1fce6e4af6117976429efa367}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Jinzhou},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{4c97a1bc5f466573b699daa6762f6f85}
+      \strng{fullhash}{e0f96e6baa9e47b6ec05647a3e082c98}
+      \strng{bibnamehash}{e0f96e6baa9e47b6ec05647a3e082c98}
+      \strng{authorbibnamehash}{e0f96e6baa9e47b6ec05647a3e082c98}
+      \strng{authornamehash}{4c97a1bc5f466573b699daa6762f6f85}
+      \strng{authorfullhash}{e0f96e6baa9e47b6ec05647a3e082c98}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Applied Energy}
+      \field{title}{Bi-level optimal low-carbon economic dispatch for an industrial park with consideration of multi-energy price incentives}
+      \field{volume}{262}
+      \field{year}{2020}
+      \field{pages}{114276}
+      \range{pages}{1}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:213998633
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:213998633
+      \endverb
+    \endentry
+    \entry{Jeroslow1985ThePHNP}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5e64964e6530288ad1af8055092bba17}{%
+           family={Jeroslow},
+           familyi={J\bibinitperiod},
+           given={Robert\bibnamedelima G.},
+           giveni={R\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5e64964e6530288ad1af8055092bba17}
+      \strng{fullhash}{5e64964e6530288ad1af8055092bba17}
+      \strng{bibnamehash}{5e64964e6530288ad1af8055092bba17}
+      \strng{authorbibnamehash}{5e64964e6530288ad1af8055092bba17}
+      \strng{authornamehash}{5e64964e6530288ad1af8055092bba17}
+      \strng{authorfullhash}{5e64964e6530288ad1af8055092bba17}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming}
+      \field{title}{The polynomial hierarchy and a simple model for competitive analysis}
+      \field{volume}{32}
+      \field{year}{1985}
+      \field{pages}{146\bibrangedash 164}
+      \range{pages}{19}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:39987722
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:39987722
+      \endverb
+    \endentry
+    \entry{Ramos2016WaterII}{article}{}
       \name{author}{5}{}{%
-        {{un=0,uniquepart=base,hash=64c8504c698f80ca31c7e9830665b84b}{%
+        {{un=0,uniquepart=base,hash=7860028ebb4278d2389f2972fdc62c75}{%
            family={Ramos},
            familyi={R\bibinitperiod},
-           given={Manuel},
+           given={Manuel\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f17598376c7a069bea852d4def27a7cc}{%
+           family={Boix},
+           familyi={B\bibinitperiod},
+           given={Marianne},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
+           family={Aussel},
+           familyi={A\bibinitperiod},
+           given={Didier},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1c31815adf7cdeea22888352a4772aa4}{%
+           family={Montastruc},
+           familyi={M\bibinitperiod},
+           given={Ludovic},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3830013093579f71994e57da97309d6c}{%
+           family={Domenech},
+           familyi={D\bibinitperiod},
+           given={Serge},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{35b2efe53c90d05382508d128af88e26}
+      \strng{fullhash}{be804dfc75687fbd58146770502e773c}
+      \strng{bibnamehash}{be804dfc75687fbd58146770502e773c}
+      \strng{authorbibnamehash}{be804dfc75687fbd58146770502e773c}
+      \strng{authornamehash}{35b2efe53c90d05382508d128af88e26}
+      \strng{authorfullhash}{be804dfc75687fbd58146770502e773c}
+      \field{extraname}{1}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Comput. Chem. Eng.}
+      \field{title}{Water integration in eco-industrial parks using a multi-leader-follower approach}
+      \field{volume}{87}
+      \field{year}{2016}
+      \field{pages}{190\bibrangedash 207}
+      \range{pages}{18}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:26463725
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:26463725
+      \endverb
+    \endentry
+    \entry{Ramos2018UtilityNO}{article}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=7860028ebb4278d2389f2972fdc62c75}{%
+           family={Ramos},
+           familyi={R\bibinitperiod},
+           given={Manuel\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4b7f107a7bbeb2305d961073a184c5d7}{%
+           family={Rocafull},
+           familyi={R\bibinitperiod},
+           given={Mariona},
            giveni={M\bibinitperiod},
            givenun=0}}%
         {{un=0,uniquepart=base,hash=f17598376c7a069bea852d4def27a7cc}{%
@@ -52,12 +532,13 @@
            giveni={S\bibinitperiod},
            givenun=0}}%
       }
-      \strng{namehash}{a6c82f7f0d17c046e205c65b04f5fbe0}
-      \strng{fullhash}{67b07d12eaab9493c85d2c38942379fd}
-      \strng{bibnamehash}{67b07d12eaab9493c85d2c38942379fd}
-      \strng{authorbibnamehash}{67b07d12eaab9493c85d2c38942379fd}
-      \strng{authornamehash}{a6c82f7f0d17c046e205c65b04f5fbe0}
-      \strng{authorfullhash}{67b07d12eaab9493c85d2c38942379fd}
+      \strng{namehash}{35b2efe53c90d05382508d128af88e26}
+      \strng{fullhash}{a9f575e3a67206144ca05da1932f8dbd}
+      \strng{bibnamehash}{a9f575e3a67206144ca05da1932f8dbd}
+      \strng{authorbibnamehash}{a9f575e3a67206144ca05da1932f8dbd}
+      \strng{authornamehash}{35b2efe53c90d05382508d128af88e26}
+      \strng{authorfullhash}{a9f575e3a67206144ca05da1932f8dbd}
+      \field{extraname}{2}
       \field{sortinit}{R}
       \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{extradatescope}{labelyear}
@@ -65,22 +546,591 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Computers and Chemical Engineering}
-      \field{title}{Water integration in eco-industrial parks using a multi-leader follower approach}
-      \field{volume}{87}
-      \field{year}{2016}
-      \field{dateera}{ce}
-      \field{pages}{190\bibrangedash 207}
-      \range{pages}{18}
+      \field{journaltitle}{Comput. Chem. Eng.}
+      \field{title}{Utility network optimization in eco-industrial parks by a multi-leader follower game methodology}
+      \field{volume}{112}
+      \field{year}{2018}
+      \field{pages}{132\bibrangedash 153}
+      \range{pages}{22}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:4003323
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:4003323
+      \endverb
+    \endentry
+    \entry{SadddiquiNaturalGasSOS1}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=608cac97baa39d75bf233be04b7fda5d}{%
+           family={Siddiqui},
+           familyi={S\bibinitperiod},
+           given={Sauleh},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=226561991e4f82af8b0749707a589ccf}{%
+           family={Gabriel},
+           familyi={G\bibinitperiod},
+           given={Steven},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c3367c096c346c78e28c579e7cb58ca3}
+      \strng{fullhash}{c3367c096c346c78e28c579e7cb58ca3}
+      \strng{bibnamehash}{c3367c096c346c78e28c579e7cb58ca3}
+      \strng{authorbibnamehash}{c3367c096c346c78e28c579e7cb58ca3}
+      \strng{authornamehash}{c3367c096c346c78e28c579e7cb58ca3}
+      \strng{authorfullhash}{c3367c096c346c78e28c579e7cb58ca3}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Networks and Spatial Economics}
+      \field{month}{06}
+      \field{title}{An SOS1-Based Approach for Solving MPECs with a Natural Gas Market Application}
+      \field{volume}{13}
+      \field{year}{2012}
+      \verb{doi}
+      \verb 10.1007/s11067-012-9178-y
+      \endverb
+    \endentry
+    \entry{Sinha2017ARO}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=668efb83666c0ef5971bdff6e2f8b5c0}{%
+           family={Sinha},
+           familyi={S\bibinitperiod},
+           given={Ankur},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8bafe15c788d2e611aec6337d49a3385}{%
+           family={Malo},
+           familyi={M\bibinitperiod},
+           given={Pekka},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b11d1da0cc2920eef235d484e6b858ef}{%
+           family={Deb},
+           familyi={D\bibinitperiod},
+           given={Kalyanmoy},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{17eaa0b5a4e3935561b28ab06eb10d50}
+      \strng{fullhash}{a3dbd9707a8d0618b7e0bd17bef2d589}
+      \strng{bibnamehash}{a3dbd9707a8d0618b7e0bd17bef2d589}
+      \strng{authorbibnamehash}{a3dbd9707a8d0618b7e0bd17bef2d589}
+      \strng{authornamehash}{17eaa0b5a4e3935561b28ab06eb10d50}
+      \strng{authorfullhash}{a3dbd9707a8d0618b7e0bd17bef2d589}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Evolutionary Computation}
+      \field{title}{A Review on Bilevel Optimization: From Classical to Evolutionary Approaches and Applications}
+      \field{volume}{22}
+      \field{year}{2017}
+      \field{pages}{276\bibrangedash 295}
+      \range{pages}{20}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:4626744
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:4626744
+      \endverb
     \endentry
   \enddatalist
   \datalist[entry]{nyt/global//global/global}
-    \entry{ramos2016}{article}{}
+    \entry{Aussel2017NashEI}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
+           family={Aussel},
+           familyi={A\bibinitperiod},
+           given={Didier},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f50e7018cc647f8ad392f89264b2f391}{%
+           family={Bendotti},
+           familyi={B\bibinitperiod},
+           given={Pascale},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2c60fb3d7af6e125c076bfc27c331e04}{%
+           family={Pistek},
+           familyi={P\bibinitperiod},
+           given={Miroslav},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c079ef3e8f43a9e0709c134eeeb9f818}
+      \strng{fullhash}{4678d6731524e3e40fbdb090a547236d}
+      \strng{bibnamehash}{4678d6731524e3e40fbdb090a547236d}
+      \strng{authorbibnamehash}{4678d6731524e3e40fbdb090a547236d}
+      \strng{authornamehash}{c079ef3e8f43a9e0709c134eeeb9f818}
+      \strng{authorfullhash}{4678d6731524e3e40fbdb090a547236d}
+      \field{extraname}{1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Optimization}
+      \field{title}{Nash equilibrium in a pay-as-bid electricity market Part 2 - best response of a producer}
+      \field{volume}{66}
+      \field{year}{2017}
+      \field{pages}{1027\bibrangedash 1053}
+      \range{pages}{27}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:18648572
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:18648572
+      \endverb
+    \endentry
+    \entry{Aussel2016DeregulatedEM}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
+           family={Aussel},
+           familyi={A\bibinitperiod},
+           given={Didier},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=611decc9bf7b945f7a39251278fc4e28}{%
+           family={Cervinka},
+           familyi={C\bibinitperiod},
+           given={Michal},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=160a493b79595a50560200f84cf61cc6}{%
+           family={Marechal},
+           familyi={M\bibinitperiod},
+           given={Matthieu},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c079ef3e8f43a9e0709c134eeeb9f818}
+      \strng{fullhash}{a6833cb019e9f35fcaf5cb6e4fddd116}
+      \strng{bibnamehash}{a6833cb019e9f35fcaf5cb6e4fddd116}
+      \strng{authorbibnamehash}{a6833cb019e9f35fcaf5cb6e4fddd116}
+      \strng{authornamehash}{c079ef3e8f43a9e0709c134eeeb9f818}
+      \strng{authorfullhash}{a6833cb019e9f35fcaf5cb6e4fddd116}
+      \field{extraname}{2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{RAIRO Oper. Res.}
+      \field{title}{Deregulated electricity markets with thermal losses and production bounds: models and optimality conditions}
+      \field{volume}{50}
+      \field{year}{2016}
+      \field{pages}{19\bibrangedash 38}
+      \range{pages}{20}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:41625879
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:41625879
+      \endverb
+    \endentry
+    \entry{Aussel2013ElectricitySM}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
+           family={Aussel},
+           familyi={A\bibinitperiod},
+           given={Didier},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0fc0041305440ef3033098b88e57a81f}{%
+           family={Correa},
+           familyi={C\bibinitperiod},
+           given={Rafael},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=160a493b79595a50560200f84cf61cc6}{%
+           family={Marechal},
+           familyi={M\bibinitperiod},
+           given={Matthieu},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c079ef3e8f43a9e0709c134eeeb9f818}
+      \strng{fullhash}{9965bdf733d4c2212bb0a7a1cc3d1820}
+      \strng{bibnamehash}{9965bdf733d4c2212bb0a7a1cc3d1820}
+      \strng{authorbibnamehash}{9965bdf733d4c2212bb0a7a1cc3d1820}
+      \strng{authornamehash}{c079ef3e8f43a9e0709c134eeeb9f818}
+      \strng{authorfullhash}{9965bdf733d4c2212bb0a7a1cc3d1820}
+      \field{extraname}{3}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Industrial and Management Optimization}
+      \field{title}{Electricity spot market with transmission losses}
+      \field{volume}{9}
+      \field{year}{2013}
+      \field{pages}{275\bibrangedash 290}
+      \range{pages}{16}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:123542662
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:123542662
+      \endverb
+    \endentry
+    \entry{jonathan_f__bard_1991NP}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1aba3969ebba4743bde2df4e3a363c52}{%
+           family={Bard},
+           familyi={B\bibinitperiod},
+           given={Jonathan\bibnamedelima F.},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Kluwer Academic Publishers-Plenum Publishers}%
+      }
+      \strng{namehash}{1aba3969ebba4743bde2df4e3a363c52}
+      \strng{fullhash}{1aba3969ebba4743bde2df4e3a363c52}
+      \strng{bibnamehash}{1aba3969ebba4743bde2df4e3a363c52}
+      \strng{authorbibnamehash}{1aba3969ebba4743bde2df4e3a363c52}
+      \strng{authornamehash}{1aba3969ebba4743bde2df4e3a363c52}
+      \strng{authorfullhash}{1aba3969ebba4743bde2df4e3a363c52}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Optimization Theory and Applications}
+      \field{number}{2}
+      \field{title}{Some properties of the bilevel programming problem}
+      \field{volume}{68}
+      \field{year}{1991}
+      \field{pages}{371\bibrangedash 378}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1007/BF00941574
+      \endverb
+    \endentry
+    \entry{phdthesisCerulli}{thesis}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3ae14002e9d0510dd3d9c8cbea2e2b3d}{%
+           family={Cerulli},
+           familyi={C\bibinitperiod},
+           given={Martina},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{3ae14002e9d0510dd3d9c8cbea2e2b3d}
+      \strng{fullhash}{3ae14002e9d0510dd3d9c8cbea2e2b3d}
+      \strng{bibnamehash}{3ae14002e9d0510dd3d9c8cbea2e2b3d}
+      \strng{authorbibnamehash}{3ae14002e9d0510dd3d9c8cbea2e2b3d}
+      \strng{authornamehash}{3ae14002e9d0510dd3d9c8cbea2e2b3d}
+      \strng{authorfullhash}{3ae14002e9d0510dd3d9c8cbea2e2b3d}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{12}
+      \field{title}{Bilevel optimization and applications}
+      \field{type}{phdthesis}
+      \field{year}{2021}
+    \endentry
+    \entry{DempeyZemkoho2020ML}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=66093c5bda09d3906847e1072f977351}{%
+           family={Dempe},
+           familyi={D\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1fb3533eeb943bd18a1a10e06c207a51}{%
+           family={Zemkoho},
+           familyi={Z\bibinitperiod},
+           given={Alain},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{fullhash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{bibnamehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{authorbibnamehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{authornamehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{authorfullhash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \field{extraname}{1}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{chapter}{6}
+      \field{isbn}{978-3-030-52119-6}
+      \field{title}{Bilevel Optimization: Advances and Next Challenges}
+      \field{year}{2020}
+    \endentry
+    \entry{DempeyZemkoho2020}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=66093c5bda09d3906847e1072f977351}{%
+           family={Dempe},
+           familyi={D\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1fb3533eeb943bd18a1a10e06c207a51}{%
+           family={Zemkoho},
+           familyi={Z\bibinitperiod},
+           given={Alain},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{fullhash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{bibnamehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{authorbibnamehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{authornamehash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \strng{authorfullhash}{46a3df3caafe4eff374bdc3a4bb5d150}
+      \field{extraname}{2}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-030-52119-6}
+      \field{title}{Bilevel Optimization: Advances and Next Challenges}
+      \field{year}{2020}
+    \endentry
+    \entry{Floudas1990ACO}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=35367efe517eadd05e6f0a359da55328}{%
+           family={Floudas},
+           familyi={F\bibinitperiod},
+           given={Christodoulos\bibnamedelima A.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d2d3f2408d645df2cf4e8142841c3647}{%
+           family={Pardalos},
+           familyi={P\bibinitperiod},
+           given={Panos\bibnamedelima M.},
+           giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{aa6be4d43dda8f689e8bcae9fdc20e2e}
+      \strng{fullhash}{aa6be4d43dda8f689e8bcae9fdc20e2e}
+      \strng{bibnamehash}{aa6be4d43dda8f689e8bcae9fdc20e2e}
+      \strng{authorbibnamehash}{aa6be4d43dda8f689e8bcae9fdc20e2e}
+      \strng{authornamehash}{aa6be4d43dda8f689e8bcae9fdc20e2e}
+      \strng{authorfullhash}{aa6be4d43dda8f689e8bcae9fdc20e2e}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Lecture Notes in Computer Science}
+      \field{title}{A Collection of Test Problems for Constrained Global Optimization Algorithms}
+      \field{year}{1990}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:139191
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:139191
+      \endverb
+    \endentry
+    \entry{Gu2020BilevelOL}{article}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=82c7f68e3cf2dd65d9cb473b0d0f5743}{%
+           family={Gu},
+           familyi={G\bibinitperiod},
+           given={Haifei},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2af761d9bef859ea29248418adce0dd7}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yang},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f833275ec96740e157e5397ded247c1c}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Jie},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ead75a0b172b3c2b5b2b374d2d0b98e3}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Chen},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dba4f78fc32d8f505948594229023c15}{%
+           family={Song},
+           familyi={S\bibinitperiod},
+           given={Tianli},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0a091ca1fce6e4af6117976429efa367}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Jinzhou},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{4c97a1bc5f466573b699daa6762f6f85}
+      \strng{fullhash}{e0f96e6baa9e47b6ec05647a3e082c98}
+      \strng{bibnamehash}{e0f96e6baa9e47b6ec05647a3e082c98}
+      \strng{authorbibnamehash}{e0f96e6baa9e47b6ec05647a3e082c98}
+      \strng{authornamehash}{4c97a1bc5f466573b699daa6762f6f85}
+      \strng{authorfullhash}{e0f96e6baa9e47b6ec05647a3e082c98}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Applied Energy}
+      \field{title}{Bi-level optimal low-carbon economic dispatch for an industrial park with consideration of multi-energy price incentives}
+      \field{volume}{262}
+      \field{year}{2020}
+      \field{pages}{114276}
+      \range{pages}{1}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:213998633
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:213998633
+      \endverb
+    \endentry
+    \entry{Jeroslow1985ThePHNP}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5e64964e6530288ad1af8055092bba17}{%
+           family={Jeroslow},
+           familyi={J\bibinitperiod},
+           given={Robert\bibnamedelima G.},
+           giveni={R\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5e64964e6530288ad1af8055092bba17}
+      \strng{fullhash}{5e64964e6530288ad1af8055092bba17}
+      \strng{bibnamehash}{5e64964e6530288ad1af8055092bba17}
+      \strng{authorbibnamehash}{5e64964e6530288ad1af8055092bba17}
+      \strng{authornamehash}{5e64964e6530288ad1af8055092bba17}
+      \strng{authorfullhash}{5e64964e6530288ad1af8055092bba17}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming}
+      \field{title}{The polynomial hierarchy and a simple model for competitive analysis}
+      \field{volume}{32}
+      \field{year}{1985}
+      \field{pages}{146\bibrangedash 164}
+      \range{pages}{19}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:39987722
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:39987722
+      \endverb
+    \endentry
+    \entry{Ramos2016WaterII}{article}{}
       \name{author}{5}{}{%
-        {{un=0,uniquepart=base,hash=64c8504c698f80ca31c7e9830665b84b}{%
+        {{un=0,uniquepart=base,hash=7860028ebb4278d2389f2972fdc62c75}{%
            family={Ramos},
            familyi={R\bibinitperiod},
-           given={Manuel},
+           given={Manuel\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f17598376c7a069bea852d4def27a7cc}{%
+           family={Boix},
+           familyi={B\bibinitperiod},
+           given={Marianne},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
+           family={Aussel},
+           familyi={A\bibinitperiod},
+           given={Didier},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1c31815adf7cdeea22888352a4772aa4}{%
+           family={Montastruc},
+           familyi={M\bibinitperiod},
+           given={Ludovic},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3830013093579f71994e57da97309d6c}{%
+           family={Domenech},
+           familyi={D\bibinitperiod},
+           given={Serge},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{35b2efe53c90d05382508d128af88e26}
+      \strng{fullhash}{be804dfc75687fbd58146770502e773c}
+      \strng{bibnamehash}{be804dfc75687fbd58146770502e773c}
+      \strng{authorbibnamehash}{be804dfc75687fbd58146770502e773c}
+      \strng{authornamehash}{35b2efe53c90d05382508d128af88e26}
+      \strng{authorfullhash}{be804dfc75687fbd58146770502e773c}
+      \field{extraname}{1}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Comput. Chem. Eng.}
+      \field{title}{Water integration in eco-industrial parks using a multi-leader-follower approach}
+      \field{volume}{87}
+      \field{year}{2016}
+      \field{pages}{190\bibrangedash 207}
+      \range{pages}{18}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:26463725
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:26463725
+      \endverb
+    \endentry
+    \entry{Ramos2018UtilityNO}{article}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=7860028ebb4278d2389f2972fdc62c75}{%
+           family={Ramos},
+           familyi={R\bibinitperiod},
+           given={Manuel\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4b7f107a7bbeb2305d961073a184c5d7}{%
+           family={Rocafull},
+           familyi={R\bibinitperiod},
+           given={Mariona},
            giveni={M\bibinitperiod},
            givenun=0}}%
         {{un=0,uniquepart=base,hash=f17598376c7a069bea852d4def27a7cc}{%
@@ -108,12 +1158,13 @@
            giveni={S\bibinitperiod},
            givenun=0}}%
       }
-      \strng{namehash}{a6c82f7f0d17c046e205c65b04f5fbe0}
-      \strng{fullhash}{67b07d12eaab9493c85d2c38942379fd}
-      \strng{bibnamehash}{67b07d12eaab9493c85d2c38942379fd}
-      \strng{authorbibnamehash}{67b07d12eaab9493c85d2c38942379fd}
-      \strng{authornamehash}{a6c82f7f0d17c046e205c65b04f5fbe0}
-      \strng{authorfullhash}{67b07d12eaab9493c85d2c38942379fd}
+      \strng{namehash}{35b2efe53c90d05382508d128af88e26}
+      \strng{fullhash}{a9f575e3a67206144ca05da1932f8dbd}
+      \strng{bibnamehash}{a9f575e3a67206144ca05da1932f8dbd}
+      \strng{authorbibnamehash}{a9f575e3a67206144ca05da1932f8dbd}
+      \strng{authornamehash}{35b2efe53c90d05382508d128af88e26}
+      \strng{authorfullhash}{a9f575e3a67206144ca05da1932f8dbd}
+      \field{extraname}{2}
       \field{sortinit}{R}
       \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{extradatescope}{labelyear}
@@ -121,13 +1172,102 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Computers and Chemical Engineering}
-      \field{title}{Water integration in eco-industrial parks using a multi-leader follower approach}
-      \field{volume}{87}
-      \field{year}{2016}
-      \field{dateera}{ce}
-      \field{pages}{190\bibrangedash 207}
-      \range{pages}{18}
+      \field{journaltitle}{Comput. Chem. Eng.}
+      \field{title}{Utility network optimization in eco-industrial parks by a multi-leader follower game methodology}
+      \field{volume}{112}
+      \field{year}{2018}
+      \field{pages}{132\bibrangedash 153}
+      \range{pages}{22}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:4003323
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:4003323
+      \endverb
+    \endentry
+    \entry{SadddiquiNaturalGasSOS1}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=608cac97baa39d75bf233be04b7fda5d}{%
+           family={Siddiqui},
+           familyi={S\bibinitperiod},
+           given={Sauleh},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=226561991e4f82af8b0749707a589ccf}{%
+           family={Gabriel},
+           familyi={G\bibinitperiod},
+           given={Steven},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c3367c096c346c78e28c579e7cb58ca3}
+      \strng{fullhash}{c3367c096c346c78e28c579e7cb58ca3}
+      \strng{bibnamehash}{c3367c096c346c78e28c579e7cb58ca3}
+      \strng{authorbibnamehash}{c3367c096c346c78e28c579e7cb58ca3}
+      \strng{authornamehash}{c3367c096c346c78e28c579e7cb58ca3}
+      \strng{authorfullhash}{c3367c096c346c78e28c579e7cb58ca3}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Networks and Spatial Economics}
+      \field{month}{06}
+      \field{title}{An SOS1-Based Approach for Solving MPECs with a Natural Gas Market Application}
+      \field{volume}{13}
+      \field{year}{2012}
+      \verb{doi}
+      \verb 10.1007/s11067-012-9178-y
+      \endverb
+    \endentry
+    \entry{Sinha2017ARO}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=668efb83666c0ef5971bdff6e2f8b5c0}{%
+           family={Sinha},
+           familyi={S\bibinitperiod},
+           given={Ankur},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8bafe15c788d2e611aec6337d49a3385}{%
+           family={Malo},
+           familyi={M\bibinitperiod},
+           given={Pekka},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b11d1da0cc2920eef235d484e6b858ef}{%
+           family={Deb},
+           familyi={D\bibinitperiod},
+           given={Kalyanmoy},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{17eaa0b5a4e3935561b28ab06eb10d50}
+      \strng{fullhash}{a3dbd9707a8d0618b7e0bd17bef2d589}
+      \strng{bibnamehash}{a3dbd9707a8d0618b7e0bd17bef2d589}
+      \strng{authorbibnamehash}{a3dbd9707a8d0618b7e0bd17bef2d589}
+      \strng{authornamehash}{17eaa0b5a4e3935561b28ab06eb10d50}
+      \strng{authorfullhash}{a3dbd9707a8d0618b7e0bd17bef2d589}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Evolutionary Computation}
+      \field{title}{A Review on Bilevel Optimization: From Classical to Evolutionary Approaches and Applications}
+      \field{volume}{22}
+      \field{year}{2017}
+      \field{pages}{276\bibrangedash 295}
+      \range{pages}{20}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:4626744
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:4626744
+      \endverb
     \endentry
   \enddatalist
 \endrefsection

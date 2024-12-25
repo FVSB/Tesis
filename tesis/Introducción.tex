@@ -1,5 +1,5 @@
 \chapter{Introducción}
-% Primer parráfo introductorio 
+% Primer párrafo introductorio 
 La optimización binivel es una herramienta matemática que permite modelar situaciones complejas donde intervienen dos niveles de decisión jerárquicos. Este enfoque se utiliza en diversas áreas, desde la planificación de redes de distribución hasta la gestión de recursos en entornos industriales. La importancia de estos problemas radica en su capacidad para reflejar decisiones interdependientes, donde un decisor superior (o líder) establece un marco dentro del cual un decisor inferior (o seguidor) toma decisiones que afectan el resultado global.
 
 La optimización binivel es un problema de optimización en el cual un subconjunto de variables está restringido a ser la solución óptima de otro problema de optimización, el cual está parametrizado por las variables restantes. Este tipo de problema tiene dos niveles jerárquicos de decisión: el problema de nivel superior o del líder, y el problema de nivel inferior o del seguidor. 
@@ -34,19 +34,18 @@ Continuando con esta línea de investigación, \cite{Aussel2016DeregulatedEM} de
 % Electricity spot market with transmission losses
 Un trabajo posterior de \cite{Aussel2013ElectricitySM} introduce un elemento crítico en la modelización de mercados eléctricos: las pérdidas de transmisión. Esta contribución mejora significativamente la representación del sistema eléctrico, permitiendo un análisis más profundo del equilibrio estratégico mediante técnicas de \textbf{optimización de mercado}. Al considerar las pérdidas de transmisión, el modelo captura aspectos fundamentales de la distribución y comercialización de energía que anteriormente pasaban desapercibidos.
 
-
 % Machine Learning
-La optimización binivel también tiene aplicaciones fundamentales en la selección de hiperparámetros en aprendizaje automático, como lo demuestra el trabajo de \cite{DempeyZemkoho2020ML}. El capítulo 6 del libro aborda la optimización de hiperparámetros en problemas de clasificación y regresión. Se presentan algoritmos innovadores para manejar funciones objetivo no suaves y no convexas. La razón de uso de la optimización binivel radica en su capacidad para minimizar errores en modelos complejos, mejorando así la precisión general del aprendizaje automático. Además, se implementan algoritmos especializados para abordar problemas no convexos.
+La optimización binivel también tiene aplicaciones fundamentales en la selección de hiperparámetros en aprendizaje automático, como lo demuestra el trabajo de \cite{DempeyZemkoho2020ML}. El capítulo 6 del libro aborda la optimización de hiperparámetros en problemas de clasificación y regresión. Se presentan algoritmos innovadores para manejar funciones objetivo no suaves y no convexas. La razón del uso de la optimización binivel radica en su capacidad para minimizar errores en modelos complejos, mejorando así la precisión general del aprendizaje automático. Además, se implementan algoritmos especializados para abordar problemas no convexos.
 % EPI
 La optimización binivel es una herramienta clave en el diseño y operación de redes industriales sostenibles. Ejemplos notables incluyen redes de agua industrial,
 % Water integration in eco-industrial parks using a multi-leader-follower approach
 donde en los estudios de \cite{Ramos2016WaterII} se optimizan redes de agua industrial mediante juegos de múltiples líderes-seguidores, priorizando objetivos ambientales y económicos; los resultados muestran que las empresas participantes lograron beneficios significativos en escenarios con formulaciones KKT.
-%  Utility network optimization in eco-industrial parks by a multi-leader follower game methodology
+% Utility network optimization in eco-industrial parks by a multi-leader follower game methodology
 Además, \cite{Ramos2018UtilityNO} introducen el concepto de autoridad ambiental en el diseño de redes de servicios públicos, utilizando juegos de múltiples líderes-seguidores y reformulaciones KKT.
 % Bi-level optimal low-carbon economic dispatch for an industrial park with consideration of multi-energy price incentive
 En el ámbito del despacho energético bajo restricciones de carbono, \cite{Gu2020BilevelOL} modela incentivos de precios de energía en un parque industrial, demostrando que un enfoque binivel puede simultáneamente mejorar el impacto ambiental y los beneficios económicos, utilizando un procedimiento iterativo primal-dual.
 
-% Bilevel Díficiles
+% Bilevel Difíciles
 % NP-Hard
 % The polynomial hierarchy and a simple model for competitive analysis
 % Some properties of the bilevel programming problem
@@ -78,13 +77,13 @@ Por otro lado, el enfoque pesimista asume que el seguidor seleccionará la opci�
 Es relevante destacar que la mayoría de la literatura sobre optimización binivel se centra en el enfoque optimista debido a su mayor facilidad de tratamiento. Sin embargo, el enfoque pesimista también tiene su utilidad, especialmente en la modelación de situaciones donde se considera la aversión al riesgo 
 \cite{DempeyZemkoho2020}. En este contexto, los términos "líder" y "seguidor" se utilizan para describir los roles en el problema de optimización; el líder toma decisiones considerando las posibles reacciones del seguidor, quien a su vez reacciona seleccionando su mejor opción \cite{Sinha2017ARO}.
 
-% Sobre Valor extremal kkt y algoritmos 
+% Sobre Valor extremal KKT y algoritmos 
 
 El principio extremal es esencial para el análisis variacional y la derivación de condiciones de optimalidad. Este principio se utiliza para establecer reglas de cálculo y aplicaciones en la optimización, especialmente dentro del enfoque geométrico del análisis variacional. Aunque el concepto de valor extremal no siempre se nombra explícitamente, está intrínsecamente relacionado con el análisis variacional en problemas binivel, lo que implica que su comprensión es crucial para abordar estos problemas de manera efectiva \cite{DempeyZemkoho2020}.
 Las condiciones KKT son una herramienta clave en la reformulación de problemas de optimización, particularmente cuando el problema de nivel inferior es convexo. Estas condiciones son necesarias y suficientes para garantizar la optimalidad en problemas de programación matemática, como se establece en la literatura sobre programación no lineal. Se destaca que las condiciones KKT permiten transformar problemas de optimización binivel en programas matemáticos con restricciones de equilibrio (MPEC), facilitando así su resolución \cite{DempeyZemkoho2020}.
 Los algoritmos que se basan en las condiciones KKT incluyen una variedad de métodos, tales como técnicas de branch-and-bound y métodos de suavizado. Estos algoritmos son utilizados para resolver problemas complejos de optimización que involucran restricciones. Por ejemplo, se discute el uso de un método de suavizado junto con las condiciones KKT para abordar problemas relacionados con la optimización de hiperparámetros. Además, se menciona que los algoritmos SQP (Sequential Quadratic Programming) también se fundamentan en las condiciones KKT para resolver problemas suaves con restricciones. La versatilidad del método KKT se extiende incluso a su aplicación en algoritmos evolutivos, lo que demuestra su relevancia en diversas áreas de la optimización \cite{DempeyZemkoho2020}.
 
-% Obtener una garantia de la solucion es muy complejo (generalmente es estacionario y con puntos estacionarios).
+% Obtener una garantía de la solución es muy complejo (generalmente es estacionario y con puntos estacionarios).
 La optimización de dos niveles, un área fundamental en la investigación operativa y la teoría de juegos, presenta desafíos significativos debido a su complejidad inherente. Este tipo de problemas se caracteriza por la interacción entre un líder y un seguidor, donde las decisiones del líder afectan las respuestas del seguidor. Uno de los aspectos más críticos de esta problemática es garantizar la existencia de soluciones óptimas, lo cual se ve complicado por la naturaleza no convexa del problema, incluso cuando las funciones y los conjuntos factibles son convexos. A menudo, los algoritmos utilizados en este contexto solo logran identificar puntos estacionarios o críticos, que no necesariamente representan soluciones locales o globales \cite{DempeyZemkoho2020}.
 
 Los problemas de optimización de dos niveles son inherentemente no convexos, lo que implica que los métodos de optimización convexa no son directamente aplicables. Esta no convexidad puede llevar a soluciones subóptimas y a dificultades para encontrar una solución global. A pesar de que en muchos casos las funciones y conjuntos factibles pueden ser convexos, la estructura general del problema sigue siendo no convexa.
@@ -99,16 +98,15 @@ Además, para abordar la no unicidad de las soluciones y mejorar la estabilidad 
 
 En resumen, obtener garantías sobre soluciones en problemas de optimización de dos niveles es un desafío complejo debido a su no convexidad inherente, las dificultades para escapar de óptimos locales y la posible falta de unicidad y estabilidad en las soluciones. Los algoritmos frecuentemente dependen de puntos estacionarios, los cuales no siempre corresponden a las soluciones óptimas deseadas. Por lo tanto, es crucial desarrollar métodos especializados que aborden estos problemas y permitan encontrar soluciones globales o aproximaciones adecuadas \cite{DempeyZemkoho2020}.
 
-% Que se va hacer en la tesis
-Debido a la problematica que puede acarrear los puntos estacionationarios con respecto al valor de $\alpha$, los cuales son de interés. 
-En esta tesis se propone un generador de problemas que dado un punto estacionario conocido se pueda conocer el comportamiento de este problema en las vecindades del punto los algoritmos para este tipo de problemas de problemas Single-Leader-Single-Follower con enfoque optimista y su comparación con solucionadores del entorno Julia\\.
+% Qué se va a hacer en la tesis
+Debido a la problemática que puede acarrear los puntos estacionarios con respecto al valor de $\alpha$, los cuales son de interés. 
+En esta tesis se propone un generador de problemas que, dado un punto estacionario conocido, se pueda conocer el comportamiento de este problema en las vecindades del punto, los algoritmos para este tipo de problemas de Single-Leader-Single-Follower con enfoque optimista y su comparación con solucionadores del entorno Julia.\\
 % Explicación 
 % 2do cap
-La tesis está compuesta, luego del capítulo de la introducción, por un segundo capítulo donde se precisa la notación a emplear, se define formalmente un problema dos niveles con un líder y un seguidor se explica la teoría matemática para su transformación en un problema MPEC, así como de los algoritmos Julia que usaremos en esta.
+La tesis está compuesta, luego del capítulo de introducción, por un segundo capítulo donde se precisa la notación a emplear, se define formalmente un problema de dos niveles con un líder y un seguidor, se explica la teoría matemática para su transformación en un problema MPEC, así como de los algoritmos Julia que usaremos en esta.
 % 3ero
-En el tercer capítulo explicaremos sobre la implementación algorítmica propuesta anteriormente y su correcta utilización 
+En el tercer capítulo explicaremos sobre la implementación algorítmica propuesta anteriormente y su correcta utilización. 
 % 4to
 Y en el cuarto capítulo se analizan los resultados obtenidos por el algoritmo propuesto y su comparación con algoritmos implementados en el entorno Julia.
 % Siguiente
 Posteriormente se dan las conclusiones y recomendaciones del trabajo realizado.
-

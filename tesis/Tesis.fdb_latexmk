@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber Tesis"] 1735162668.7657 "Tesis.bcf" "Tesis.bbl" "Tesis" 1735163588.1188 0
-  "Tesis.bcf" 1735163587 134691 4d3cecd0fa01bf649840136c00a881a8 "pdflatex"
+["biber Tesis"] 1735162668.7657 "Tesis.bcf" "Tesis.bbl" "Tesis" 1735164399.44632 0
+  "Tesis.bcf" 1735164399 134691 4d3cecd0fa01bf649840136c00a881a8 "pdflatex"
   "references.bib" 1735162005 5280 b23a0437fa87cf1efda1b27cb5c2330f ""
   (generated)
   "Tesis.bbl"
   "Tesis.blg"
   (rewritten before read)
-["pdflatex"] 1735163584.79893 "d:/GitHub/Tesis/tesis/Tesis.tex" "Tesis.pdf" "Tesis" 1735163588.11979 0
+["pdflatex"] 1735164397.11839 "d:/GitHub/Tesis/tesis/Tesis.tex" "Tesis.pdf" "Tesis" 1735164399.44694 0
   "C:/Users/dell/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1735005351 85110 28b33952394aebec78c4c9bc01193974 ""
   "C:/Users/dell/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1734997814 24224575 5e28fe8a61cb47be6675de91ff60be10 ""
   "C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1256929440 2375 baa924870cfb487815765f9094cf3728 ""
@@ -232,17 +232,17 @@
   "C:/Users/dell/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/x11nam.def" 1700127522 9125 e0e22f8bd8f488926acdd4e96dcc4d1e ""
   "C:/Users/dell/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "C:/Users/dell/AppData/Local/Programs/MiKTeX/tex/latex/xifthen/xifthen.sty" 1448274436 5689 1bfa68243e89a54479e7d0580773c57e ""
-  "Introducción.aux" 1735163587 4565 1c1eb3e2d1b704f953ef2566f3cf9af6 "pdflatex"
-  "Introducción.tex" 1735163583 19775 1d9d095c33db65cb5863eb9c9bc9de57 ""
-  "Resumen.aux" 1735163587 4374 df4c03bc50846e44263f719178b143a4 "pdflatex"
+  "Introducción.aux" 1735164398 4565 1c1eb3e2d1b704f953ef2566f3cf9af6 "pdflatex"
+  "Introducción.tex" 1735164393 19765 2ebcbe71039df135728cc0eaba69040e ""
+  "Resumen.aux" 1735164398 4374 df4c03bc50846e44263f719178b143a4 "pdflatex"
   "Resumen.tex" 1734111839 3514 7a39ee58076344897a74453074cc6c42 ""
-  "Tesis.aux" 1735163587 6423 dff673d16a5ba696834f3d1f74352a75 "pdflatex"
+  "Tesis.aux" 1735164399 6423 dff673d16a5ba696834f3d1f74352a75 "pdflatex"
   "Tesis.bbl" 1735162671 55319 07158600fc94b539e92e7d4377909aa5 "biber Tesis"
-  "Tesis.out" 1735163587 106 1a505e85fb7be3736a75981ab8224bbc "pdflatex"
-  "Tesis.run.xml" 1735163587 2366 b40133813d1dd37908e9cbbedd59dd7d "pdflatex"
+  "Tesis.out" 1735164399 106 1a505e85fb7be3736a75981ab8224bbc "pdflatex"
+  "Tesis.run.xml" 1735164399 2366 b40133813d1dd37908e9cbbedd59dd7d "pdflatex"
   "Tesis.tex" 1735004516 2859 bef9f628824ed2c8ecebd4cce4ab80a9 ""
-  "Tesis.toc" 1735163587 100 91ef1ca9039e4a8eac346f6f91608b7d "pdflatex"
-  "Title.aux" 1735163586 4372 d19acee9c8cd34cfa309f9b1af6160d5 "pdflatex"
+  "Tesis.toc" 1735164399 100 91ef1ca9039e4a8eac346f6f91608b7d "pdflatex"
+  "Title.aux" 1735164398 4372 d19acee9c8cd34cfa309f9b1af6160d5 "pdflatex"
   "Title.tex" 1734111095 841 328423b033009b3ea104e9d43bd51c2f ""
   "d:/GitHub/Tesis/tesis/Tesis.tex" 1735004516 2859 bef9f628824ed2c8ecebd4cce4ab80a9 ""
   "img/logo.png" 1730985223 107328 25d42c931e36f7253f3f5202e16be31b ""

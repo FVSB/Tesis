@@ -19,6 +19,47 @@
 
 \refsection{0}
   \datalist[entry]{nyt/apasortcite//global/global}
+    \entry{Allende2012SolvingBP}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=575ba3d3eb593a20d8f557329a018753}{%
+           family={Allende},
+           familyi={A\bibinitperiod},
+           given={Gemayqzel\bibnamedelima Bouza},
+           giveni={G\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e105fa4bcd03ccdd3c98fdbf4f3ed267}{%
+           family={Still},
+           familyi={S\bibinitperiod},
+           given={Georg},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
+      \strng{fullhash}{80be77d2d0c6e1e4bfbd680660b67f9f}
+      \strng{bibnamehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
+      \strng{authorbibnamehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
+      \strng{authornamehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
+      \strng{authorfullhash}{80be77d2d0c6e1e4bfbd680660b67f9f}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming}
+      \field{title}{Solving bilevel programs with the KKT-approach}
+      \field{volume}{138}
+      \field{year}{2012}
+      \field{pages}{309\bibrangedash 332}
+      \range{pages}{24}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:18500519
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:18500519
+      \endverb
+    \endentry
     \entry{Aussel2013ElectricitySM}{article}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
@@ -645,6 +686,47 @@
     \endentry
   \enddatalist
   \datalist[entry]{nyt/global//global/global}
+    \entry{Allende2012SolvingBP}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=575ba3d3eb593a20d8f557329a018753}{%
+           family={Allende},
+           familyi={A\bibinitperiod},
+           given={Gemayqzel\bibnamedelima Bouza},
+           giveni={G\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e105fa4bcd03ccdd3c98fdbf4f3ed267}{%
+           family={Still},
+           familyi={S\bibinitperiod},
+           given={Georg},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
+      \strng{fullhash}{80be77d2d0c6e1e4bfbd680660b67f9f}
+      \strng{bibnamehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
+      \strng{authorbibnamehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
+      \strng{authornamehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
+      \strng{authorfullhash}{80be77d2d0c6e1e4bfbd680660b67f9f}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming}
+      \field{title}{Solving bilevel programs with the KKT-approach}
+      \field{volume}{138}
+      \field{year}{2012}
+      \field{pages}{309\bibrangedash 332}
+      \range{pages}{24}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:18500519
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:18500519
+      \endverb
+    \endentry
     \entry{Aussel2017NashEI}{article}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%

@@ -52,9 +52,42 @@ Los elementos clave en la optimización binivel incluyen las funciones objetivo 
 		\end{table}
 
 
-% Descripción
-Despues se vuelve a realizar el kkt a este sistema obteniendo:
+\chapter{Método}
 
-\begin{math}
-	\nabla{x,y} F + \sum_{min}^{max}
-\end{math}
+Dado que por estudios previos\\
+
+Se tomará transformará el MPEC de la siguiente forma
+
+Se debe determinar cuales indices activos sus $\lambda = 0$ y cuales son $\lambda>0$ con el fin de poder calcular el valor de $b_j$ el se hará el siguente procedimiento
+
+\begin{table}[H]
+	$\lambda =0$:\\
+	$(\nabla_{y}V_j+b_j)\alpha=0 \quad \forall V_j \in J_0$ \\
+	$\lambda>0$:\\
+	$[(\nabla_{y}V_j+b_j)\alpha]-\gamma_j=0 \quad \forall V_j \in J_0$
+
+
+\end{table}
+
+Despues de realizado el calculo del $b_j$ se procede a modificar su indice activo correspondiente:
+
+\begin{table}[H]
+	$V_{j}^[*]=V_{j}+(b_j\alpha)$
+\end{table}
+
+Después se realiza las adicciones necesarias de una constante a cada restriccion con el fin de que sea factible el punto seleccionado
+esta suma de constante no modifica las propiedades de convexidad del problema dado que una suma de funciones lineales no afecta.\\
+
+% Decir que se realiza el kkt del nivel inferior
+
+Despues se procede a realizar el kkt del nivel inferior con las modificiaciones anteriores 
+Se plantea las condiciones KKT de las funciones evaluadas en el punto dado:
+\begin{table}[H]
+	$\nabla_{y}f(x,y)+\sum_{j=0}^{|V \in J_0|}(\lambda_j\nabla_{y}V_j(x,y))+\vec{bf}=\vec{0}$
+	
+\end{table}
+
+
+Una vez hallado el kkt del nivel inferior se procede a hallar el kkt del MPEC resultante de este KKT el cual es:
+$\nabla_{xy}F(x,y)+\sum_{i=1}^{|G \in J_o|}(\mu_i\nabla_{xy}g(x,y))+[\nabla_{x,y}\nabla_{y}f(x,y)+\sum_{j=1}^{|V \in J_0|}\lambda_j\nabla_{xy}\nabla_{y}V_j(x,y)]+\sum_{j=1}^{|V \in J_0|}(\beta_j\nabla_{xy}V_j(x,y))+\vec{BF}=\vec{0}$
+

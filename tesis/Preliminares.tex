@@ -26,15 +26,15 @@ Los elementos clave en la optimización binivel incluyen las funciones objetivo 
 		
 		Los problemas de dos niveles pueden ser reformulados en un problema de un solo nivel al reemplazar el problema del nivel inferior por las condiciones KKT de este en las restricciones del primer nivel. 
 		
-		Para el caso de los SLMFG donde se tienen múltiples problemas de optimización en el nivel inferior estos se sustituyen por la concatenación de las condiciones KKT de cada uno de los problemas de optimización, obteniendo un MPEC \autocite{aussel2020}.
+		Para el caso de los SLSMG donde se tiene un problema de optimización en el nivel inferior este sustituye por de las condiciones KKT de este, obteniendo un MPEC \autocite{aussel2020}.
 		
         
         Notas:
         \begin{itemize}
-            \item Llamaremos Q al conjunto restricciones de desigualdad en el nivel inferior $V$
+            \item Llamaremos $J_{0}$ al conjunto restricciones de desigualdad en el nivel inferior $V$ que sean índices activos
             
         \end{itemize}
-
+% Descripcion del modelo en kkt
 		\begin{table}[H]
 
 		\[\begin{array}{l}
@@ -42,11 +42,19 @@ Los elementos clave en la optimización binivel incluyen las funciones objetivo 
 			s.a \left\{ \begin{array}{l}
 				x \geq 0 \\
 				g(x, y) \geq 0\\
-				\nabla_{y} f(x, y) + \sum_{i=1}^{|Q|} \nabla_{y} V_i(x, y) \lambda_i = 0 \\
-				V_i(x, y) \geq 0, \quad \forall i \in Q \\
-				V_i(x, y)\lambda_i = 0, \quad \forall i \in Q \\
-				\lambda_i \geq 0, \quad \forall i \in Q\\
+				\nabla_{y} f(x, y) + \sum_{i=1}^{|J_{0}|} \nabla_{y} V_i(x, y) \lambda_i = 0 \\
+				V_i(x, y) \geq 0, \quad \forall i \in J_{0} \\
+				V_i(x, y)\lambda_i = 0, \quad \forall i \in J_{0} \\
+				\lambda_i \geq 0, \quad \forall i \in J_{0}\\
 			\end{array}\right.
 		\end{array}\]
 		\caption*{MPEC resultante}
 		\end{table}
+
+
+% Descripción
+Despues se vuelve a realizar el kkt a este sistema obteniendo:
+
+\begin{math}
+	\nabla{x,y} F + \sum_{min}^{max}
+\end{math}

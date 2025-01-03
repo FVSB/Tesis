@@ -173,6 +173,8 @@ function calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem::Optimizat
         lambda_i = vi.lambda
         A += vi_grad_val * lambda_i
     end
+    # Add der xy der y follower  and add to A matrix
+    A +=Calculate_diff_ys_xsys(opt_problem.follower_fun.expr,problems_vars,ys_vars,point)
     return A * alpha
 end
 

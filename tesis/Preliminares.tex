@@ -34,7 +34,7 @@ Los elementos clave en la optimización binivel incluyen las funciones objetivo 
             \item Llamaremos $J_{0}$ al conjunto restricciones de desigualdad en el nivel inferior $V$ que sean índices activos
             
         \end{itemize}
-% Descripcion del modelo en kkt
+% Descripcion del modelo en KKT
 		\begin{table}[H]
 
 		\[\begin{array}{l}
@@ -72,22 +72,27 @@ Se debe determinar cuales indices activos sus $\lambda = 0$ y cuales son $\lambd
 Despues de realizado el calculo del $b_j$ se procede a modificar su indice activo correspondiente:
 
 \begin{table}[H]
-	$V_{j}^[*]=V_{j}+(b_j\alpha)$
+	$V_{j}^{\star}=V_{j}+(b_j\alpha)$
 \end{table}
 
 Después se realiza las adicciones necesarias de una constante a cada restriccion con el fin de que sea factible el punto seleccionado
 esta suma de constante no modifica las propiedades de convexidad del problema dado que una suma de funciones lineales no afecta.\\
 
-% Decir que se realiza el kkt del nivel inferior
+% Decir que se realiza el KKT del nivel inferior
 
-Despues se procede a realizar el kkt del nivel inferior con las modificiaciones anteriores 
+Despues se procede a realizar el KKT del nivel inferior con las modificiaciones anteriores 
 Se plantea las condiciones KKT de las funciones evaluadas en el punto dado:
 \begin{table}[H]
 	$\nabla_{y}f(x,y)+\sum_{j=0}^{|V \in J_0|}(\lambda_j\nabla_{y}V_j(x,y))+\vec{bf}=\vec{0}$
-	
+\caption*{KKT del problema del nivel inferior}
 \end{table}
 
 
-Una vez hallado el kkt del nivel inferior se procede a hallar el kkt del MPEC resultante de este KKT el cual es:
-$\nabla_{xy}F(x,y)+\sum_{i=1}^{|G \in J_o|}(\mu_i\nabla_{xy}g(x,y))+[\nabla_{x,y}\nabla_{y}f(x,y)+\sum_{j=1}^{|V \in J_0|}\lambda_j\nabla_{xy}\nabla_{y}V_j(x,y)]+\sum_{j=1}^{|V \in J_0|}(\beta_j\nabla_{xy}V_j(x,y))+\vec{BF}=\vec{0}$
+Una vez hallado el KKT del nivel inferior se procede a hallar el KKT del MPEC resultante de este KKT el cual es:
+
+% MPEC all KKT 
+\begin{table}[H]
+	$\nabla_{xy}F(x,y)+\sum_{i=1}^{|G \in J_o|}(\mu_i\nabla_{xy}g(x,y))+[\nabla_{x,y}\nabla_{y}f(x,y)+\sum_{j=1}^{|V \in J_0|}\lambda_j\nabla_{xy}\nabla_{y}V_j(x,y)]+\sum_{j=1}^{|V \in J_0|}(\beta_j\nabla_{xy}V_j(x,y))+\vec{BF}=\vec{0}$
+\caption*{KKT del MPEC}
+\end{table}
 

@@ -1,2 +1,4 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\numberline {1.}Introducción}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2.}Preliminares}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Transformación de los problemas de dos niveles}{10}{section.2.1}%

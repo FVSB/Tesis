@@ -1,0 +1,52 @@
+\chapter{Preliminares}
+
+La optimización binivel es un problema de optimización en el cual un subconjunto de variables está restringido a ser la solución óptima de otro problema de optimización, el cual está parametrizado por las variables restantes. Este tipo de problema tiene dos niveles jerárquicos de decisión: el problema de nivel superior o del líder, y el problema de nivel inferior o del seguidor. 
+
+En términos abstractos, la optimización binivel busca minimizar una función objetivo de nivel superior, $F(x, y)$, donde $x$ son las variables de decisión del líder y $y$ son las variables del seguidor. Esta minimización está sujeta a dos tipos de restricciones: las restricciones explícitas para el líder, $x \in X$, donde $X$ es el conjunto de valores factibles para las variables del líder; y las restricciones implícitas impuestas por el seguidor, donde $y$ debe pertenecer al conjunto de soluciones óptimas del problema de optimización del seguidor, $\arg\min\{f(x, y) : y \in Y(x)\}$. En este contexto, $f(x, y)$ es la función objetivo del nivel inferior, y $Y(x)$ representa las restricciones del nivel inferior, las cuales pueden depender de las variables de decisión del líder, $x$.
+
+En otras palabras, el problema de optimización binivel se centra en que el líder (nivel superior) debe tomar decisiones ($x$) que optimicen su objetivo $F(x, y)$, anticipando que el seguidor (nivel inferior) responderá de manera óptima con respecto a su propio objetivo $f(x, y)$, dado el valor de $x$ elegido por el líder. Esta interacción jerárquica entre ambos niveles añade una gran complejidad al problema en comparación con los problemas de optimización de un solo nivel.
+
+Un problema de optimización binivel tiene dos características principales: en primer lugar, el problema del nivel inferior actúa como una restricción para el problema del nivel superior, y en segundo lugar, la solución del nivel inferior depende del valor de las variables del nivel superior, creando una interdependencia entre ambos niveles. Por ello, el líder debe anticipar la respuesta óptima del seguidor al tomar sus decisiones.
+
+La formulación general de un problema de optimización binivel se expresa matemáticamente como:  
+
+% Definición de problema binivel
+\begin{equation}
+\begin{aligned}
+\text{minimizar} & \quad F(x, y) \\
+\text{sujeto a} & \quad G(x, y) \leq 0 \quad (\text{restricciones de desigualdad}) \\
+& \quad H(x, y) = 0 \quad (\text{restricciones de igualdad}) \\
+& \quad y \in S(x) = \arg \min_{y} \{ f(x, y) \mid V(x, y) \leq 0, U(x, y) = 0 \}.
+\end{aligned}
+\end{equation}
+
+Los elementos clave en la optimización binivel incluyen las funciones objetivo $F(x, y)$ y $f(x, y)$, que corresponden a los objetivos del líder y del seguidor, respectivamente; las restricciones $G(x, y) \leq 0$ y $H(x, y) = 0$, que deben ser satisfechas por ambas partes; y el conjunto de soluciones del seguidor $S(x)$, el cual representa las soluciones óptimas del nivel inferior en función de las decisiones del líder.
+
+\section{Transformación de los problemas de dos niveles}
+		
+		Los problemas de dos niveles pueden ser reformulados en un problema de un solo nivel al reemplazar el problema del nivel inferior por las condiciones KKT de este en las restricciones del primer nivel. 
+		
+		Para el caso de los SLMFG donde se tienen múltiples problemas de optimización en el nivel inferior estos se sustituyen por la concatenación de las condiciones KKT de cada uno de los problemas de optimización, obteniendo un MPEC \autocite{aussel2020}.
+		
+        
+        Notas:
+        \begin{itemize}
+            \item Llamaremos Q al conjunto restricciones de desigualdad en el nivel inferior $V$
+            
+        \end{itemize}
+
+		\begin{table}[H]
+
+		\[\begin{array}{l}
+			\underset{\substack{x, y, \lambda_i}}{\min} \quad F(x, y)\\
+			s.a \left\{ \begin{array}{l}
+				x \geq 0 \\
+				g(x, y) \geq 0\\
+				\nabla_{y} f(x, y) + \sum_{i=1}^{|Q|} \nabla_{y} V_i(x, y) \lambda_i = 0 \\
+				V_i(x, y) \geq 0, \quad \forall i \in Q \\
+				V_i(x, y)\lambda_i = 0, \quad \forall i \in Q \\
+				\lambda_i \geq 0, \quad \forall i \in Q\\
+			\end{array}\right.
+		\end{array}\]
+		\caption*{MPEC resultante}
+		\end{table}

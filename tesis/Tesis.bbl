@@ -60,6 +60,43 @@
       \verb https://api.semanticscholar.org/CorpusID:18500519
       \endverb
     \endentry
+    \entry{aussel2020}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
+           family={Aussel},
+           familyi={A\bibinitperiod},
+           given={Didier},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3ddc87018e27e757e381451d96f88128}{%
+           family={Svensson},
+           familyi={S\bibinitperiod},
+           given={Anton},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{586e23b78958f62ac9411223b329d1fb}
+      \strng{fullhash}{586e23b78958f62ac9411223b329d1fb}
+      \strng{bibnamehash}{586e23b78958f62ac9411223b329d1fb}
+      \strng{authorbibnamehash}{586e23b78958f62ac9411223b329d1fb}
+      \strng{authornamehash}{586e23b78958f62ac9411223b329d1fb}
+      \strng{authorfullhash}{586e23b78958f62ac9411223b329d1fb}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bilevel optimization: Advances and next challenges}
+      \field{title}{A short state of the art on multi-leader-follower games}
+      \field{year}{2020}
+      \field{pages}{53\bibrangedash 76}
+      \range{pages}{24}
+    \endentry
     \entry{Aussel2013ElectricitySM}{article}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
@@ -870,6 +907,43 @@
       \verb{url}
       \verb https://api.semanticscholar.org/CorpusID:123542662
       \endverb
+    \endentry
+    \entry{aussel2020}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
+           family={Aussel},
+           familyi={A\bibinitperiod},
+           given={Didier},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3ddc87018e27e757e381451d96f88128}{%
+           family={Svensson},
+           familyi={S\bibinitperiod},
+           given={Anton},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{586e23b78958f62ac9411223b329d1fb}
+      \strng{fullhash}{586e23b78958f62ac9411223b329d1fb}
+      \strng{bibnamehash}{586e23b78958f62ac9411223b329d1fb}
+      \strng{authorbibnamehash}{586e23b78958f62ac9411223b329d1fb}
+      \strng{authornamehash}{586e23b78958f62ac9411223b329d1fb}
+      \strng{authorfullhash}{586e23b78958f62ac9411223b329d1fb}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bilevel optimization: Advances and next challenges}
+      \field{title}{A short state of the art on multi-leader-follower games}
+      \field{year}{2020}
+      \field{pages}{53\bibrangedash 76}
+      \range{pages}{24}
     \endentry
     \entry{jonathan_f__bard_1991NP}{article}{}
       \name{author}{1}{}{%

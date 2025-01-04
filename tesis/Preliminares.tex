@@ -53,5 +53,76 @@ Los elementos clave en la optimización binivel incluyen las funciones objetivo 
 		\caption*{MPEC resultante}
 		\end{table}
 
+% Se explica de que va BilevelJump
+\section{BilevelJuMP.jl}
+% Que es BilvelJump
+BilevelJuMP.jl es un paquete de Julia diseñado para modelar y resolver problemas de \textbf{optimización bilevel}, también conocidos como problemas de optimización de dos niveles o jerárquica. Estos problemas se caracterizan por tener dos niveles de decisión: un nivel superior y un nivel inferior, donde las decisiones del nivel superior influyen en las decisiones del nivel inferior, y viceversa \cite{BilevelJump}.
+% Que problemas resuelve
+Este paquete permite abordar una amplia variedad de tipos de problemas, incluyendo:
 
-		Explicar como resolver en Julia y como funciiones del solver.....
+\begin{itemize}
+    \item \textbf{Problemas de optimización bilevel generales:} BilevelJuMP.jl facilita la modelación de problemas que pueden representarse en la sintaxis de JuMP, incluyendo restricciones lineales y no lineales, variables continuas y enteras, y diferentes tipos de objetivos.
+    
+    \item \textbf{Problemas con restricciones cónicas en el nivel inferior:} Maneja problemas donde el nivel inferior tiene una estructura de \textbf{programación cónica}, definiendo restricciones a través de conos convexos. Esto es útil para aplicar condiciones KKT en la reformulación del problema como MPEC.
+    
+    \item \textbf{Problemas con restricciones variadas en el nivel superior:} Permite gestionar una variedad de restricciones compatibles con JuMP, tales como restricciones cónicas, cuadráticas, no lineales y enteras.
+    
+    \item \textbf{Problemas con restricciones de equilibrio:} Facilita la transformación de problemas bilevel en problemas de programación matemática con restricciones de equilibrio (MPEC) y ofrece métodos para abordar las restricciones de complementariedad que surgen en estos casos.
+    
+    \item \textbf{Problemas con variables duales del nivel inferior en el nivel superior:} Permite la utilización de variables duales del nivel inferior explícitamente como variables en el nivel superior, lo cual es crucial para modelar problemas como la fijación de precios en mercados de energía.
+    
+    \item \textbf{Problemas con diferentes tipos de reformulaciones:} Los usuarios pueden experimentar con diversas reformulaciones para las restricciones de complementariedad en los problemas MPEC, incluyendo SOS1, restricciones de indicador, Fortuny-Amat y McCarl (Big-M), entre otros.
+    
+    \item \textbf{Problemas que requieren solvers MIP y NLP:} BilevelJuMP.jl puede utilizar tanto solucionadores de \textbf{programación lineal mixta entera (MIP)} como solucionadores de \textbf{programación no lineal (NLP)}, dependiendo de las características del problema y la reformulación elegida.
+\end{itemize}
+
+\subsection{Limitaciones del BilevelJuMP.jl}
+
+A pesar de sus capacidades, BilevelJuMP.jl presenta algunas limitaciones, entre las cuales se encuentran:
+
+\begin{itemize}
+    \item Puede enfrentar dificultades en problemas altamente no lineales o con estructuras de optimización complejas que no se puedan representar adecuadamente en la sintaxis de JuMP.
+    \item Existen ciertas restricciones que podrían no ser compatibles o que requieren transformaciones adicionales que podrían complicar el modelo.
+    \item La eficiencia del paquete puede verse afectada en problemas de gran escala, donde el rendimiento del solver puede ser un factor crítico.
+    \item La formulación y resolución de problemas muy específicos o especializados podrían no estar completamente optimizadas en el paquete.
+\end{itemize}
+
+
+% Explicacion algoritmos 
+\section{Métodos de Reformulación para Optimización Bilevel}
+
+La optimización bilevel presenta desafíos particulares debido a su naturaleza jerárquica y las condiciones de complementariedad resultantes. A continuación, se presentan los principales métodos de reformulación implementados en la literatura \cite{BilevelJump}.
+
+\subsection{Método Big-M}
+
+El método Big-M es una técnica fundamental para reformular problemas de optimización bilevel en problemas de programación matemática con restricciones de equilibrio (MPEC). Este método aborda específicamente las condiciones de complementariedad que surgen en estas reformulaciones, transformando el problema original en un problema de programación lineal mixta entera (MILP).
+
+La reformulación mediante Big-M introduce un parámetro M suficientemente grande y variables binarias para transformar las condiciones de complementariedad no lineales en restricciones lineales. Para una condición de complementariedad de la forma $y_i(A_ix + b_i + D_iz) = 0$, el método introduce una variable binaria $f$ y las siguientes restricciones:
+
+\begin{align*}
+A_ix + b_i + D_iz &\leq M_p f \\
+y_i &\leq M_d(1 - f) \\
+f &\in \{0,1\}
+\end{align*}
+
+donde $M_p$ y $M_d$ son valores grandes para las variables primales y duales, respectivamente. La efectividad del método depende crucialmente de la selección apropiada de estos valores, que deben ser suficientemente grandes para no excluir la solución óptima, pero no excesivamente grandes para evitar inestabilidades numéricas \cite{BilevelJump}.
+
+\subsection{Método SOS1}
+
+El método de Conjuntos Ordenados Especiales de tipo 1 (SOS1) representa una alternativa más robusta para reformular las condiciones de complementariedad de Karush-Kuhn-Tucker (KKT) en problemas de optimización bilevel. A diferencia del método Big-M, SOS1 no requiere la determinación de parámetros adicionales, lo que lo hace particularmente atractivo en la práctica.
+
+La reformulación SOS1 transforma una condición de complementariedad en una restricción que especifica que, como máximo, una variable en un conjunto puede tener un valor diferente de cero. Para una condición de complementariedad $y_i(A_ix + b_i + D_iz) = 0$, la reformulación SOS1 se expresa como:
+
+\[ [y_i ; A_ix + b_i + D_iz] \in \text{SOS1} \]
+
+Esta formulación está disponible en muchos solucionadores MILP modernos y ha demostrado un rendimiento competitivo \cite{BilevelJump}.
+
+\subsection{Método ProductMode}
+
+El método ProductMode representa un enfoque directo para manejar las condiciones de complementariedad en su forma de producto original. Este método es particularmente útil cuando se trabaja con solucionadores de programación no lineal (NLP), aunque no garantiza la optimalidad global.
+
+La implementación del ProductMode mantiene la restricción de complementariedad en su forma original:
+
+\[ y_i(A_ix + b_i + D_iz) \leq t \]
+
+donde $t$ es un parámetro de regularización pequeño. Esta formulación, aunque no satisface las condiciones de calificación de restricciones estándar, es útil para obtener soluciones iniciales y puede ser especialmente efectiva cuando se combina con solucionadores NLP \cite{BilevelJump}.

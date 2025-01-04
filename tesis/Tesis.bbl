@@ -411,6 +411,51 @@
       \verb https://api.semanticscholar.org/CorpusID:139191
       \endverb
     \endentry
+    \entry{BilevelJump}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=957336bc1717923a907f907548575b1a}{%
+           family={Garcia},
+           familyi={G\bibinitperiod},
+           given={Joaquim\bibnamedelima Dias},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a46f7d20746dc7eafaf2a53b2d679084}{%
+           family={Bodin},
+           familyi={B\bibinitperiod},
+           given={Guilherme},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e51234f38d6ed9d38d8efd5d8e4cb955}{%
+           family={Street},
+           familyi={S\bibinitperiod},
+           given={Alexandre},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2839d4128b1d6d074c8b21a47ec48ade}
+      \strng{fullhash}{1c6976b516c2984c4b08b23b45cf98b6}
+      \strng{bibnamehash}{1c6976b516c2984c4b08b23b45cf98b6}
+      \strng{authorbibnamehash}{1c6976b516c2984c4b08b23b45cf98b6}
+      \strng{authornamehash}{2839d4128b1d6d074c8b21a47ec48ade}
+      \strng{authorfullhash}{1c6976b516c2984c4b08b23b45cf98b6}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ArXiv}
+      \field{title}{BilevelJuMP.jl: Modeling and Solving Bilevel Optimization in Julia}
+      \field{volume}{abs/2205.02307}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:248524800
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:248524800
+      \endverb
+    \endentry
     \entry{Gu2020BilevelOL}{article}{}
       \name{author}{6}{}{%
         {{un=0,uniquepart=base,hash=82c7f68e3cf2dd65d9cb473b0d0f5743}{%
@@ -1113,6 +1158,51 @@
       \endverb
       \verb{url}
       \verb https://api.semanticscholar.org/CorpusID:139191
+      \endverb
+    \endentry
+    \entry{BilevelJump}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=957336bc1717923a907f907548575b1a}{%
+           family={Garcia},
+           familyi={G\bibinitperiod},
+           given={Joaquim\bibnamedelima Dias},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a46f7d20746dc7eafaf2a53b2d679084}{%
+           family={Bodin},
+           familyi={B\bibinitperiod},
+           given={Guilherme},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e51234f38d6ed9d38d8efd5d8e4cb955}{%
+           family={Street},
+           familyi={S\bibinitperiod},
+           given={Alexandre},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2839d4128b1d6d074c8b21a47ec48ade}
+      \strng{fullhash}{1c6976b516c2984c4b08b23b45cf98b6}
+      \strng{bibnamehash}{1c6976b516c2984c4b08b23b45cf98b6}
+      \strng{authorbibnamehash}{1c6976b516c2984c4b08b23b45cf98b6}
+      \strng{authornamehash}{2839d4128b1d6d074c8b21a47ec48ade}
+      \strng{authorfullhash}{1c6976b516c2984c4b08b23b45cf98b6}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ArXiv}
+      \field{title}{BilevelJuMP.jl: Modeling and Solving Bilevel Optimization in Julia}
+      \field{volume}{abs/2205.02307}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:248524800
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:248524800
       \endverb
     \endentry
     \entry{Gu2020BilevelOL}{article}{}

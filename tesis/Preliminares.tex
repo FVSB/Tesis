@@ -1,10 +1,26 @@
 \chapter{Preliminares}
 
 La optimización binivel es un problema de optimización en el cual un subconjunto de variables está restringido a ser la solución óptima de otro problema de optimización, el cual está parametrizado por las variables restantes. Este tipo de problema tiene dos niveles jerárquicos de decisión: el problema de nivel superior o del líder, y el problema de nivel inferior o del seguidor. 
+%Explicación breve de binivel
+En términos abstractos, la optimización binivel busca minimizar una función objetivo de nivel superior, $F(x, y)$, donde $x$ son las variables de decisión del líder y $y$ son las variables del seguidor. Esta minimización está sujeta a dos tipos de restricciones: 
+%Restricciones explicacion old
+%las restricciones explícitas para el líder, $x \in X$, donde $X$ es el conjunto de valores factibles para las variables del líder; y las restricciones implícitas impuestas por el seguidor, donde $y$ debe pertenecer al conjunto de soluciones óptimas del problema de optimización del seguidor, $\arg\min\{f(x, y) : y \in Y(x)\}$. En este contexto, $f(x, y)$ es la función objetivo del nivel inferior, y $Y(x)$ representa las restricciones del nivel inferior, las cuales pueden depender de las variables de decisión del líder, $x$.
+% Restricciones nuevas
+\begin{itemize}
+    \item \textbf{Restricciones explícitas:}
+    \begin{itemize}
+        \item Para el líder: $x \in X$, donde $X$ es el conjunto de valores factibles para las variables del líder.
+    \end{itemize}
+    
+    \item \textbf{Restricciones implícitas:}
+    \begin{itemize}
+        \item Impuestas por el seguidor, donde $y$ debe pertenecer al conjunto de soluciones óptimas del problema de optimización del seguidor, $\arg\min\{f(x, y) : y \in Y(x)\}$.
+        \item En este contexto, $f(x, y)$ es la función objetivo del seguidor, $Y(x)$ representa las restricciones del nivel inferior, las cuales pueden depender de las variables de decisión del líder, $x$.
+    \end{itemize}
+	\item Tambien se puede asumir que ambas variables tienen restricciones conjuntas, o sea que $(x,y) \in M^0$
+	 
+\end{itemize}
 
-En términos abstractos, la optimización binivel busca minimizar una función objetivo de nivel superior, $F(x, y)$, donde $x$ son las variables de decisión del líder y $y$ son las variables del seguidor. Esta minimización está sujeta a dos tipos de restricciones: las restricciones explícitas para el líder, $x \in X$, donde $X$ es el conjunto de valores factibles para las variables del líder; y las restricciones implícitas impuestas por el seguidor, donde $y$ debe pertenecer al conjunto de soluciones óptimas del problema de optimización del seguidor, $\arg\min\{f(x, y) : y \in Y(x)\}$. En este contexto, $f(x, y)$ es la función objetivo del nivel inferior, y $Y(x)$ representa las restricciones del nivel inferior, las cuales pueden depender de las variables de decisión del líder, $x$.
-
-En otras palabras, el problema de optimización binivel se centra en que el líder (nivel superior) debe tomar decisiones ($x$) que optimicen su objetivo $F(x, y)$, anticipando que el seguidor (nivel inferior) responderá de manera óptima con respecto a su propio objetivo $f(x, y)$, dado el valor de $x$ elegido por el líder. Esta interacción jerárquica entre ambos niveles añade una gran complejidad al problema en comparación con los problemas de optimización de un solo nivel.
 
 Un problema de optimización binivel tiene dos características principales: en primer lugar, el problema del nivel inferior actúa como una restricción para el problema del nivel superior, y en segundo lugar, la solución del nivel inferior depende del valor de las variables del nivel superior, creando una interdependencia entre ambos niveles. Por ello, el líder debe anticipar la respuesta óptima del seguidor al tomar sus decisiones.
 
@@ -31,7 +47,7 @@ Los elementos clave en la optimización binivel incluyen las funciones objetivo 
         \begin{table}
 				Nota:
         	\begin{itemize}
-        	    \item Llamaremos $J_{0}$ al conjunto restricciones de desigualdad que sean índices activos
+        	    \item Sea $ J_0^v=\{j | V_i(x,y)=0\}$ al conjunto restricciones de desigualdad que sean índices activos
 			
         	\end{itemize}
 		\end{table}

@@ -37,12 +37,13 @@ También tiene aplicaciones fundamentales en la selección de hiperparámetros e
 % EPI
 La optimización de dos niveles es una herramienta clave en el diseño y operación de redes industriales sostenibles. Ejemplos notables incluyen redes de agua industrial, 
 % Water integration in eco-industrial parks using a multi-leader-follower approach
-donde en los estudios de \cite{Ramos2016WaterII} se optimizan mediante juegos de múltiples líderes-seguidores, priorizando objetivos ambientales y económicos. Los resultados muestran que las empresas participantes lograron beneficios significativos en escenarios con formulaciones Karush-Kuhn-Tucker (KKT).
+donde en los estudios de \cite{Ramos2016WaterII} se optimizan mediante juegos de múltiples líderes-seguidores, priorizando objetivos ambientales y económicos. Los resultados muestran que las empresas participantes lograron beneficios significativos en escenarios con formulaciones Karush-Kuhn-Tucker (KKT). 
+El enfoque MLFG (Multi-Leader-Follower Game) se utiliza para analizar la optimización de redes de agua en Entornos Industriales Productivos (EIP). En este contexto, las empresas buscan minimizar costos mientras que una autoridad regula el consumo de agua dulce. Se comparan diferentes formulaciones y métodos de solución, mostrando que MLFG es más confiable que la optimización multiobjetivo en escenarios multi-criterio. Además, se destaca la influencia de la estructura del juego en la configuración óptima, sugiriendo la necesidad de un diseño óptimo para cada planta dentro del EIP \cite{Ramos2016WaterII}. 
+Los enfoques SLMFG y MLSFG presentan variaciones en el rol de los participantes: en SLMFG, las empresas son seguidoras y la autoridad es líder, mientras que en MLSFG, ocurre lo contrario. Se resalta que el enfoque MLFG logra equilibrar objetivos económicos y ambientales, generando ahorros significativos mediante la reutilización de recursos. Los resultados indican una reducción en el consumo de agua fresca gracias a las estrategias implementadas, utilizando herramientas como GAMS para modelar los problemas de optimización \cite{Ramos2016WaterII}. 
 % Utility network optimization in eco-industrial parks by a multi-leader follower game methodology
-Además, \cite{Ramos2018UtilityNO} introducen el concepto de autoridad ambiental en el diseño de redes de servicios públicos, utilizando juegos de múltiples líderes-seguidores y reformulaciones KKT.
+Además, \cite{Ramos2018UtilityNO} introducen el concepto de autoridad ambiental en el diseño de redes de servicios públicos, utilizando juegos de múltiples líderes-seguidores y reformulaciones KKT. 
 % Bi-level optimal low-carbon economic dispatch for an industrial park with consideration of multi-energy price incentive
-En el ámbito del despacho energético bajo restricciones de carbono, \cite{Gu2020BilevelOL} modela incentivos de precios de energía en un parque industrial, demostrando que un enfoque binivel puede simultáneamente mejorar el impacto ambiental y los beneficios económicos, utilizando un procedimiento iterativo primal-dual.
-
+En el ámbito del despacho energético bajo restricciones de carbono, \cite{Gu2020BilevelOL} modela incentivos de precios de energía en un parque industrial, demostrando que un enfoque binivel puede simultáneamente mejorar el impacto ambiental y los beneficios económicos, utilizando un procedimiento iterativo primal-dual
 % Bilevel Difíciles
 % NP-Hard
 % The polynomial hierarchy and a simple model for competitive analysis
@@ -63,6 +64,9 @@ Además, los avances recientes han explorado el uso de técnicas probabilística
 Estas técnicas son particularmente útiles en aplicaciones prácticas, como los mercados de energía o los modelos de sostenibilidad \cite{SadddiquiNaturalGasSOS1}.
 % Libro Dempe
 A pesar de estos avances, existen desafíos abiertos. La escalabilidad sigue siendo un problema crítico, ya que el crecimiento exponencial de las opciones en problemas de gran tamaño limita la aplicabilidad de los métodos exactos \cite{DempeyZemkoho2020}. Asimismo, los problemas no convexos carecen de garantías de convergencia hacia el óptimo global, lo que los hace especialmente difíciles de abordar. Finalmente, la incorporación de incertidumbre en los modelos agrega una capa adicional de complejidad, lo que demanda nuevos enfoques híbridos que combinen algoritmos exactos y heurísticos para mejorar la eficiencia computacional sin sacrificar la calidad de las soluciones \cite{phdthesisCerulli,Sinha2017ARO}. Estos avances y desafíos reflejan la importancia de diseñar algoritmos personalizados que aprovechen las estructuras particulares de cada problema binivel. Las aplicaciones industriales, como el diseño de redes ecoindustriales y la gestión de mercados energéticos, destacan la necesidad de enfoques que equilibren precisión y tiempo de cálculo, haciendo de la optimización de dos niveles un área de investigación activa con un impacto significativo en la práctica.
+
+%Aclarar que la interaccion jerarquica es compleja
+En otras palabras, el problema de optimización binivel se centra en que el líder (nivel superior) debe tomar decisiones ($x$) que optimicen su objetivo $F(x, y)$, anticipando que el seguidor (nivel inferior) responderá de manera óptima con respecto a su propio objetivo $f(x, y)$, dado el valor de $x$ elegido por el líder. Esta interacción jerárquica entre ambos niveles añade una gran complejidad al problema en comparación con los problemas de optimización de un solo nivel.
 
 % DIFERENCIA OPTIMISTA PESIMISTA
 % Decir que en el libro de Dempe se hablan de estos dos enfoques
@@ -87,7 +91,7 @@ como se establece en la literatura sobre programación no lineal.
 En \cite{Caselli2024BilevelOW,DempeyZemkoho2020,phdthesisCerulli} se habla de  sustituir el problema del nivel inferior por la condicion de KKT permite transformar problemas de optimización binivel en programas matemáticos con restricciones de equilibrio (MPEC), facilitando así su resolución.
 
 % Flegel Kanzow Sobre MPECs y los ptos estacionarios
-En el contexto de los MPEC, en \cite{Flegel2003AFJ} se exponen varios tipos de puntos estacionarios que son cruciales para analizar la optimalidad. Un punto \textbf{débilmente estacionario} es aquel que satisface las condiciones básicas de equilibrio, siendo una condición necesaria pero no suficiente para la optimalidad local. La \textbf{C-estacionariedad} es una condición más fuerte, que además requiere que el producto de ciertos multiplicadores de Lagrange sea no negativo en el conjunto degenerado. A su vez, la \textbf{M-estacionariedad} es aún más restrictiva, ya que exige condiciones específicas sobre los multiplicadores en el conjunto degenerado (que o bien ambos sean positivos, o su producto sea cero). El artículo también introduce el concepto de \textbf{A-estacionariedad}, que surge del enfoque de Fritz John, donde se requiere que al menos uno de los multiplicadores sea no negativo en el conjunto degenerado. Finalmente, un punto es \textbf{fuertemente estacionario} si ambos multiplicadores son no negativos en el conjunto degenerado, siendo esta la condición más restrictiva y que se da bajo ciertas condiciones como MPEC-LICQ o MPEC-SMFCQ. Por ello, estas condiciones forman una jerarquía donde la M-estacionariedad implica la C-estacionariedad y esta a su vez, implica la estacionariedad débil, siendo la estacionariedad fuerte la más restrictiva de todas. \cite{Flegel2003AFJ}.
+%En el contexto de los MPEC, en \cite{Flegel2003AFJ} se exponen varios tipos de puntos estacionarios que son cruciales para analizar la optimalidad. Un punto \textbf{débilmente estacionario} es aquel que satisface las condiciones básicas de equilibrio, siendo una condición necesaria pero no suficiente para la optimalidad local. La \textbf{C-estacionariedad} es una condición más fuerte, que además requiere que el producto de ciertos multiplicadores de Lagrange sea no negativo en el conjunto degenerado. A su vez, la \textbf{M-estacionariedad} es aún más restrictiva, ya que exige condiciones específicas sobre los multiplicadores en el conjunto degenerado (que o bien ambos sean positivos, o su producto sea cero). El artículo también introduce el concepto de \textbf{A-estacionariedad}, que surge del enfoque de Fritz John, donde se requiere que al menos uno de los multiplicadores sea no negativo en el conjunto degenerado. Finalmente, un punto es \textbf{fuertemente estacionario} si ambos multiplicadores son no negativos en el conjunto degenerado, siendo esta la condición más restrictiva y que se da bajo ciertas condiciones como MPEC-LICQ o MPEC-SMFCQ. Por ello, estas condiciones forman una jerarquía donde la M-estacionariedad implica la C-estacionariedad y esta a su vez, implica la estacionariedad débil, siendo la estacionariedad fuerte la más restrictiva de todas. \cite{Flegel2003AFJ}.
 
 % Metodos matematicos que se utilizan KKT y branch and bround
 Los algoritmos que se basan en las condiciones KKT incluyen una variedad de métodos, como técnicas de branch-and-bound y métodos de suavizado, ver \cite{DempeyZemkoho2020}. 
@@ -97,29 +101,38 @@ Estos algoritmos son utilizados para resolver problemas complejos de optimizaci�
 % Que son no convexos por las transformaciones
 Los problemas de optimización de dos niveles son inherentemente no convexos, lo que implica que los métodos de optimización convexa no son directamente aplicables. Esta no convexidad puede llevar a soluciones subóptimas y a dificultades para encontrar una solución global. Aunque en muchos casos las funciones y conjuntos factibles pueden ser convexos, la estructura general del problema sigue siendo no convexa.
 
-% Paper de gema sobte  los ptos estacionarios
-En este contexto, se ha estudiado la estructura genérica de los problemas de complementariedad (MPCC) que surgen del enfoque KKT y Fritz-John (FJ) aplicado a un problema de dos niveles. Se ha demostrado que, para una clase amplia de estos, la condición de que independencia lineal (MPCC-LICQ) se cumple en todos los puntos factibles. Sin embargo, las condiciones de complementariedad estricta (MPCC-SC) y las condiciones de segundo orden (MPCC-SOC) pueden fallar en puntos críticos (estacionarios), incluso en situaciones genéricas \cite{Allende2012SolvingBP}. Esta situación complica aún más la obtención de garantías sobre la solución.
-
-Es importante señalar que existen casos singulares donde los puntos estacionarios pueden ser problemáticos, especialmente cuando el multiplicador (\(\alpha\)) asociado a la condicion de KKT del problema de nivel inferior es igual a cero. En tales circunstancias, la condición MPCC-SC puede no cumplirse, lo que podría llevar a que el método KKT no funcione adecuadamente \cite{Allende2012SolvingBP}.
-
 La dificultad para encontrar soluciones globales se ve exacerbada por la tendencia de los métodos de búsqueda local a quedar atrapados en óptimos locales. Por ello, se han desarrollado métodos de búsqueda global que consideran la estructura específica de los problemas de optimización de dos niveles. Estos enfoques suelen incluir fases tanto de búsqueda local como global, utilizando condiciones de optimalidad global para mejorar la efectividad del proceso \cite{DempeyZemkoho2020}.
 
 Además, para abordar la no unicidad de las soluciones y mejorar la estabilidad del sistema, se emplean métodos de regularización. Estos pueden implicar la regularización de la función objetivo del seguidor o del conjunto de respuestas óptimas del mismo \cite{DempeyZemkoho2020}.
 
 En resumen, obtener garantías sobre soluciones en problemas de optimización de dos niveles es un desafío complejo debido a su no convexidad inherente, las dificultades para escapar de óptimos locales y la posible falta de unicidad y estabilidad en las soluciones. Los algoritmos frecuentemente dependen de puntos estacionarios, que no siempre corresponden a las soluciones óptimas deseadas. Por lo tanto, es crucial desarrollar métodos especializados que aborden estos problemas y permitan encontrar soluciones globales o aproximaciones adecuadas \cite{DempeyZemkoho2020}.
 
+% Se añadio la genericidad
+% Paper de gema sobte  los ptos estacionarios
+En este contexto, se ha estudiado la estructura genérica de los problemas de complementariedad (MPCC) que surgen del enfoque KKT y Fritz-John (FJ) aplicado a un problema de dos niveles. Se ha demostrado que, para una clase amplia de estos, la condición de que independencia lineal (MPCC-LICQ) se cumple en todos los puntos factibles. Sin embargo, las condiciones de complementariedad estricta (MPCC-SC) y las condiciones de segundo orden (MPCC-SOC) pueden fallar en puntos críticos (estacionarios), incluso en situaciones genéricas \cite{Allende2012SolvingBP}. Esta situación complica aún más la obtención de garantías sobre la solución.
+
+Es importante señalar que existen casos singulares donde los puntos estacionarios pueden ser problemáticos, especialmente cuando el multiplicador (\(\alpha\)) asociado a la condicion de KKT del problema de nivel inferior es igual a cero. En tales circunstancias, la condición MPCC-SC puede no cumplirse, lo que podría llevar a que el método KKT no funcione adecuadamente \cite{Allende2012SolvingBP}.
+
 % Qué se va a hacer en la tesis
-Basándose en la caracterización de los diferentes tipos de puntos estacionarios establecida por \cite{Flegel2003AFJ}, esta tesis propone desarrollar un generador de problemas que, dados los multiplicadores adecuados, permita generar problemas de optimización binivel que posean puntos estacionarios con características específicas. Este generador facilitará el estudio del comportamiento de estos problemas, permitiendo una mejor comprensión de las condiciones de optimalidad en problemas Single-Leader-Single-Follower con enfoque optimista. Los resultados se compararán con los obtenidos mediante solucionadores disponibles en el entorno Julia.
+Basándose en la caracterización de los diferentes tipos de puntos estacionarios establecida por \cite{Flegel2003AFJ}, esta tesis propone desarrollar un generador de problemas que, dado un punto estacionario conocido y un conjunto de funciones que definen un problema de dos niveles, agregarles fucniones polinomicales de primer o segundo grado de forma tal que el punto inicial dado sea un punto critico del problema creado. 
+Este generador facilitará el estudio del comportamiento de algoritmos conocidos en problemas con al menos un punto estacionario conocido.
+El usuario además podrá decidir si quiere un punto crático con multiplicadores arbitrarios o si $\alpha = \vec{0}$, lográndose estudiar las clases de puntos críticos que aparecen en el caso genérico, o sea en un clase amplia y significativa de problemas
+
+%NOTA:
+% Clase significativa y amplia:
+% Es que todo problema es límite de problemas de la clase,
+% y si un problema está en la clase,
+% para toda perturbación de clase C3 suficientemente pequeña,
+% el problema perturbado sigue estando en la clase.
+
 
 % Explicación 
 % 2do cap
-La tesis está compuesta, luego del capítulo de introducción, por un segundo capítulo donde se precisa la notación a emplear, se define formalmente un problema de dos niveles con un líder y un seguidor, y se explica la teoría matemática para su transformación en un problema MPEC, así como los algoritmos de Julia que se utilizarán en ella.
-
+La tesis está compuesta de 3 capítulos, luego del capítulo de introducción, por un segundo capítulo 
+que contiene la notación que se empleará, se define el problema de dos niveles con un líder y un seguidor, y se explica la teoría matemática para su transformación en un problema MPEC, así como los algoritmos de Julia que se utilizarán en ella.
 % 3ero
 En el tercer capítulo se explicará la implementación algorítmica propuesta anteriormente y su correcta utilización. 
-
 % 4to
 En el cuarto capítulo se analizarán los resultados obtenidos por el algoritmo propuesto y su comparación con algoritmos implementados en el entorno Julia.
-
 % Siguiente
 Finalmente, se presentarán las conclusiones y recomendaciones del trabajo realizado.

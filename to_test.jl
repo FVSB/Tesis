@@ -1,7 +1,7 @@
 # Install Modules
 import Pkg;
-#Pkg.add("Symbolics")
-#Pkg.add("LinearAlgebra")
+Pkg.add("Symbolics")
+Pkg.add("LinearAlgebra")
 
 
 
@@ -85,6 +85,9 @@ point=Dict("x_1"=>1,"x_2"=>1,"y_1"=>1,"y_2"=>1)
 # para hacer factible el pto, se modican ademas estas haciendo el KKT del nivel inferior y las transformacion para hallar los b_j
 
 opt_problem=Fix_Restrictions(leader_func_str,g_s,Follower_str_expr,v_s,point,lider_vars,follower_vars,alpha,false)
-
+println("Mostrar el problema despues de reformularlo ")
+println(opt_problem)
 # Se halla el vector BF haciendo el KKT del MPEC
 BF_1=Make_BF(opt_problem,lider_vars,follower_vars,alpha)
+println("Mostrar el vector BF despues de la sumatoria que seria el kkt del problema MPEC")
+println(BF_1)

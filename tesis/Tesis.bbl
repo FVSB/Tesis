@@ -19,47 +19,6 @@
 
 \refsection{0}
   \datalist[entry]{nyt/apasortcite//global/global}
-    \entry{Allende2012SolvingBP}{article}{}
-      \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=575ba3d3eb593a20d8f557329a018753}{%
-           family={Allende},
-           familyi={A\bibinitperiod},
-           given={Gemayqzel\bibnamedelima Bouza},
-           giveni={G\bibinitperiod\bibinitdelim B\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=e105fa4bcd03ccdd3c98fdbf4f3ed267}{%
-           family={Still},
-           familyi={S\bibinitperiod},
-           given={Georg},
-           giveni={G\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
-      \strng{fullhash}{80be77d2d0c6e1e4bfbd680660b67f9f}
-      \strng{bibnamehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
-      \strng{authorbibnamehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
-      \strng{authornamehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
-      \strng{authorfullhash}{80be77d2d0c6e1e4bfbd680660b67f9f}
-      \field{sortinit}{A}
-      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Mathematical Programming}
-      \field{title}{Solving bilevel programs with the KKT-approach}
-      \field{volume}{138}
-      \field{year}{2012}
-      \field{pages}{309\bibrangedash 332}
-      \range{pages}{24}
-      \verb{urlraw}
-      \verb https://api.semanticscholar.org/CorpusID:18500519
-      \endverb
-      \verb{url}
-      \verb https://api.semanticscholar.org/CorpusID:18500519
-      \endverb
-    \endentry
     \entry{aussel2020}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
@@ -277,6 +236,90 @@
       \verb 10.1007/BF00941574
       \endverb
     \endentry
+    \entry{Allende2012SolvingBP}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=a7068daf140d27a78522d899f6f74f7e}{%
+           family={Bouza-Allende},
+           familyi={B\bibinithyphendelim A\bibinitperiod},
+           given={Gemayqzel},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e105fa4bcd03ccdd3c98fdbf4f3ed267}{%
+           family={Still},
+           familyi={S\bibinitperiod},
+           given={Georg},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{18e7003d1ff26cc7b5c03a95e13a387b}
+      \strng{fullhash}{18e7003d1ff26cc7b5c03a95e13a387b}
+      \strng{bibnamehash}{18e7003d1ff26cc7b5c03a95e13a387b}
+      \strng{authorbibnamehash}{18e7003d1ff26cc7b5c03a95e13a387b}
+      \strng{authornamehash}{18e7003d1ff26cc7b5c03a95e13a387b}
+      \strng{authorfullhash}{18e7003d1ff26cc7b5c03a95e13a387b}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming}
+      \field{title}{Solving bilevel programs with the KKT-approach}
+      \field{volume}{138}
+      \field{year}{2012}
+      \field{pages}{309\bibrangedash 332}
+      \range{pages}{24}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:18500519
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:18500519
+      \endverb
+    \endentry
+    \entry{Caselli2024BilevelOW}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=b6790d85be545326dc5295421b452429}{%
+           family={Caselli},
+           familyi={C\bibinitperiod},
+           given={Giulia},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5425f8b3958d872a4966e21944b95fc0}{%
+           family={Iori},
+           familyi={I\bibinitperiod},
+           given={Manuel},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7806b0b7a469635e1ef6b23102837ef3}{%
+           family={Ljubi'c},
+           familyi={L\bibinitperiod},
+           given={Ivana},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b300b6d1f2fb83c0b5deca3b808e3eca}
+      \strng{fullhash}{d34d626b56e92f5035f172417d02bc6b}
+      \strng{bibnamehash}{d34d626b56e92f5035f172417d02bc6b}
+      \strng{authorbibnamehash}{d34d626b56e92f5035f172417d02bc6b}
+      \strng{authornamehash}{b300b6d1f2fb83c0b5deca3b808e3eca}
+      \strng{authorfullhash}{d34d626b56e92f5035f172417d02bc6b}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Bilevel optimization with sustainability perspective: a survey on applications}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:270379993
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:270379993
+      \endverb
+    \endentry
     \entry{phdthesisCerulli}{thesis}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=3ae14002e9d0510dd3d9c8cbea2e2b3d}{%
@@ -304,7 +347,7 @@
       \field{type}{phdthesis}
       \field{year}{2021}
     \endentry
-    \entry{DempeyZemkoho2020ML}{book}{}
+    \entry{DempeyZemkoho2020}{book}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=66093c5bda09d3906847e1072f977351}{%
            family={Dempe},
@@ -334,12 +377,11 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{chapter}{6}
       \field{isbn}{978-3-030-52119-6}
       \field{title}{Bilevel Optimization: Advances and Next Challenges}
       \field{year}{2020}
     \endentry
-    \entry{DempeyZemkoho2020}{book}{}
+    \entry{DempeyZemkoho2020ML}{book}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=66093c5bda09d3906847e1072f977351}{%
            family={Dempe},
@@ -369,6 +411,7 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{chapter}{6}
       \field{isbn}{978-3-030-52119-6}
       \field{title}{Bilevel Optimization: Advances and Next Challenges}
       \field{year}{2020}
@@ -809,47 +852,6 @@
     \endentry
   \enddatalist
   \datalist[entry]{nyt/global//global/global}
-    \entry{Allende2012SolvingBP}{article}{}
-      \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=575ba3d3eb593a20d8f557329a018753}{%
-           family={Allende},
-           familyi={A\bibinitperiod},
-           given={Gemayqzel\bibnamedelima Bouza},
-           giveni={G\bibinitperiod\bibinitdelim B\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=e105fa4bcd03ccdd3c98fdbf4f3ed267}{%
-           family={Still},
-           familyi={S\bibinitperiod},
-           given={Georg},
-           giveni={G\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
-      \strng{fullhash}{80be77d2d0c6e1e4bfbd680660b67f9f}
-      \strng{bibnamehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
-      \strng{authorbibnamehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
-      \strng{authornamehash}{80be77d2d0c6e1e4bfbd680660b67f9f}
-      \strng{authorfullhash}{80be77d2d0c6e1e4bfbd680660b67f9f}
-      \field{sortinit}{A}
-      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Mathematical Programming}
-      \field{title}{Solving bilevel programs with the KKT-approach}
-      \field{volume}{138}
-      \field{year}{2012}
-      \field{pages}{309\bibrangedash 332}
-      \range{pages}{24}
-      \verb{urlraw}
-      \verb https://api.semanticscholar.org/CorpusID:18500519
-      \endverb
-      \verb{url}
-      \verb https://api.semanticscholar.org/CorpusID:18500519
-      \endverb
-    \endentry
     \entry{Aussel2017NashEI}{article}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=72796d8bb5d925871aa471fe95161e23}{%
@@ -1067,6 +1069,90 @@
       \verb 10.1007/BF00941574
       \endverb
     \endentry
+    \entry{Allende2012SolvingBP}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=a7068daf140d27a78522d899f6f74f7e}{%
+           family={Bouza-Allende},
+           familyi={B\bibinithyphendelim A\bibinitperiod},
+           given={Gemayqzel},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e105fa4bcd03ccdd3c98fdbf4f3ed267}{%
+           family={Still},
+           familyi={S\bibinitperiod},
+           given={Georg},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{18e7003d1ff26cc7b5c03a95e13a387b}
+      \strng{fullhash}{18e7003d1ff26cc7b5c03a95e13a387b}
+      \strng{bibnamehash}{18e7003d1ff26cc7b5c03a95e13a387b}
+      \strng{authorbibnamehash}{18e7003d1ff26cc7b5c03a95e13a387b}
+      \strng{authornamehash}{18e7003d1ff26cc7b5c03a95e13a387b}
+      \strng{authorfullhash}{18e7003d1ff26cc7b5c03a95e13a387b}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming}
+      \field{title}{Solving bilevel programs with the KKT-approach}
+      \field{volume}{138}
+      \field{year}{2012}
+      \field{pages}{309\bibrangedash 332}
+      \range{pages}{24}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:18500519
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:18500519
+      \endverb
+    \endentry
+    \entry{Caselli2024BilevelOW}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=b6790d85be545326dc5295421b452429}{%
+           family={Caselli},
+           familyi={C\bibinitperiod},
+           given={Giulia},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5425f8b3958d872a4966e21944b95fc0}{%
+           family={Iori},
+           familyi={I\bibinitperiod},
+           given={Manuel},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7806b0b7a469635e1ef6b23102837ef3}{%
+           family={Ljubi'c},
+           familyi={L\bibinitperiod},
+           given={Ivana},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b300b6d1f2fb83c0b5deca3b808e3eca}
+      \strng{fullhash}{d34d626b56e92f5035f172417d02bc6b}
+      \strng{bibnamehash}{d34d626b56e92f5035f172417d02bc6b}
+      \strng{authorbibnamehash}{d34d626b56e92f5035f172417d02bc6b}
+      \strng{authornamehash}{b300b6d1f2fb83c0b5deca3b808e3eca}
+      \strng{authorfullhash}{d34d626b56e92f5035f172417d02bc6b}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Bilevel optimization with sustainability perspective: a survey on applications}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:270379993
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:270379993
+      \endverb
+    \endentry
     \entry{phdthesisCerulli}{thesis}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=3ae14002e9d0510dd3d9c8cbea2e2b3d}{%
@@ -1094,7 +1180,7 @@
       \field{type}{phdthesis}
       \field{year}{2021}
     \endentry
-    \entry{DempeyZemkoho2020ML}{book}{}
+    \entry{DempeyZemkoho2020}{book}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=66093c5bda09d3906847e1072f977351}{%
            family={Dempe},
@@ -1124,12 +1210,11 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{chapter}{6}
       \field{isbn}{978-3-030-52119-6}
       \field{title}{Bilevel Optimization: Advances and Next Challenges}
       \field{year}{2020}
     \endentry
-    \entry{DempeyZemkoho2020}{book}{}
+    \entry{DempeyZemkoho2020ML}{book}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=66093c5bda09d3906847e1072f977351}{%
            family={Dempe},
@@ -1159,6 +1244,7 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{chapter}{6}
       \field{isbn}{978-3-030-52119-6}
       \field{title}{Bilevel Optimization: Advances and Next Challenges}
       \field{year}{2020}

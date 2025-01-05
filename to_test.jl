@@ -1,7 +1,7 @@
 # Install Modules
 import Pkg;
-Pkg.add("Symbolics")
-Pkg.add("LinearAlgebra")
+#Pkg.add("Symbolics")
+#Pkg.add("LinearAlgebra")
 
 
 

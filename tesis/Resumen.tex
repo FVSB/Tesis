@@ -1,9 +1,9 @@
 \chapter*{Resumen}
 El problema de optimización bi-nivel se define como minimizar una función sobre un conjunto definido como puntos óptimos de un modelo de programación matemática. La optimización en el nivel inferior depende de las decisiones tomadas en el nivel superior, y viceversa, creando así una relación de interdependencia entre los dos niveles.
 Para ello se considera una relajación en la cual el problema del nivel inferior se sustituye por las condiciones necesarias de optimalidad. Aun así es un problema complejo pues no cumple con condiciones de regularidad. Los algoritmos que le dan solución son complejos de ahí es importante medir su eficiencia, en particular hallar al menos puntos que satisfagan las condiciones necesarias de optimalidad.
-En este trabajo se propone una forma de generar problemas de dos niveles cuyo problema relajado tiene un punto estacionario de una de las clases: strongly stationary, M-stationary o C en dependencia de los multiplic.
-Para ello se construyen las funciones usando perturbaciones lineales o cuadráticas y se prueba la calidad de algoritmos implementados en problemas así 
-generados\\
+En este trabajo se propone una forma de generar problemas de dos niveles cuyo problema relajado tiene un punto estacionario de una de las clases: strongly stationary, M-stationary o C en dependencia de los multiplicadores.
+Para ello se construyen las funciones usando perturbaciones lineales o cuadráticas que definen un problema de dos niveles para el cual, el punto dado es un punto estacionario del problema relajado. Los modelos asi generados se resuelven en la biblioteca BilevelJuMP de Julia. Se utilizan criterios como la evaluacion de la funcion objetivo y la factiblidad para comparar la calidad de la solución  calculada con la del punto que se sabe es estacionario.
+
 \textbf{Palabras clave:} Optimización bi-nivel, Función objetivo, Modelo de programación matemática, Interdependencia, Problema NP, Relajación, Condiciones necesarias de optimalidad, Complejidad, Eficiencia de algoritmos, Calidad de la solución, Punto estacionario, Perturbaciones lineales y cuadráticas, Algoritmos implementados
 
 \chapter*{Abstract}

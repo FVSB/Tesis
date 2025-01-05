@@ -373,6 +373,47 @@
       \field{title}{Bilevel Optimization: Advances and Next Challenges}
       \field{year}{2020}
     \endentry
+    \entry{Flegel2003AFJ}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=7bd5ad335a901a725f7983920b918bd9}{%
+           family={Flegel},
+           familyi={F\bibinitperiod},
+           given={Michael\bibnamedelima L.},
+           giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=97d2e434223bd2d37723183cbed5e8df}{%
+           family={Kanzow},
+           familyi={K\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{72675a6136b05fff0e7ad4eae1794fd8}
+      \strng{fullhash}{72675a6136b05fff0e7ad4eae1794fd8}
+      \strng{bibnamehash}{72675a6136b05fff0e7ad4eae1794fd8}
+      \strng{authorbibnamehash}{72675a6136b05fff0e7ad4eae1794fd8}
+      \strng{authornamehash}{72675a6136b05fff0e7ad4eae1794fd8}
+      \strng{authorfullhash}{72675a6136b05fff0e7ad4eae1794fd8}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Optimization}
+      \field{title}{A Fritz John Approach to First Order Optimality Conditions for Mathematical Programs with Equilibrium Constraints}
+      \field{volume}{52}
+      \field{year}{2003}
+      \field{pages}{277\bibrangedash 286}
+      \range{pages}{10}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:26882450
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:26882450
+      \endverb
+    \endentry
     \entry{Floudas1990ACO}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=35367efe517eadd05e6f0a359da55328}{%
@@ -1121,6 +1162,47 @@
       \field{isbn}{978-3-030-52119-6}
       \field{title}{Bilevel Optimization: Advances and Next Challenges}
       \field{year}{2020}
+    \endentry
+    \entry{Flegel2003AFJ}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=7bd5ad335a901a725f7983920b918bd9}{%
+           family={Flegel},
+           familyi={F\bibinitperiod},
+           given={Michael\bibnamedelima L.},
+           giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=97d2e434223bd2d37723183cbed5e8df}{%
+           family={Kanzow},
+           familyi={K\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{72675a6136b05fff0e7ad4eae1794fd8}
+      \strng{fullhash}{72675a6136b05fff0e7ad4eae1794fd8}
+      \strng{bibnamehash}{72675a6136b05fff0e7ad4eae1794fd8}
+      \strng{authorbibnamehash}{72675a6136b05fff0e7ad4eae1794fd8}
+      \strng{authornamehash}{72675a6136b05fff0e7ad4eae1794fd8}
+      \strng{authorfullhash}{72675a6136b05fff0e7ad4eae1794fd8}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Optimization}
+      \field{title}{A Fritz John Approach to First Order Optimality Conditions for Mathematical Programs with Equilibrium Constraints}
+      \field{volume}{52}
+      \field{year}{2003}
+      \field{pages}{277\bibrangedash 286}
+      \range{pages}{10}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:26882450
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:26882450
+      \endverb
     \endentry
     \entry{Floudas1990ACO}{article}{}
       \name{author}{2}{}{%

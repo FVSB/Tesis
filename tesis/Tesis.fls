@@ -464,6 +464,7 @@ INPUT .\Introducción.tex
 INPUT .\Introducción.tex
 INPUT Introducción.tex
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
+INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
 INPUT .\Preliminares.tex
 OUTPUT Preliminares.aux
@@ -473,7 +474,6 @@ INPUT Preliminares.tex
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr8.tfm
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr6.tfm
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmro12.tfm
-INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
 INPUT .\Modelación.tex
 OUTPUT Modelación.aux
 INPUT .\Modelación.tex

@@ -1,6 +1,6 @@
+
 ## Comparación de Documentos sobre Optimización de Peajes Binivel
 
-Aquí hay una tabla comparativa de cada documento que aborda el problema de optimización de peajes binivel:
 
 | Nombre del Documento | Problema que Resuelven | Técnicas de Optimización Binivel | Resultados |
 |---|---|---|---|

@@ -1,6 +1,22 @@
 \chapter{Introducción}
 La optimización binivel es un tema de investigación crucial en el ámbito de la teoría de juegos y la programación matemática. Este enfoque permite abordar problemas complejos donde las decisiones de un líder afectan directamente a las decisiones de un seguidor, generando interacciones estratégicas esenciales para el análisis en diversos contextos.
 
+% Definición de problema binivel
+\begin{table}[H]
+
+    \[\begin{array}{l}
+        \underset{\substack{x}}{\min} \quad F(x, y)\\
+        s.a \left\{ \begin{array}{l}
+            x,y \in T \\
+             y \in S(x) = \arg  \underset{\substack{y}}{\min} \{ f(x, y) \quad s.a \quad y \in  V(x, y) \}\\
+           
+        \end{array}\right.
+    \end{array}\]\\
+
+
+    \caption*{Problema de Optimización Binivel}
+    \end{table}
+
 % Aplicaciones 
 Esta es una herramienta fundamental para modelar y analizar mercados eléctricos complejos, ofreciendo una perspectiva única sobre las interacciones estratégicas entre diversos agentes económicos.
 % Mercado Eléctrico

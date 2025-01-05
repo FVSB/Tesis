@@ -236,6 +236,47 @@
       \verb 10.1007/BF00941574
       \endverb
     \endentry
+    \entry{Bhavsar2021ASP}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=c03de8e594b560227dc2f708c0d64957}{%
+           family={Bhavsar},
+           familyi={B\bibinitperiod},
+           given={Nishit},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=31e9bce3d5a5d245a0e9a72d63df7d92}{%
+           family={Verma},
+           familyi={V\bibinitperiod},
+           given={Manish},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2e7ca17d8826e1017dbbbb121eb00e1e}
+      \strng{fullhash}{2e7ca17d8826e1017dbbbb121eb00e1e}
+      \strng{bibnamehash}{2e7ca17d8826e1017dbbbb121eb00e1e}
+      \strng{authorbibnamehash}{2e7ca17d8826e1017dbbbb121eb00e1e}
+      \strng{authornamehash}{2e7ca17d8826e1017dbbbb121eb00e1e}
+      \strng{authorfullhash}{2e7ca17d8826e1017dbbbb121eb00e1e}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Eur. J. Oper. Res.}
+      \field{title}{A subsidy policy to managing hazmat risk in railroad transportation network}
+      \field{volume}{300}
+      \field{year}{2021}
+      \field{pages}{633\bibrangedash 646}
+      \range{pages}{14}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:238706367
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:238706367
+      \endverb
+    \endentry
     \entry{Allende2012SolvingBP}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=a7068daf140d27a78522d899f6f74f7e}{%
@@ -638,6 +679,71 @@
       \endverb
       \verb{url}
       \verb https://api.semanticscholar.org/CorpusID:39987722
+      \endverb
+    \endentry
+    \entry{JuMPPaper}{article}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=ae562f612365bfa1287b8268e8b021df}{%
+           family={Lubin},
+           familyi={L\bibinitperiod},
+           given={Miles},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0cb8db37d5c816a9dffec8efdf7d443c}{%
+           family={Dowson},
+           familyi={D\bibinitperiod},
+           given={Oscar},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=596ad63caad8bee007bd13b952226b8a}{%
+           family={{Dias Garcia}},
+           familyi={D\bibinitperiod},
+           given={Joaquim},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3d4093b368f12c6a917914c63f0d75d1}{%
+           family={Huchette},
+           familyi={H\bibinitperiod},
+           given={Joey},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b84ac2149b86ed91cc93922f9509b81a}{%
+           family={Legat},
+           familyi={L\bibinitperiod},
+           given={Benoît},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7d17a5f1d39e49c4e154daa7e469b420}{%
+           family={Vielma},
+           familyi={V\bibinitperiod},
+           given={Juan\bibnamedelima Pablo},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{533a75a7b0d6957e52b7dda06a0dbdb4}
+      \strng{fullhash}{f4a052310f59d20497d8c2bd553be8e3}
+      \strng{bibnamehash}{f4a052310f59d20497d8c2bd553be8e3}
+      \strng{authorbibnamehash}{f4a052310f59d20497d8c2bd553be8e3}
+      \strng{authornamehash}{533a75a7b0d6957e52b7dda06a0dbdb4}
+      \strng{authorfullhash}{f4a052310f59d20497d8c2bd553be8e3}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming Computation}
+      \field{title}{{JuMP} 1.0: {R}ecent improvements to a modeling language for mathematical optimization}
+      \field{year}{2023}
+      \verb{doi}
+      \verb 10.1007/s12532-023-00239-3
+      \endverb
+      \verb{urlraw}
+      \verb https://jump.dev/JuMP.jl/stable/
+      \endverb
+      \verb{url}
+      \verb https://jump.dev/JuMP.jl/stable/
       \endverb
     \endentry
     \entry{Ramos2016WaterII}{article}{}
@@ -1069,6 +1175,47 @@
       \verb 10.1007/BF00941574
       \endverb
     \endentry
+    \entry{Bhavsar2021ASP}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=c03de8e594b560227dc2f708c0d64957}{%
+           family={Bhavsar},
+           familyi={B\bibinitperiod},
+           given={Nishit},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=31e9bce3d5a5d245a0e9a72d63df7d92}{%
+           family={Verma},
+           familyi={V\bibinitperiod},
+           given={Manish},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2e7ca17d8826e1017dbbbb121eb00e1e}
+      \strng{fullhash}{2e7ca17d8826e1017dbbbb121eb00e1e}
+      \strng{bibnamehash}{2e7ca17d8826e1017dbbbb121eb00e1e}
+      \strng{authorbibnamehash}{2e7ca17d8826e1017dbbbb121eb00e1e}
+      \strng{authornamehash}{2e7ca17d8826e1017dbbbb121eb00e1e}
+      \strng{authorfullhash}{2e7ca17d8826e1017dbbbb121eb00e1e}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Eur. J. Oper. Res.}
+      \field{title}{A subsidy policy to managing hazmat risk in railroad transportation network}
+      \field{volume}{300}
+      \field{year}{2021}
+      \field{pages}{633\bibrangedash 646}
+      \range{pages}{14}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:238706367
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:238706367
+      \endverb
+    \endentry
     \entry{Allende2012SolvingBP}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=a7068daf140d27a78522d899f6f74f7e}{%
@@ -1471,6 +1618,71 @@
       \endverb
       \verb{url}
       \verb https://api.semanticscholar.org/CorpusID:39987722
+      \endverb
+    \endentry
+    \entry{JuMPPaper}{article}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=ae562f612365bfa1287b8268e8b021df}{%
+           family={Lubin},
+           familyi={L\bibinitperiod},
+           given={Miles},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0cb8db37d5c816a9dffec8efdf7d443c}{%
+           family={Dowson},
+           familyi={D\bibinitperiod},
+           given={Oscar},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=596ad63caad8bee007bd13b952226b8a}{%
+           family={{Dias Garcia}},
+           familyi={D\bibinitperiod},
+           given={Joaquim},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3d4093b368f12c6a917914c63f0d75d1}{%
+           family={Huchette},
+           familyi={H\bibinitperiod},
+           given={Joey},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b84ac2149b86ed91cc93922f9509b81a}{%
+           family={Legat},
+           familyi={L\bibinitperiod},
+           given={Benoît},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7d17a5f1d39e49c4e154daa7e469b420}{%
+           family={Vielma},
+           familyi={V\bibinitperiod},
+           given={Juan\bibnamedelima Pablo},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{533a75a7b0d6957e52b7dda06a0dbdb4}
+      \strng{fullhash}{f4a052310f59d20497d8c2bd553be8e3}
+      \strng{bibnamehash}{f4a052310f59d20497d8c2bd553be8e3}
+      \strng{authorbibnamehash}{f4a052310f59d20497d8c2bd553be8e3}
+      \strng{authornamehash}{533a75a7b0d6957e52b7dda06a0dbdb4}
+      \strng{authorfullhash}{f4a052310f59d20497d8c2bd553be8e3}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming Computation}
+      \field{title}{{JuMP} 1.0: {R}ecent improvements to a modeling language for mathematical optimization}
+      \field{year}{2023}
+      \verb{doi}
+      \verb 10.1007/s12532-023-00239-3
+      \endverb
+      \verb{urlraw}
+      \verb https://jump.dev/JuMP.jl/stable/
+      \endverb
+      \verb{url}
+      \verb https://jump.dev/JuMP.jl/stable/
       \endverb
     \endentry
     \entry{Ramos2016WaterII}{article}{}

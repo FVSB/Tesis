@@ -6,20 +6,18 @@
 La optimización de dos niveles, un área fundamental en la investigación operativa y la teoría de juegos, presenta desafíos significativos debido a su complejidad inherente. Este tipo de problemas se caracteriza por la interacción entre un líder y un seguidor, donde las decisiones del líder afectan las respuestas del seguidor. Uno de los aspectos más críticos de esta problemática es garantizar la existencia de soluciones óptimas, lo cual se ve complicado por la naturaleza no convexa del problema, incluso cuando las funciones y los conjuntos factibles son convexos. A menudo, los algoritmos utilizados en este contexto solo logran identificar puntos estacionarios o críticos, que no necesariamente representan soluciones locales o globales \cite{DempeyZemkoho2020}.
 
 % Definición de problema binivel
-\begin{table}[H]
+\begin{equation}
+    \begin{aligned}
+    \text{minimizar} & \quad F(x, y) \\
+    \text{sujeto a} & \quad G(x, y) \geq 0 \quad (\text{restricciones de desigualdad}) \\
+    & \quad H(x, y) = 0 \quad (\text{restricciones de igualdad}) \\
+    & \quad y \in S(x) = \arg \min_{y} \{ f(x, y) \mid V(x, y) \geq 0, U(x, y) = 0 \}.
+    \end{aligned}
+ \end{equation}
+\linebreak
+% Explicar dimensiones 
+Donde $x \in R^{n}$, $y \in R^{m}$, $F, f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$, $T$ es el conjunto de puntos factibles de $F$
 
-    \[\begin{array}{l}
-        \underset{\substack{x}}{\min} \quad F(x, y)\\
-        s.a \left\{ \begin{array}{l}
-            x,y \in T \\
-             y \in S(x) = \arg  \underset{\substack{y}}{\min} \{ f(x, y) \quad s.a \quad y \in  V(x, y) \}\\
-           
-        \end{array}\right.
-    \end{array}\]\\
-
-
-    \caption*{Problema de Optimización Binivel}
-    \end{table}
 
 % Aplicaciones 
 Esta es una herramienta fundamental para modelar y analizar mercados eléctricos complejos, ofreciendo una perspectiva única sobre las interacciones estratégicas entre diversos agentes económicos.
@@ -27,9 +25,9 @@ Esta es una herramienta fundamental para modelar y analizar mercados eléctricos
 % Nash equilibrium in a pay-as-bid electricity market Part 2 - best response of a producer Didier
 En el trabajo de \cite{Aussel2017NashEI}, se profundiza en el análisis de mercados de electricidad de pago por oferta, explorando cómo un productor puede ajustar su estrategia considerando las acciones de sus competidores. El estudio destaca la aplicación de conceptos de \textbf{equilibrio de Nash} y técnicas de mejor respuesta, proporcionando una metodología sofisticada para optimizar la participación de un productor en el mercado.
 % Deregulated electricity markets with thermal losses and production bounds: models and optimality conditions
-Continuando con esta línea de investigación, \cite{Aussel2016DeregulatedEM} desarrollaron un modelo innovador que aborda los mercados de electricidad desregulados. Su enfoque se distingue por incorporar restricciones de producción y pérdidas térmicas, lo que permite una modelización más precisa y realista. Mediante el uso de modelos binivel y el \textbf{  análisis mercados y de condiciones de optimalidad}, los investigadores pueden explorar escenarios más complejos y representativos del funcionamiento real de los mercados energéticos.
+Continuando con esta línea de investigación, \cite{Aussel2016DeregulatedEM} desarrollaron un modelo innovador que aborda los mercados de electricidad desregulados. Su enfoque se distingue por incorporar restricciones de producción y pérdidas térmicas, lo que permite una modelización más precisa y realista. Mediante el uso de modelos binivel, los investigadores pueden explorar escenarios más complejos y representativos del funcionamiento real de los mercados energéticos.
 % Electricity spot market with transmission losses
-Además en otros trabajos se tienen en cuenta en los modelos las pérdidas de transmisión como en  \cite{Aussel2013ElectricitySM}, donde esta contribución mejora significativamente la representación del sistema eléctrico, permitiendo un análisis más profundo del equilibrio estratégico mediante técnicas de \textbf{optimización de mercado}. Al considerar las pérdidas de transmisión, el modelo captura aspectos fundamentales de la distribución y comercialización de energía que anteriormente pasaban desapercibidos.
+Además en otros trabajos se tienen en cuenta en los modelos las pérdidas de transmisión como en  \cite{Aussel2013ElectricitySM}, donde esta contribución mejora significativamente la representación del sistema eléctrico, permitiendo un análisis más profundo del equilibrio estratégico mediante técnicas de \textbf{optimización}. Al considerar las pérdidas de transmisión, el modelo captura aspectos fundamentales de la distribución y comercialización de energía que anteriormente pasaban desapercibidos.
 
 % Machine Learning
 También tiene aplicaciones fundamentales en la selección de hiperparámetros en aprendizaje automático, como lo demuestra el trabajo de \cite{DempeyZemkoho2020ML}. El capítulo 6 del libro aborda la optimización de hiperparámetros en problemas de clasificación y regresión, presentando algoritmos innovadores para manejar funciones objetivo no suaves y no convexas. La razón del uso de esta radica en su capacidad para minimizar errores en modelos complejos, mejorando así la precisión general del aprendizaje automático. Además, se implementan algoritmos especializados para abordar problemas no convexos.
@@ -65,7 +63,7 @@ En paralelo, los algoritmos metaheurísticos, como los evolutivos, han ganado re
 % Dividir en subproblemas y resolver iterativamente
 % Collection of Test Problems for Constrained Global Optimization Algorithms
 Otro enfoque destacado es el uso de métodos de descomposición, los cuales dividen el problema en subproblemas más manejables que pueden resolverse iterativamente \cite{Floudas1990ACO}.
-Además, los avances recientes han explorado el uso de técnicas probabilísticas, como las aproximaciones de máxima entropía, para problemas con incertidumbre en parámetros clave.
+
 % An SOS1-based approach for solving MPECs with a natural gas market application
 Estas técnicas son particularmente útiles en aplicaciones prácticas, como los mercados de energía o los modelos de sostenibilidad \cite{SadddiquiNaturalGasSOS1}.
 % Libro Dempe
@@ -102,14 +100,15 @@ En \cite{Caselli2024BilevelOW,DempeyZemkoho2020,phdthesisCerulli} se habla de  s
 % Metodos matematicos que se utilizan KKT y branch and bround
 Los algoritmos que se basan en las condiciones KKT incluyen una variedad de métodos, como técnicas de branch-and-bound y métodos de suavizado, ver \cite{DempeyZemkoho2020}. 
 % Hablar sobre el Suavizado KKT y Del SQP ademas de que el KKT se extiende a algoritmos evolutivos
-Estos algoritmos son utilizados para resolver problemas complejos de optimización que involucran restricciones. Por ejemplo, en \cite{DempeyZemkoho2020} se discute el uso de un método de suavizado junto con las condiciones KKT para abordar problemas relacionados con la optimización de hiperparámetros. Además, se menciona que los algoritmos SQP (Sequential Quadratic Programming) también se fundamentan en las condiciones KKT para resolver problemas suaves con restricciones. Donde enuncian que versatilidad del método KKT se extiende incluso a algoritmos evolutivos, lo que demuestra su relevancia en diversas áreas de la optimización.
+%TODO: Change
+Estos algoritmos son utilizados para resolver problemas complejos de optimización que involucran restricciones. Por ejemplo, en \cite{DempeyZemkoho2020} se discute el uso de un método de suavizado junto con las condiciones KKT para abordar problemas relacionados con la optimización de hiperparámetros. Además, se menciona que los algoritmos SQP (Sequential Quadratic Programming) también se fundamentan en las condiciones KKT para resolver problemas suaves con restricciones. Donde enuncian que versatilidad del método KKT se extiende incluso a algoritmos evolutivos. Este hecho demuestra su versatilidad diversas áreas de la optimización.
 
 % Que son no convexos por las transformaciones
 Los problemas de optimización de dos niveles son inherentemente no convexos, lo que implica que los métodos de optimización convexa no son directamente aplicables. Esta no convexidad puede llevar a soluciones subóptimas y a dificultades para encontrar una solución global. Aunque en muchos casos las funciones y conjuntos factibles pueden ser convexos, la estructura general del problema sigue siendo no convexa.
 
-La dificultad para encontrar soluciones globales se ve exacerbada por la tendencia de los métodos de búsqueda local a quedar atrapados en óptimos locales. Por ello, se han desarrollado métodos de búsqueda global que consideran la estructura específica de los problemas de optimización de dos niveles. Estos enfoques suelen incluir fases tanto de búsqueda local como global, utilizando condiciones de optimalidad global para mejorar la efectividad del proceso \cite{DempeyZemkoho2020}.
+%La dificultad para encontrar soluciones globales se ve exacerbada por la tendencia de los métodos de búsqueda local a quedar atrapados en óptimos locales. Por ello, se han desarrollado métodos de búsqueda global que consideran la estructura específica de los problemas de optimización de dos niveles. Estos enfoques suelen incluir fases tanto de búsqueda local como global, utilizando condiciones de optimalidad global para mejorar la efectividad del proceso \cite{DempeyZemkoho2020}.
 
-Además, para abordar la no unicidad de las soluciones y mejorar la estabilidad del sistema, se emplean métodos de regularización. Estos pueden implicar la regularización de la función objetivo del seguidor o del conjunto de respuestas óptimas del mismo \cite{DempeyZemkoho2020}.
+%Además, para abordar la no unicidad de las soluciones y mejorar la estabilidad del sistema, se emplean métodos de regularización. Estos pueden implicar la regularización de la función objetivo del seguidor o del conjunto de respuestas óptimas del mismo \cite{DempeyZemkoho2020}.
 
 En resumen, obtener garantías sobre soluciones en problemas de optimización de dos niveles es un desafío complejo debido a su no convexidad inherente, las dificultades para escapar de óptimos locales y la posible falta de unicidad y estabilidad en las soluciones. Los algoritmos frecuentemente dependen de puntos estacionarios, que no siempre corresponden a las soluciones óptimas deseadas. Por lo tanto, es crucial desarrollar métodos especializados que aborden estos problemas y permitan encontrar soluciones globales o aproximaciones adecuadas \cite{DempeyZemkoho2020}.
 

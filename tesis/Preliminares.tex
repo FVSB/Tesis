@@ -27,14 +27,30 @@ Un problema de optimización binivel tiene dos características principales: en 
 La formulación general de un problema de optimización binivel se expresa matemáticamente como:  
 
 % Definición de problema binivel
-\begin{equation}
-\begin{aligned}
-\text{minimizar} & \quad F(x, y) \\
-\text{sujeto a} & \quad G(x, y) \leq 0 \quad (\text{restricciones de desigualdad}) \\
-& \quad H(x, y) = 0 \quad (\text{restricciones de igualdad}) \\
-& \quad y \in S(x) = \arg \min_{y} \{ f(x, y) \mid V(x, y) \leq 0, U(x, y) = 0 \}.
-\end{aligned}
-\end{equation}
+%\begin{equation}
+%\begin{aligned}
+%\text{minimizar} & \quad F(x, y) \\
+%\text{sujeto a} & \quad G(x, y) \leq 0 \quad (\text{restricciones de desigualdad}) \\
+%& \quad H(x, y) = 0 \quad (\text{restricciones de igualdad}) \\
+%& \quad y \in S(x) = \arg \min_{y} \{ f(x, y) \mid V(x, y) \leq 0, U(x, y) = 0 \}.
+%\end{aligned}
+%\end{equation}
+
+
+\textbf{Optimización bilevel optimista.} Un problema de optimización bilevel optimista, se formula como:
+
+\begin{align}
+    \min_{x \in X, y} & \quad F(x, y) \tag{1} \\
+    \text{s.t.} & \quad G(x, y) \geq 0 \tag{2} \\
+    & \quad y \in S(x), \tag{3}
+\end{align}
+Donde $S(x)$ es el conjunto de soluciones óptimas del problema parametrizado por $x$
+\begin{align}
+    \min_{y \in Y} & \quad f(x, y) \tag{4} \\
+    \text{s.t.} & \quad g(x, y) \geq 0. \tag{5}
+\end{align}
+
+
 
 Los elementos clave en la optimización binivel incluyen las funciones objetivo $F(x, y)$ y $f(x, y)$, que corresponden a los objetivos del líder y del seguidor, respectivamente; las restricciones $G(x, y) \leq 0$ y $H(x, y) = 0$, que deben ser satisfechas por ambas partes; y el conjunto de soluciones del seguidor $S(x)$, el cual representa las soluciones óptimas del nivel inferior en función de las decisiones del líder.
 
@@ -143,3 +159,7 @@ La implementación del ProductMode mantiene la restricción de complementariedad
 \[ y_i(A_ix + b_i + D_iz) \leq t \]
 
 donde $t$ es un parámetro de regularización pequeño. Esta formulación, aunque no satisface las condiciones de calificación de restricciones estándar, es útil para obtener soluciones iniciales y puede ser especialmente efectiva cuando se combina con solucionadores NLP \cite{BilevelJump}.
+
+\section{Puntos estacionarios en MPECs}
+% Flegel Kanzow Sobre MPECs y los ptos estacionarios
+En el contexto de los MPEC, en \cite{Flegel2003AFJ} se exponen varios tipos de puntos estacionarios que son cruciales para analizar la optimalidad. Un punto \textbf{débilmente estacionario} es aquel que satisface las condiciones básicas de equilibrio, siendo una condición necesaria pero no suficiente para la optimalidad local. La \textbf{C-estacionariedad} es una condición más fuerte, que además requiere que el producto de ciertos multiplicadores de Lagrange sea no negativo en el conjunto degenerado. A su vez, la \textbf{M-estacionariedad} es aún más restrictiva, ya que exige condiciones específicas sobre los multiplicadores en el conjunto degenerado (que o bien ambos sean positivos, o su producto sea cero). El artículo también introduce el concepto de \textbf{A-estacionariedad}, que surge del enfoque de Fritz John, donde se requiere que al menos uno de los multiplicadores sea no negativo en el conjunto degenerado. Finalmente, un punto es \textbf{fuertemente estacionario} si ambos multiplicadores son no negativos en el conjunto degenerado, siendo esta la condición más restrictiva y que se da bajo ciertas condiciones como MPEC-LICQ o MPEC-SMFCQ. Por ello, estas condiciones forman una jerarquía donde la M-estacionariedad implica la C-estacionariedad y esta a su vez, implica la estacionariedad débil, siendo la estacionariedad fuerte la más restrictiva de todas. \cite{Flegel2003AFJ}.

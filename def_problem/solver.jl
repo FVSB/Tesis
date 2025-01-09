@@ -173,6 +173,8 @@ function calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem::Optimizat
         lambda_i = vi.lambda
         A += vi_grad_val * lambda_i
     end
+    # Add der xy der y follower  and add to A matrix
+    A +=Calculate_diff_ys_xsys(opt_problem.follower_fun.expr,problems_vars,ys_vars,point)
     return A * alpha
 end
 
@@ -204,27 +206,39 @@ function Make_BF(
     follower_vars_str::Vector{String},
     alpha::Vector
 )::Vector
-    # Combine leader and follower variable names into a single string vector
-    problem_vars_str::Vector{String} = vcat(leader_vars_str, follower_vars_str)
-    
-    # Convert all problem variables to symbolic representations
-    problem_vars = map(convert_Symbol_to_symbolic_num, problem_vars_str)
-    
+
+    # Convert leader variables to symbolic representations
+    leader_vars=map(convert_Symbol_to_symbolic_num, leader_vars_str)
+
     # Convert follower variables to symbolic representations
     follower_vars = map(convert_Symbol_to_symbolic_num, follower_vars_str)
-    
-    # Compute the gradient of the leader's function and evaluate it
-    f_grad = calculate_diff_F_xy(opt_problem, problem_vars)
-    
-    # Compute the weighted sum of the active leader constraints' gradients, multiplied by `miu`
-    g_s_sum = calculate_g_s_active_mui_factor(opt_problem, problem_vars)
-    
-    # Compute the mixed derivatives of selected follower constraints, weighted by `lambda` and `alpha`
-    vi_val = calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem, problem_vars, follower_vars, alpha)
-    
-    # Compute the weighted sum of inactive follower constraints, weighted by `beta`
-    vj_bj_sum = calculate_sum_vj_bj(opt_problem, problem_vars)
-    
-    # Return the BF vector as the negative sum of all computed components
-    return -(f_grad + g_s_sum + vi_val + vj_bj_sum)
+   
+    return Make_BF(opt_problem,leader_vars,follower_vars,alpha)
+   
+end
+
+function Make_BF(
+    opt_problem::Optimization_Problem,
+    leader_vars::Vector{Symbolics.Num},
+    follower_vars::Vector{Symbolics.Num},
+    alpha::Vector
+)::Vector
+ # Combine leader and follower variable names into a single string vector
+ problem_vars::Vector{Symbolics.Num} = vcat(leader_vars, follower_vars)
+  
+ # Compute the gradient of the leader's function and evaluate it
+ f_grad = calculate_diff_F_xy(opt_problem, problem_vars)
+ 
+ # Compute the weighted sum of the active leader constraints' gradients, multiplied by `miu`
+ g_s_sum = calculate_g_s_active_mui_factor(opt_problem, problem_vars)
+ 
+ # Compute the mixed derivatives of selected follower constraints, weighted by `lambda` and `alpha`
+ vi_val = calculate_select_vi_der_xy_of_x_dot_lambda_alpha(opt_problem, problem_vars, follower_vars, alpha)
+ 
+ # Compute the weighted sum of inactive follower constraints, weighted by `beta`
+ vj_bj_sum = calculate_sum_vj_bj(opt_problem, problem_vars)
+ 
+ # Return the BF vector as the negative sum of all computed components
+ return -(f_grad + g_s_sum + vi_val + vj_bj_sum)
+
 end

@@ -14,11 +14,11 @@ include("structs/optimization_problem.jl")
 # Import the Def_Restriction struct 
 include("structs/def_restrictions.jl")
 
-            ##################################################
-            #                                                #
-            #               Functions Inits                  #                             
-            #                                                #
-            ##################################################
+##################################################
+#                                                #
+#               Functions Inits                  #                             
+#                                                #
+##################################################
 
 
 # Init the Leader and Follower structs
@@ -64,7 +64,7 @@ Computes the vector `bj` corresponding to an active restriction `g`.
 - If the restriction set type is not active (e.g., `Normal` or `J_0_g`), `bj` is returned as 0.
 - Ensures the dimensions of `alpha` and `ys_vars` are consistent.
 """
-function compute_bj(restriction_expr, alpha::Vector, point::Dict, ys_vars::Vector{Num}, 
+function compute_bj(restriction_expr, alpha::Vector, point::Dict, ys_vars::Vector{Num},
     restriction_set_type::RestrictionSetType, gamma::Number)::Number
 
     # Ensure the indices are active; otherwise, return 0
@@ -109,7 +109,7 @@ function Fix_value(value::Num, restriction_set_type::RestrictionSetType)::Num
     if restriction_set_type in [Normal]
         return 0
     end
-    
+
     # If the restriction set type is "J_Ne_L0_v", apply specific adjustments
     if restriction_set_type in [J_Ne_L0_v]
         if value < 0
@@ -148,8 +148,8 @@ Initializes a new `Restriction_Func` object with the given parameters and comput
 - If `is_alpha_zero` is `false`, the function computes `bj` and modifies the restriction expression accordingly.
 - Handles logical adjustments for inequalities by flipping signs when necessary.
 """
-function Restriction_init(expr_str::String, point::Dict, restriction_type::RestrictionType, 
-    restriction_set_type::RestrictionSetType, miu::Number, beta::Number, lambda::Number, gamma::Number, 
+function Restriction_init(expr_str::String, point::Dict, restriction_type::RestrictionType,
+    restriction_set_type::RestrictionSetType, miu::Number, beta::Number, lambda::Number, gamma::Number,
     alpha::Vector, ys_vars::Vector{Num}, is_alpha_zero::Bool)::Restriction_Func
 
     # Extract variable names from the expression
@@ -184,18 +184,18 @@ function Restriction_init(expr_str::String, point::Dict, restriction_type::Restr
 
     # Return a new `Restriction_Func` object
     Restriction_Func(
-        vars_name = vars_name, 
-        expr_str = expr_str, 
-        expr = new_expr, 
-        point = point, 
-        evaluation_value = value, 
-        add_const = fix_value, 
-        restriction_type = restriction_type, 
-        restriction_set_type = restriction_set_type, 
-        miu = miu, 
-        beta = beta, 
-        lambda = lambda, 
-        gamma = gamma
+        vars_name=vars_name,
+        expr_str=expr_str,
+        expr=new_expr,
+        point=point,
+        evaluation_value=value,
+        add_const=fix_value,
+        restriction_type=restriction_type,
+        restriction_set_type=restriction_set_type,
+        miu=miu,
+        beta=beta,
+        lambda=lambda,
+        gamma=gamma
     )
 end
 
@@ -236,7 +236,7 @@ A vector representing the weighted sum of the gradients evaluated at the given p
 function calculate_sum_grad_y_dot_lambda(follower_restr::Vector{Restriction_Func}, point::Dict, vars_grad::Vector{Num})::Vector
     # Initialize a zero vector with the size of the gradient variables
     temp = zeros(length(vars_grad))
-    
+
     # Iterate over each constraint in the vector of constraints
     for restr::Restriction_Func in follower_restr
         # Get the lambda value associated with the constraint
@@ -249,7 +249,7 @@ function calculate_sum_grad_y_dot_lambda(follower_restr::Vector{Restriction_Func
         # multiply it by lambda, and add it to the accumulated result
         temp += lambda * calculate_grad_and_evaluate_in_point(restr.expr, point, vars_grad)
     end
-    
+
     # Return the resulting vector
     return temp
 end
@@ -299,9 +299,9 @@ An `Optimization_Problem` object initialized with the leader's and follower's fu
 their respective constraints, the initial point, and the follower's `bf` vector.
 """
 function Fix_Restrictions(Leader_str_expr::String,
-    leader_def_restrictions::Vector{Def_Restriction},
+    leader_def_restrictions::Union{Vector{Def_Restriction},Nothing},
     Follower_str_expr::String,
-    follower_def_restrictions::Vector{Def_Restriction},
+    follower_def_restrictions::Union{Vector{Def_Restriction},Nothing},
     point::Dict,
     lider_vars_str::Vector{String},
     follower_vars_str::Vector{String},
@@ -316,12 +316,14 @@ function Fix_Restrictions(Leader_str_expr::String,
     leader_restrictions::Vector{Restriction_Func} = []
 
     # Process the leader's constraints
-    for item::Def_Restriction in leader_def_restrictions
-        # Initialize each restriction with alpha treated as a zero vector
-        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, 
-                                                  item.restriction_set_type, item.miu, item.beta, 
-                                                  item.lambda, item.gamma, alpha, ys_vars, true)
-        push!(leader_restrictions, temp)
+    if leader_def_restrictions != nothing
+        for item::Def_Restriction in leader_def_restrictions
+            # Initialize each restriction with alpha treated as a zero vector
+            temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type,
+                item.restriction_set_type, item.miu, item.beta,
+                item.lambda, item.gamma, alpha, ys_vars, true)
+            push!(leader_restrictions, temp)
+        end
     end
 
     # Initialize the follower's function
@@ -329,11 +331,13 @@ function Fix_Restrictions(Leader_str_expr::String,
     follower_restrictions::Vector{Restriction_Func} = []
 
     # Process the follower's constraints
-    for item::Def_Restriction in follower_def_restrictions
-        temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type, 
-                                                  item.restriction_set_type, item.miu, item.beta, 
-                                                  item.lambda, item.gamma, alpha, ys_vars, is_alpha_zero)
-        push!(follower_restrictions, temp)
+    if follower_def_restrictions != nothing
+        for item::Def_Restriction in follower_def_restrictions
+            temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type,
+                item.restriction_set_type, item.miu, item.beta,
+                item.lambda, item.gamma, alpha, ys_vars, is_alpha_zero)
+            push!(follower_restrictions, temp)
+        end
     end
 
     # Calculate the `bf` vector for the follower
@@ -343,6 +347,54 @@ function Fix_Restrictions(Leader_str_expr::String,
     return Optimization_Problem(leader_fun, leader_restrictions, follower_fun, follower_restrictions, point, bf)
 end
 
+function Fix_Restrictions(Leader_str_expr::String,
+    leader_def_restrictions::Union{Vector{Def_Restriction},Nothing},
+    Follower_str_expr::String,
+    follower_def_restrictions::Union{Vector{Def_Restriction},Nothing},
+    point::Dict,
+    lider_vars::Vector{Symbolics.Num},
+    follower_vars::Vector{Symbolics.Num},
+    alpha::Vector,
+    is_alpha_zero::Bool
+)
+    # Convert follower variable strings to symbolic variables
+    ys_vars::Vector{Num} = follower_vars
+
+    # Initialize the leader's function
+    leader_fun = Func_init(Leader_str_expr, point, true)
+    leader_restrictions::Vector{Restriction_Func} = []
+
+    # Process the leader's constraints
+    if leader_def_restrictions != nothing
+        for item::Def_Restriction in leader_def_restrictions
+            # Initialize each restriction with alpha treated as a zero vector
+            temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type,
+                item.restriction_set_type, item.miu, item.beta,
+                item.lambda, item.gamma, alpha, ys_vars, true)
+            push!(leader_restrictions, temp)
+        end
+    end
+
+    # Initialize the follower's function
+    follower_fun = Func_init(Follower_str_expr, point, false)
+    follower_restrictions::Vector{Restriction_Func} = []
+
+    # Process the follower's constraints
+    if follower_def_restrictions != nothing
+        for item::Def_Restriction in follower_def_restrictions
+            temp::Restriction_Func = Restriction_init(item.expr_str, point, item.restriction_type,
+                item.restriction_set_type, item.miu, item.beta,
+                item.lambda, item.gamma, alpha, ys_vars, is_alpha_zero)
+            push!(follower_restrictions, temp)
+        end
+    end
+
+    # Calculate the `bf` vector for the follower
+    bf = calculate_bf(follower_fun, follower_restrictions, point, ys_vars)
+
+    # Return the complete optimization problem
+    return Optimization_Problem(leader_fun, leader_restrictions, follower_fun, follower_restrictions, point, bf)
+end
 
 # Export 
 export Fix_Restrictions

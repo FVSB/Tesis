@@ -1,0 +1,1 @@
+Para correr el escritor de la docs de la API porfa escribe  venv\Scripts\activate

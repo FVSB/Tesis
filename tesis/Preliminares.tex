@@ -1,0 +1,165 @@
+\chapter{Preliminares}
+
+La optimización binivel es un problema de optimización en el cual un subconjunto de variables está restringido a ser la solución óptima de otro problema de optimización, el cual está parametrizado por las variables restantes. Este tipo de problema tiene dos niveles jerárquicos de decisión: el problema de nivel superior o del líder, y el problema de nivel inferior o del seguidor. 
+%Explicación breve de binivel
+En términos abstractos, la optimización binivel busca minimizar una función objetivo de nivel superior, $F(x, y)$, donde $x$ son las variables de decisión del líder y $y$ son las variables del seguidor. Esta minimización está sujeta a dos tipos de restricciones: 
+%Restricciones explicacion old
+%las restricciones explícitas para el líder, $x \in X$, donde $X$ es el conjunto de valores factibles para las variables del líder; y las restricciones implícitas impuestas por el seguidor, donde $y$ debe pertenecer al conjunto de soluciones óptimas del problema de optimización del seguidor, $\arg\min\{f(x, y) : y \in Y(x)\}$. En este contexto, $f(x, y)$ es la función objetivo del nivel inferior, y $Y(x)$ representa las restricciones del nivel inferior, las cuales pueden depender de las variables de decisión del líder, $x$.
+% Restricciones nuevas
+\begin{itemize}
+    \item \textbf{Restricciones explícitas:}
+    \begin{itemize}
+        \item Para el líder: $x \in X$, donde $X$ es el conjunto de valores factibles para las variables del líder.
+    \end{itemize}
+    
+    \item \textbf{Restricciones implícitas:}
+    \begin{itemize}
+        \item Impuestas por el seguidor, donde $y$ debe pertenecer al conjunto de soluciones óptimas del problema de optimización del seguidor, $\arg\min\{f(x, y) : y \in Y(x)\}$.
+        \item En este contexto, $f(x, y)$ es la función objetivo del seguidor, $Y(x)$ representa las restricciones del nivel inferior, las cuales pueden depender de las variables de decisión del líder, $x$.
+    \end{itemize}
+	\item Tambien se puede asumir que ambas variables tienen restricciones conjuntas, o sea que $(x,y) \in M^0$
+	 
+\end{itemize}
+
+
+Un problema de optimización binivel tiene dos características principales: en primer lugar, el problema del nivel inferior actúa como una restricción para el problema del nivel superior, y en segundo lugar, la solución del nivel inferior depende del valor de las variables del nivel superior, creando una interdependencia entre ambos niveles. Por ello, el líder debe anticipar la respuesta óptima del seguidor al tomar sus decisiones.
+
+La formulación general de un problema de optimización binivel se expresa matemáticamente como:  
+
+% Definición de problema binivel
+%\begin{equation}
+%\begin{aligned}
+%\text{minimizar} & \quad F(x, y) \\
+%\text{sujeto a} & \quad G(x, y) \leq 0 \quad (\text{restricciones de desigualdad}) \\
+%& \quad H(x, y) = 0 \quad (\text{restricciones de igualdad}) \\
+%& \quad y \in S(x) = \arg \min_{y} \{ f(x, y) \mid V(x, y) \leq 0, U(x, y) = 0 \}.
+%\end{aligned}
+%\end{equation}
+
+
+\textbf{Optimización bilevel optimista.} Un problema de optimización bilevel optimista, se formula como:
+
+\begin{align}
+    \min_{x \in X, y} & \quad F(x, y) \tag{1} \\
+    \text{s.t.} & \quad G(x, y) \geq 0 \tag{2} \\
+    & \quad y \in S(x), \tag{3}
+\end{align}
+Donde $S(x)$ es el conjunto de soluciones óptimas del problema parametrizado por $x$
+\begin{align}
+    \min_{y \in Y} & \quad f(x, y) \tag{4} \\
+    \text{s.t.} & \quad g(x, y) \geq 0. \tag{5}
+\end{align}
+
+
+
+Los elementos clave en la optimización binivel incluyen las funciones objetivo $F(x, y)$ y $f(x, y)$, que corresponden a los objetivos del líder y del seguidor, respectivamente; las restricciones $G(x, y) \leq 0$ y $H(x, y) = 0$, que deben ser satisfechas por ambas partes; y el conjunto de soluciones del seguidor $S(x)$, el cual representa las soluciones óptimas del nivel inferior en función de las decisiones del líder.
+
+\section{Transformación de los problemas de dos niveles}
+		
+		Los problemas de dos niveles pueden ser reformulados en un problema de un solo nivel al reemplazar el problema del nivel inferior por las condiciones KKT de este en las restricciones del primer nivel. 
+		
+		Para el caso de los SLSMG donde se tiene un problema de optimización en el nivel inferior este sustituye por de las condiciones KKT de este, obteniendo un MPEC \autocite{aussel2020}.
+		
+        \begin{table}
+				Nota:
+        	\begin{itemize}
+        	    \item Sea $ J_0^v=\{j | V_i(x,y)=0\}$ al conjunto restricciones de desigualdad que sean índices activos
+			
+        	\end{itemize}
+		\end{table}
+        
+% Descripcion del modelo en KKT
+		\begin{table}[H]
+
+		\[\begin{array}{l}
+			\underset{\substack{x, y, \lambda_i}}{\min} \quad F(x, y)\\
+			s.a \left\{ \begin{array}{l}
+				x \geq 0 \\
+				g(x, y) \geq 0\\
+				\nabla_{y} f(x, y) + \sum_{i=1}^{|J_{0}|} \nabla_{y} V_i(x, y) \lambda_i = 0 \\
+				V_i(x, y) \geq 0, \quad \forall i \in J_{0} \\
+				V_i(x, y)\lambda_i = 0, \quad \forall i \in J_{0} \\
+				\lambda_i \geq 0, \quad \forall i \in J_{0}\\
+			\end{array}\right.
+		\end{array}\]
+		\caption*{MPEC resultante}
+		\end{table}
+
+% Modelación en Julia
+% Se explica de que va BilevelJump
+\section{Modelación en Julia}
+% Que es BilvelJump
+BilevelJuMP.jl es un paquete de Julia diseñado para modelar y resolver problemas de \textbf{optimización bilevel}, también conocidos como problemas de optimización de dos niveles o jerárquica. Estos problemas se caracterizan por tener dos niveles de decisión: un nivel superior y un nivel inferior, donde las decisiones del nivel superior influyen en las decisiones del nivel inferior, y viceversa \cite{BilevelJump}.
+% Que problemas resuelve
+Este paquete permite abordar una amplia variedad de tipos de problemas, incluyendo:
+
+\begin{itemize}
+    \item \textbf{Problemas de optimización bilevel generales:} BilevelJuMP.jl facilita la modelación de problemas que pueden representarse en la sintaxis de JuMP, ver documentación en \cite{JuMPPaper}, incluyendo restricciones lineales y no lineales, variables continuas y enteras, y diferentes tipos de objetivos.
+    
+    \item \textbf{Problemas con restricciones cónicas en el nivel inferior:} Maneja problemas donde el nivel inferior tiene una estructura de \textbf{programación cónica}, definiendo restricciones a través de conos convexos. Esto es útil para aplicar condiciones KKT en la reformulación del problema como MPEC.
+    
+    \item \textbf{Problemas con restricciones variadas en el nivel superior:} Permite gestionar una variedad de restricciones compatibles con JuMP, tales como restricciones cónicas, cuadráticas, no lineales y enteras.
+    
+    \item \textbf{Problemas con restricciones de equilibrio:} Facilita la transformación de problemas bilevel en problemas de programación matemática con restricciones de equilibrio (MPEC) y ofrece métodos para abordar las restricciones de complementariedad que surgen en estos casos.
+    
+    \item \textbf{Problemas con variables duales del nivel inferior en el nivel superior:} Permite la utilización de variables duales del nivel inferior explícitamente como variables en el nivel superior, lo cual es crucial para modelar problemas como la fijación de precios en mercados de energía.
+    
+    \item \textbf{Problemas con diferentes tipos de reformulaciones:} Los usuarios pueden experimentar con diversas reformulaciones para las restricciones de complementariedad en los problemas MPEC, incluyendo SOS1, restricciones de indicador, Fortuny-Amat y McCarl (Big-M), entre otros.
+    
+    \item \textbf{Problemas que requieren solvers MIP y NLP:} BilevelJuMP.jl puede utilizar tanto solucionadores de \textbf{programación lineal mixta entera (MIP)} como solucionadores de \textbf{programación no lineal (NLP)}, dependiendo de las características del problema y la reformulación elegida.
+\end{itemize}
+
+\subsection{Limitaciones del BilevelJuMP.jl}
+
+A pesar de sus capacidades, BilevelJuMP.jl presenta algunas limitaciones, entre las cuales se encuentran:
+
+\begin{itemize}
+    \item Puede enfrentar dificultades en problemas altamente no lineales o con estructuras de optimización complejas que no se puedan representar adecuadamente en la sintaxis de JuMP.
+    \item Existen ciertas restricciones que podrían no ser compatibles o que requieren transformaciones adicionales que podrían complicar el modelo.
+    \item La eficiencia del paquete puede verse afectada en problemas de gran escala, donde el rendimiento del solver puede ser un factor crítico.
+    \item La formulación y resolución de problemas muy específicos o especializados podrían no estar completamente optimizadas en el paquete.
+\end{itemize}
+
+
+% Explicacion algoritmos 
+\section{Métodos de Reformulación para Optimización Bilevel}
+
+La optimización bilevel presenta desafíos particulares debido a su naturaleza jerárquica y las condiciones de complementariedad resultantes. A continuación, se presentan los principales métodos de reformulación implementados en la literatura \cite{BilevelJump}.
+
+\subsection{Método Big-M}
+
+El método Big-M es una técnica fundamental para reformular problemas de optimización bilevel en problemas de programación matemática con restricciones de equilibrio (MPEC). Este método aborda específicamente las condiciones de complementariedad que surgen en estas reformulaciones, transformando el problema original en un problema de programación lineal mixta entera (MILP).
+
+La reformulación mediante Big-M introduce un parámetro M suficientemente grande y variables binarias para transformar las condiciones de complementariedad no lineales en restricciones lineales. Para una condición de complementariedad de la forma $y_i(A_ix + b_i + D_iz) = 0$, el método introduce una variable binaria $f$ y las siguientes restricciones:
+
+\begin{align*}
+A_ix + b_i + D_iz &\leq M_p f \\
+y_i &\leq M_d(1 - f) \\
+f &\in \{0,1\}
+\end{align*}
+
+donde $M_p$ y $M_d$ son valores grandes para las variables primales y duales, respectivamente. La efectividad del método depende crucialmente de la selección apropiada de estos valores, que deben ser suficientemente grandes para no excluir la solución óptima, pero no excesivamente grandes para evitar inestabilidades numéricas \cite{BilevelJump}.
+
+\subsection{Método SOS1}
+
+El método de Conjuntos Ordenados Especiales de tipo 1 (SOS1) representa una alternativa más robusta para reformular las condiciones de complementariedad de Karush-Kuhn-Tucker (KKT) en problemas de optimización bilevel. A diferencia del método Big-M, SOS1 no requiere la determinación de parámetros adicionales, lo que lo hace particularmente atractivo en la práctica.
+
+La reformulación SOS1 transforma una condición de complementariedad en una restricción que especifica que, como máximo, una variable en un conjunto puede tener un valor diferente de cero. Para una condición de complementariedad $y_i(A_ix + b_i + D_iz) = 0$, la reformulación SOS1 se expresa como:
+
+\[ [y_i ; A_ix + b_i + D_iz] \in \text{SOS1} \]
+
+Esta formulación está disponible en muchos solucionadores MILP modernos y ha demostrado un rendimiento competitivo \cite{BilevelJump}.
+
+\subsection{Método ProductMode}
+
+El método ProductMode representa un enfoque directo para manejar las condiciones de complementariedad en su forma de producto original. Este método es particularmente útil cuando se trabaja con solucionadores de programación no lineal (NLP), aunque no garantiza la optimalidad global.
+
+La implementación del ProductMode mantiene la restricción de complementariedad en su forma original:
+
+\[ y_i(A_ix + b_i + D_iz) \leq t \]
+
+donde $t$ es un parámetro de regularización pequeño. Esta formulación, aunque no satisface las condiciones de calificación de restricciones estándar, es útil para obtener soluciones iniciales y puede ser especialmente efectiva cuando se combina con solucionadores NLP \cite{BilevelJump}.
+
+\section{Puntos estacionarios en MPECs}
+% Flegel Kanzow Sobre MPECs y los ptos estacionarios
+En el contexto de los MPEC, en \cite{Flegel2003AFJ} se exponen varios tipos de puntos estacionarios que son cruciales para analizar la optimalidad. Un punto \textbf{débilmente estacionario} es aquel que satisface las condiciones básicas de equilibrio, siendo una condición necesaria pero no suficiente para la optimalidad local. La \textbf{C-estacionariedad} es una condición más fuerte, que además requiere que el producto de ciertos multiplicadores de Lagrange sea no negativo en el conjunto degenerado. A su vez, la \textbf{M-estacionariedad} es aún más restrictiva, ya que exige condiciones específicas sobre los multiplicadores en el conjunto degenerado (que o bien ambos sean positivos, o su producto sea cero). El artículo también introduce el concepto de \textbf{A-estacionariedad}, que surge del enfoque de Fritz John, donde se requiere que al menos uno de los multiplicadores sea no negativo en el conjunto degenerado. Finalmente, un punto es \textbf{fuertemente estacionario} si ambos multiplicadores son no negativos en el conjunto degenerado, siendo esta la condición más restrictiva y que se da bajo ciertas condiciones como MPEC-LICQ o MPEC-SMFCQ. Por ello, estas condiciones forman una jerarquía donde la M-estacionariedad implica la C-estacionariedad y esta a su vez, implica la estacionariedad débil, siendo la estacionariedad fuerte la más restrictiva de todas. \cite{Flegel2003AFJ}.

@@ -1,0 +1,117 @@
+\documentclass[spanish, 12pt]{thesis}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper]{geometry}
+\usepackage[spanish]{babel}
+\usepackage{hyperref}
+\usepackage{csquotes}
+
+% Bibliorafía
+\usepackage[style=apa,sorting=nyt,backend=biber]{biblatex}
+\DeclareLanguageMapping{spanish}{spanish-apa}
+\bibliography{references}
+%
+
+%\usepackage[]{parskip}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[x11names,table]{xcolor} 
+\usepackage{floatrow}
+\usepackage{graphicx}
+\usepackage{amsmath, latexsym, amsfonts, amssymb} 
+\usepackage{booktabs}
+\usepackage{url}
+%\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage{floatrow}
+\usepackage[bf,labelsep=period]{caption}
+\captionsetup{justification = centering}
+\renewcommand{\baselinestretch}{1.5} % interlineado
+\usepackage[bottom]{footmisc}
+
+\usepackage{mathtools}
+\usepackage{optidef}
+
+% Comentarios
+%\usepackage{comment}
+%\usepackage{todonotes}
+%\usepackage{easyReview}
+%
+
+% Python
+\usepackage{listings}
+%\usepackage{listingsutf8}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{myred}{rgb}{0.58,0,0}
+
+
+\lstset{ 
+	backgroundcolor=\color{white},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,  
+	breaklines=true,         
+	captionpos=b,            
+	commentstyle=\color{mygray},   
+	deletekeywords={...},   
+	escapeinside={\%*}{*)},         
+	extendedchars=true,             
+	firstnumber=1,               
+	frame=,	     
+%	identifierstyle=\color{blue},             
+	keepspaces=true,                
+	keywordstyle=\bfseries\color{mygreen},      
+	language=Python,                
+	morekeywords={*, ..., Var, AbstractModel, Param, Set, Obective, Constraint, Complementarity},            
+	numbers=none,   % Posición de los números de línea (none, left, right).                 
+	numbersep=5pt,                   
+	numberstyle=\tiny\color{mygray},
+	rulecolor=\color{blue},        
+	showspaces=false,                
+	showstringspaces=false,          
+	showtabs=false,                
+	stepnumber=1,                    
+	stringstyle=\color{myred},     
+	tabsize=2,	                  
+	title=\lstname                  
+}
+%
+
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\N}{\mathbb{N}} 
+\newcommand{\Z}{\mathbb{Z}} 
+\newcommand{\Lagr}{\mathcal{L}}
+
+
+\begin{document}
+	\frontmatter
+	\include{Title.tex}
+
+	\maketitle
+	
+	\include{Resumen.tex}
+	
+	%\include{Agradecimientos.tex}
+	
+	\tableofcontents
+		
+	\mainmatter
+	\include{Introducción.tex}
+		
+	\include{Preliminares.tex}
+
+	\include{Modelación.tex}
+	%
+	%\include{Experimentación.tex}
+	%
+	%\include{Conclusiones.tex}
+	%
+	\backmatter
+	\printbibliography
+
+\end{document}

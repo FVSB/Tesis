@@ -1,0 +1,70 @@
+\chapter{MODELACIÓN MATEMÁTICA E IMPLEMENTACIÓN}
+
+Dado que por estudios previos (Nombrar )\\
+
+Se tomará transformará el MPEC de la siguiente forma
+
+
+\begin{table}[H]
+    \begin{tabular}{l m{360pt}}
+        $ F(x,y) $              & Función del líder                                                                                                          \\
+        $ G(x,y) $              & Restricciones de desigualdad del líder                                                                                                            \\
+        $ H(x,y) $                 & Restricciones de igualdad del lider                       \\
+        $ f(x,y) $           & Funcion del follower                                                               \\
+        $ V(x,y) $              &  Restricciones de desigualdad del follower  \\
+        $ U(x,y) $     & restricciones de igualdad del follower\\
+        $ V_{j}^{\star} $    & Restriccion de disigualdad del follower activa despues de modificarse el problema            \\
+        $ \alpha  $             & Vector de entrada del problema puede ser el vector nulo  dimension igual que Cant V activas                                                                                                        \\
+        $ \beta $               & Multiplicador asociado al $V_{j}^{\star}$ en el nivel superior          \\
+        $ \lambda $              & Multiplicador asociado al $V_{j}^{\star}$ en el nivel inferior\\
+        $\gamma$                & Valor asociado a cada $V_{j}^{\star}$ con $\alpha=\vec{0}$\\
+    \end{tabular}
+
+    \end{table}
+
+Se propone un generador de problemas prueba que dado un problema de optimización binivel y un punto 
+se pueda conocer la factibilidad de los algoritmos tradicionales en dicho puntos (Explicar lo de los puntos estacionarios y ptos dengenerados )
+Con este se puede conocer para los casos en que $\alpha=0$ y $\alpha>0$ y ver el comportamiento en estos.
+
+
+Para utilizar el m'etodo propuesto debe darse como valores de entrada 
+
+
+Se debe determinar cuales indices activos sus $\lambda = 0$ y cuales son $\lambda>0$ con el fin de poder calcular el valor de $b_j$ el se hará el siguente procedimiento
+
+\begin{table}[H]
+	$\lambda =0$:\\
+	$(\nabla_{y}V_j+b_j)\alpha=0 \quad \forall V_j \in J_0$ \\
+	$\lambda>0$:\\
+	$[(\nabla_{y}V_j+b_j)\alpha]-\gamma_j=0 \quad \forall V_j \in J_0$
+
+
+\end{table}
+
+Despues de realizado el calculo del $b_j$ se procede a modificar su indice activo correspondiente:
+
+\begin{table}[H]
+	$V_{j}^{\star}=V_{j}+(b_j\alpha)$
+\end{table}
+
+Después se realiza las adicciones necesarias de una constante a cada restriccion con el fin de que sea factible el punto seleccionado
+esta suma de constante no modifica las propiedades de convexidad del problema dado que una suma de funciones lineales no afecta.\\
+
+% Decir que se realiza el KKT del nivel inferior
+
+Despues se procede a realizar el KKT del nivel inferior con las modificiaciones anteriores 
+Se plantea las condiciones KKT de las funciones evaluadas en el punto dado:
+\begin{table}[H]
+	$\nabla_{y}f(x,y)+\sum_{j=0}^{|V \in J_0|}(\lambda_j\nabla_{y}V_j(x,y))+\vec{bf}=\vec{0}$
+\caption*{KKT del problema del nivel inferior}
+\end{table}
+
+
+Una vez hallado el KKT del nivel inferior se procede a hallar el KKT del MPEC resultante de este KKT el cual es:
+
+% MPEC all KKT 
+\begin{table}[H]
+	$\nabla_{xy}F(x,y)+\sum_{i=1}^{|G \in J_o|}(\mu_i\nabla_{xy}g(x,y))+[\nabla_{x,y}\nabla_{y}f(x,y)+\sum_{j=1}^{|V \in J_0|}\lambda_j\nabla_{xy}\nabla_{y}V_j(x,y)]+\sum_{j=1}^{|V \in J_0|}(\beta_j\nabla_{xy}V_j(x,y))+\vec{BF}=\vec{0}$
+\caption*{KKT del MPEC}
+\end{table}
+

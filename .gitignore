@@ -3,3 +3,35 @@
 garbage.py
 kk.jl
 kkf.jl
+experiment/plantilla.ipynb
+experiment/plantilla.ipynb
+# Archivos generados por LaTeX
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.idx
+*.ilg
+*.glo
+*.maf
+*.mtc*
+*.run.xml
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Archivos de respaldo y temporales
+*~ 
+*.bak 
+*.swp 
+
+
+# Archivos de configuración de editor (opcional)
+.idea/
+.vscode/
+Readme_me.md

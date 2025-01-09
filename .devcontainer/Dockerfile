@@ -11,12 +11,12 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 # Instalar Julia
-RUN wget https://julialang-s3.julialang.org/bin/linux/aarch64/1.8/julia-1.8.5-linux-aarch64.tar.gz \
-    && tar -xvzf julia-1.8.5-linux-aarch64.tar.gz -C /opt/ \
-    && ln -s /opt/julia-1.8.5/bin/julia /usr/local/bin/julia
+RUN wget https://julialang-s3.julialang.org/bin/linux/aarch64/1.11/julia-1.11.2-linux-aarch64.tar.gz \
+    && tar -xvzf julia-1.11.2-linux-aarch64.tar.gz -C /opt/ \
+    && ln -s /opt/julia-1.11.2/bin/julia /usr/local/bin/julia
 
 # Limpiar archivos temporales
-RUN rm julia-1.8.5-linux-aarch64.tar.gz
+RUN rm julia-1.11.2-linux-aarch64.tar.gz
 
 # Establecer el directorio de trabajo
 WORKDIR /app

@@ -41,16 +41,19 @@ La formulación general de un problema de optimización binivel se expresa matem
 
 \begin{align}
     \min_{x \in X, y} & \quad F(x, y) \tag{1} \\
-    \text{s.t.} & \quad G(x, y) \geq 0 \tag{2} \\
+    \text{s.t.} & \quad G(x, y) \leq 0 \tag{2} \\
     & \quad y \in S(x), \tag{3}
 \end{align}
 Donde $S(x)$ es el conjunto de soluciones óptimas del problema parametrizado por $x$
 \begin{align}
     \min_{y \in Y} & \quad f(x, y) \tag{4} \\
-    \text{s.t.} & \quad g(x, y) \geq 0. \tag{5}
+    \text{s.t.} & \quad V(x, y) \leq 0. \tag{5}
 \end{align}
+Donde $M(x,y)$ es el conjunto de restricciones comunes para ambos niveles
 
-
+Donde $x \in R^{n}$, $y \in R^{m}$,  $F(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,  $g_i \in G(x,y)\| g_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} $, 
+$f(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,  $v_i \in V \| v_i(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,
+$m_i \in M(x,y) \| m_i : f \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$
 
 Los elementos clave en la optimización binivel incluyen las funciones objetivo $F(x, y)$ y $f(x, y)$, que corresponden a los objetivos del líder y del seguidor, respectivamente; las restricciones $G(x, y) \leq 0$ y $H(x, y) = 0$, que deben ser satisfechas por ambas partes; y el conjunto de soluciones del seguidor $S(x)$, el cual representa las soluciones óptimas del nivel inferior en función de las decisiones del líder.
 
@@ -74,16 +77,19 @@ Los elementos clave en la optimización binivel incluyen las funciones objetivo 
 		\[\begin{array}{l}
 			\underset{\substack{x, y, \lambda_i}}{\min} \quad F(x, y)\\
 			s.a \left\{ \begin{array}{l}
-				x \geq 0 \\
-				g(x, y) \geq 0\\
+				
+				g(x, y) \leq 0\\
 				\nabla_{y} f(x, y) + \sum_{i=1}^{|J_{0}|} \nabla_{y} V_i(x, y) \lambda_i = 0 \\
-				V_i(x, y) \geq 0, \quad \forall i \in J_{0} \\
-				V_i(x, y)\lambda_i = 0, \quad \forall i \in J_{0} \\
-				\lambda_i \geq 0, \quad \forall i \in J_{0}\\
+				V_i(x, y) \leq 0 \\
+				V_i(x, y)\lambda_i = 0 \\
+				\lambda_i \geq 0\\
 			\end{array}\right.
 		\end{array}\]
 		\caption*{MPEC resultante}
 		\end{table}
+% Añadir aclaratoria
+Los tres últimos grupos de restricciones expresan que \( v \) y \( \lambda \) están restringidas en signo y que al menos una es 0. Estas condiciones son conocidas como **restricciones de complementariedad**. Estos modelos corresponden a la clase de problemas de programación matemática con restricciones de complementariedad (MPEC). A continuación, presentamos los resultados de esta área necesarios para el desarrollo de esta tesis.
+
 
 % Modelación en Julia
 % Se explica de que va BilevelJump

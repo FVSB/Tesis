@@ -1,22 +1,35 @@
 \chapter{Introducción}
-% Old encabezado
-%La optimización binivel es un tema de investigación crucial en el ámbito de la teoría de juegos y la programación matemática. Este enfoque permite abordar problemas complejos donde las decisiones de un líder afectan directamente a las decisiones de un seguidor, generando interacciones estratégicas esenciales para el análisis en diversos contextos.
-% New encabezado
 % Obtener una garantía de la solución es muy complejo (generalmente es estacionario y con puntos estacionarios).
 La optimización de dos niveles, un área fundamental en la investigación operativa y la teoría de juegos, presenta desafíos significativos debido a su complejidad inherente. Este tipo de problemas se caracteriza por la interacción entre un líder y un seguidor, donde las decisiones del líder afectan las respuestas del seguidor. Uno de los aspectos más críticos de esta problemática es garantizar la existencia de soluciones óptimas, lo cual se ve complicado por la naturaleza no convexa del problema, incluso cuando las funciones y los conjuntos factibles son convexos. A menudo, los algoritmos utilizados en este contexto solo logran identificar puntos estacionarios o críticos, que no necesariamente representan soluciones locales o globales \cite{DempeyZemkoho2020}.
 
 % Definición de problema binivel
-\begin{equation}
-    \begin{aligned}
-    \text{minimizar} & \quad F(x, y) \\
-    \text{sujeto a} & \quad G(x, y) \geq 0 \quad (\text{restricciones de desigualdad}) \\
-    & \quad H(x, y) = 0 \quad (\text{restricciones de igualdad}) \\
-    & \quad y \in S(x) = \arg \min_{y} \{ f(x, y) \mid V(x, y) \geq 0, U(x, y) = 0 \}.
-    \end{aligned}
- \end{equation}
-\linebreak
+%\begin{equation}
+%    \begin{aligned}
+%    \text{minimizar} & \quad F(x, y) \\
+%    \text{sujeto a} & \quad G(x, y) \geq 0 \quad (\text{restricciones de desigualdad}) \\
+%    & \quad H(x, y) = 0 \quad (\text{restricciones de igualdad}) \\
+%    & \quad y \in S(x) = \arg \min_{y} \{ f(x, y) \mid V(x, y) \geq 0, U(x, y) = 0 \}.
+%    \end{aligned}
+% \end{equation}
+
+\begin{table}[H]
+
+    \[\begin{array}{l}
+        \underset{\substack{x}}{\min} \quad F(x, y)\\
+        s.a \left\{ \begin{array}{l}
+            x \in T \\
+             y \in S(x) = \arg  \underset{\substack{y}}{\min} \{ f(x, y) \quad s.a \quad y \in  H \}\\
+            x,y \in M \\
+        \end{array}\right.
+    \end{array}\]\\
+
+
+    \caption*{Problema de Optimización Binivel}
+    \end{table}
+
 % Explicar dimensiones 
-Donde $x \in R^{n}$, $y \in R^{m}$, $F, f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$, $T$ es el conjunto de puntos factibles de $F$
+Donde $x \in R^{n}$, $y \in R^{m}$, $F, f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,  $T , f :\mathbb{R}^{n} \to \mathbb{R}$, 
+$f, f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} $, $H , f: \mathbb{R}^{m} \to \mathbb{R}$, $M , f : f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$
 
 
 % Aplicaciones 

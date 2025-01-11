@@ -1,8 +1,44 @@
 \chapter{Preliminares}
 
-La optimización binivel es un problema de optimización en el cual un subconjunto de variables está restringido a ser la solución óptima de otro problema de optimización, el cual está parametrizado por las variables restantes. Este tipo de problema tiene dos niveles jerárquicos de decisión: el problema de nivel superior o del líder, y el problema de nivel inferior o del seguidor. 
+La optimización binivel es un problema de optimización donde un subconjunto de variables debe ser la solución óptima de otro problema de optimización, parametrizado por las variables restantes. Este problema tiene dos niveles jerárquicos de decisión: el nivel superior (líder) y el nivel inferior (seguidor).
+Este tiene dos características principales: primero, el problema del nivel inferior actúa como una restricción para el nivel superior; segundo, la solución del nivel inferior depende de las variables del nivel superior, creando una interdependencia entre ambos niveles. Por ello, el líder debe anticipar la respuesta óptima del seguidor al tomar decisiones.
 %Explicación breve de binivel
-En términos abstractos, la optimización binivel busca minimizar una función objetivo de nivel superior, $F(x, y)$, donde $x$ son las variables de decisión del líder y $y$ son las variables del seguidor. Esta minimización está sujeta a dos tipos de restricciones: 
+En términos abstractos, la optimización binivel busca minimizar una función objetivo de nivel superior, $F(x, y)$, donde $x$ son las variables de decisión del líder y $y$ son las variables del seguidor. 
+
+La formulación general de un problema de optimización binivel se expresa matemáticamente como:  
+
+% Definición de problema binivel
+\textbf{Optimización bilevel optimista.} Un problema de optimización bilevel optimista, se formula como:
+
+\begin{align}
+    \min_{x \in X, y} & \quad F(x, y) \notag \\
+    \text{s.t.} & \quad g_i(x, y) \leq 0, i=1\ldots q  \notag \\
+    & \quad y \in S(x) \notag\\
+    &\intertext{Donde $S(x)$ es el conjunto de soluciones óptimas del problema parametrizado por $x$} \tag{\theequation}\\
+    \min_{y \in Y} & \quad f(x, y) \notag \\
+    \text{s.t.} & \quad v_i(x, y) \leq 0, i=1\ldots s \notag\\
+    &\text{Definición de un Problema Binivel Optimista} \notag\\
+\label{eq:DefBinivelOptimista} \notag
+\end{align}
+
+Donde $M(x,y)$ es el conjunto de restricciones comunes para ambos niveles
+
+%Dimensiones
+Donde 
+% Dimension de x and y
+$x \in R^{n}$, $y \in R^{m}$, 
+%Dimension de F 
+$F(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,
+%Dimension g_i
+$g_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} $, 
+%Dimension de f_i
+$f(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,
+% Dimension de v_i
+$v_i \in V \| v_i(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,
+%Dimension de v_i
+$m_i \in M(x,y) \| m_i : f \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$
+
+Esta minimización está sujeta a dos tipos de restricciones: 
 %Restricciones explicacion old
 %las restricciones explícitas para el líder, $x \in X$, donde $X$ es el conjunto de valores factibles para las variables del líder; y las restricciones implícitas impuestas por el seguidor, donde $y$ debe pertenecer al conjunto de soluciones óptimas del problema de optimización del seguidor, $\arg\min\{f(x, y) : y \in Y(x)\}$. En este contexto, $f(x, y)$ es la función objetivo del nivel inferior, y $Y(x)$ representa las restricciones del nivel inferior, las cuales pueden depender de las variables de decisión del líder, $x$.
 % Restricciones nuevas
@@ -22,54 +58,11 @@ En términos abstractos, la optimización binivel busca minimizar una función o
 \end{itemize}
 
 
-Un problema de optimización binivel tiene dos características principales: en primer lugar, el problema del nivel inferior actúa como una restricción para el problema del nivel superior, y en segundo lugar, la solución del nivel inferior depende del valor de las variables del nivel superior, creando una interdependencia entre ambos niveles. Por ello, el líder debe anticipar la respuesta óptima del seguidor al tomar sus decisiones.
-
-La formulación general de un problema de optimización binivel se expresa matemáticamente como:  
-
-% Definición de problema binivel
-%\begin{equation}
-%\begin{aligned}
-%\text{minimizar} & \quad F(x, y) \\
-%\text{sujeto a} & \quad G(x, y) \leq 0 \quad (\text{restricciones de desigualdad}) \\
-%& \quad H(x, y) = 0 \quad (\text{restricciones de igualdad}) \\
-%& \quad y \in S(x) = \arg \min_{y} \{ f(x, y) \mid V(x, y) \leq 0, U(x, y) = 0 \}.
-%\end{aligned}
-%\end{equation}
-
-
-\textbf{Optimización bilevel optimista.} Un problema de optimización bilevel optimista, se formula como:
-
-\begin{align}
-    \min_{x \in X, y} & \quad F(x, y) \tag{1} \\
-    \text{s.t.} & \quad G(x, y) \leq 0 \tag{2} \\
-    & \quad y \in S(x), \tag{3}
-\end{align}
-Donde $S(x)$ es el conjunto de soluciones óptimas del problema parametrizado por $x$
-\begin{align}
-    \min_{y \in Y} & \quad f(x, y) \tag{4} \\
-    \text{s.t.} & \quad V(x, y) \leq 0. \tag{5}
-\end{align}
-Donde $M(x,y)$ es el conjunto de restricciones comunes para ambos niveles
-
-Donde $x \in R^{n}$, $y \in R^{m}$,  $F(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,  $g_i \in G(x,y)\| g_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} $, 
-$f(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,  $v_i \in V \| v_i(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,
-$m_i \in M(x,y) \| m_i : f \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$
-
-Los elementos clave en la optimización binivel incluyen las funciones objetivo $F(x, y)$ y $f(x, y)$, que corresponden a los objetivos del líder y del seguidor, respectivamente; las restricciones $G(x, y) \leq 0$ y $H(x, y) = 0$, que deben ser satisfechas por ambas partes; y el conjunto de soluciones del seguidor $S(x)$, el cual representa las soluciones óptimas del nivel inferior en función de las decisiones del líder.
-
 \section{Transformación de los problemas de dos niveles}
 		
 		Los problemas de dos niveles pueden ser reformulados en un problema de un solo nivel al reemplazar el problema del nivel inferior por las condiciones KKT de este en las restricciones del primer nivel. 
 		
 		Para el caso de los SLSMG donde se tiene un problema de optimización en el nivel inferior este sustituye por de las condiciones KKT de este, obteniendo un MPEC \autocite{aussel2020}.
-		
-        \begin{table}
-				Nota:
-        	\begin{itemize}
-        	    \item Sea $ J_0^v=\{j | V_i(x,y)=0\}$ al conjunto restricciones de desigualdad que sean índices activos
-			
-        	\end{itemize}
-		\end{table}
         
 % Descripcion del modelo en KKT
 		\begin{table}[H]
@@ -84,11 +77,85 @@ Los elementos clave en la optimización binivel incluyen las funciones objetivo 
 				V_i(x, y)\lambda_i = 0 \\
 				\lambda_i \geq 0\\
 			\end{array}\right.
+            \tag{\theequation}
 		\end{array}\]
+        \label{eq:KKT_Optimista}
 		\caption*{MPEC resultante}
 		\end{table}
 % Añadir aclaratoria
-Los tres últimos grupos de restricciones expresan que \( v \) y \( \lambda \) están restringidas en signo y que al menos una es 0. Estas condiciones son conocidas como **restricciones de complementariedad**. Estos modelos corresponden a la clase de problemas de programación matemática con restricciones de complementariedad (MPEC). A continuación, presentamos los resultados de esta área necesarios para el desarrollo de esta tesis.
+Los tres últimos grupos de restricciones expresan que $v$ y $\lambda$ están restringidas en signo y que al menos una es 0. Estas condiciones son conocidas como \textbf{restricciones de complementariedad}. Estos modelos corresponden a la clase de problemas de programación matemática con restricciones de complementariedad (MPEC). A continuación, presentamos los resultados de esta área necesarios para el desarrollo de esta tesis.
+
+\section{Sobre los Programas Matemáticos con Restricciones de Equilibrio (MPEC)}
+%Aca va la sección que explica los MPEC
+% Que es un MPEC
+Un \textbf{Programa Matemático con Restricciones de Equilibrio (MPEC)} es un tipo de programa no lineal que incluye restricciones de equilibrio, específicamente, restricciones de complementariedad.
+
+%Formula MPEC Generico
+\begin{equation}
+\begin{aligned}
+\min \quad & f(z) \notag \\
+\text{s.t.} \quad & g(z) \leq 0, \quad h(z) = 0 \\
+& G(z) \geq 0, \quad H(z) \geq 0, \quad G(z)^T H(z) = 0 \notag\\
+&\text{Definición de MPEC} \notag\\
+\end{aligned}  
+\tag{\theequation} 
+\label{eq:DefMpec}
+\end{equation}
+
+%Dimensiones MPEC Generico
+donde $f: \mathbb{R}^n \to \mathbb{R}$, $g: \mathbb{R}^n \to \mathbb{R}^m$, $h: \mathbb{R}^n \to \mathbb{R}^p$, $G: \mathbb{R}^n \to \mathbb{R}^\ell$, y $H: \mathbb{R}^n \to \mathbb{R}^\ell$ son funciones continuamente diferenciables. Debido al término de complementariedad en las restricciones, los programas de este tipo son algunas veces referidos como programas matemáticos
+
+Estas restricciones de complementariedad se expresan como: 
+
+%Ecuacion para poner que son las restricciones de complementariedad
+\begin{equation}
+    G(z) \geq 0, \quad H(z) \geq 0, \quad \text{y} \quad G(z)^T H(z) = 0 \label{eq:RestriccionesComplementariedadAbstracto}
+\end{equation}
+
+Los MPEC incluyen restricciones donde el producto de dos funciones (\textit{G} y \textit{H}) debe ser cero, y ambas funciones deben ser no negativas. Esto se conoce como restricción de complementariedad. Debido a las restricciones de complementariedad, los MPEC no cumplen con las condiciones de regularidad estándar, lo que hace que las condiciones de KKT no sean directamente aplicables como condiciones de optimalidad de primer orden. Los MPEC son utilizados para modelar problemas donde existen restricciones de equilibrio, como problemas de ingeniería y economía.
+
+%Definicion de los puntos estacionarios del MPEC
+% Flegel and Kanzow 2003
+En el contexto de los MPEC en \cite{Flegel2003AFJ} se exponen varios tipos de puntos estacionarios que son cruciales para analizar la optimalidad, los cuales son los siguientes:
+\begin{definition}[Punto Factible]
+    Un \textit{punto factible} $z$ del MPEC se llama débilmente estacionario si existe un multiplicador de Lagrange $\lambda = (\lambda^g, \lambda^h, \lambda^G, \lambda^H)$ tal que se cumplen las siguientes condiciones:
+\end{definition}
+
+\begin{align}
+& \nabla f(z) + \sum_{i=1}^m \lambda_i^g\nabla g_i(z) + \sum_{i=1}^p \lambda_i^h\nabla h_i(z) - \sum_{i=1}^{\ell} [\lambda_i^G\nabla G_i(z) + \lambda_i^H\nabla H_i(z)] = \vec{0} \notag\\
+\tag{\theequation} \\
+    & \quad \begin{aligned}
+        & \lambda_\alpha^G \text{ libre}, \quad \lambda_\beta^G \text{ libre}, \quad \lambda_\gamma^G = 0, \\
+        & \lambda_\gamma^H \text{ libre}, \quad \lambda_\beta^H \text{ libre}, \quad \lambda_\alpha^H = 0, \\
+        & g(z) \leq 0, \quad \lambda^g \geq 0, \quad (\lambda^g)^T g(z) = 0.
+    \end{aligned} \notag
+\end{align}
+% Definicion de puntos estacionarios
+Este concepto de estacionariedad, sin embargo, es una condición relativamente débil. Existen conceptos más fuertes de estacionariedad que se derivan y estudian en otros lugares. En particular, un punto factible $z$ con el correspondiente multiplicador de Lagrange $\lambda = (\lambda^g, \lambda^h, \lambda^G, \lambda^H)$ se llama:
+
+\begin{itemize}
+% C-estacionario
+\item \begin{definition}[Punto C-estacionario]
+  El punto Z es: \textit{C-estacionario} si, para cada $i \in \beta$, $\lambda_i^G\lambda_i^H \geq 0$ se cumple;
+\end{definition}
+%M-Estacionario
+\item \begin{definition}[Punto M-estacionario]
+    El punto Z es: \textit{M-estacionario} si, para cada $i \in \beta$, o bien $\lambda_i^G,\lambda_i^H > 0$ $\vee$ $\lambda_i^G \lambda_i^H = 0$
+\end{definition}
+%Fuertemente estacionario
+\item \begin{definition}[Punto Fuertemente estacionario]
+    El punto Z es: \textit{fuertemente estacionario} o \textit{estacionario primal-dual} si, para cada $i \in \beta$, $\lambda_i^G, \lambda_i^H \geq 0$.
+\end{definition}
+% A-estacionario
+\item \begin{definition}[Punto A-estacionario]
+   Sea $z^*$ un punto débilmente estacionario del MPEC \ref{eq:DefMpec} será \textit{A-estacionario} si existe un multiplicador de Lagrange correspondiente $\lambda^*$ tal que:
+\begin{equation}
+(\lambda_i^G)^* \geq 0 \quad \vee \quad (\lambda_i^H)^* \geq 0 \quad \forall i \in \beta \notag
+\end{equation}
+\end{definition}
+\end{itemize}
+
+Por ello, estas condiciones forman una jerarquía donde la M-estacionariedad implica la C-estacionariedad y esta a su vez, implica la estacionariedad débil, siendo la estacionariedad fuerte la más restrictiva de todas \cite{Flegel2003AFJ}.
 
 
 % Modelación en Julia
@@ -98,6 +165,7 @@ Los tres últimos grupos de restricciones expresan que \( v \) y \( \lambda \) e
 BilevelJuMP.jl es un paquete de Julia diseñado para modelar y resolver problemas de \textbf{optimización bilevel}, también conocidos como problemas de optimización de dos niveles o jerárquica. Estos problemas se caracterizan por tener dos niveles de decisión: un nivel superior y un nivel inferior, donde las decisiones del nivel superior influyen en las decisiones del nivel inferior, y viceversa \cite{BilevelJump}.
 % Que problemas resuelve
 Este paquete permite abordar una amplia variedad de tipos de problemas, incluyendo:
+% Añadir explicacion MPEC
 
 \begin{itemize}
     \item \textbf{Problemas de optimización bilevel generales:} BilevelJuMP.jl facilita la modelación de problemas que pueden representarse en la sintaxis de JuMP, ver documentación en \cite{JuMPPaper}, incluyendo restricciones lineales y no lineales, variables continuas y enteras, y diferentes tipos de objetivos.
@@ -120,9 +188,9 @@ Este paquete permite abordar una amplia variedad de tipos de problemas, incluyen
 A pesar de sus capacidades, BilevelJuMP.jl presenta algunas limitaciones, entre las cuales se encuentran:
 
 \begin{itemize}
-    \item Puede enfrentar dificultades en problemas altamente no lineales o con estructuras de optimización complejas que no se puedan representar adecuadamente en la sintaxis de JuMP.
-    \item Existen ciertas restricciones que podrían no ser compatibles o que requieren transformaciones adicionales que podrían complicar el modelo.
-    \item La eficiencia del paquete puede verse afectada en problemas de gran escala, donde el rendimiento del solver puede ser un factor crítico.
+    \item Enfrentar dificultades en problemas altamente no lineales o con estructuras de optimización complejas que no se puedan representar adecuadamente en la sintaxis de JuMP.
+    \item Existencia de ciertas restricciones que podrían no ser compatibles o que requieren transformaciones adicionales que podrían complicar el modelo.
+    \item El problema es de gran escala afectando el rendimiento del solver puede ser un factor crítico.
     \item La formulación y resolución de problemas muy específicos o especializados podrían no estar completamente optimizadas en el paquete.
 \end{itemize}
 
@@ -134,7 +202,7 @@ La optimización bilevel presenta desafíos particulares debido a su naturaleza 
 
 \subsection{Método Big-M}
 
-El método Big-M es una técnica fundamental para reformular problemas de optimización bilevel en problemas de programación matemática con restricciones de equilibrio (MPEC). Este método aborda específicamente las condiciones de complementariedad que surgen en estas reformulaciones, transformando el problema original en un problema de programación lineal mixta entera (MILP).
+El método Big-M es una técnica fundamental para reformular problemas de optimización bilevel en problemas MPEC, donde $V$ y $U$ son lineales afines. Este método aborda específicamente las condiciones de complementariedad que surgen en estas reformulaciones, transformando el problema original en un problema de programación lineal mixta entera (MILP).
 
 La reformulación mediante Big-M introduce un parámetro M suficientemente grande y variables binarias para transformar las condiciones de complementariedad no lineales en restricciones lineales. Para una condición de complementariedad de la forma $y_i(A_ix + b_i + D_iz) = 0$, el método introduce una variable binaria $f$ y las siguientes restricciones:
 
@@ -166,6 +234,4 @@ La implementación del ProductMode mantiene la restricción de complementariedad
 
 donde $t$ es un parámetro de regularización pequeño. Esta formulación, aunque no satisface las condiciones de calificación de restricciones estándar, es útil para obtener soluciones iniciales y puede ser especialmente efectiva cuando se combina con solucionadores NLP \cite{BilevelJump}.
 
-\section{Puntos estacionarios en MPECs}
-% Flegel Kanzow Sobre MPECs y los ptos estacionarios
-En el contexto de los MPEC, en \cite{Flegel2003AFJ} se exponen varios tipos de puntos estacionarios que son cruciales para analizar la optimalidad. Un punto \textbf{débilmente estacionario} es aquel que satisface las condiciones básicas de equilibrio, siendo una condición necesaria pero no suficiente para la optimalidad local. La \textbf{C-estacionariedad} es una condición más fuerte, que además requiere que el producto de ciertos multiplicadores de Lagrange sea no negativo en el conjunto degenerado. A su vez, la \textbf{M-estacionariedad} es aún más restrictiva, ya que exige condiciones específicas sobre los multiplicadores en el conjunto degenerado (que o bien ambos sean positivos, o su producto sea cero). El artículo también introduce el concepto de \textbf{A-estacionariedad}, que surge del enfoque de Fritz John, donde se requiere que al menos uno de los multiplicadores sea no negativo en el conjunto degenerado. Finalmente, un punto es \textbf{fuertemente estacionario} si ambos multiplicadores son no negativos en el conjunto degenerado, siendo esta la condición más restrictiva y que se da bajo ciertas condiciones como MPEC-LICQ o MPEC-SMFCQ. Por ello, estas condiciones forman una jerarquía donde la M-estacionariedad implica la C-estacionariedad y esta a su vez, implica la estacionariedad débil, siendo la estacionariedad fuerte la más restrictiva de todas. \cite{Flegel2003AFJ}.
+

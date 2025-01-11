@@ -3096,14 +3096,14 @@
     <bcf:citekey order="30" intorder="1">Allende2012SolvingBP</bcf:citekey>
     <bcf:citekey order="31" intorder="1">Flegel2003AFJ</bcf:citekey>
     <bcf:citekey order="32" intorder="1">aussel2020</bcf:citekey>
-    <bcf:citekey order="33" intorder="1">BilevelJump</bcf:citekey>
-    <bcf:citekey order="34" intorder="1">JuMPPaper</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">Flegel2003AFJ</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">Flegel2003AFJ</bcf:citekey>
     <bcf:citekey order="35" intorder="1">BilevelJump</bcf:citekey>
-    <bcf:citekey order="36" intorder="1">BilevelJump</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">JuMPPaper</bcf:citekey>
     <bcf:citekey order="37" intorder="1">BilevelJump</bcf:citekey>
     <bcf:citekey order="38" intorder="1">BilevelJump</bcf:citekey>
-    <bcf:citekey order="39" intorder="1">Flegel2003AFJ</bcf:citekey>
-    <bcf:citekey order="40" intorder="1">Flegel2003AFJ</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">BilevelJump</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">BilevelJump</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

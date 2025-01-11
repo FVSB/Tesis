@@ -86,7 +86,12 @@
 \newcommand{\N}{\mathbb{N}} 
 \newcommand{\Z}{\mathbb{Z}} 
 \newcommand{\Lagr}{\mathcal{L}}
-
+% Pone automatico los numeros de las ecuaciones
+\numberwithin{equation}{section}
+% Definir un nuevo entorno para teoremas 
+\newtheorem{theorem}{\textbf{Teorema}}
+% Definir un nuevo entorno para las definiciones 
+\newtheorem{definition}{\textbf{Definición}}
 
 \begin{document}
 	\frontmatter
@@ -105,7 +110,7 @@
 		
 	\include{Preliminares.tex}
 
-	\include{Modelación.tex}
+	%\include{Modelación.tex}
 	%
 	%\include{Experimentación.tex}
 	%

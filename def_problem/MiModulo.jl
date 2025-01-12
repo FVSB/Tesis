@@ -94,8 +94,12 @@ function FollowerRestrictionsConvert(model::OptimizationModel)
     return temp
 end
 
+"""
+Dado un problema y un punto genera el nuevo problema donde el punto es estacionario de la clase 
+dependiente de los multiplicadores
 
-function CreateProblem(model::OptimizationModel)
+"""
+function CreateProblem(model::OptimizationModel)::Tuple{Optimization_Problem,Vector{Number}}
     leader_obj_str::String = Num_to_String(model.leader_problem.expr)
     leader_restrictions::Vector{Def_Restriction} = LeaderRestriccionConvert(model)
     leader_vars::Vector{Symbolics.Num} = model.leader_problem.vars

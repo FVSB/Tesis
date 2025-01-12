@@ -1,11 +1,9 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\numberline {1.}Introducción}{1}{chapter.1}%
 \contentsline {chapter}{\numberline {2.}Preliminares}{10}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Transformación de los problemas de dos niveles}{12}{section.2.1}%
+\contentsline {section}{\numberline {2.1}Optimización bilevel Optimista}{10}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Transformación de los problemas de dos niveles}{12}{subsection.2.1.1}%
 \contentsline {section}{\numberline {2.2}Sobre los Programas Matemáticos con Restricciones de Equilibrio (MPEC)}{13}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Modelación en Julia}{15}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Limitaciones del BilevelJuMP.jl}{16}{subsection.2.3.1}%
-\contentsline {section}{\numberline {2.4}Métodos de Reformulación para Optimización Bilevel}{17}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Método Big-M}{17}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Método SOS1}{18}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Método ProductMode}{18}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.2.1}Resultados sobre MPECs}{14}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.3}Modelación en Julia}{16}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Limitaciones del BilevelJuMP.jl}{18}{subsection.2.3.1}%

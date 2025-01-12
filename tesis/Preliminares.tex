@@ -5,10 +5,12 @@ Este tiene dos características principales: primero, el problema del nivel infe
 %Explicación breve de binivel
 En términos abstractos, la optimización binivel busca minimizar una función objetivo de nivel superior, $F(x, y)$, donde $x$ son las variables de decisión del líder y $y$ son las variables del seguidor. 
 
-La formulación general de un problema de optimización binivel se expresa matemáticamente como:  
+\section{Optimización bilevel Optimista}
+%Intro de la sección
+Dado que en la tesis trataremos sobre problemas binivel de enfoque optimista mostraremos algunos conocimientos de este.
 
 % Definición de problema binivel
-\textbf{Optimización bilevel optimista.} Un problema de optimización bilevel optimista, se formula como:
+\textbf{Optimización Bilevel Optimista.} Un problema de optimización bilevel optimista, se formula como:
 
 \begin{align}
     \min_{x \in X, y} & \quad F(x, y) \notag \\
@@ -54,11 +56,12 @@ Esta minimización está sujeta a dos tipos de restricciones:
         \item En este contexto, $f(x, y)$ es la función objetivo del seguidor, $Y(x)$ representa las restricciones del nivel inferior, las cuales pueden depender de las variables de decisión del líder, $x$.
     \end{itemize}
 	\item Tambien se puede asumir que ambas variables tienen restricciones conjuntas, o sea que $(x,y) \in M^0$
-	 
+	 % Hablar sobre el enfoque optimista
+    \item En el caso del enfoque optimista si para el nivel inferior existen más de una $y \in Y$; sean óptimo este tomará la que más beneficie al nivel superior. 
 \end{itemize}
 
 
-\section{Transformación de los problemas de dos niveles}
+\subsection{Transformación de los problemas de dos niveles}
 		
 		Los problemas de dos niveles pueden ser reformulados en un problema de un solo nivel al reemplazar el problema del nivel inferior por las condiciones KKT de este en las restricciones del primer nivel. 
 		
@@ -114,22 +117,25 @@ Estas restricciones de complementariedad se expresan como:
 
 Los MPEC incluyen restricciones donde el producto de dos funciones (\textit{G} y \textit{H}) debe ser cero, y ambas funciones deben ser no negativas. Esto se conoce como restricción de complementariedad. Debido a las restricciones de complementariedad, los MPEC no cumplen con las condiciones de regularidad estándar, lo que hace que las condiciones de KKT no sean directamente aplicables como condiciones de optimalidad de primer orden. Los MPEC son utilizados para modelar problemas donde existen restricciones de equilibrio, como problemas de ingeniería y economía.
 
+\subsection{Resultados sobre MPECs}
+
 %Definicion de los puntos estacionarios del MPEC
 % Flegel and Kanzow 2003
 En el contexto de los MPEC en \cite{Flegel2003AFJ} se exponen varios tipos de puntos estacionarios que son cruciales para analizar la optimalidad, los cuales son los siguientes:
 \begin{definition}[Punto Factible]
     Un \textit{punto factible} $z$ del MPEC se llama débilmente estacionario si existe un multiplicador de Lagrange $\lambda = (\lambda^g, \lambda^h, \lambda^G, \lambda^H)$ tal que se cumplen las siguientes condiciones:
-\end{definition}
-
+    
 \begin{align}
 & \nabla f(z) + \sum_{i=1}^m \lambda_i^g\nabla g_i(z) + \sum_{i=1}^p \lambda_i^h\nabla h_i(z) - \sum_{i=1}^{\ell} [\lambda_i^G\nabla G_i(z) + \lambda_i^H\nabla H_i(z)] = \vec{0} \notag\\
-\tag{\theequation} \\
     & \quad \begin{aligned}
         & \lambda_\alpha^G \text{ libre}, \quad \lambda_\beta^G \text{ libre}, \quad \lambda_\gamma^G = 0, \\
         & \lambda_\gamma^H \text{ libre}, \quad \lambda_\beta^H \text{ libre}, \quad \lambda_\alpha^H = 0, \\
         & g(z) \leq 0, \quad \lambda^g \geq 0, \quad (\lambda^g)^T g(z) = 0.
-    \end{aligned} \notag
+    \end{aligned} \\
+& \label{eq:Definicion_punto_debilemente_estacionario} \notag
 \end{align}
+\end{definition}
+
 % Definicion de puntos estacionarios
 Este concepto de estacionariedad, sin embargo, es una condición relativamente débil. Existen conceptos más fuertes de estacionariedad que se derivan y estudian en otros lugares. En particular, un punto factible $z$ con el correspondiente multiplicador de Lagrange $\lambda = (\lambda^g, \lambda^h, \lambda^G, \lambda^H)$ se llama:
 
@@ -148,15 +154,56 @@ Este concepto de estacionariedad, sin embargo, es una condición relativamente d
 \end{definition}
 % A-estacionario
 \item \begin{definition}[Punto A-estacionario]
-   Sea $z^*$ un punto débilmente estacionario del MPEC \ref{eq:DefMpec} será \textit{A-estacionario} si existe un multiplicador de Lagrange correspondiente $\lambda^*$ tal que:
+   Sea $z^*$ un punto débilmente estacionario del MPEC \eqref{eq:DefMpec} será \textit{A-estacionario} si existe un multiplicador de Lagrange correspondiente $\lambda^*$ tal que:
 \begin{equation}
 (\lambda_i^G)^* \geq 0 \quad \vee \quad (\lambda_i^H)^* \geq 0 \quad \forall i \in \beta \notag
 \end{equation}
 \end{definition}
 \end{itemize}
+%Notación de los indices activos del documento
+A continuación como en \cite{Flegel2003AFJ} vamos a  introducir alguna notación. Dado un vector factible $z^*$ del MPEC \eqref{eq:DefMpec}, definimos los siguientes conjuntos de índices:
+\begin{equation}
+\begin{aligned}
+\alpha &:= \alpha(z^*) := \{i|G_i(z^*) = 0, H_i(z^*) > 0\} \\
+\beta &:= \beta(z^*) := \{i|G_i(z^*) = 0, H_i(z^*) = 0\}  \\
+\gamma &:= \gamma(z^*) := \{i|G_i(z^*) > 0, H_i(z^*) = 0\}  \\
+\end{aligned}
+\label{eq:ConjuntoDeIndices} 
+\end{equation}
 
-Por ello, estas condiciones forman una jerarquía donde la M-estacionariedad implica la C-estacionariedad y esta a su vez, implica la estacionariedad débil, siendo la estacionariedad fuerte la más restrictiva de todas \cite{Flegel2003AFJ}.
 
+% Definicion de TNLP Problema No Lineal Ajustado
+Para definir calificaciones de restricción alteradas, introducimos el siguiente problema, dependiente de $z^*$:
+
+\begin{definition}[Programa No Lineal Ajustado (TNLP)]
+
+Un \textit{Programa No Lineal Ajustado $TNLP := TNLP(z^*)$} es:
+\begin{equation}
+\begin{aligned} 
+\min \quad & f(z) \\
+\text{s.t.} \quad & g(z) \leq 0 \quad h(z) = 0  \\
+& G_{\alpha \cup \beta}(z) = 0 \quad G_{\gamma}(z) \geq 0  \\
+& H_{\alpha}(z) \geq 0 \quad H_{\gamma \cup \beta}(z) = 0  \\
+& \text{Problema No Lineal Ajustado (TNLP)}  
+\end{aligned}
+\label{eq:ProblemaAbstractoTNLP}
+\end{equation}
+    
+\end{definition}
+
+El TNLP \eqref{eq:ProblemaAbstractoTNLP} puede ahora ser usado para definir variantes MPEC adecuadas de las calificaciones de restricción estándar de independencia lineal, Mangasarian-Fromovitz y Mangasarian-Fromovitz estricta (LICQ, MFCQ, y SMFCQ en su forma abreviada).
+
+\begin{definition}[MPEC-LICQ]
+El MPEC \eqref{eq:DefMpec} se dice que satisface la \textit{MPEC-LICQ} (MPEC-MFCQ, MPEC-SMFCQ) en un vector factible $z^*$ si el correspondiente TNLP$(z^*)$ satisface la LICQ (MFCQ, SMFCQ) en ese vector $z^*$.
+\end{definition}
+    
+% Hacer notar que un minimizador de z^* implica la existrencia de \lambda^* ....
+En este punto, es importante notar que bajo MPEC-MFCQ, un minimizador local $z^*$ del MPEC \eqref{eq:DefMpec} implica la existencia de un multiplicador de Lagrange $\lambda^*$ tal que $(z^*, \lambda^*)$ satisface las condiciones KKT para el programa \eqref{eq:ProblemaAbstractoTNLP}. Por lo tanto, si asumimos que MPEC-MFCQ se cumple para un minimizador local $z^*$ del MPEC \eqref{eq:DefMpec}, podemos usar cualquier multiplicador de Lagrange $\lambda^*$ (que ahora sabemos que existe) para definir el MPEC-SMFCQ, es decir, tomando $(z^*, \lambda^*)$.
+
+% Teorema que si z^* es min local del MPEC Si se cumpke la LICQ entonces existe .....
+\begin{theorem} 
+Sea $z^* \in \mathbb{R}^n$ un minimizador local del MPEC \eqref{eq:DefMpec}. Si MPEC-LICQ se cumple en $z^*$, entonces existe un único multiplicador de Lagrange $\lambda^*$ tal que $(z^*, \lambda^*)$ es \textit{fuertemente estacionario}.
+\end{theorem}
 
 % Modelación en Julia
 % Se explica de que va BilevelJump
@@ -196,42 +243,43 @@ A pesar de sus capacidades, BilevelJuMP.jl presenta algunas limitaciones, entre 
 
 
 % Explicacion algoritmos 
-\section{Métodos de Reformulación para Optimización Bilevel}
-
-La optimización bilevel presenta desafíos particulares debido a su naturaleza jerárquica y las condiciones de complementariedad resultantes. A continuación, se presentan los principales métodos de reformulación implementados en la literatura \cite{BilevelJump}.
-
-\subsection{Método Big-M}
-
-El método Big-M es una técnica fundamental para reformular problemas de optimización bilevel en problemas MPEC, donde $V$ y $U$ son lineales afines. Este método aborda específicamente las condiciones de complementariedad que surgen en estas reformulaciones, transformando el problema original en un problema de programación lineal mixta entera (MILP).
-
-La reformulación mediante Big-M introduce un parámetro M suficientemente grande y variables binarias para transformar las condiciones de complementariedad no lineales en restricciones lineales. Para una condición de complementariedad de la forma $y_i(A_ix + b_i + D_iz) = 0$, el método introduce una variable binaria $f$ y las siguientes restricciones:
-
-\begin{align*}
-A_ix + b_i + D_iz &\leq M_p f \\
-y_i &\leq M_d(1 - f) \\
-f &\in \{0,1\}
-\end{align*}
-
-donde $M_p$ y $M_d$ son valores grandes para las variables primales y duales, respectivamente. La efectividad del método depende crucialmente de la selección apropiada de estos valores, que deben ser suficientemente grandes para no excluir la solución óptima, pero no excesivamente grandes para evitar inestabilidades numéricas \cite{BilevelJump}.
-
-\subsection{Método SOS1}
-
-El método de Conjuntos Ordenados Especiales de tipo 1 (SOS1) representa una alternativa más robusta para reformular las condiciones de complementariedad de Karush-Kuhn-Tucker (KKT) en problemas de optimización bilevel. A diferencia del método Big-M, SOS1 no requiere la determinación de parámetros adicionales, lo que lo hace particularmente atractivo en la práctica.
-
-La reformulación SOS1 transforma una condición de complementariedad en una restricción que especifica que, como máximo, una variable en un conjunto puede tener un valor diferente de cero. Para una condición de complementariedad $y_i(A_ix + b_i + D_iz) = 0$, la reformulación SOS1 se expresa como:
-
-\[ [y_i ; A_ix + b_i + D_iz] \in \text{SOS1} \]
-
-Esta formulación está disponible en muchos solucionadores MILP modernos y ha demostrado un rendimiento competitivo \cite{BilevelJump}.
-
-\subsection{Método ProductMode}
-
-El método ProductMode representa un enfoque directo para manejar las condiciones de complementariedad en su forma de producto original. Este método es particularmente útil cuando se trabaja con solucionadores de programación no lineal (NLP), aunque no garantiza la optimalidad global.
-
-La implementación del ProductMode mantiene la restricción de complementariedad en su forma original:
-
-\[ y_i(A_ix + b_i + D_iz) \leq t \]
-
-donde $t$ es un parámetro de regularización pequeño. Esta formulación, aunque no satisface las condiciones de calificación de restricciones estándar, es útil para obtener soluciones iniciales y puede ser especialmente efectiva cuando se combina con solucionadores NLP \cite{BilevelJump}.
-
-
+%\section{Métodos de Reformulación para Optimización Bilevel}
+%
+%La optimización bilevel presenta desafíos particulares debido a su naturaleza jerárquica y las condiciones de complementariedad resultantes. A continuación, se presentan los principales métodos de reformulación implementados en la literatura \cite{BilevelJump}.
+%
+%\subsection{Método Big-M}
+%
+%El método Big-M es una técnica fundamental para reformular problemas de optimización bilevel en problemas MPEC, donde $V$ y $U$ son lineales afines. Este método aborda específicamente las condiciones de complementariedad que surgen en estas reformulaciones, transformando el problema original en un problema de programación lineal mixta entera (MILP).
+%
+%La reformulación mediante Big-M introduce un parámetro M suficientemente grande y variables binarias para transformar las condiciones de complementariedad no lineales en restricciones lineales. Para una condición de complementariedad de la forma $y_i(A_ix + b_i + D_iz) = 0$, el método introduce una variable binaria $f$ y las siguientes restricciones:
+%
+%\begin{align*}
+%A_ix + b_i + D_iz &\leq M_p f \\
+%y_i &\leq M_d(1 - f) \\
+%f &\in \{0,1\}
+%\end{align*}
+%
+%donde $M_p$ y $M_d$ son valores grandes para las variables primales y duales, respectivamente. La efectividad del método depende crucialmente de la selección apropiada de estos valores, que deben ser suficientemente grandes para no excluir la solución óptima, pero no excesivamente grandes para evitar inestabilidades numéricas \cite{BilevelJump}.
+%
+%\subsection{Método SOS1}
+%
+%El método de Conjuntos Ordenados Especiales de tipo 1 (SOS1) representa una alternativa más robusta para reformular las condiciones de complementariedad de Karush-Kuhn-Tucker (KKT) en problemas de optimización bilevel. A diferencia del método Big-M, SOS1 no requiere la determinación de parámetros adicionales, lo que lo hace particularmente atractivo en la práctica.
+%
+%La reformulación SOS1 transforma una condición de complementariedad en una restricción que especifica que, como máximo, una variable en un conjunto puede tener un valor diferente de cero. Para una condición de complementariedad $y_i(A_ix + b_i + D_iz) = 0$, la reformulación SOS1 se expresa como:
+%
+%\[ [y_i ; A_ix + b_i + D_iz] \in \text{SOS1} \]
+%
+%Esta formulación está disponible en muchos solucionadores MILP modernos y ha demostrado un rendimiento competitivo \cite{BilevelJump}.
+%
+%\subsection{Método ProductMode}
+%
+%El método ProductMode representa un enfoque directo para manejar las condiciones de complementariedad en su forma de producto original. Este método es particularmente útil cuando se trabaja con solucionadores de programación no lineal (NLP), aunque no garantiza la optimalidad global.
+%
+%La implementación del ProductMode mantiene la restricción de complementariedad en su forma original:
+%
+%\[ y_i(A_ix + b_i + D_iz) \leq t \]
+%
+%donde $t$ es un parámetro de regularización pequeño. Esta formulación, aunque no satisface las condiciones de calificación de restricciones estándar, es útil para obtener soluciones iniciales y puede ser especialmente efectiva cuando se combina con solucionadores NLP \cite{BilevelJump}.
+%
+%
+%

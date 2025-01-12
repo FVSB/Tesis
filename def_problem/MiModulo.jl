@@ -67,7 +67,7 @@ end
 function LeaderRestriccionConvert(model::OptimizationModel)
     # Verificar si el vector esta vacio para devolver nothing
     if isempty(model.leaders_restriction)
-        return nothing
+        return Vector{Def_Restriction}()
     end
     temp::Vector{Def_Restriction} = Def_Restriction[]
     for restriction::LeaderRestrictionProblem in model.leaders_restriction
@@ -82,7 +82,7 @@ end
 function FollowerRestrictionsConvert(model::OptimizationModel)
     # Verificar si el vector esta vacio para devolver nothing
     if isempty(model.follower_restriction_problem)
-        return nothing
+        return Vector{Def_Restriction}()
     end
     temp::Vector{Def_Restriction} = Def_Restriction[]
     for restriction::FollowerRestrictionProblem in model.follower_restriction_problem
@@ -109,6 +109,9 @@ function CreateProblem(model::OptimizationModel)
 
     opt_problem = Fix_Restrictions(leader_obj_str, leader_restrictions, follower_obj_str, follower_restrictions, point, leader_vars, follower_vars, _alpha, is_alpha_null)
     println(opt_problem)
+    if is_alpha_null
+        _alpha=zeros(length(follower_vars))
+    end
     BF_Vector = Make_BF(opt_problem, leader_vars, follower_vars, _alpha)
     println(BF_Vector)
 
@@ -120,13 +123,3 @@ end
 #export myvariables,OptimizationModel,Problem,GeneratorModel  # Exportar la macro para que sea accesible fuera del módulo
 
 #end
-
-#model=GeneratorModel()
-#z=Lower(model)
-#println(typeof(z))
-#println(z.vars)
-#@myvariables z s
-#
-#println(z)
-#println(s)
-#println(typeof(z.vars[1]))

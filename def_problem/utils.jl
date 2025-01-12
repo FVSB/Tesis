@@ -13,7 +13,10 @@ end
 
 export get_rand
 
-
+#Genera un vector aleatorio de dimension n
+function get_rand_vect(n)::Vector{Number}
+    return rand(n)
+ end
 
 # Definir la función para transformar las llaves del diccionario
 function transformar_llaves(diccionario::Dict, transformacion::Function)

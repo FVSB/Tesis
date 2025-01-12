@@ -45,14 +45,16 @@ function SetAlpha(model::OptimizationModel, alpha::Vector)
     
 end
 
-function SetAlphaZero(model::OptimizationModel, is_alpha_zero::Bool)
-    model.is_alpha_zero = is_alpha_zero
-end
+
 
 function SetPoint(model::OptimizationModel,point::Dict)
 model.point=point
 end
-function GeneratorModel(is_alpha_zero::Bool)
+
+"""
+Se debe llamar al metodo pasandole un vector de numeros con el valor de \alpha en caso de ser vacio este se tomara como que alpha es cero
+"""
+function GeneratorModel(_alpha::Vector{Number})
 
 
 
@@ -60,6 +62,13 @@ function GeneratorModel(is_alpha_zero::Bool)
 
     follower = Problem([], nothing)
 
-    return OptimizationModel(leader, Vector{LeaderRestrictionProblem}(), follower, Vector{FollowerRestrictionProblem}(), Dict(), Vector{Number}(), is_alpha_zero)
+
+    return OptimizationModel(leader, Vector{LeaderRestrictionProblem}(), follower, Vector{FollowerRestrictionProblem}(), Dict(), _alpha, isempty(_alpha))
+end
+"""
+Si llama al metodo si pasar un vector de Number entonces tomará que alpha es igual al vector Nulo
+"""
+function GeneratorModel()
+    GeneratorModel(Vector{Number}())
 end
 

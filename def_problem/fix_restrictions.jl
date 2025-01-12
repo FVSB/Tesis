@@ -90,7 +90,7 @@ function compute_bj(restriction_expr, alpha::Vector, point::Dict, ys_vars::Vecto
     if restriction_set_type == J_0_LP_v  # In this case, gamma must be 0
         return dot(-vector_val, alpha) / alpha_norm
     else  # For other types, lambda is considered 0
-        return (dot(-vector_val, alpha) + gamma) /( alpha_norm*alpha_norm)
+        return (dot(-vector_val, alpha) + gamma) / (alpha_norm * alpha_norm)
     end
 end
 
@@ -273,10 +273,13 @@ function calculate_bf(follower_fun::Func, follower_restrictions::Vector{Restrict
     follower_eval = calculate_grad_and_evaluate_in_point(follower_fun.expr, point, ys_vars)
 
     # Weighted sum of the gradients of the follower's constraints evaluated at the point
-    all_eval = calculate_sum_grad_y_dot_lambda(follower_restrictions, point, ys_vars)
+    if !(isempty(follower_restrictions) || follower_restrictions === nothing)
+        all_eval = calculate_sum_grad_y_dot_lambda(follower_restrictions, point, ys_vars)
+        # Return the negated sum of the two computed vectors
+        return -(follower_eval + all_eval)
+    end
+    return -follower_eval
 
-    # Return the negated sum of the two computed vectors
-    return -(follower_eval + all_eval)
 end
 
 """

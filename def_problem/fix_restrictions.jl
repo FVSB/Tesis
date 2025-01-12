@@ -276,8 +276,10 @@ function calculate_bf(follower_fun::Func, follower_restrictions::Vector{Restrict
     if !(isempty(follower_restrictions) || follower_restrictions === nothing)
         all_eval = calculate_sum_grad_y_dot_lambda(follower_restrictions, point, ys_vars)
         # Return the negated sum of the two computed vectors
+        println("Va a retornar correctamente")
         return -(follower_eval + all_eval)
     end
+    println("No hay restricciones del follower")
     return -follower_eval
 
 end

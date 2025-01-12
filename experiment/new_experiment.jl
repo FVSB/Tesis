@@ -290,9 +290,9 @@ function serialize_Experiment(opt_problem::Optimization_Problem,_alpha::Vector{N
 # Mandar a hacer los dfs
     dfs=create_dataframe(opt_problem,_alpha,BF,x_s_vars,y_vars_Vector)
     # Ahora mandar a serializar
-    file_name=experiment_name * "alpha_non_zero"
+    file_name=experiment_name * "generator_alpha_non_zero"
     if is_alpha_zero
-        file_name=experiment_name * "alpha_zero"
+        file_name=experiment_name * "generator_alpha_zero"
     end
     serialize_in_xlsx(dfs,file_name)
 end
@@ -317,5 +317,6 @@ function RunExperiment(experiment::Experiment,experiment_name::String)
     # Serializar _alpha Nulo
     _alpha::Vector{Number}=zeros(length_y_vars)
     serialize_Experiment(opt_problem_zero,_alpha,BF_zero,x_vars,y_vars,experiment_name,true)
-    return dfs
+   # return dfs
+   println("Experimento Completado")
 end

@@ -1,7 +1,7 @@
 
 include("../def_problem/MiModulo.jl")
 using Symbolics
-
+using Random
 using XLSX
 using DataFrames
 
@@ -65,6 +65,56 @@ function SetLeaderRestriction(experiment::Experiment, expr::Symbolics.Num)
     _miu = get_rand()
     SetLeaderRestriction(experiment.model_alpha_non_zero, expr, J_0_g, _miu)
     SetLeaderRestriction(experiment.model_alpha_zero, expr, J_0_g, _miu)
+end
+
+########################
+#
+#  CRear los puntos estacioarios
+#
+############################
+"""
+Retorna el valor de Beta y Gamma
+"""
+function get_multiplicadores_c_estacionario()
+    # Genera los Beta y Gammas para que el punto sea C-Estacionario
+    # Generar un numero entre 1-4 para seleccionar que valores seleccionar
+    rand_value=rand(1:4)
+    if rand_value==1 # Entonces Los 2 son mayores que creo
+        return (rand(),rand())
+    elseif rand_value==2
+        return (-rand(),-rand())
+    elseif  rand_value==3
+        return (0,rand())
+    else 
+        return (rand(),0)
+    end
+    return (0,0)
+end
+"""
+Betai, gammai>0,
+Betai libre gammai=0
+Gammai libre , betai=0
+"""
+function get_multiplicadores_m_estacionario()
+    # Generar los Beta y Gamma para que sean punto M-Estacionario
+    # Generar un numero entre 1:3 para ver como va
+    rand_value=rand(1:3)
+    if rand_value==1 # Entonces Los 2 son mayores que cero
+        return (get_rand(),get_rand())
+    elseif rand_value==2 # Beta libre, gamma 0
+        return (rand(),0)
+    else #Gamma libre, beta 0
+        return (0,rand())
+    end
+    return (0,rand())
+end
+
+"""
+
+"""
+function get_multiplicadores_strong_estacionario()
+# Retorna Beta y Gamma mayores que cero
+return (get_rand(),get_rand())
 end
 
 function SetFollowerFunction(experiment::Experiment, expr::Symbolics.Num)
@@ -270,17 +320,32 @@ function serialize_in_xlsx(dfs::Vector,file_name::String)
     all_name="$file_name.xlsx"
     # Comprobar que los vectores tienen la misma longitud
    # @assert length(sheet_names) == length(dfs) "Los vectores de nombres de hojas y DataFrames deben tener la misma longitud."
-   
+   # Define el nombre de la carpeta que quieres crear
+    nombre_carpeta = "Experimentos_Generador"
 
-    if !isfile(all_name) # Si no existe creo y lo guardo
+    # Construye la ruta relativa al directorio de trabajo actual
+    ruta_carpeta = joinpath(pwd(), nombre_carpeta)
+
+    # Verifica si la carpeta existe
+    if !isdir(ruta_carpeta)
+        # Si la carpeta no existe, la crea
+        mkdir(ruta_carpeta)
+        println("Carpeta creada: $ruta_carpeta")
+    else
+        println("La carpeta ya existe: $ruta_carpeta")
+    end
+
+    
+    ruta_archivo = joinpath(ruta_carpeta, all_name)
+    if !isfile(ruta_archivo) # Si no existe creo y lo guardo
         
-        XLSX.writetable(all_name, sheet_names[1] =>dfs[1],sheet_names[2] =>dfs[2],sheet_names[3] =>dfs[3],sheet_names[4] =>dfs[4],sheet_names[5] =>dfs[5],sheet_names[6] =>dfs[6],sheet_names[7] =>dfs[7]; overwrite=true )
+        XLSX.writetable(ruta_archivo, sheet_names[1] =>dfs[1],sheet_names[2] =>dfs[2],sheet_names[3] =>dfs[3],sheet_names[4] =>dfs[4],sheet_names[5] =>dfs[5],sheet_names[6] =>dfs[6],sheet_names[7] =>dfs[7]; overwrite=true )
         return all_name
     end
     
         # Eliminamos el archivo y volvemos a llamar al programa
        
-        rm(all_name)
+        rm(ruta_archivo)
         return serialize_in_xlsx(dfs,file_name)
         
 end
@@ -297,6 +362,108 @@ function serialize_Experiment(opt_problem::Optimization_Problem,_alpha::Vector{N
     serialize_in_xlsx(dfs,file_name)
 end
 
+
+"""
+Seleccionar el tipo de punto estacionario que se quiere
+""" 
+@enum StationaryType begin
+    C_Stationary
+    M_Stationary
+    Strong_Stationary
+end
+"""
+Dado un Vector de FollowerRestrictionProblem ajusta esten en la proporcion adecuada 
+los tipos de indices activos
+"""
+function split_correcto_type_set!(restrictions::Vector{FollowerRestrictionProblem})
+    #Tomar las restricciones
+    # La mitad J_0_L0_v
+    # El 25% J_Ne_L0_v
+    # El 25% J_0_LP_v
+    # Despues modificar los valores de Beta y Gamma
+   
+    # Cant de V_s
+    count_v_s=length(restrictions)
+    # La mitad J_0_L0_v
+    count_l_0_v_0=max(1,div(count_v_s,2))
+    vect_l_0_v_0=restrictions[1:count_l_0_v_0]
+    #Trasformar A ese conjunto
+    for to_l_0_v_0::FollowerRestrictionProblem in vect_l_0_v_0
+        to_l_0_v_0.restriction_set_type=J_0_L0_v
+    end
+    # Ahora si el indice mas uno es menor que la longitud del array continuo
+    #  v=0, lambda>0
+    if count_l_0_v_0+1>=count_v_s # Entonces retorno pq ya no hay nada que hacer
+        return 
+    end
+    # Calcular las restantes para dividirlo entre 2
+    restantes=count_v_s-count_l_0_v_0
+    # Despues dividirlo entre dos asegurando que quede uno
+    count_l_0_v_positivo=max(1,div(restantes,2)) 
+    # Despues termino
+    # Es lo que quite antes mas la cantidad que debo de tomar es el final de donde tomar
+    finish_l_0_v_positivo=count_l_0_v_0+count_l_0_v_positivo 
+    # Tomo desde el sgt desde donde tome anteiormente hasta el final asignado
+    vect_l_0_v_positivo=restrictions[count_l_0_v_0+1:finish_l_0_v_positivo]
+    for to_l_0_v_positivo::FollowerRestrictionProblem  in vect_l_0_v_positivo
+        # Modifico para que ese sea el cjt de indices
+        to_l_0_v_positivo.restriction_set_type=J_0_LP_v
+    end
+    # Ahora ver si quedi para J_Ne_L0_v retorno pq no quedan mas
+    if finish_l_0_v_positivo>=count_v_s
+        return
+    end
+    # Como quedan mas entonces hasta el final
+    vect_l_o_v_neg=restrictions[finish_l_0_v_positivo+1:end]
+    for to_l_o_v_neg in vect_l_o_v_neg
+        to_l_o_v_neg.restriction_set_type=J_Ne_L0_v
+    end
+
+
+end 
+"""
+Dadas las restricciones llama al metodo para cambiar el valor de beta y gamma
+"""
+function _modify_beta_and_gamma(restrictions::Vector{FollowerRestrictionProblem},function_call)
+    for rest::FollowerRestrictionProblem in restrictions
+        _beta,_gamma=function_call()
+        rest._beta=_beta
+        rest._gamma=_gamma
+    end
+
+end
+"""
+modifica las restricciones para que cumplan 
+todas con ser de ese tipo de punto estacionario
+"""
+function modify_restriction_to_create_stationary_point(restrictions::Vector{FollowerRestrictionProblem},stationary_type::StationaryType)
+    if stationary_type==C_Stationary
+        _modify_beta_and_gamma(restrictions,get_multiplicadores_c_estacionario)
+    elseif stationary_type==M_Stationary
+        _modify_beta_and_gamma(restrictions,get_multiplicadores_m_estacionario)
+    else
+        _modify_beta_and_gamma(restrictions,get_multiplicadores_strong_estacionario)
+    end
+end
+"""
+Para entrar el tipo de punto que se quiere generar, metodo privado
+"""
+function _RunExperimets_to_all_stationary(experiment::Experiment,experiment_name::String,stationary_type::StationaryType)
+
+    restrictions::Vector{FollowerRestrictionProblem}=experiment.model_alpha_zero.follower_restriction_problem    
+    # Hacer que esten en los indices activos correctos
+    split_correcto_type_set!(restrictions)
+    # ahora en dependencia del tipo de punto estacionario modificar las constantes
+    modify_restriction_to_create_stationary_point(restrictions,stationary_type)
+
+
+    experiment_name=experiment_name*"__"*string(stationary_type)
+    RunExperiment(experiment,experiment_name)
+end
+
+"""
+Correr el experimento y guardar en un excel
+"""
 function RunExperiment(experiment::Experiment,experiment_name::String)
     length_y_vars::Int = length(experiment.follower_vars)
     _alpha=get_rand_vect(length_y_vars)
@@ -319,4 +486,22 @@ function RunExperiment(experiment::Experiment,experiment_name::String)
     serialize_Experiment(opt_problem_zero,_alpha,BF_zero,x_vars,y_vars,experiment_name,true)
    # return dfs
    println("Experimento Completado")
+end
+
+"""
+Crea un experimento de todos los tipos de puntos estacionarios habidos
+"""
+function RunExperiment(experiment::Experiment,experiment_name::String,all_stationarys::Bool)
+    if !all_stationarys
+         RunExperiment(experiment,experiment_name)
+    end
+    # Crear uno C_Stationary
+    _RunExperimets_to_all_stationary(experiment,experiment_name,C_Stationary)
+    # Crear uno M_Stationary
+    _RunExperimets_to_all_stationary(experiment,experiment_name,M_Stationary)
+    # Crear uno Strong Stationary
+    _RunExperimets_to_all_stationary(experiment,experiment_name,Strong_Stationary)
+
+    println("Finilizado el experimento completo")
+    
 end

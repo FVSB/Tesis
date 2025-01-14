@@ -97,7 +97,6 @@ end
 """
 Dado un problema y un punto genera el nuevo problema donde el punto es estacionario de la clase 
 dependiente de los multiplicadores
-
 """
 function CreateProblem(model::OptimizationModel)::Tuple{Optimization_Problem,Vector{Number}}
     leader_obj_str::String = Num_to_String(model.leader_problem.expr)

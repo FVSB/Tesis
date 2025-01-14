@@ -19,7 +19,7 @@ struct LeaderRestrictionProblem
     restriction_set_type::RestrictionSetType
 end
 
-struct FollowerRestrictionProblem
+mutable struct FollowerRestrictionProblem
 
     expr::Symbolics.Num
     restriction_set_type::RestrictionSetType

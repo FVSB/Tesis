@@ -119,6 +119,48 @@ Los MPEC incluyen restricciones donde el producto de dos funciones (\textit{G} y
 
 \subsection{Resultados sobre MPECs}
 
+%Notación de los indices activos del documento
+A continuación como en \cite{Flegel2003AFJ} vamos a  introducir las siguientes definiciones.
+\begin{definition}[Conjunto de Índices]
+Dado un vector factible $z^*$ del MPEC \eqref{eq:DefMpec}, definimos los siguientes \textit{conjuntos de índices}:
+\begin{equation}
+\begin{aligned}
+\alpha &:= \alpha(z^*) := \{i|G_i(z^*) = 0, H_i(z^*) > 0\} \\
+\beta &:= \beta(z^*) := \{i|G_i(z^*) = 0, H_i(z^*) = 0\}  \\
+\gamma &:= \gamma(z^*) := \{i|G_i(z^*) > 0, H_i(z^*) = 0\}  \\
+\end{aligned}
+\label{eq:ConjuntoDeIndices} 
+\end{equation}
+\end{definition}
+
+% Definicion de TNLP Problema No Lineal Ajustado
+Para definir calificaciones de restricción alteradas, introducimos el siguiente problema, dependiente de $z^*$:
+
+\begin{definition}[Programa No Lineal Ajustado (TNLP)]
+
+Un \textit{Programa No Lineal Ajustado $TNLP := TNLP(z^*)$} es:
+\begin{equation}
+\begin{aligned} 
+\min \quad & f(z) \\
+\text{s.t.} \quad & g(z) \leq 0 \quad h(z) = 0  \\
+& G_{\alpha \cup \beta}(z) = 0 \quad G_{\gamma}(z) \geq 0  \\
+& H_{\alpha}(z) \geq 0 \quad H_{\gamma \cup \beta}(z) = 0  \\
+& \text{Problema No Lineal Ajustado (TNLP)}  
+\end{aligned}
+\label{eq:ProblemaAbstractoTNLP}
+\end{equation}
+    
+\end{definition}
+
+El TNLP \eqref{eq:ProblemaAbstractoTNLP} puede ahora ser usado para definir variantes MPEC adecuadas de las calificaciones de restricción estándar de independencia lineal, Mangasarian-Fromovitz y Mangasarian-Fromovitz estricta (LICQ, MFCQ, y SMFCQ en su forma abreviada).
+
+\begin{definition}[MPEC-LICQ]
+El MPEC \eqref{eq:DefMpec} se dice que satisface la \textit{MPEC-LICQ} (MPEC-MFCQ, MPEC-SMFCQ) en un vector factible $z^*$ si el correspondiente TNLP$(z^*)$ satisface la LICQ (MFCQ, SMFCQ) en ese vector $z^*$.
+\end{definition}
+    
+% Hacer notar que un minimizador de z^* implica la existrencia de \lambda^* ....
+En este punto, es importante notar que bajo MPEC-MFCQ, un minimizador local $z^*$ del MPEC \eqref{eq:DefMpec} implica la existencia de un multiplicador de Lagrange $\lambda^*$ tal que $(z^*, \lambda^*)$ satisface las condiciones KKT para el programa \eqref{eq:ProblemaAbstractoTNLP}. Por lo tanto, si asumimos que MPEC-MFCQ se cumple para un minimizador local $z^*$ del MPEC \eqref{eq:DefMpec}, podemos usar cualquier multiplicador de Lagrange $\lambda^*$ (que ahora sabemos que existe) para definir el MPEC-SMFCQ, es decir, tomando $(z^*, \lambda^*)$.
+
 %Definicion de los puntos estacionarios del MPEC
 % Flegel and Kanzow 2003
 En el contexto de los MPEC en \cite{Flegel2003AFJ} se exponen varios tipos de puntos estacionarios que son cruciales para analizar la optimalidad, los cuales son los siguientes:
@@ -160,45 +202,7 @@ Este concepto de estacionariedad, sin embargo, es una condición relativamente d
 \end{equation}
 \end{definition}
 \end{itemize}
-%Notación de los indices activos del documento
-A continuación como en \cite{Flegel2003AFJ} vamos a  introducir alguna notación. Dado un vector factible $z^*$ del MPEC \eqref{eq:DefMpec}, definimos los siguientes conjuntos de índices:
-\begin{equation}
-\begin{aligned}
-\alpha &:= \alpha(z^*) := \{i|G_i(z^*) = 0, H_i(z^*) > 0\} \\
-\beta &:= \beta(z^*) := \{i|G_i(z^*) = 0, H_i(z^*) = 0\}  \\
-\gamma &:= \gamma(z^*) := \{i|G_i(z^*) > 0, H_i(z^*) = 0\}  \\
-\end{aligned}
-\label{eq:ConjuntoDeIndices} 
-\end{equation}
 
-
-% Definicion de TNLP Problema No Lineal Ajustado
-Para definir calificaciones de restricción alteradas, introducimos el siguiente problema, dependiente de $z^*$:
-
-\begin{definition}[Programa No Lineal Ajustado (TNLP)]
-
-Un \textit{Programa No Lineal Ajustado $TNLP := TNLP(z^*)$} es:
-\begin{equation}
-\begin{aligned} 
-\min \quad & f(z) \\
-\text{s.t.} \quad & g(z) \leq 0 \quad h(z) = 0  \\
-& G_{\alpha \cup \beta}(z) = 0 \quad G_{\gamma}(z) \geq 0  \\
-& H_{\alpha}(z) \geq 0 \quad H_{\gamma \cup \beta}(z) = 0  \\
-& \text{Problema No Lineal Ajustado (TNLP)}  
-\end{aligned}
-\label{eq:ProblemaAbstractoTNLP}
-\end{equation}
-    
-\end{definition}
-
-El TNLP \eqref{eq:ProblemaAbstractoTNLP} puede ahora ser usado para definir variantes MPEC adecuadas de las calificaciones de restricción estándar de independencia lineal, Mangasarian-Fromovitz y Mangasarian-Fromovitz estricta (LICQ, MFCQ, y SMFCQ en su forma abreviada).
-
-\begin{definition}[MPEC-LICQ]
-El MPEC \eqref{eq:DefMpec} se dice que satisface la \textit{MPEC-LICQ} (MPEC-MFCQ, MPEC-SMFCQ) en un vector factible $z^*$ si el correspondiente TNLP$(z^*)$ satisface la LICQ (MFCQ, SMFCQ) en ese vector $z^*$.
-\end{definition}
-    
-% Hacer notar que un minimizador de z^* implica la existrencia de \lambda^* ....
-En este punto, es importante notar que bajo MPEC-MFCQ, un minimizador local $z^*$ del MPEC \eqref{eq:DefMpec} implica la existencia de un multiplicador de Lagrange $\lambda^*$ tal que $(z^*, \lambda^*)$ satisface las condiciones KKT para el programa \eqref{eq:ProblemaAbstractoTNLP}. Por lo tanto, si asumimos que MPEC-MFCQ se cumple para un minimizador local $z^*$ del MPEC \eqref{eq:DefMpec}, podemos usar cualquier multiplicador de Lagrange $\lambda^*$ (que ahora sabemos que existe) para definir el MPEC-SMFCQ, es decir, tomando $(z^*, \lambda^*)$.
 
 % Teorema que si z^* es min local del MPEC Si se cumpke la LICQ entonces existe .....
 \begin{theorem} 

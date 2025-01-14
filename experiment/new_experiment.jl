@@ -446,19 +446,32 @@ function modify_restriction_to_create_stationary_point(restrictions::Vector{Foll
     end
 end
 """
+Dado unas restricciones el tipo de restriccion a querer modifica las V_s para que esten 
+balanceados los indices activos y ademas 
+este genere atraves de estar correctos lo multiplicaodres los lugares estacionarios
+"""
+function _change_restrictions_to_make_stationary_type(restrictions::Vector{FollowerRestrictionProblem},experiment_name::String,stationary_type::StationaryType)
+ # Hacer que esten en los indices activos correctos
+ split_correcto_type_set!(restrictions)
+ # ahora en dependencia del tipo de punto estacionario modificar las constantes
+ modify_restriction_to_create_stationary_point(restrictions,stationary_type)
+
+
+ experiment_name=experiment_name*"__"*string(stationary_type)
+ RunExperiment(experiment,experiment_name)
+end
+
+"""
 Para entrar el tipo de punto que se quiere generar, metodo privado
 """
 function _RunExperimets_to_all_stationary(experiment::Experiment,experiment_name::String,stationary_type::StationaryType)
 
-    restrictions::Vector{FollowerRestrictionProblem}=experiment.model_alpha_zero.follower_restriction_problem    
-    # Hacer que esten en los indices activos correctos
-    split_correcto_type_set!(restrictions)
-    # ahora en dependencia del tipo de punto estacionario modificar las constantes
-    modify_restriction_to_create_stationary_point(restrictions,stationary_type)
-
-
-    experiment_name=experiment_name*"__"*string(stationary_type)
-    RunExperiment(experiment,experiment_name)
+    restrictions_zero::Vector{FollowerRestrictionProblem}=experiment.model_alpha_zero.follower_restriction_problem 
+    # Modificar para alpha nulo
+    _change_restrictions_to_make_stationary_type(restrictions_zero,experiment_name,stationary_type)   
+    restrictions_non_zero::Vector{FollowerRestrictionProblem}=experiment.model_alpha_non_zero.follower_restriction_problem   
+    # Modificar para alpha no nulo
+    _change_restrictions_to_make_stationary_type(restrictions_non_zero,experiment_name,stationary_type)  
 end
 
 """

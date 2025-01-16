@@ -67,11 +67,11 @@ function SetLeaderRestriction(experiment::Experiment, expr::Symbolics.Num)
     SetLeaderRestriction(experiment.model_alpha_zero, expr, J_0_g, _miu)
 end
 
-########################
-#
-#  CRear los puntos estacioarios
-#
-############################
+            ########################################
+            #                                      #
+            #    Crear los puntos estacioarios     #
+            #                                      #
+            ########################################
 """
 Retorna el valor de Beta y Gamma
 """
@@ -80,13 +80,13 @@ function get_multiplicadores_c_estacionario()
     # Generar un numero entre 1-4 para seleccionar que valores seleccionar
     rand_value=rand(1:4)
     if rand_value==1 # Entonces Los 2 son mayores que creo
-        return (rand(),rand())
+        return (get_rand()*10,get_rand()*10)
     elseif rand_value==2
-        return (-rand(),-rand())
+        return (-get_rand()*10,-get_rand()*10)
     elseif  rand_value==3
-        return (0,rand())
+        return (0,get_rand()*10)
     else 
-        return (rand(),0)
+        return (get_rand()*10,0)
     end
     return (0,0)
 end
@@ -100,21 +100,22 @@ function get_multiplicadores_m_estacionario()
     # Generar un numero entre 1:3 para ver como va
     rand_value=rand(1:3)
     if rand_value==1 # Entonces Los 2 son mayores que cero
-        return (get_rand(),get_rand())
+        return (get_rand()*10,get_rand()*10)
     elseif rand_value==2 # Beta libre, gamma 0
-        return (rand(),0)
+        return (get_rand()*10,0)
     else #Gamma libre, beta 0
-        return (0,rand())
+        return (0,get_rand()*10)
     end
-    return (0,rand())
+    return (0,get_rand()*10)
 end
 
 """
+Devuelve los multiplicadores 
 
 """
 function get_multiplicadores_strong_estacionario()
 # Retorna Beta y Gamma mayores que cero
-return (get_rand(),get_rand())
+return (get_rand()*10,get_rand()*10)
 end
 
 function SetFollowerFunction(experiment::Experiment, expr::Symbolics.Num)
@@ -138,7 +139,7 @@ function modify_point(point::Dict)::Dict
     new_dict = Dict()
     for key in _keys
         temp = point[key]
-        temp = temp + get_rand()
+        temp = temp + get_rand()*5
         new_dict[key] = temp
     end
     return new_dict
@@ -235,7 +236,6 @@ end
 """
 Dado un Optimization Problem devuelve un Dataframe con las
 expresiones de las funciones objetivo del nivel inferior y Superior
-
 """
 function create_dataframe_obj_functions(opt_problem::Optimization_Problem)
     # Tomar el valor del leader
@@ -313,7 +313,6 @@ end
 Funcion para serializar en un documento 
 
 """
-
 function serialize_in_xlsx(dfs::Vector,file_name::String)
     # El Vector de df es [objt_df,leader_rest_df,follower_rest_df,point_df,bf_df,BF_df,_alpha_df]
     sheet_names=["Funciones_Objetivo","Restricciones_del_lider","Restricciones_del_follower","Punto_modificado","Vector_bf","Vector_BF","Vector_Alpha"]

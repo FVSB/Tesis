@@ -29,7 +29,7 @@ end
 function add_to_dataframe_vars_value(df,var_vector::Vector,var_name::String)
     # Insertar una nueva columna al final
     for i in 1:length(var_vector)
-        insertcols!(df, ncol(df) + 1,"$var_name: $i"=>BilevelJuMP.value(var_vector[i]) )
+        insertcols!(df, ncol(df) + 1,"$var_name: $i"=>my_round(BilevelJuMP.value(var_vector[i])) )
     end
     return df
 end

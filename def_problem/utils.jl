@@ -8,7 +8,14 @@ Generates a random number greater than zero and less than one.
 """
 function get_rand()
     epsilon = 1e-10
-    rand() + epsilon
+    rand_value=rand() + epsilon
+    return my_round(rand_value)
+end
+"""
+My retorno de dos digitos
+"""
+function my_round(value)
+    return round(value,digits=2)
 end
 
 export get_rand

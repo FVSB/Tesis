@@ -88,6 +88,50 @@
 \newcommand{\N}{\mathbb{N}} 
 \newcommand{\Z}{\mathbb{Z}} 
 \newcommand{\Lagr}{\mathcal{L}}
+
+% Dar formato codigo de julia
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Configuración para código Julia
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{cmap} % Mejora la capacidad de copiar/pegar
+\usepackage[T1]{fontenc}
+% Definición manual del lenguaje Julia
+\lstdefinelanguage{Julia}%
+{
+  keywords={abstract,break,case,catch,const,continue,do,else,elseif,end,%
+    export,false,for,function,if,immutable,import,importall,in,let,macro,%
+    module,mutable,null,primitive,quote,return,struct,switch,true,try,type,%
+    using,while},%
+  sensitive=true,%
+  alsoother={$},%
+  morecomment=[l]\#,%
+  morecomment=[n]{\#=}{=\#},%
+  morestring=[s]{"}{"},%
+  morestring=[m]{'}{'},%
+}[keywords,comments,strings]
+
+% Configuración del estilo
+\lstdefinestyle{julia-style}{
+    language=Julia,
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    showstringspaces=false,
+    commentstyle=\color{green!60!black},
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    backgroundcolor=\color{gray!10},
+    captionpos=b,
+    keepspaces=true
+}
+
+\lstset{style=julia-style}
+
 % Pone automatico los numeros de las ecuaciones
 \numberwithin{equation}{section}
 % Definir un nuevo entorno para teoremas 

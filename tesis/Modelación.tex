@@ -1,11 +1,11 @@
-\chapter{MODELACIÓN MATEMÁTICA E IMPLEMENTACIÓN}
+\chapter{IMPLEMENTACIÓN}
 
-Dado que por estudios previos (Nombrar )\\
+En este capítulo se mostrará la forma y los pasos para generar el problema deseado en el contexto de un generador de puntos estacionarios para problemas binivel. Este capítulo aborda el diseño y la implementación del generador, explicando detalladamente las metodologías empleadas, los criterios necesarios para asegurar la validez de los puntos obtenidos y los algoritmos utilizados en cada etapa del proceso.
 
-Se tomará transformará el MPEC de la siguiente forma
-
-
+%\section*{Nomenclatura a utilizar:}
 \begin{table}[H]
+    \centering
+    \caption{Nomenclatura a utilizar}
     \begin{tabular}{l m{360pt}}
         $ F(x,y) $              & Función del líder                                                                                                          \\
         $ G(x,y) $              & Restricciones de desigualdad del líder                                                                                                            \\
@@ -14,64 +14,400 @@ Se tomará transformará el MPEC de la siguiente forma
         $ V(x,y) $              &  Restricciones de desigualdad del follower  \\
         $ U(x,y) $     & restricciones de igualdad del follower\\
         $ V_{j}^{\star} $    & Restriccion de disigualdad del follower activa despues de modificarse el problema            \\
-        $ \alpha  $             & Vector de entrada del problema puede ser el vector nulo  dimension igual que Cant V activas                                                                                                        \\
+        $z_{est}$         & Punto que se desea que sea estacionario\\
+        $J_0^g$   & Índices activos del nivel superior \\
+        $J_0^v$   & Índices activos del nivel inferior \\
+        $ \alpha  $             & Vector de entrada de dimensión igual cantidad variables follower                                                                                                      \\
         $ \beta $               & Multiplicador asociado al $V_{j}^{\star}$ en el nivel superior          \\
         $ \lambda $              & Multiplicador asociado al $V_{j}^{\star}$ en el nivel inferior\\
         $\gamma$                & Valor asociado a cada $V_{j}^{\star}$ con $\alpha=\vec{0}$\\
     \end{tabular}
 
     \end{table}
-%Notas de J_0^v
-        %\begin{table}
-		%		Nota:
-        %	\begin{itemize}
-        %	    \item Sea $ J_0^v=\{j | V_i(x,y)=0\}$ al conjunto restricciones de desigualdad que sean índices activos
-		%	
-        %	\end{itemize}
-		%\end{table}
-Se propone un generador de problemas prueba que dado un problema de optimización binivel y un punto 
-se pueda conocer la factibilidad de los algoritmos tradicionales en dicho puntos (Explicar lo de los puntos estacionarios y ptos dengenerados )
-Con este se puede conocer para los casos en que $\alpha=0$ y $\alpha>0$ y ver el comportamiento en estos.
 
 
-Para utilizar el m'etodo propuesto debe darse como valores de entrada 
+\section{Generación del problema}
+A continuacion se mostrarán los pasos a seguir para generar el problema deseado donde el punto sea estacionario de la clase específica.
+\subsection{Requerimientos de entrada}
 
+Para generar un problema es necesario inicialmente introducir un problema de optimización binivel del tipo SLSF, un punto ($z_{est}$) el cual
+se desea que sea estacionario y los multiplicadores con signo o valores con ciertas condiciones en dependencia del tipo de estacionariedad requerida.
 
-Se debe determinar cuales indices activos sus $\lambda = 0$ y cuales son $\lambda>0$ con el fin de poder calcular el valor de $b_j$ el se hará el siguente procedimiento
+El problema de entrada tiene que cumplir con ser un programa de optimizacion binivel como \refeq{eq:DefBinivelOptimista}. 
+Debe de conocerse sus índices activos de las restricciones de desigualdad en cada nivel:
+\begin{itemize}
+    % Leader
+    \item Nivel Superior:
+            \begin{equation}
+             J_0^G=\{i | g_i(x,y)=0\}
+            \label{J_0_level_superior} %al conjunto restricciones de desigualdad que sean índices activos del nivel superior
+            \end{equation}\\
+    Cuyos índices activos tienen un $\mu_i$ relacionados.
+        
+    %Follower
+    \item Nivel Inferior:
+                Se tiene en cuenta con respecto a los valores de $\lambda_i$ y $v_j(x,y)$.
+                
+                \begin{itemize}
+                    %J_0_v_l_0
+                    \item \begin{equation}
+                        J_1^v=\{j | v_j(x,y)=0 \land \lambda=0 \} %al conjunto restricciones de desigualdad que sean índices activos
+                        \label{J_0_lambda_0_level_inferior}
+                        \end{equation} 
+                    %J_0_v_l_positiva
+                    \item \begin{equation}
+                        J_2^v=\{j | v_j(x,y)=0 \land \lambda>0 \}
+                        \label{J_0_lambda_pos_level_inferior}
+                    \end{equation}
+                    %J_Ne_L0_v
+                    \item \begin{equation}
+                        J_3^v=\{j | v_j(x,y)< 0 \land \lambda=0 \}
+                        \label{J_neg_lambda_0_level_inferior}
+                    \end{equation}
+                \end{itemize}
+    Cada índice activo tiene multiplicadores $\beta_j$ y en dependencia del caso $\gamma_j$ asociados.
+\end{itemize}
 
-\begin{table}[H]
-	$\lambda =0$:\\
-	$(\nabla_{y}V_j+b_j)\alpha=0 \quad \forall V_j \in J_0$ \\
-	$\lambda>0$:\\
-	$[(\nabla_{y}V_j+b_j)\alpha]-\gamma_j=0 \quad \forall V_j \in J_0$
+% Condiciones
+%Hablar sobre conocerr vector \alpha
+Se debe conocer el valor del $\vec{\alpha}$. 
+Además para cada $j_i \in J_0^G$ \refeq{J_0_level_superior} debe de asignarse su $\mu_i \geq 0$ correspondiente,
+para el nivel inferior debe tenerse en cuenta si $\alpha=\vec{0}$ en cuyo caso afirmativo $\gamma_j$ es un valor de entrada
 
+% COndiciones \Beta_i \Gamma_i para ptos estacionarios
+Para obtener las diferentes clases de puntos estacionarios debe de introducirse $\beta_j$, $\gamma_j$, en caso de ser este último valor de entrada tal que, en los índices activos $J_3^v$ \refeq{J_0_lambda_0_level_inferior}: 
+\begin{itemize}
+    %C estacionario
+    %Betai, gammai>0, betai,gammai<0 o 
+    %Betai libre gammai=0
+    %Gammai libre , betai=0
+    \item \textbf{Punto C-Estacionario:}\\
+    \begin{equation}
+        \beta_j * \gamma_i >=0
+        \label{Requisitos puntos C-Estacionario}
+    \end{equation}
+    %M estacionario
+    %Betai, gammai>0,
+    %Betai libre gammai=0
+    %Gammai libre , betai=0
+    \item \textbf{Punto M-Estacionario}\\
+    \begin{equation}
+        \begin{aligned}
+            &\beta_j \land \gamma_j>0\\
+            &\beta_j \quad \text{Libre} \quad \gamma_j=0\\
+            &\beta_j=0 \quad \gamma_j \quad \text{libre}\\
+        \end{aligned}
+        \label{Requisitos puntos M-Estacionarios}
+    \end{equation}
+    %Fuertemente estacionario
+    %Betai, gammai>0,
+    \item \textbf{Punto Fuertemente Estacionario}\\
+     \begin{equation}
+        \beta_j \land \gamma_j >0
+    \label{Requisitos puntos Fuertemente Estacionarios}
+    \end{equation}    
+\end{itemize}
+% Especificar que en caso de  que alpha no se el vector nulo se asumme que gamma_i es 0
+\textbf{En caso que $\vec{\alpha} \neq \vec{0}$ se asume que $\gamma_j=0$ en las condiciones anteriores.}
 
-\end{table}
+% Explicar que se hace primero el punto factible
+% Subseccion donde se explica que el punto se hace factible inicialmente
+
+\subsection{Modificación del Problema Original}
+Después de tener los datos de entrada necesarios se procede a la Modificación
+del problema de entrada para que este sea estacionario del tipo requerido, $z_{est}$.
+
+% Decir que en caso de que \alpha != de nulo entonoces se calcula b_j
+Primero en caso de que $\alpha \neq 0$ en los $v_j(x,y) \in J_0^v$ se procede a calcular el $\vec{b_j}$ de la siguiente forma:
+
+%Como calcular b_j
+\begin{itemize}
+    \item \textbf{ $v_j(x,y) \in J_2^v$ \refeq{J_0_lambda_pos_level_inferior}}:
+        \begin{equation}
+            b_j=  \frac{-\nabla_{y}{v_j(z_{est})}^T \cdot \alpha}{\|\mathbf{\alpha} \|_2}
+        \end{equation}
+    \item \textbf{$v_j(x,y) \in J_1^v \lor J_3^v$ (\refeq{J_0_lambda_0_level_inferior},\refeq{J_neg_lambda_0_level_inferior})}\\
+    \begin{equation}
+        b_j=  \frac{(-\nabla_{y}{v_j(z_{est})}^T \cdot \alpha)+\gamma_j}{\|\mathbf{\alpha} \|_2^2}
+    \end{equation}
+\end{itemize}
+
 
 Despues de realizado el calculo del $b_j$ se procede a modificar su indice activo correspondiente:
 
-\begin{table}[H]
-	$V_{j}^{\star}=V_{j}+(b_j\alpha)$
-\end{table}
-
-Después se realiza las adicciones necesarias de una constante a cada restriccion con el fin de que sea factible el punto seleccionado
-esta suma de constante no modifica las propiedades de convexidad del problema dado que una suma de funciones lineales no afecta.\\
-
-% Decir que se realiza el KKT del nivel inferior
-
-Despues se procede a realizar el KKT del nivel inferior con las modificiaciones anteriores 
-Se plantea las condiciones KKT de las funciones evaluadas en el punto dado:
-\begin{table}[H]
-	$\nabla_{y}f(x,y)+\sum_{j=0}^{|V \in J_0|}(\lambda_j\nabla_{y}V_j(x,y))+\vec{bf}=\vec{0}$
-\caption*{KKT del problema del nivel inferior}
-\end{table}
+\begin{equation}
+	v(z_{est})_{j}^{\star}=v(z_{est})_{j}+ ({b_j\alpha}^T)\cdot (y_1,y_2,\dots,y_m)
+\end{equation}
 
 
-Una vez hallado el KKT del nivel inferior se procede a hallar el KKT del MPEC resultante de este KKT el cual es:
+% Explicar que se hace el punto factible en las restricciones
+Luego en todas las restricciones del nivel inferior y superior
+se evalua el punto y se verifica si es factible. En caso de no ser factible 
+bajo las nuevas restricciones se añaden constantes $c_i$ en el caso de las restricciones del
+nivel superior y $c_j$ para las del inferior. Esto conlleva a que sea un punto factible en el conjunto
+de restricciones de ambos niveles sin perjudicar las propiedades relacionadas con la convexidad al ser una adicción
+de funciones lineales. 
 
+% Explicar que se realiza el KKT del nivel inferior
+Al hacer factible se procede a realizar el KKT del nivel inferior con las modificiaciones anteriores evaluado en $z_{est}$.
+
+Se plantea las condiciones KKT y se halla $\vec{bf}$ :
+
+\begin{equation}
+    \begin{aligned}
+        &\nabla_{y}f(z_{est})+\sum_{j=0}^{|V \in J_0|}(\lambda_j\nabla_{y}V_j(z_{est}))+\vec{bf}=\vec{0}\\
+        &\text{KKT del problema del nivel inferior}
+    \end{aligned}
+    \label{KKT_nivel_inferior}
+\end{equation}
+\linebreak
+%Explicar que como se habia hallado ya el KKT del level inf ahora se puede realizar completo
+Finalmente podemos construir la reformulación en MPEC como \refeq{eq:KKT_Optimista} calculando asi el $\vec{BF}$ y 
+obteniendo el problema de forma reformulada.
 % MPEC all KKT 
 \begin{table}[H]
-	$\nabla_{xy}F(x,y)+\sum_{i=1}^{|G \in J_o|}(\mu_i\nabla_{xy}g(x,y))+[\nabla_{x,y}\nabla_{y}f(x,y)+\sum_{j=1}^{|V \in J_0|}\lambda_j\nabla_{xy}\nabla_{y}V_j(x,y)]\alpha+\sum_{j=1}^{|V \in J_0|}(\beta_j\nabla_{xy}V_j(x,y))+\vec{BF}=\vec{0}$
+    \begin{equation}
+        \label{KKT_del_MPEC}
+    \end{equation}
+	$\nabla_{xy}F(x,y)+\sum_{i=1}^{|G \in J_o|}(\mu_i\nabla_{xy}g(x,y))+[\nabla_{x,y}\nabla_{y}f(x,y)+\sum_{j=1}^{|V \in J_0|}\lambda_j\nabla_{xy}\nabla_{y}V_j(x,y)]\alpha+\sum_{j=1}^{|V \in J_0|}(\beta_j\nabla_{xy}V_j(x,y))+\vec{BF}=\vec{0}$  \label{KKT_del_MPEC}
 \caption*{KKT del MPEC}
 \end{table}
 
+% Explicación algoritmica y manual de usuario
+
+\section{implementación Algorítmica}
+
+En la implementación computacional del generador propuesto en la sección anteriores
+se utilizó el lenguaje de programación \textbf{Julia} \cite{Juliadocs} dado a su versatilidad
+en expresiones y funciones matemáticas implementadas en su paquete base y sus bibliotecas externas como 
+\textbf{BilevelJuMP} \cite{BilevelJump} que permite resolver problemas binivel SLSF lineales y cuadráticos
+sin tener que transformar el problema original y \textbf{JuMP} \cite{JuMPPaper} el cual es una interfaz robusta para la optimización general,
+todo ello brindando unas excelentes prestacioens de cómputo. Por ello se brindará una guía de usuario para el uso del generador.
+
+\subsection{Guía de Usuario}
+% Despues compilar a ProblemGenerator
+La implementación algorítmica se ha llevado a cabo mediante la creación de una biblioteca de Julia
+llamada \textbf{ProblemGenerator}, con una sintaxis \textit{JuMP-like} intuitiva.
+Primero debe tenerse un problema de optimización Binivel SLSF planteado como el \refeq{eq:DefBinivelOptimista}, el punto que se desea a ser estacionario ($z_{est}$) ,los indices activos descritos anteriormente 
+según el caso así como sus multiplicadores correspondientes al tipo de estacionariedad requerida y el $\vec{\alpha}$.
+
+%Dependencias para la biblioteca
+\subsubsection{Dependencias}
+%Se debe tener en cuenta que este paquete instalará las siguientes dependencias
+\begin{itemize}
+    \item Symbolics 
+    \item LinearAlgebra
+\end{itemize}
+
+% Importar la Biblioteca
+\subsubsection{Importación de la biblioteca}
+
+\begin{lstlisting}[caption=Importar el Modulo]
+    using ProblemGenerator
+\end{lstlisting}
+
+% Crear modelo base
+\subsubsection{Crear el modelo base}
+Debe llamarse a la función \textbf{GeneratorModel} para crear el modelo 
+inicial 
+
+% Explicar las funciones Upper y Lower
+\subsubsection{Función para diferenciar los niveles}
+En caso que se requiera como entrada un \textbf{Problem} se debe declarar
+de que nivel se habla mediante evaluar el model en las funciones \textbf{Upper} para el nivel 
+superior y \textbf{Lower} para el inferior.
+
+
+%Crear para alpha nulo
+Para crear un modelo donde $\vec{\alpha}=\vec{0}$
+\begin{lstlisting}
+    # Crear el modelo base del generador alpha=0
+    model=GeneratorModel()
+\end{lstlisting}
+
+%Crear para alpha no nulo
+Para crear un modelo donde $\vec{\alpha}\neq \vec{0}$
+Se tiene que pasar como parámetro el valor del $\alpha$
+el cual será un vector de Number.
+\begin{lstlisting}
+    # Crear el modelo base del generador alpha!=0
+    alpha_vec=Vector::{Number}
+    model=GeneratorModel(alpha_vec)
+\end{lstlisting}
+
+\subsubsection{Declarar Variables}
+Las variables deben de 
+declararse bajo la siguiente macro \textbf{@myvariables}, la cual 
+recibe una funcion \textbf{Upper} o \textbf{Lower} que recibe el modelo
+para las variables del nivel superior y las del nivel inferior respectivamente.
+
+%Ejemplo de introducir al level superior
+Ejemplo para introducir las variables del nivel superior
+\begin{lstlisting}
+    # Se declara en el nivel superior las variables x_1, x_2
+    @myvariables Upper(model) x_1, x_2
+\end{lstlisting}
+
+%Ejemplo para introducir las variables del nivel inferior
+Ejemplo para introducir las variables del nivel inferior
+\begin{lstlisting}
+   # Se declara en el nivel inferior las variables y_1, y_2
+   @myvariables Lower(model) y_1,y_2
+\end{lstlisting}
+
+
+%Declarar las funciones objetivo
+\subsubsection{Declarar Funciones Objetivo}
+
+Para declarar las funciones objetivos debe asumirse que en ambos casos es un 
+problema de minimización. Se utilizará la función \textbf{SetObjectiveFunction}
+que recibe un \textbf{Problem} y una expresión de \textbf{Num}.
+
+% Declaración de Función Objetivo de nivel Superior
+Ejemplo dclaración una función objetivo del nivel superior.
+Con: $$\min (x_1^2*y_1^2*y_2) + x_2$$
+\begin{lstlisting}
+    # Declarar la funcion objetivo del nivel superior
+    # Min de ((x_1^2)*(y_1^2)*(y_2))+x_2
+    SetObjectiveFunction(Upper(model),((x_1^2)*(y_1^2)*(y_2))+x_2)
+\end{lstlisting}
+
+%Declaración de Funcion objetivo Nivel inferior
+Ejemplo dclaración una función objetivo del nivel inferior.
+Con: $$\min (x_2^2*y_1^2*y_2)+x_1$$
+\begin{lstlisting}
+    # Declarar la funcion objetivo del nivel inferior
+    # Min de ((x_2^2)*(y_1^2)*(y_2))+x_1
+    SetObjectiveFunction(Lower(model),((x_2^2)*(y_1^2)*(y_2))+x_1)
+\end{lstlisting}
+
+% Definición de tipo de índices activos.
+\subsubsection{Tipos de indices activos}
+Antes de ilustrar como introducir las restricciones se va a explicar 
+que los tipos de índices activos.
+
+\begin{itemize}
+    \item \textbf{Ambos Niveles}:
+        \begin{itemize}
+            \item \textbf{Normal} si no es un indice activo.
+        \end{itemize}
+    \item \textbf{Nivel Superior}:
+     \begin{itemize}
+        \item \textbf{J\_0\_g} Si es un índice como en \refeq{J_0_level_superior}.
+     \end{itemize}
+    \item \textbf{Nivel Inferior}:
+    \begin{itemize}
+        \item \textbf{J\_0\_LP\_v} Si es un índice como en \refeq{J_0_lambda_pos_level_inferior}.
+        \item  \textbf{J\_0\_L0\_v} Si es un índice como en \refeq{J_0_lambda_0_level_inferior}.
+        \item  \textbf{J\_Ne\_L0\_v} Si es un índice como en \refeq{J_neg_lambda_0_level_inferior}.
+    \end{itemize}
+\end{itemize}
+
+%Ejemplo de como se debe de expresar en Julia
+Los \textbf{RestrictionSetType} deben expresar en codigo de esta forma:
+\begin{lstlisting}
+    Normal 
+    J_0_g 
+    J_0_LP_v
+    J_0_L0_v
+    J_Ne_L0_v
+\end{lstlisting}
+
+Los \textbf{RestrictionSetType} so un enum de Julia.
+
+% Declaracion de restricciones
+\subsubsection{Declarar Restricciones}
+
+Para declarar las restricciones se brindan dos funciones:
+\begin{itemize}
+    \item \textbf{SetLeaderRestriction:} Para el nivel superior.
+    \item \textbf{SetFollowerRestriction:} Para el nivel inferior.
+\end{itemize}
+\begin{itemize}
+    % Declarar sobre el nivel superior
+    \item \textbf{Nivel Superior:}\\
+
+% Declaracion para el nivel Superior
+Para declarar las restricciones del nivel superior debe por cada restricción
+llamarse a la función \textbf{SetLeaderRestriction} con:
+\begin{itemize}
+    \item El modelo (\textbf{model})
+    \item La expresión de la restricción, del tipo \textbf{Num}
+    \item El tipo de restriccion, del tipo \textbf{RestrictionSetType}
+    \item El valor de $\mu_i$ correspondiente, del tipo \textbf{Number} 
+\end{itemize}
+
+Ejemplo para introducir la restricción:
+\begin{align*}
+    &x_1+y_2-y_1 \lq -9 \\
+    &\text{Índice activo del tipo J\_0\_g \refeq{J_0_level_superior}}\\
+    & \mu_i=0.3
+\end{align*}
+
+\begin{lstlisting}
+    # Ejemplo de restriccion del nivel superior
+    SetLeaderRestriction(model,x_1+y_2-y_1>9,J_0_g,0.3)
+\end{lstlisting}
+
+% Declarar sobre el nivel inferior
+\item \textbf{Nivel Inferior:}\\
+ Para declarar las restricciones del nivel inferior debe por cada restricción
+llamarse a la función \textbf{SetFollowerRestriction} con:
+\begin{itemize}
+    \item El modelo (\textbf{model})
+    \item La expresión de la restricción, del tipo \textbf{Num}
+    \item El tipo de restriccion, del tipo \textbf{RestrictionSetType}
+    \item El valor de $\beta_j$ correspondiente, del tipo \textbf{Number}
+    \item El valor de $\lambda_j$ correspondiente, del tipo \textbf{Number}
+    \item El valor de $\gamma_j$ correspondiente en caso de ser valor de entrada, del tipo \textbf{Number}
+\end{itemize}
+
+Ejemplo para introducir la restricción:
+
+\begin{itemize}
+    \item \textbf{$\vec{\alpha}\neq \vec{0}$:}\\
+    \begin{align*}
+        &((x_1^2)*(y_1^2))+x_2=0\\
+        &\text{Índice activo del tipo J\_Ne\_L0\_v} \refeq{J_neg_lambda_0_level_inferior}\\
+        & \beta_j=0.1\\
+        & \lambda_j=0 \\
+    \end{align*}
+    \begin{lstlisting}
+        # Para caso alpha!=0
+        SetFollowerRestriction(model,((x_1^2)*(y_1^2))+x_2==0,J_Ne_L0_v,0.1,0)
+    \end{lstlisting}
+    \item \text{$\vec{\alpha}= \vec{0}$:}\\
+    
+    Análogo al caso anterior pero con $\gamma_j$ valor de entrada
+    \begin{align*}
+        &\gamma_j=0.4
+    \end{align*}
+    \begin{lstlisting}
+        SetFollowerRestriction(model,((x_1^2)*(y_1^2))+x_2==0,J_Ne_L0_v,0.1,0,0.4)
+    \end{lstlisting}
+\end{itemize}
+
+% Finalizar el itemize que tiene de explicacion como instroducir las restricciones de ambos niveles
+\end{itemize}
+
+
+\subsubsection{Introducir el Punto}
+Ahora debe de introducirse el valor del punto que debe ser estacionario de la clase seleccionada.
+Debe de ternerse en cuenta que para todas las variables declaradas en ambos niveles debe de definirse el valor de la componente.
+
+\begin{lstlisting}
+    SetPoint(model,Dict(x_1=>1,x_2=>1,y_1=>1,y_2=>1))
+\end{lstlisting}
+
+\subsubsection{Generar el Problema}
+Finalmente al tener todos los datos previos introducidos se llama al \textbf{CreateProblem} pasandole como parámetro el \textit{model} 
+y generará dicho problema imprimiendo en consola este.
+
+\begin{lstlisting}
+    CreateProblem(model)
+\end{lstlisting}
+
+
+\subsubsection{Documentación Oficial}
+Para mayor información visitar ....
+%TODO: Referenciar al link de usuario

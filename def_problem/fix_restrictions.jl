@@ -181,7 +181,9 @@ function Restriction_init(expr_str::String, point::Dict, restriction_type::Restr
 
     # Compute the fixed value to add based on the restriction set type
     fix_value = Fix_value(value, restriction_set_type)
-
+    
+    # Update the expression with the add value
+    new_expr=new_expr+fix_value
     # Return a new `Restriction_Func` object
     Restriction_Func(
         vars_name=vars_name,

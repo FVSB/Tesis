@@ -681,6 +681,34 @@
       \verb https://api.semanticscholar.org/CorpusID:39987722
       \endverb
     \endentry
+    \entry{Juliadocs}{manual}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3d25ac8394488ca49f148f4bbd9e2906}{%
+           family={{JuliaLang}},
+           familyi={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{3d25ac8394488ca49f148f4bbd9e2906}
+      \strng{fullhash}{3d25ac8394488ca49f148f4bbd9e2906}
+      \strng{bibnamehash}{3d25ac8394488ca49f148f4bbd9e2906}
+      \strng{authorbibnamehash}{3d25ac8394488ca49f148f4bbd9e2906}
+      \strng{authornamehash}{3d25ac8394488ca49f148f4bbd9e2906}
+      \strng{authorfullhash}{3d25ac8394488ca49f148f4bbd9e2906}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Julia Documentation}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://docs.julialang.org/en/v1/
+      \endverb
+      \verb{url}
+      \verb https://docs.julialang.org/en/v1/
+      \endverb
+    \endentry
     \entry{JuMPPaper}{article}{}
       \name{author}{6}{}{%
         {{un=0,uniquepart=base,hash=ae562f612365bfa1287b8268e8b021df}{%
@@ -1618,6 +1646,34 @@
       \endverb
       \verb{url}
       \verb https://api.semanticscholar.org/CorpusID:39987722
+      \endverb
+    \endentry
+    \entry{Juliadocs}{manual}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3d25ac8394488ca49f148f4bbd9e2906}{%
+           family={{JuliaLang}},
+           familyi={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{3d25ac8394488ca49f148f4bbd9e2906}
+      \strng{fullhash}{3d25ac8394488ca49f148f4bbd9e2906}
+      \strng{bibnamehash}{3d25ac8394488ca49f148f4bbd9e2906}
+      \strng{authorbibnamehash}{3d25ac8394488ca49f148f4bbd9e2906}
+      \strng{authornamehash}{3d25ac8394488ca49f148f4bbd9e2906}
+      \strng{authorfullhash}{3d25ac8394488ca49f148f4bbd9e2906}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Julia Documentation}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://docs.julialang.org/en/v1/
+      \endverb
+      \verb{url}
+      \verb https://docs.julialang.org/en/v1/
       \endverb
     \endentry
     \entry{JuMPPaper}{article}{}

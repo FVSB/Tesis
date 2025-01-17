@@ -9,21 +9,24 @@ En términos abstractos, la optimización binivel busca minimizar una función o
 %Intro de la sección
 Dado que en la tesis trataremos sobre problemas binivel de enfoque optimista mostraremos algunos conocimientos de este.
 
+
 % Definición de problema binivel
+\newpage
 \textbf{Optimización Bilevel Optimista.} Un problema de optimización bilevel optimista, se formula como:
 
 \begin{align}
     \min_{x \in X, y} & \quad F(x, y) \notag \\
     \text{s.t.} & \quad g_i(x, y) \leq 0, i=1\ldots q  \notag \\
+    & \quad h_i(x,y) = 0, i=1 \ldots r \notag\\
     & \quad y \in S(x) \notag\\
     &\intertext{Donde $S(x)$ es el conjunto de soluciones óptimas del problema parametrizado por $x$} \tag{\theequation}\\
     \min_{y \in Y} & \quad f(x, y) \notag \\
     \text{s.t.} & \quad v_i(x, y) \leq 0, i=1\ldots s \notag\\
+    & \quad u_i(x,y) = 0, i=1 \ldots t \notag\\
     &\text{Definición de un Problema Binivel Optimista} \notag\\
-\label{eq:DefBinivelOptimista} \notag
 \end{align}
-
-Donde $M(x,y)$ es el conjunto de restricciones comunes para ambos niveles
+\label{eq:DefBinivelOptimista} 
+\textbf{Donde $M^0(x,y)$ es el conjunto de restricciones comunes para ambos niveles}
 
 %Dimensiones
 Donde 
@@ -32,13 +35,21 @@ $x \in R^{n}$, $y \in R^{m}$,
 %Dimension de F 
 $F(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,
 %Dimension g_i
-$g_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} $, 
+$g_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} $,
+%Dimension h_i
+$h_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} $,
 %Dimension de f_i
 $f(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,
 % Dimension de v_i
-$v_i \in V \| v_i(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,
-%Dimension de v_i
+$v_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} $,
+% Dimension u_i
+$u_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} $,
+%Dimension de M_i
 $m_i \in M(x,y) \| m_i : f \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$
+% Esto dejarlo en una sola pagina
+
+\newpage
+
 
 Esta minimización está sujeta a dos tipos de restricciones: 
 %Restricciones explicacion old
@@ -68,23 +79,27 @@ Esta minimización está sujeta a dos tipos de restricciones:
 		Para el caso de los SLSMG donde se tiene un problema de optimización en el nivel inferior este sustituye por de las condiciones KKT de este, obteniendo un MPEC \autocite{aussel2020}.
         
 % Descripcion del modelo en KKT
-		\begin{table}[H]
-
-		\[\begin{array}{l}
-			\underset{\substack{x, y, \lambda_i}}{\min} \quad F(x, y)\\
-			s.a \left\{ \begin{array}{l}
-				
-				g(x, y) \leq 0\\
-				\nabla_{y} f(x, y) + \sum_{i=1}^{|J_{0}|} \nabla_{y} V_i(x, y) \lambda_i = 0 \\
-				V_i(x, y) \leq 0 \\
-				V_i(x, y)\lambda_i = 0 \\
-				\lambda_i \geq 0\\
-			\end{array}\right.
-            \tag{\theequation}
-		\end{array}\]
-        \label{eq:KKT_Optimista}
-		\caption*{MPEC resultante}
-		\end{table}
+       \begin{table}[H]
+        \centering
+        \begin{equation}
+            \begin{array}{l}
+                \underset{\substack{x, y, \lambda_i}}{\min} \quad F(x, y)\\
+                s.a \left\{ 
+                \begin{array}{l}
+                    g_i(x, y) \leq 0\\
+                    \nabla_{y} f(x, y) + \sum_{i=1}^{|J_{0}|} \nabla_{y} v_i(x, y) \lambda_i = 0 \\
+                    v_i(x, y) \leq 0 \\
+                    v_i(x, y)\lambda_i = 0 \\
+                    \lambda_i \geq 0\\
+                \end{array}\right.
+                \tag{\theequation}
+            \end{array}
+            \label{eq:KKT_Optimista}
+        \end{equation}
+        \caption*{MPEC resultante}
+        
+    \end{table}
+    
 % Añadir aclaratoria
 Los tres últimos grupos de restricciones expresan que $v$ y $\lambda$ están restringidas en signo y que al menos una es 0. Estas condiciones son conocidas como \textbf{restricciones de complementariedad}. Estos modelos corresponden a la clase de problemas de programación matemática con restricciones de complementariedad (MPEC). A continuación, presentamos los resultados de esta área necesarios para el desarrollo de esta tesis.
 
@@ -247,43 +262,42 @@ A pesar de sus capacidades, BilevelJuMP.jl presenta algunas limitaciones, entre 
 
 
 % Explicacion algoritmos 
-%\section{Métodos de Reformulación para Optimización Bilevel}
-%
-%La optimización bilevel presenta desafíos particulares debido a su naturaleza jerárquica y las condiciones de complementariedad resultantes. A continuación, se presentan los principales métodos de reformulación implementados en la literatura \cite{BilevelJump}.
-%
-%\subsection{Método Big-M}
-%
-%El método Big-M es una técnica fundamental para reformular problemas de optimización bilevel en problemas MPEC, donde $V$ y $U$ son lineales afines. Este método aborda específicamente las condiciones de complementariedad que surgen en estas reformulaciones, transformando el problema original en un problema de programación lineal mixta entera (MILP).
-%
-%La reformulación mediante Big-M introduce un parámetro M suficientemente grande y variables binarias para transformar las condiciones de complementariedad no lineales en restricciones lineales. Para una condición de complementariedad de la forma $y_i(A_ix + b_i + D_iz) = 0$, el método introduce una variable binaria $f$ y las siguientes restricciones:
-%
-%\begin{align*}
-%A_ix + b_i + D_iz &\leq M_p f \\
-%y_i &\leq M_d(1 - f) \\
-%f &\in \{0,1\}
-%\end{align*}
-%
-%donde $M_p$ y $M_d$ son valores grandes para las variables primales y duales, respectivamente. La efectividad del método depende crucialmente de la selección apropiada de estos valores, que deben ser suficientemente grandes para no excluir la solución óptima, pero no excesivamente grandes para evitar inestabilidades numéricas \cite{BilevelJump}.
-%
-%\subsection{Método SOS1}
-%
-%El método de Conjuntos Ordenados Especiales de tipo 1 (SOS1) representa una alternativa más robusta para reformular las condiciones de complementariedad de Karush-Kuhn-Tucker (KKT) en problemas de optimización bilevel. A diferencia del método Big-M, SOS1 no requiere la determinación de parámetros adicionales, lo que lo hace particularmente atractivo en la práctica.
-%
-%La reformulación SOS1 transforma una condición de complementariedad en una restricción que especifica que, como máximo, una variable en un conjunto puede tener un valor diferente de cero. Para una condición de complementariedad $y_i(A_ix + b_i + D_iz) = 0$, la reformulación SOS1 se expresa como:
-%
-%\[ [y_i ; A_ix + b_i + D_iz] \in \text{SOS1} \]
-%
-%Esta formulación está disponible en muchos solucionadores MILP modernos y ha demostrado un rendimiento competitivo \cite{BilevelJump}.
-%
-%\subsection{Método ProductMode}
-%
-%El método ProductMode representa un enfoque directo para manejar las condiciones de complementariedad en su forma de producto original. Este método es particularmente útil cuando se trabaja con solucionadores de programación no lineal (NLP), aunque no garantiza la optimalidad global.
-%
-%La implementación del ProductMode mantiene la restricción de complementariedad en su forma original:
-%
-%\[ y_i(A_ix + b_i + D_iz) \leq t \]
-%
-%donde $t$ es un parámetro de regularización pequeño. Esta formulación, aunque no satisface las condiciones de calificación de restricciones estándar, es útil para obtener soluciones iniciales y puede ser especialmente efectiva cuando se combina con solucionadores NLP \cite{BilevelJump}.
-%
-%
-%
+\section{Métodos de Reformulación para Optimización Bilevel}
+
+La optimización bilevel presenta desafíos particulares debido a su naturaleza jerárquica y las condiciones de complementariedad resultantes. A continuación, se presentan los principales métodos de reformulación implementados en la literatura \cite{BilevelJump}.
+
+\subsection{Método Big-M}
+
+El método Big-M es una técnica fundamental para reformular problemas de optimización bilevel en problemas MPEC, donde $V$ y $U$ son lineales afines. Este método aborda específicamente las condiciones de complementariedad que surgen en estas reformulaciones, transformando el problema original en un problema de programación lineal mixta entera (MILP).
+
+La reformulación mediante Big-M introduce un parámetro M suficientemente grande y variables binarias para transformar las condiciones de complementariedad no lineales en restricciones lineales. Para una condición de complementariedad de la forma $y_i(A_ix + b_i + D_iz) = 0$, el método introduce una variable binaria $f$ y las siguientes restricciones:
+
+\begin{align*}
+A_ix + b_i + D_iz &\leq M_p f \\
+y_i &\leq M_d(1 - f) \\
+f &\in \{0,1\}
+\end{align*}
+
+donde $M_p$ y $M_d$ son valores grandes para las variables primales y duales, respectivamente. La efectividad del método depende crucialmente de la selección apropiada de estos valores, que deben ser suficientemente grandes para no excluir la solución óptima, pero no excesivamente grandes para evitar inestabilidades numéricas \cite{BilevelJump}.
+
+\subsection{Método SOS1}
+
+El método de Conjuntos Ordenados Especiales de tipo 1 (SOS1) representa una alternativa más robusta para reformular las condiciones de complementariedad de Karush-Kuhn-Tucker (KKT) en problemas de optimización bilevel. A diferencia del método Big-M, SOS1 no requiere la determinación de parámetros adicionales, lo que lo hace particularmente atractivo en la práctica.
+
+La reformulación SOS1 transforma una condición de complementariedad en una restricción que especifica que, como máximo, una variable en un conjunto puede tener un valor diferente de cero. Para una condición de complementariedad $y_i(A_ix + b_i + D_iz) = 0$, la reformulación SOS1 se expresa como:
+
+\[ [y_i ; A_ix + b_i + D_iz] \in \text{SOS1} \]
+
+Esta formulación está disponible en muchos solucionadores MILP modernos y ha demostrado un rendimiento competitivo \cite{BilevelJump}.
+
+\subsection{Método ProductMode}
+
+El método ProductMode representa un enfoque directo para manejar las condiciones de complementariedad en su forma de producto original. Este método es particularmente útil cuando se trabaja con solucionadores de programación no lineal (NLP), aunque no garantiza la optimalidad global.
+
+La implementación del ProductMode mantiene la restricción de complementariedad en su forma original:
+
+\[ y_i(A_ix + b_i + D_iz) \leq t \]
+
+donde $t$ es un parámetro de regularización pequeño. Esta formulación, aunque no satisface las condiciones de calificación de restricciones estándar, es útil para obtener soluciones iniciales y puede ser especialmente efectiva cuando se combina con solucionadores NLP \cite{BilevelJump}.
+
+

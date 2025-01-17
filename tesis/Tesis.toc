@@ -5,6 +5,26 @@
 \contentsline {subsection}{\numberline {2.1.1}Transformación de los problemas de dos niveles}{12}{subsection.2.1.1}%
 \contentsline {section}{\numberline {2.2}Sobre los Programas Matemáticos con Restricciones de Equilibrio (MPEC)}{13}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Resultados sobre MPECs}{14}{subsection.2.2.1}%
-\contentsline {section}{\numberline {2.3}Modelación en Julia}{16}{section.2.3}%
+\contentsline {section}{\numberline {2.3}Modelación en Julia}{17}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Limitaciones del BilevelJuMP.jl}{18}{subsection.2.3.1}%
-\contentsline {chapter}{\numberline {3.}MODELACIÓN MATEMÁTICA E IMPLEMENTACIÓN}{19}{chapter.3}%
+\contentsline {section}{\numberline {2.4}Métodos de Reformulación para Optimización Bilevel}{19}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Método Big-M}{19}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Método SOS1}{20}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Método ProductMode}{20}{subsection.2.4.3}%
+\contentsline {chapter}{\numberline {3.}IMPLEMENTACIÓN}{22}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Generación del problema}{23}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Requerimientos de entrada}{23}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Modificación del Problema Original}{25}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}implementación Algorítmica}{27}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Guía de Usuario}{27}{subsection.3.2.1}%
+\contentsline {subsubsection}{Dependencias}{27}{section*.14}%
+\contentsline {subsubsection}{Importación de la biblioteca}{27}{section*.15}%
+\contentsline {subsubsection}{Crear el modelo base}{28}{section*.16}%
+\contentsline {subsubsection}{Función para diferenciar los niveles}{28}{section*.17}%
+\contentsline {subsubsection}{Declarar Variables}{28}{section*.18}%
+\contentsline {subsubsection}{Declarar Funciones Objetivo}{29}{section*.19}%
+\contentsline {subsubsection}{Tipos de indices activos}{30}{section*.20}%
+\contentsline {subsubsection}{Declarar Restricciones}{31}{section*.21}%
+\contentsline {subsubsection}{Introducir el Punto}{33}{section*.22}%
+\contentsline {subsubsection}{Generar el Problema}{33}{section*.23}%
+\contentsline {subsubsection}{Documentación Oficial}{33}{section*.24}%

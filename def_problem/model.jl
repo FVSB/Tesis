@@ -38,6 +38,20 @@ function SetFollowerRestriction(
 
 end
 
+"""
+Sobre carga en caso de que gamma no sea valor de entrada
+"""
+function SetFollowerRestriction(
+    model::OptimizationModel,
+    expr::Symbolics.Num,
+    restriction_set_type::RestrictionSetType,
+    beta::Number,
+    lambda::Number
+)
+return SetFollowerRestriction(model,expr,restriction_set_type,beta,lambda,0)
+end
+
+
 function SetAlpha(model::OptimizationModel, alpha::Vector)
     #Añadir que si no es igual al length del level inf lanzar exepcion
     model.is_alpha_zero = false

@@ -478,7 +478,7 @@ Correr el experimento y guardar en un excel
 """
 function RunExperiment(experiment::Experiment,experiment_name::String)
     length_y_vars::Int = length(experiment.follower_vars)
-    _alpha=get_rand_vect(length_y_vars)
+    _alpha=get_rand_vect(length_y_vars)*3
     SetAlpha(experiment.model_alpha_non_zero,_alpha )
     # Inicializar ambos experimentos
     

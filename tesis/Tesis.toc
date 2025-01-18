@@ -28,3 +28,7 @@
 \contentsline {subsubsection}{Introducir el Punto}{33}{section*.22}%
 \contentsline {subsubsection}{Generar el Problema}{33}{section*.23}%
 \contentsline {subsubsection}{Documentación Oficial}{33}{section*.24}%
+\contentsline {chapter}{\numberline {4.}Experimentación}{34}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Modelación de la experimentación}{35}{section.4.1}%
+\contentsline {subsubsection}{Obtención de los óptimos}{35}{section*.25}%
+\contentsline {subsubsection}{Generación de los problemas}{36}{section*.26}%

@@ -3107,6 +3107,12 @@
     <bcf:citekey order="41" intorder="1">Juliadocs</bcf:citekey>
     <bcf:citekey order="42" intorder="1">BilevelJump</bcf:citekey>
     <bcf:citekey order="43" intorder="1">JuMPPaper</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">BolibTestProblems</bcf:citekey>
+    <bcf:citekey order="45" intorder="1">Floudas1999HandbookOT</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">BolibTestProblems</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">BilevelJump</bcf:citekey>
+    <bcf:citekey order="48" intorder="1">JuMPPaper</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">Complementarityjl</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

@@ -388,6 +388,34 @@
       \field{type}{phdthesis}
       \field{year}{2021}
     \endentry
+    \entry{Complementarityjl}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d97b3563f6e125d2ac918c088f2095ec}{%
+           family={Chkwon},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{d97b3563f6e125d2ac918c088f2095ec}
+      \strng{fullhash}{d97b3563f6e125d2ac918c088f2095ec}
+      \strng{bibnamehash}{d97b3563f6e125d2ac918c088f2095ec}
+      \strng{authorbibnamehash}{d97b3563f6e125d2ac918c088f2095ec}
+      \strng{authornamehash}{d97b3563f6e125d2ac918c088f2095ec}
+      \strng{authorfullhash}{d97b3563f6e125d2ac918c088f2095ec}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Complementarity.jl}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://github.com/chkwon/Complementarity.jl
+      \endverb
+      \verb{url}
+      \verb https://github.com/chkwon/Complementarity.jl
+      \endverb
+    \endentry
     \entry{DempeyZemkoho2020}{book}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=66093c5bda09d3906847e1072f977351}{%
@@ -496,6 +524,37 @@
       \endverb
       \verb{url}
       \verb https://api.semanticscholar.org/CorpusID:26882450
+      \endverb
+    \endentry
+    \entry{Floudas1999HandbookOT}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=35367efe517eadd05e6f0a359da55328}{%
+           family={Floudas},
+           familyi={F\bibinitperiod},
+           given={Christodoulos\bibnamedelima A.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{35367efe517eadd05e6f0a359da55328}
+      \strng{fullhash}{35367efe517eadd05e6f0a359da55328}
+      \strng{bibnamehash}{35367efe517eadd05e6f0a359da55328}
+      \strng{authorbibnamehash}{35367efe517eadd05e6f0a359da55328}
+      \strng{authornamehash}{35367efe517eadd05e6f0a359da55328}
+      \strng{authorfullhash}{35367efe517eadd05e6f0a359da55328}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Handbook of Test Problems in Local and Global Optimization}
+      \field{year}{1999}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:117898119
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:117898119
       \endverb
     \endentry
     \entry{Floudas1990ACO}{article}{}
@@ -982,6 +1041,50 @@
       \endverb
       \verb{url}
       \verb https://api.semanticscholar.org/CorpusID:4626744
+      \endverb
+    \endentry
+    \entry{BolibTestProblems}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=450cc2060ff2dca8b46221dc60eb65b1}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Shenglong},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=aad7dbbaca8ce478903ccf406ce90580}{%
+           family={Zemkoho},
+           familyi={Z\bibinitperiod},
+           given={Alain\bibnamedelima B.},
+           giveni={A\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5260c9c89827e4078c70f5ce4f6d23b6}{%
+           family={Tin},
+           familyi={T\bibinitperiod},
+           given={Andrey},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{781007493d1bb7cb61edfd198a75d6c7}
+      \strng{fullhash}{b57b2ef94ca4dd4b7209d4e3899b5620}
+      \strng{bibnamehash}{b57b2ef94ca4dd4b7209d4e3899b5620}
+      \strng{authorbibnamehash}{b57b2ef94ca4dd4b7209d4e3899b5620}
+      \strng{authornamehash}{781007493d1bb7cb61edfd198a75d6c7}
+      \strng{authorfullhash}{b57b2ef94ca4dd4b7209d4e3899b5620}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bilevel Optimization}
+      \field{title}{BOLIB: Bilevel Optimization LIBrary of Test Problems}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:119636540
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:119636540
       \endverb
     \endentry
   \enddatalist
@@ -1355,6 +1458,34 @@
       \field{type}{phdthesis}
       \field{year}{2021}
     \endentry
+    \entry{Complementarityjl}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d97b3563f6e125d2ac918c088f2095ec}{%
+           family={Chkwon},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{d97b3563f6e125d2ac918c088f2095ec}
+      \strng{fullhash}{d97b3563f6e125d2ac918c088f2095ec}
+      \strng{bibnamehash}{d97b3563f6e125d2ac918c088f2095ec}
+      \strng{authorbibnamehash}{d97b3563f6e125d2ac918c088f2095ec}
+      \strng{authornamehash}{d97b3563f6e125d2ac918c088f2095ec}
+      \strng{authorfullhash}{d97b3563f6e125d2ac918c088f2095ec}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Complementarity.jl}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://github.com/chkwon/Complementarity.jl
+      \endverb
+      \verb{url}
+      \verb https://github.com/chkwon/Complementarity.jl
+      \endverb
+    \endentry
     \entry{DempeyZemkoho2020}{book}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=66093c5bda09d3906847e1072f977351}{%
@@ -1463,6 +1594,37 @@
       \endverb
       \verb{url}
       \verb https://api.semanticscholar.org/CorpusID:26882450
+      \endverb
+    \endentry
+    \entry{Floudas1999HandbookOT}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=35367efe517eadd05e6f0a359da55328}{%
+           family={Floudas},
+           familyi={F\bibinitperiod},
+           given={Christodoulos\bibnamedelima A.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{35367efe517eadd05e6f0a359da55328}
+      \strng{fullhash}{35367efe517eadd05e6f0a359da55328}
+      \strng{bibnamehash}{35367efe517eadd05e6f0a359da55328}
+      \strng{authorbibnamehash}{35367efe517eadd05e6f0a359da55328}
+      \strng{authornamehash}{35367efe517eadd05e6f0a359da55328}
+      \strng{authorfullhash}{35367efe517eadd05e6f0a359da55328}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Handbook of Test Problems in Local and Global Optimization}
+      \field{year}{1999}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:117898119
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:117898119
       \endverb
     \endentry
     \entry{Floudas1990ACO}{article}{}
@@ -1949,6 +2111,50 @@
       \endverb
       \verb{url}
       \verb https://api.semanticscholar.org/CorpusID:4626744
+      \endverb
+    \endentry
+    \entry{BolibTestProblems}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=450cc2060ff2dca8b46221dc60eb65b1}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Shenglong},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=aad7dbbaca8ce478903ccf406ce90580}{%
+           family={Zemkoho},
+           familyi={Z\bibinitperiod},
+           given={Alain\bibnamedelima B.},
+           giveni={A\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5260c9c89827e4078c70f5ce4f6d23b6}{%
+           family={Tin},
+           familyi={T\bibinitperiod},
+           given={Andrey},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{781007493d1bb7cb61edfd198a75d6c7}
+      \strng{fullhash}{b57b2ef94ca4dd4b7209d4e3899b5620}
+      \strng{bibnamehash}{b57b2ef94ca4dd4b7209d4e3899b5620}
+      \strng{authorbibnamehash}{b57b2ef94ca4dd4b7209d4e3899b5620}
+      \strng{authornamehash}{781007493d1bb7cb61edfd198a75d6c7}
+      \strng{authorfullhash}{b57b2ef94ca4dd4b7209d4e3899b5620}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bilevel Optimization}
+      \field{title}{BOLIB: Bilevel Optimization LIBrary of Test Problems}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:119636540
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:119636540
       \endverb
     \endentry
   \enddatalist

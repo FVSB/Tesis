@@ -32,3 +32,4 @@
 \contentsline {section}{\numberline {4.1}Modelación de la experimentación}{35}{section.4.1}%
 \contentsline {subsubsection}{Obtención de los óptimos}{35}{section*.25}%
 \contentsline {subsubsection}{Generación de los problemas}{36}{section*.26}%
+\contentsline {subsubsection}{Comparación de los algoritmos de Julia}{37}{section*.27}%

@@ -168,7 +168,10 @@ function Restriction_init(expr_str::String, point::Dict, restriction_type::Restr
     if restriction_type in [GtEq, Gt]  # For greater-than or greater-than-or-equal types
         new_expr = -new_expr
     end
-
+    # Ajust in the equality case to the active index is Normal
+    if restriction_type==Eq
+        restriction_set_type=Normal
+    end
     # Compute the `bj` vector if `alpha` is non-zero
     if !is_alpha_zero
         bj = compute_bj(new_expr, alpha, point, ys_vars, restriction_set_type, gamma)

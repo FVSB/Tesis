@@ -3,6 +3,12 @@ using XLSX
 using DataFrames
 using BilevelJuMP, HiGHS, Ipopt, SCIP
 using BenchmarkTools
+"""
+My retorno de dos digitos
+"""
+function my_round(value)
+    return round(value,digits=2)
+end
 
 function serialize_in_xlsx(df,file_name::String)
     sheet_name="Data"

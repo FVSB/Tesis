@@ -13,7 +13,7 @@ mutable struct Problem
     expr::Union{Symbolics.Num,Nothing}
 end
 
-struct LeaderRestrictionProblem
+mutable struct LeaderRestrictionProblem
     expr::Symbolics.Num
     _miu::Number
     restriction_set_type::RestrictionSetType

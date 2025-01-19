@@ -136,7 +136,7 @@ Primero en caso de que $\alpha \neq 0$ en los $v_j(x,y) \in J_0^v$ se procede a 
 Después de realizado el calculo del $b_j$ se procede a modificar su indice activo correspondiente:
 
 \begin{equation}
-	v(z_{est})_{j}^{\star}=v(z_{est})_{j}+ ({b_j\alpha}^T)\cdot (y_1,y_2,\dots,y_m)
+	v_{j}^{\star}(z_{est})=v_{j}(z_{est})+ ({b_j\alpha}^T)\cdot (y_1,y_2,\dots,y_m)
 \end{equation}
 
 
@@ -155,7 +155,7 @@ Se plantea las condiciones KKT y se halla $\vec{bf}$ :
 
 \begin{equation}
     \begin{aligned}
-        &\nabla_{y}f(z_{est})+\sum_{j=0}^{|V \in J_0|}(\lambda_j\nabla_{y}V_j(z_{est}))+\vec{bf}=\vec{0}\\
+        &\nabla_{y}f(x,y)+\sum_{j=0}^{|V \in J_0|}(\lambda_j\nabla_{y}v_{j}^{\star}(x,y))+\vec{bf}=\vec{0}\\
         &\text{KKT del problema del nivel inferior}
     \end{aligned}
     \label{KKT_nivel_inferior}
@@ -169,7 +169,7 @@ obteniendo el problema de forma reformulada.
     \begin{equation}
         \label{KKT_del_MPEC}
     \end{equation}
-	$\nabla_{xy}F(x,y)+\sum_{i=1}^{|G \in J_o|}(\mu_i\nabla_{xy}g(x,y))+[\nabla_{x,y}\nabla_{y}f(x,y)+\sum_{j=1}^{|V \in J_0|}\lambda_j\nabla_{xy}\nabla_{y}V_j(x,y)]\alpha+\sum_{j=1}^{|V \in J_0|}(\beta_j\nabla_{xy}V_j(x,y))+\vec{BF}=\vec{0}$  \label{KKT_del_MPEC}
+	$\nabla_{xy}F(x,y)+\sum_{i=1}^{|G \in J_o|}(\mu_i\nabla_{xy}g(x,y))+[\nabla_{x,y}\nabla_{y}f(x,y)+\sum_{j=1}^{|V \in J_0|}\lambda_j\nabla_{xy}\nabla_{y}v_{j}^{\star}(x,y)]\alpha+\sum_{j=1}^{|V \in J_0|}(\beta_j\nabla_{xy}v_{j}^{\star}(x,y))+\vec{BF}=\vec{0}$  \label{KKT_del_MPEC}
 \caption*{KKT del MPEC}
 \end{table}
 

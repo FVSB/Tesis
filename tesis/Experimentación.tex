@@ -11,6 +11,34 @@ Lineales, Cuadráticos y No Convexos, dividios en 5 problemas por cada clasifica
 Estos han sido extraidos de \cite{Floudas1999HandbookOT} para las dos primeras clasificaciones y \cite{BolibTestProblems} para la última.
 
 \newpage
+\section{Problemas Escogidos}
+Se muestran los problemas escogidos para la experimentación.
+
+%Tabla con los problemas escogidos
+\begin{table}[h!]
+\centering
+\caption{Problemas Seleccionados}
+\begin{tabular}{ | m{5cm} | m{5cm} | m{5cm} | }
+  
+  \hline
+  \textbf{No Convexos} & \textbf{Lineales} & \textbf{Cuadráticos} \\
+  \hline
+  MitsosBarton2006Ex312 & ex9.1.1 & ex9.2.1 \\
+  \hline
+  MitsosBarton2006Ex313 & ex9.1.2 & ex9.2.2 \\
+  \hline
+  MitsosBarton2006Ex314 & ex9.1.8 & ex9.2.3\\
+  \hline
+  MitsosBarton2006Ex323 & ex9.1.9 & ex9.2.4\\
+  \hline
+  MorganPatrone2006a & ex9.1.10 & ex9.2.5 \\
+  \hline
+\end{tabular}
+\end{table}
+
+
+
+\newpage
 \section{Modelación de la experimentación}
 Se describirá el proceso de generar la experimentación. 
 Todos los valores han sido redondeados por exceso a dos cifras después de la coma. 
@@ -74,9 +102,32 @@ Donde se guarda:
 
 \subsubsection{Comparación de los algoritmos de Julia}
 Después de tener generados los problemas se utilizan los mismos métodos de Julia mencionados anteiormente
-para obtener óptimos de cada problema generado y se eligirá por cada tipo de problema y punto el que mayor diferencia existe.
+para obtener óptimos de cada problema generado y se elige como representante el que más haya superado su óptimo o en caso de no superar el que mayor distancia tenga con el valor objetivo inicial.
 
+\subsection{Resultados:}
+Se presentan los resultados seleccionados bajo los criterios expuestos anteriormente en las siguientes tablas que contienen:
+% Explicacion de las tablas
+\begin{itemize}
+    \item El nombre del problema original desde el cual fue modificado para que fuese estacionario de la clase deseada. 
+    \item El punto al cual se forzó ser estacionario de la clase requerida.
+    \item La evaluación de la función objetivo del punto estacionario.
+    \item El punto óptimo hallado por los algoritmos de Julia.
+    \item La evaluación de la función objetivo del óptimo.
+    \item Método seleccionado.
+\end{itemize}
 
+\subsubsection{Para $\alpha =0$} 
+% Tabla con los problemas lineales escogidos
+%- Lineales
+%	- C-Estacionario: ex9.1.1
+%	- Fuertemente: ex9.1.10
+%	- M-Estacionario:ex9.1.8
+%	- Alpha=0: ex9.1.8
+\begin{resultstable}{Problemas Seleccionados para $alpha=0$}
+    \resultrow{ex9.1.8}{}{}{}{}{}
+    \resultrow{ex9.2.3}{(1.55,2.7,-5.1,-8.65)}{-10.25}{(0,0,-5.1,-10)}{-14.7}{Big-M}
+    \resultrow{MitsosBarton2006Ex313}{}{}{}{}{}
+    \end{resultstable}
 
 
 

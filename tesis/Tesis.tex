@@ -132,6 +132,34 @@
 
 \lstset{style=julia-style}
 
+
+% Para que se ajusten autmaticamente las tablas 
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{adjustbox}
+
+\geometry{a4paper, margin=1in}
+
+\newenvironment{resultstable}[1]{
+    \begin{table}[h!]
+        \centering
+        \caption{#1}
+        \begin{adjustbox}{max width=\textwidth}
+        \begin{tabular}{ | l | l | l | l | l | l | }
+            \hline
+            \textbf{Nombre del problema} & \textbf{Punto estacionario} & \textbf{Valor objetivo del punto estacionario} & \textbf{Punto óptimo} & \textbf{Valor del punto óptimo} & \textbf{Método seleccionado}\\
+            \hline
+}{
+        \end{tabular}
+        \end{adjustbox}
+    \end{table}
+}
+
+\newcommand{\resultrow}[6]{
+    #1 & #2 & #3 & #4 & #5 & #6 \\
+    \hline
+}
+
 % Pone automatico los numeros de las ecuaciones
 \numberwithin{equation}{section}
 % Definir un nuevo entorno para teoremas 

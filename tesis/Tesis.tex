@@ -145,9 +145,9 @@
         \centering
         \caption{#1}
         \begin{adjustbox}{max width=\textwidth}
-        \begin{tabular}{ | l | l | l | l | l | l | }
+        \begin{tabular}{| l | l | l | l | l | l | l | }
             \hline
-            \textbf{Nombre del problema} & \textbf{Punto estacionario} & \textbf{Valor objetivo del punto estacionario} & \textbf{Punto óptimo} & \textbf{Valor del punto óptimo} & \textbf{Método seleccionado}\\
+            \textbf{Tipo de punto} & \textbf{Nombre del problema} & \textbf{Punto estacionario} & \textbf{Valor objetivo del punto estacionario} & \textbf{Punto óptimo} & \textbf{Valor del punto óptimo} & \textbf{Método seleccionado}\\
             \hline
 }{
         \end{tabular}
@@ -155,8 +155,8 @@
     \end{table}
 }
 
-\newcommand{\resultrow}[6]{
-    #1 & #2 & #3 & #4 & #5 & #6 \\
+\newcommand{\resultrow}[7]{
+    #1 & #2 & #3 & #4 & #5 & #6 & #7 \\
     \hline
 }
 

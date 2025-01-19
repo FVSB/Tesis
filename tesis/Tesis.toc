@@ -35,4 +35,6 @@
 \contentsline {subsubsection}{Generación de los problemas}{31}{section*.27}%
 \contentsline {subsubsection}{Comparación de los algoritmos de Julia}{31}{section*.28}%
 \contentsline {subsection}{\numberline {4.2.1}Resultados:}{32}{subsection.4.2.1}%
-\contentsline {subsubsection}{Para $\alpha =0$}{32}{section*.29}%
+\contentsline {subsubsection}{Problemas Lineales}{32}{section*.29}%
+\contentsline {subsubsection}{Problemas Cuadráticos}{32}{section*.31}%
+\contentsline {subsubsection}{Problemas No Convexos}{32}{section*.33}%

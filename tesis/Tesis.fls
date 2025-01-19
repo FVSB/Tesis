@@ -542,13 +542,6 @@ OUTPUT Experimentación.aux
 INPUT .\Experimentación.tex
 INPUT .\Experimentación.tex
 INPUT Experimentación.tex
-INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmr10.tfm
-INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmmi10.tfm
-INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy10.tfm
-INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx10.tfm
-INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\latex-fonts\lasy10.tfm
-INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
-INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT Tesis.aux
 INPUT .\Title.aux
 INPUT .\Title.aux
@@ -578,8 +571,6 @@ INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbxo10.
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbxo10.pfb
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmex10.pfb
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmex10.pfb
-INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi10.pfb
-INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi10.pfb
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi12.pfb
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi12.pfb
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi6.pfb

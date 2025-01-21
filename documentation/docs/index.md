@@ -1,3 +1,10 @@
-# Bienvenidos
-Este es un módulo de Julia que permite generar casos pruebas de problema de optimización binivel.
+# ProblemGEN
+
+ProblemGEN es un generador de problemas binivel, donde dado un punto y un problema binivel inicial se genera un problema binivel donde este es estacionario del tipo:
+
+1. C-Estacionario.
+1. M-Estacionario.
+1. Fuertemente Estacionario.
+
+
 

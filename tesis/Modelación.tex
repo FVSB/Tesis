@@ -8,19 +8,19 @@ En este capítulo se mostrará la forma y los pasos para generar el problema des
     \caption{Nomenclatura a utilizar}
     \begin{tabular}{l m{360pt}}
         $ F(x,y) $              & Función del líder                                                                                                          \\
-        $ G(x,y) $              & Restricciones de desigualdad del líder                                                                                                            \\
-        $ H(x,y) $                 & Restricciones de igualdad del lider                       \\
+        $ g_i(x,y) $              & Restricciones de desigualdad del líder                                                                                                            \\
+        $ h_i(x,y) $                 & Restricciones de igualdad del lider                       \\
         $ f(x,y) $           & Funcion del follower                                                               \\
-        $ V(x,y) $              &  Restricciones de desigualdad del follower  \\
-        $ U(x,y) $     & restricciones de igualdad del follower\\
-        $ V_{j}^{\star} $    & Restriccion de disigualdad del follower activa despues de modificarse el problema            \\
+        $ v_j(x,y) $              &  Restricciones de desigualdad del follower  \\
+        $ u_j(x,y) $     & restricciones de igualdad del follower\\
+        $ v_{j}^{\star} $    & Restriccion de disigualdad del follower activa despues de modificarse el problema            \\
         $z_{est}$         & Punto que se desea que sea estacionario\\
         $J_0^g$   & Índices activos del nivel superior \\
         $J_0^v$   & Índices activos del nivel inferior \\
         $ \alpha  $             & Vector de entrada de dimensión igual cantidad variables follower                                                                                                      \\
-        $ \beta $               & Multiplicador asociado al $V_{j}^{\star}$ en el nivel superior          \\
-        $ \lambda $              & Multiplicador asociado al $V_{j}^{\star}$ en el nivel inferior\\
-        $\gamma$                & Valor asociado a cada $V_{j}^{\star}$ con $\alpha=\vec{0}$\\
+        $ \beta $               & Multiplicador asociado al $v_{j}^{\star}$ en el nivel superior          \\
+        $ \lambda $              & Multiplicador asociado al $v_{j}^{\star}$ en el nivel inferior\\
+        $\gamma$                & Valor asociado a cada $v_{j}^{\star}$ con $\alpha=\vec{0}$\\
     \end{tabular}
 
     \end{table}
@@ -409,5 +409,7 @@ y generará dicho problema imprimiendo en consola este.
 
 
 \subsubsection{Documentación Oficial}
-Para mayor información visitar ....
+Para mayor información visitar la \href{https://github.com/FVSB/Tesis}{documentación oficial del generador}. 
+
+Se pone antes de entrega rel host donde esta la pagina de MKDOCS
 %TODO: Referenciar al link de usuario

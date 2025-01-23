@@ -138,8 +138,10 @@
 \usepackage{geometry}
 \usepackage{adjustbox}
 
-\geometry{a4paper, margin=1in}
-
+% Hoja a4
+%\geometry{a4paper, margin=1in}
+% Hoja Carta
+%\geometry{letterpaper, margin=1in}
 \newenvironment{resultstable}[1]{
     \begin{table}[h!]
         \centering
@@ -175,7 +177,7 @@
 	
 	\include{Resumen.tex}
 	
-	%\include{Agradecimientos.tex}
+	\include{Agradecimientos.tex}
 	
 	\tableofcontents
 		
@@ -187,9 +189,11 @@
 	\include{Modelación.tex}
 	
 	\include{Experimentación.tex}
-	%
-	%\include{Conclusiones.tex}
-	%
+	
+	\include{Conclusiones.tex}
+
+	\include{Recomendaciones}
+	
 	\backmatter
 	\printbibliography
 

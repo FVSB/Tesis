@@ -1,5 +1,9 @@
-# Utils script 
 
+# Utils script 
+using Random
+
+# Random seed
+Random.seed!(1234)
 """
 Generates a random number greater than zero and less than one.
 

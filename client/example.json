@@ -1,0 +1,27 @@
+{
+    "vars":{
+        "leader":[],
+        "follower":[]
+    },
+    "objective_function":{
+        "leader":"",
+        "follower":""
+    },
+    "restrictions":{
+        "leader":[{
+           "expresion":"",
+            "active_index_type":"",
+            "miu":0.4
+
+        }],
+        "follower":[{
+            "expresion":"",
+            "active_index_type":"",
+            "lambda":0.1,
+            "beta":0.9,
+            "gamma":0.4
+        }]
+    },
+    "alpha_vec":[2.3,293]
+    
+}

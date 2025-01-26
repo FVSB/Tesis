@@ -2,7 +2,7 @@
 
 En este capítulo se mostrará la forma y los pasos para generar el problema deseado en el contexto de un generador de puntos estacionarios para problemas binivel. Este capítulo aborda el diseño y la implementación del generador, explicando detalladamente las metodologías empleadas, los criterios necesarios para asegurar la validez de los puntos obtenidos y los algoritmos utilizados en cada etapa del proceso.
 
-%\section*{Nomenclatura a utilizar:}
+\section{Nomenclatura a utilizar:}
 \begin{table}[H]
     \centering
     \caption{Nomenclatura a utilizar}
@@ -25,6 +25,7 @@ En este capítulo se mostrará la forma y los pasos para generar el problema des
 
     \end{table}
 
+\newpage
 
 \section{Generación del problema}
 A continuacion se mostrarán los pasos a seguir para generar el problema deseado donde el punto sea estacionario de la clase específica.
@@ -33,6 +34,7 @@ A continuacion se mostrarán los pasos a seguir para generar el problema deseado
 Para generar un problema es necesario inicialmente introducir un problema de optimización binivel del tipo SLSF, un punto ($z_{est}$) el cual
 se desea que sea estacionario y los multiplicadores con signo o valores con ciertas condiciones en dependencia del tipo de estacionariedad requerida.
 
+\begin{samepage}
 El problema de entrada tiene que cumplir con ser un programa de optimizacion binivel como \refeq{eq:DefBinivelOptimista}. 
 Debe de conocerse sus índices activos de las restricciones de desigualdad en cada nivel:
 \begin{itemize}
@@ -67,6 +69,7 @@ Debe de conocerse sus índices activos de las restricciones de desigualdad en ca
                 \end{itemize}
     Cada índice activo tiene multiplicadores $\beta_j$ y en dependencia del caso $\gamma_j$ asociados.
 \end{itemize}
+\end{samepage}
 
 % Condiciones
 %Hablar sobre conocerr vector \alpha
@@ -74,6 +77,7 @@ Se debe conocer el valor del $\vec{\alpha}$.
 Además para cada $j_i \in J_0^G$ (\refeq{J_0_level_superior}) debe de asignarse su $\mu_i \geq 0$ correspondiente,
 para el nivel inferior debe tenerse en cuenta si $\alpha=\vec{0}$ en cuyo caso afirmativo $\gamma_j$ es un valor de entrada
 
+\begin{samepage}
 % COndiciones \Beta_i \Gamma_i para ptos estacionarios
 Para obtener las diferentes clases de puntos estacionarios debe de introducirse $\beta_j$, $\gamma_j$, en caso de ser este último valor de entrada tal que, en los índices activos $J_3^v$ (\refeq{J_0_lambda_0_level_inferior}), como se muestra a continuación: 
 \begin{itemize}
@@ -109,7 +113,7 @@ Para obtener las diferentes clases de puntos estacionarios debe de introducirse 
 \end{itemize}
 % Especificar que en caso de  que alpha no se el vector nulo se asumme que gamma_i es 0
 \textbf{En caso que $\vec{\alpha} \neq \vec{0}$ se asume que $\gamma_j=0$ en las condiciones anteriores.}
-
+\end{samepage}
 % Explicar que se hace primero el punto factible
 % Subseccion donde se explica que el punto se hace factible inicialmente
 
@@ -117,6 +121,7 @@ Para obtener las diferentes clases de puntos estacionarios debe de introducirse 
 Después de tener los datos de entrada necesarios se procede a la modificación
 del problema de entrada para que este sea estacionario del tipo requerido, $z_{est}$.
 
+\begin{samepage}
 % Decir que en caso de que \alpha != de nulo entonoces se calcula b_j
 Primero en caso de que $\alpha \neq 0$ en los $v_j(x,y) \in J_0^v$ se procede a calcular el $\vec{b_j}$ de la siguiente forma:
 
@@ -138,7 +143,7 @@ Después de realizado el calculo del $b_j$ se procede a modificar su índice act
 \begin{equation}
 	v_{j}^{\star}(z_{est})=v_{j}(z_{est})+ ({\vec{b_j}}^T)\cdot (y_1,y_2,\dots,y_m)
 \end{equation}
-
+\end{samepage}
 
 % Explicar que se hace el punto factible en las restricciones
 Luego en todas las restricciones del nivel inferior y superior
@@ -283,6 +288,7 @@ Con: $$\min (x_2^2*y_1^2*y_2)+x_1$$
 
 % Definición de tipo de índices activos.
 \subsubsection{Tipos de índices activos}
+\begin{samepage}
 Antes de ilustrar como introducir las restricciones se va a explicar 
 que los tipos de índices activos.
 
@@ -302,6 +308,7 @@ que los tipos de índices activos.
         \item  \textbf{J\_Ne\_L0\_v} Si es un índice como en \refeq{J_neg_lambda_0_level_inferior}.
     \end{itemize}
 \end{itemize}
+\end{samepage}
 
 %Ejemplo de como se debe de expresar en Julia
 Los \textbf{RestrictionSetType} deben expresar en código de esta forma:

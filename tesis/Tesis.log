@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.23)  26 JAN 2025 13:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.23)  26 JAN 2025 13:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1228,7 +1228,7 @@ Package caption Info: End \AtBeginDocument code.
 \openout2 = `Title.aux'.
 
  (Title.tex)
-<img/logo.png, id=111, 298.11375pt x 392.21532pt>
+<img/logo.png, id=115, 298.11375pt x 392.21532pt>
 File: img/logo.png Graphic file (type png)
 <use img/logo.png>
 Package pdftex.def Info: img/logo.png  used on input line 177.
@@ -1457,135 +1457,149 @@ Overfull \hbox (4.07152pt too wide) in paragraph at lines 9--25
 
 
 ]
-LaTeX Info: Redefining \. on input line 40.
-LaTeX Info: Redefining \% on input line 40.
-Package cleveref Info: loaded `spanish' language definitions on input line 40.
+LaTeX Info: Redefining \. on input line 28.
+LaTeX Info: Redefining \% on input line 28.
+Package cleveref Info: loaded `spanish' language definitions on input line 28.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
  [23]
-Underfull \hbox (badness 10000) in paragraph at lines 84--85
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 93--94
-
- []
-
-LaTeX Info: Redefining \. on input line 94.
-LaTeX Info: Redefining \% on input line 94.
-Package cleveref Info: loaded `spanish' language definitions on input line 94.
+LaTeX Info: Redefining \. on input line 79.
+LaTeX Info: Redefining \% on input line 79.
+Package cleveref Info: loaded `spanish' language definitions on input line 79.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
  [24]
-Underfull \hbox (badness 10000) in paragraph at lines 104--105
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--130
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
 
  []
 
-LaTeX Info: Redefining \. on input line 140.
-LaTeX Info: Redefining \% on input line 140.
-Package cleveref Info: loaded `spanish' language definitions on input line 140.
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
+
+ []
+
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+Package cleveref Info: loaded `spanish' language definitions on input line 120.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
  [25]
-Underfull \hbox (badness 10000) in paragraph at lines 162--174
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
 
  []
 
-LaTeX Info: Redefining \. on input line 186.
-LaTeX Info: Redefining \% on input line 186.
-Package cleveref Info: loaded `spanish' language definitions on input line 186.
+LaTeX Info: Redefining \. on input line 143.
+LaTeX Info: Redefining \% on input line 143.
+Package cleveref Info: loaded `spanish' language definitions on input line 143.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
  [26]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 205.
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 205.
- (C:\Users\dell\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Info: Redefining \. on input line 215.
-LaTeX Info: Redefining \% on input line 215.
-Package cleveref Info: loaded `spanish' language definitions on input line 215.
+Underfull \hbox (badness 10000) in paragraph at lines 167--179
+
+ []
+
+LaTeX Info: Redefining \. on input line 180.
+LaTeX Info: Redefining \% on input line 180.
+Package cleveref Info: loaded `spanish' language definitions on input line 180.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
  [27]
-LaTeX Info: Redefining \. on input line 249.
-LaTeX Info: Redefining \% on input line 249.
-Package cleveref Info: loaded `spanish' language definitions on input line 249.
+LaTeX Info: Redefining \. on input line 200.
+LaTeX Info: Redefining \% on input line 200.
+Package cleveref Info: loaded `spanish' language definitions on input line 200.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
  [28]
-LaTeX Info: Redefining \. on input line 282.
-LaTeX Info: Redefining \% on input line 282.
-Package cleveref Info: loaded `spanish' language definitions on input line 282.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 210.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 210.
+ (C:\Users\dell\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Info: Redefining \. on input line 241.
+LaTeX Info: Redefining \% on input line 241.
+Package cleveref Info: loaded `spanish' language definitions on input line 241.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
  [29]
-LaTeX Info: Redefining \. on input line 323.
-LaTeX Info: Redefining \% on input line 323.
-Package cleveref Info: loaded `spanish' language definitions on input line 323.
+LaTeX Info: Redefining \. on input line 276.
+LaTeX Info: Redefining \% on input line 276.
+Package cleveref Info: loaded `spanish' language definitions on input line 276.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
  [30]
-Underfull \hbox (badness 10000) in paragraph at lines 328--329
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 371--372
-
- []
-
-LaTeX Info: Redefining \. on input line 378.
-LaTeX Info: Redefining \% on input line 378.
-Package cleveref Info: loaded `spanish' language definitions on input line 378.
+LaTeX Info: Redefining \. on input line 315.
+LaTeX Info: Redefining \% on input line 315.
+Package cleveref Info: loaded `spanish' language definitions on input line 315.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
  [31]
-Underfull \hbox (badness 10000) in paragraph at lines 386--387
-
- []
-
-LaTeX Info: Redefining \. on input line 388.
-LaTeX Info: Redefining \% on input line 388.
-Package cleveref Info: loaded `spanish' language definitions on input line 388.
+LaTeX Info: Redefining \. on input line 332.
+LaTeX Info: Redefining \% on input line 332.
+Package cleveref Info: loaded `spanish' language definitions on input line 332.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
  [32]
-LaTeX Info: Redefining \. on input line 423.
-LaTeX Info: Redefining \% on input line 423.
-Package cleveref Info: loaded `spanish' language definitions on input line 423.
+Underfull \hbox (badness 10000) in paragraph at lines 335--336
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
+
+ []
+
+LaTeX Info: Redefining \. on input line 385.
+LaTeX Info: Redefining \% on input line 385.
+Package cleveref Info: loaded `spanish' language definitions on input line 385.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
- [33])
+ [33]
+Underfull \hbox (badness 10000) in paragraph at lines 393--394
+
+ []
+
+LaTeX Info: Redefining \. on input line 395.
+LaTeX Info: Redefining \% on input line 395.
+Package cleveref Info: loaded `spanish' language definitions on input line 395.
+
+Overfull \vbox (2.1086pt too high) has occurred while \output is active []
+
+ [34]
+LaTeX Info: Redefining \. on input line 430.
+LaTeX Info: Redefining \% on input line 430.
+Package cleveref Info: loaded `spanish' language definitions on input line 430.
+
+Overfull \vbox (2.1086pt too high) has occurred while \output is active []
+
+ [35])
 LaTeX Info: Redefining \. on input line 189.
 LaTeX Info: Redefining \% on input line 189.
 Package cleveref Info: loaded `spanish' language definitions on input line 189.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
- [34]
+ [36]
 \openout2 = `Experimentación.aux'.
 
  (Experimentación.tex
 Cap\'{\i }tulo 4.
-[35
+[37
 
 
 
@@ -1598,7 +1612,7 @@ Overfull \hbox (46.13763pt too wide) in paragraph at lines 21--37
 LaTeX Info: Redefining \. on input line 41.
 LaTeX Info: Redefining \% on input line 41.
 Package cleveref Info: loaded `spanish' language definitions on input line 41.
-[36]
+[38]
 Overfull \hbox (4.0794pt too wide) in paragraph at lines 55--56
 []\T1/lmr/bx/n/12 SOS1 : \T1/lmr/m/n/12 Con el op-ti-mi-za-dor Sol-ving Cons-traint In-te-ger Pro-grams (SCIP). 
  []
@@ -1606,24 +1620,24 @@ Overfull \hbox (4.0794pt too wide) in paragraph at lines 55--56
 LaTeX Info: Redefining \. on input line 67.
 LaTeX Info: Redefining \% on input line 67.
 Package cleveref Info: loaded `spanish' language definitions on input line 67.
-[37]
+[39]
 LaTeX Info: Redefining \. on input line 97.
 LaTeX Info: Redefining \% on input line 97.
 Package cleveref Info: loaded `spanish' language definitions on input line 97.
- [38]
+ [40]
 LaTeX Info: Redefining \. on input line 131.
 LaTeX Info: Redefining \% on input line 131.
 Package cleveref Info: loaded `spanish' language definitions on input line 131.
- [39])
+ [41])
 LaTeX Info: Redefining \. on input line 191.
 LaTeX Info: Redefining \% on input line 191.
 Package cleveref Info: loaded `spanish' language definitions on input line 191.
- [40]
+ [42]
 \openout2 = `Conclusiones.aux'.
 
  (Conclusiones.tex
 Cap\'{\i }tulo 5.
-[41
+[43
 
 
 
@@ -1632,12 +1646,12 @@ Cap\'{\i }tulo 5.
 LaTeX Info: Redefining \. on input line 193.
 LaTeX Info: Redefining \% on input line 193.
 Package cleveref Info: loaded `spanish' language definitions on input line 193.
- [42]
+ [44]
 Overfull \hbox (29.36214pt too wide) in paragraph at lines 199--199
 \T1/lmr/m/n/12 approach. \T1/lmr/m/it/12 Mathe-ma-ti-cal Pro-gram-ming\T1/lmr/m/n/12 , \T1/lmr/m/it/12 138\T1/lmr/m/n/12 , 309[]332. []$https : / / api . semanticscholar .
  []
 
-[43
+[45
 
 
 
@@ -1653,21 +1667,21 @@ Package cleveref Info: loaded `spanish' language definitions on input line 198.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
- [44]
+ [46]
 LaTeX Info: Redefining \. on input line 198.
 LaTeX Info: Redefining \% on input line 198.
 Package cleveref Info: loaded `spanish' language definitions on input line 198.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
- [45]
+ [47]
 LaTeX Info: Redefining \. on input line 200.
 LaTeX Info: Redefining \% on input line 200.
 Package cleveref Info: loaded `spanish' language definitions on input line 200.
 
 Overfull \vbox (2.1086pt too high) has occurred while \output is active []
 
- [46] (Tesis.aux (Title.aux)
+ [48] (Tesis.aux (Title.aux)
 LaTeX Info: Redefining \sptext on input line 14.
 LaTeX Info: Redefining \. on input line 14.
 LaTeX Info: Redefining \% on input line 14.
@@ -1682,23 +1696,23 @@ L3 programming layer <2024-01-04>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `Tesis.out' has not changed.
-(rerunfilecheck)             Checksum: 5C84737EC8F93E796D5B76917E8D9336;5028.
+(rerunfilecheck)             Checksum: 70E4857526DC14FEC83DC7A86AA64871;5209.
 Package logreq Info: Writing requests to 'Tesis.run.xml'.
 \openout1 = `Tesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40233 strings out of 474486
- 757800 string characters out of 5744226
- 2047542 words of memory out of 5000000
- 61609 multiletter control sequences out of 15000+600000
+ 40237 strings out of 474486
+ 757838 string characters out of 5744226
+ 2023542 words of memory out of 5000000
+ 61610 multiletter control sequences out of 15000+600000
  621751 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,22n,87p,1482b,2911s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxo10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsco10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Tesis.pdf (52 pages, 668873 bytes).
+Output written on Tesis.pdf (54 pages, 671621 bytes).
 PDF statistics:
- 761 PDF objects out of 1000 (max. 8388607)
- 211 named destinations out of 1000 (max. 500000)
- 246 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 774 PDF objects out of 1000 (max. 8388607)
+ 214 named destinations out of 1000 (max. 500000)
+ 254 words of extra memory for PDF output out of 10000 (max. 10000000)
 

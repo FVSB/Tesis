@@ -15,30 +15,31 @@
 \contentsline {subsection}{\numberline {2.4.2}Método SOS1}{20}{subsection.2.4.2}%
 \contentsline {subsection}{\numberline {2.4.3}Método ProductMode}{20}{subsection.2.4.3}%
 \contentsline {chapter}{\numberline {3.}IMPLEMENTACIÓN}{22}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Generación del problema}{23}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Requerimientos de entrada}{23}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Modificación del Problema Original}{25}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Implementación Algorítmica}{27}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Guía de Usuario}{27}{subsection.3.2.1}%
-\contentsline {subsubsection}{Dependencias}{27}{section*.15}%
-\contentsline {subsubsection}{Importación de la biblioteca}{27}{section*.16}%
-\contentsline {subsubsection}{Crear el modelo base}{28}{section*.17}%
-\contentsline {subsubsection}{Función para diferenciar los niveles}{28}{section*.18}%
-\contentsline {subsubsection}{Declarar Variables}{28}{section*.19}%
-\contentsline {subsubsection}{Declarar Funciones Objetivo}{29}{section*.20}%
-\contentsline {subsubsection}{Tipos de índices activos}{30}{section*.21}%
-\contentsline {subsubsection}{Declarar Restricciones}{31}{section*.22}%
-\contentsline {subsubsection}{Introducir el Punto}{33}{section*.23}%
-\contentsline {subsubsection}{Generar el Problema}{33}{section*.24}%
-\contentsline {subsubsection}{Documentación Oficial}{34}{section*.25}%
-\contentsline {chapter}{\numberline {4.}Experimentación}{35}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Problemas Escogidos}{36}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Modelación de la experimentación}{37}{section.4.2}%
-\contentsline {subsubsection}{Obtención de los óptimos}{37}{section*.27}%
-\contentsline {subsubsection}{Generación de los problemas}{38}{section*.28}%
-\contentsline {subsubsection}{Comparación de los algoritmos de Julia}{39}{section*.29}%
-\contentsline {subsection}{\numberline {4.2.1}Resultados:}{39}{subsection.4.2.1}%
-\contentsline {subsubsection}{Problemas Lineales}{40}{section*.30}%
-\contentsline {subsubsection}{Problemas Cuadráticos}{40}{section*.32}%
-\contentsline {subsubsection}{Problemas No Convexos}{40}{section*.34}%
-\contentsline {chapter}{\numberline {5.}Conclusiones}{41}{chapter.5}%
+\contentsline {section}{\numberline {3.1}Nomenclatura a utilizar:}{23}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Generación del problema}{24}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Requerimientos de entrada}{24}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Modificación del Problema Original}{26}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Implementación Algorítmica}{28}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Guía de Usuario}{28}{subsection.3.3.1}%
+\contentsline {subsubsection}{Dependencias}{29}{section*.15}%
+\contentsline {subsubsection}{Importación de la biblioteca}{29}{section*.16}%
+\contentsline {subsubsection}{Crear el modelo base}{29}{section*.17}%
+\contentsline {subsubsection}{Función para diferenciar los niveles}{29}{section*.18}%
+\contentsline {subsubsection}{Declarar Variables}{30}{section*.19}%
+\contentsline {subsubsection}{Declarar Funciones Objetivo}{30}{section*.20}%
+\contentsline {subsubsection}{Tipos de índices activos}{32}{section*.21}%
+\contentsline {subsubsection}{Declarar Restricciones}{32}{section*.22}%
+\contentsline {subsubsection}{Introducir el Punto}{35}{section*.23}%
+\contentsline {subsubsection}{Generar el Problema}{35}{section*.24}%
+\contentsline {subsubsection}{Documentación Oficial}{36}{section*.25}%
+\contentsline {chapter}{\numberline {4.}Experimentación}{37}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Problemas Escogidos}{38}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Modelación de la experimentación}{39}{section.4.2}%
+\contentsline {subsubsection}{Obtención de los óptimos}{39}{section*.27}%
+\contentsline {subsubsection}{Generación de los problemas}{40}{section*.28}%
+\contentsline {subsubsection}{Comparación de los algoritmos de Julia}{41}{section*.29}%
+\contentsline {subsection}{\numberline {4.2.1}Resultados:}{41}{subsection.4.2.1}%
+\contentsline {subsubsection}{Problemas Lineales}{42}{section*.30}%
+\contentsline {subsubsection}{Problemas Cuadráticos}{42}{section*.32}%
+\contentsline {subsubsection}{Problemas No Convexos}{42}{section*.34}%
+\contentsline {chapter}{\numberline {5.}Conclusiones}{43}{chapter.5}%

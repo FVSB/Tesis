@@ -5,22 +5,39 @@ Este tiene dos características principales: primero, el problema del nivel infe
 %Explicación breve de binivel
 En términos abstractos, la optimización binivel busca minimizar una función objetivo de nivel superior, $F(x, y)$, donde $x$ son las variables de decisión del líder y $y$ son las variables del seguidor. 
 
-\section{Optimización bilevel Optimista}
+% Explicacion del capitulo
+En este capítulo se abordará los conocimientos necesarios para lo propuesto más adelante en este documento, este consta de las subsecciones sobre los conceptos fundamentales de la Optimización Binivel del Caso Optimista, así como su reformulación KKT,
+además de nociones clave sobre los Problemas Matemáticos con Restricciones de Equilibrio (MPEC), 
+y por último la modelación de los problemas binivel en el lenguaje de programación Julia y métodos seleccionados implementados en este lenguaje para su resolución. 
+
+\section{Optimización Binivel Caso Optimista}
 %Intro de la sección
+
+% DIFERENCIA OPTIMISTA PESIMISTA
+% Decir que en el libro de Dempe se hablan de estos dos enfoques
+
+En los problemas de optimización binivel se consideran dos enfoques principales: el optimista y el pesimista. En el enfoque optimista, se asume que el seguidor, que actúa en el nivel inferior, elegirá la solución más favorable para el líder, quien toma decisiones en el nivel superior. Este es considerado más tratable y, en ciertas situaciones favorables, puede simplificarse a un problema convexo. Además, en el contexto de múltiples objetivos, el enfoque optimista permite alcanzar el mejor frente de Pareto posible, ver \cite{DempeyZemkoho2020}.
+
+Por otro lado, el enfoque pesimista asume que el seguidor seleccionará la opción menos favorable para el líder entre las soluciones óptimas disponibles, el cual es más complejo de resolver y puede incluso no tener solución. A menudo, se requieren reformulaciones para abordar estos problemas, lo que lo convierte en un reto teórico y computacional significativo. Y en situaciones de múltiples objetivos, conduce al peor frente de Pareto posible, ver \cite{Sinha2017ARO}.
+
+Es relevante destacar que la mayoría de la literatura se centra en el enfoque optimista debido a su mayor facilidad de tratamiento. Sin embargo, el otro también tiene su utilidad, especialmente en la modelación de situaciones donde se considera la aversión al riesgo, ver \cite{DempeyZemkoho2020}. En este contexto, los términos ''líder'' y ''seguidor'' se utilizan para describir los roles en el modelo a optimizar; el líder toma decisiones considerando las posibles reacciones del seguidor, quien a su vez reacciona seleccionando su mejor opción, ver \cite{Sinha2017ARO}.
+
+% Decir que se va ha hablar del enfoque optimista
 Dado que en la tesis trataremos sobre problemas binivel de enfoque optimista mostraremos algunos conocimientos de este.
 
 
-% Definición de problema binivel
 \newpage
-\textbf{Optimización Bilevel Optimista.} Un problema de optimización bilevel optimista, se formula como:
+% Definición de problema binivel
+
+\textbf{Optimización Binivel Optimista.} Un problema de optimización binivel optimista, se formula como:
 
 \begin{align}
     \min_{x \in X, y} & \quad F(x, y) \notag \\
     \text{s.t.} & \quad g_i(x, y) \leq 0, i=1\ldots q  \notag \\
     & \quad h_i(x,y) = 0, i=1 \ldots r \notag\\
     & \quad y \in S(x) \notag\\
-    &\intertext{Donde $S(x)$ es el conjunto de soluciones óptimas del problema parametrizado por $x$} \tag{\theequation}\\
-    \min_{y \in Y} & \quad f(x, y) \notag \\
+    &\intertext{donde $S(x)$ es el conjunto de soluciones óptimas del problema parametrizado por $x$} \tag{\theequation}\\
+    \min_{y \in Y(x)} & \quad f(x, y) \notag \\
     \text{s.t.} & \quad v_i(x, y) \leq 0, i=1\ldots s \notag\\
     & \quad u_i(x,y) = 0, i=1 \ldots t \notag\\
     &\text{Definición de un Problema Binivel Optimista} \notag\\
@@ -28,26 +45,37 @@ Dado que en la tesis trataremos sobre problemas binivel de enfoque optimista mos
 \label{eq:DefBinivelOptimista} 
 \textbf{Donde $M^0(x,y)$ es el conjunto de restricciones comunes para ambos niveles}
 
+\begin{samepage}
 %Dimensiones
 Donde 
 % Dimension de x and y
-$x \in R^{n}$, $y \in R^{m}$, 
-%Dimension de F 
-$F(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,
+\begin{equation*}
+    x \in R^{n},\quad \quad y \in R^{m}
+\end{equation*}
+\begin{align*}
+    %Dimension de F 
+& F(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R},
 %Dimension g_i
-$g_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} $,
+& \quad  g_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} ,
 %Dimension h_i
-$h_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} $,
+& \quad h_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} ,
+\\
+% Def nivel inferior
 %Dimension de f_i
-$f(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$,
+&f(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R},
 % Dimension de v_i
-$v_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} $,
+& \quad v_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} ,
 % Dimension u_i
-$u_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} $,
-%Dimension de M_i
-$m_i \in M(x,y) \| m_i : f \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$
-% Esto dejarlo en una sola pagina
+& \quad u_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} ,
+\end{align*} 
+\end{samepage}
 
+\begin{equation*}
+    %Dimension de M_i
+m_i \in M^0(x,y) \| m_i : f \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}
+\end{equation*}
+
+% Esto dejarlo en una sola pagina
 \newpage
 
 
@@ -76,7 +104,7 @@ Esta minimización está sujeta a dos tipos de restricciones:
 		
 		Los problemas de dos niveles pueden ser reformulados en un problema de un solo nivel al reemplazar el problema del nivel inferior por las condiciones KKT de este en las restricciones del primer nivel. 
 		
-		Para el caso de los SLSMG donde se tiene un problema de optimización en el nivel inferior este sustituye por de las condiciones KKT de este, obteniendo un MPEC \autocite{aussel2020}.
+		%Para el caso de los SLSMG donde se tiene un problema de optimización en el nivel inferior este sustituye por de las condiciones KKT de este, obteniendo un MPEC \autocite{aussel2020}.
         
 % Descripcion del modelo en KKT
        \begin{table}[H]
@@ -173,8 +201,8 @@ El TNLP \eqref{eq:ProblemaAbstractoTNLP} puede ahora ser usado para definir vari
 El MPEC \eqref{eq:DefMpec} se dice que satisface la \textit{MPEC-LICQ} (MPEC-MFCQ, MPEC-SMFCQ) en un vector factible $z^*$ si el correspondiente TNLP$(z^*)$ satisface la LICQ (MFCQ, SMFCQ) en ese vector $z^*$.
 \end{definition}
     
-% Hacer notar que un minimizador de z^* implica la existrencia de \lambda^* ....
-En este punto, es importante notar que bajo MPEC-MFCQ, un minimizador local $z^*$ del MPEC \eqref{eq:DefMpec} implica la existencia de un multiplicador de Lagrange $\lambda^*$ tal que $(z^*, \lambda^*)$ satisface las condiciones KKT para el programa \eqref{eq:ProblemaAbstractoTNLP}. Por lo tanto, si asumimos que MPEC-MFCQ se cumple para un minimizador local $z^*$ del MPEC \eqref{eq:DefMpec}, podemos usar cualquier multiplicador de Lagrange $\lambda^*$ (que ahora sabemos que existe) para definir el MPEC-SMFCQ, es decir, tomando $(z^*, \lambda^*)$.
+% Hacer notar que un mínimo de z^* implica la existrencia de \lambda^* ....
+En este punto, es importante notar que bajo MPEC-MFCQ, un mínimo local $z^*$ del MPEC \eqref{eq:DefMpec} implica la existencia de un multiplicador de Lagrange $\lambda^*$ tal que $(z^*, \lambda^*)$ satisface las condiciones KKT para el programa \eqref{eq:ProblemaAbstractoTNLP}. Por lo tanto, si asumimos que MPEC-MFCQ se cumple para un mínimo local $z^*$ del MPEC \eqref{eq:DefMpec}, podemos usar cualquier multiplicador de Lagrange $\lambda^*$ (que ahora sabemos que existe) para definir el MPEC-SMFCQ, es decir, tomando $(z^*, \lambda^*)$.
 
 %Definicion de los puntos estacionarios del MPEC
 % Flegel and Kanzow 2003
@@ -199,15 +227,15 @@ Este concepto de estacionariedad, sin embargo, es una condición relativamente d
 \begin{itemize}
 % C-estacionario
 \item \begin{definition}[Punto C-estacionario]
-  El punto Z es: \textit{C-estacionario} si, para cada $i \in \beta$, $\lambda_i^G\lambda_i^H \geq 0$ se cumple;
+  El punto $z$ es: \textit{C-estacionario} si, para cada $i \in \beta$, $\lambda_i^G\lambda_i^H \geq 0$ se cumple;
 \end{definition}
 %M-Estacionario
 \item \begin{definition}[Punto M-estacionario]
-    El punto Z es: \textit{M-estacionario} si, para cada $i \in \beta$, o bien $\lambda_i^G,\lambda_i^H > 0$ $\vee$ $\lambda_i^G \lambda_i^H = 0$
+    El punto $z$ es: \textit{M-estacionario} si, para cada $i \in \beta$, o bien $\lambda_i^G,\lambda_i^H > 0$ $\vee$ $\lambda_i^G \lambda_i^H = 0$
 \end{definition}
 %Fuertemente estacionario
 \item \begin{definition}[Punto Fuertemente estacionario]
-    El punto Z es: \textit{fuertemente estacionario} o \textit{estacionario primal-dual} si, para cada $i \in \beta$, $\lambda_i^G, \lambda_i^H \geq 0$.
+    El punto $z$ es: \textit{fuertemente estacionario} o \textit{estacionario primal-dual} si, para cada $i \in \beta$, $\lambda_i^G, \lambda_i^H \geq 0$.
 \end{definition}
 % A-estacionario
 \item \begin{definition}[Punto A-estacionario]
@@ -221,26 +249,27 @@ Este concepto de estacionariedad, sin embargo, es una condición relativamente d
 
 % Teorema que si z^* es min local del MPEC Si se cumpke la LICQ entonces existe .....
 \begin{theorem} 
-Sea $z^* \in \mathbb{R}^n$ un minimizador local del MPEC \eqref{eq:DefMpec}. Si MPEC-LICQ se cumple en $z^*$, entonces existe un único multiplicador de Lagrange $\lambda^*$ tal que $(z^*, \lambda^*)$ es \textit{fuertemente estacionario}.
+Sea $z^* \in \mathbb{R}^n$ un mínimo local del MPEC \eqref{eq:DefMpec}. Si MPEC-LICQ se cumple en $z^*$, entonces existe un único multiplicador de Lagrange $\lambda^*$ tal que $(z^*, \lambda^*)$ es \textit{fuertemente estacionario}.
 \end{theorem}
 
 % Modelación en Julia
 % Se explica de que va BilevelJump
 \section{Modelación en Julia}
 % Que es BilvelJump
-BilevelJuMP.jl es un paquete de Julia diseñado para modelar y resolver problemas de \textbf{optimización bilevel}, también conocidos como problemas de optimización de dos niveles o jerárquica. Estos problemas se caracterizan por tener dos niveles de decisión: un nivel superior y un nivel inferior, donde las decisiones del nivel superior influyen en las decisiones del nivel inferior, y viceversa \cite{BilevelJump}.
+BilevelJuMP.jl es un paquete de Julia diseñado para modelar y resolver problemas de \textbf{optimización binivel}, también conocidos como problemas de optimización de dos niveles o jerárquica, para más detalles ver \cite{BilevelJump}
+Estos problemas se caracterizan por tener dos niveles de decisión: un nivel superior y un nivel inferior, donde las decisiones del nivel superior influyen en las decisiones del nivel inferior, y viceversa \cite{BilevelJump}.
 % Que problemas resuelve
 Este paquete permite abordar una amplia variedad de tipos de problemas, incluyendo:
 % Añadir explicacion MPEC
 
 \begin{itemize}
-    \item \textbf{Problemas de optimización bilevel generales:} BilevelJuMP.jl facilita la modelación de problemas que pueden representarse en la sintaxis de JuMP, ver documentación en \cite{JuMPPaper}, incluyendo restricciones lineales y no lineales, variables continuas y enteras, y diferentes tipos de objetivos.
+    \item \textbf{Problemas de optimización binivel generales:} BilevelJuMP.jl facilita la modelación de problemas que pueden representarse en la sintaxis de JuMP, ver documentación en \cite{JuMPPaper}, incluyendo restricciones lineales y no lineales, variables continuas y enteras, y diferentes tipos de objetivos.
     
     \item \textbf{Problemas con restricciones cónicas en el nivel inferior:} Maneja problemas donde el nivel inferior tiene una estructura de \textbf{programación cónica}, definiendo restricciones a través de conos convexos. Esto es útil para aplicar condiciones KKT en la reformulación del problema como MPEC.
     
     \item \textbf{Problemas con restricciones variadas en el nivel superior:} Permite gestionar una variedad de restricciones compatibles con JuMP, tales como restricciones cónicas, cuadráticas, no lineales y enteras.
     
-    \item \textbf{Problemas con restricciones de equilibrio:} Facilita la transformación de problemas bilevel en problemas de programación matemática con restricciones de equilibrio (MPEC) y ofrece métodos para abordar las restricciones de complementariedad que surgen en estos casos.
+    \item \textbf{Problemas con restricciones de equilibrio:} Facilita la transformación de problemas binivel en problemas de programación matemática con restricciones de equilibrio (MPEC) y ofrece métodos para abordar las restricciones de complementariedad que surgen en estos casos.
     
     \item \textbf{Problemas con variables duales del nivel inferior en el nivel superior:} Permite la utilización de variables duales del nivel inferior explícitamente como variables en el nivel superior, lo cual es crucial para modelar problemas como la fijación de precios en mercados de energía.
     
@@ -262,19 +291,19 @@ A pesar de sus capacidades, BilevelJuMP.jl presenta algunas limitaciones, entre 
 
 
 % Explicacion algoritmos 
-\section{Métodos de Reformulación para Optimización Bilevel}
+\section{Métodos de Reformulación para Optimización Binivel}
 
-La optimización bilevel presenta desafíos particulares debido a su naturaleza jerárquica y las condiciones de complementariedad resultantes. A continuación, se presentan los principales métodos de reformulación implementados en la literatura \cite{BilevelJump}.
+La optimización binivel presenta desafíos particulares debido a su naturaleza jerárquica y las condiciones de complementariedad resultantes. A continuación, se presentan los principales métodos de reformulación implementados en la literatura \cite{BilevelJump}.
 
 \subsection{Método Big-M}
 
-El método Big-M es una técnica fundamental para reformular problemas de optimización bilevel en problemas MPEC, donde $V$ y $U$ son lineales afines. Este método aborda específicamente las condiciones de complementariedad que surgen en estas reformulaciones, transformando el problema original en un problema de programación lineal mixta entera (MILP).
+El método Big-M es una técnica fundamental para reformular problemas de optimización binivel en problemas MPEC, donde $V$ y $U$ son lineales afines. Este método aborda específicamente las condiciones de complementariedad que surgen en estas reformulaciones, transformando el problema original en un problema de programación lineal mixta entera (MILP).
 
 La reformulación mediante Big-M introduce un parámetro M suficientemente grande y variables binarias para transformar las condiciones de complementariedad no lineales en restricciones lineales. Para una condición de complementariedad de la forma $y_i(A_ix + b_i + D_iz) = 0$, el método introduce una variable binaria $f$ y las siguientes restricciones:
 
 \begin{align*}
-A_ix + b_i + D_iz &\leq M_p f \\
-y_i &\leq M_d(1 - f) \\
+A_ix + b_i + D_iz &\leq M_p f_i \\
+y_i &\leq M_d(1 - f_i) \\
 f &\in \{0,1\}
 \end{align*}
 
@@ -282,7 +311,7 @@ donde $M_p$ y $M_d$ son valores grandes para las variables primales y duales, re
 
 \subsection{Método SOS1}
 
-El método de Conjuntos Ordenados Especiales de tipo 1 (SOS1) representa una alternativa más robusta para reformular las condiciones de complementariedad de Karush-Kuhn-Tucker (KKT) en problemas de optimización bilevel. A diferencia del método Big-M, SOS1 no requiere la determinación de parámetros adicionales, lo que lo hace particularmente atractivo en la práctica.
+El método de Conjuntos Ordenados Especiales de tipo 1 (SOS1) representa una alternativa más robusta para reformular las condiciones de complementariedad de Karush-Kuhn-Tucker (KKT) en problemas de optimización binivel. A diferencia del método Big-M, SOS1 no requiere la determinación de parámetros adicionales, lo que lo hace particularmente atractivo en la práctica.
 
 La reformulación SOS1 transforma una condición de complementariedad en una restricción que especifica que, como máximo, una variable en un conjunto puede tener un valor diferente de cero. Para una condición de complementariedad $y_i(A_ix + b_i + D_iz) = 0$, la reformulación SOS1 se expresa como:
 

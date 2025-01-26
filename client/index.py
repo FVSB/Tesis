@@ -285,5 +285,7 @@ class Page:
         st.title("Acerca de")
         st.write("Esta es una aplicación de ejemplo creada con Streamlit.")
 
-   
+#TODO: False poder añadir el valor de alpha.
+#TODO: Poner forma que se pueda generar sin poner valores osea solo con seleccionar los puntos
+#TODO: Añadir el punto. 
 Page().run()

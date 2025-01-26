@@ -1,13 +1,16 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\numberline {1.}Introducción}{1}{chapter.1}%
-\contentsline {chapter}{\numberline {2.}Preliminares}{10}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Optimización bilevel Optimista}{10}{section.2.1}%
+\contentsline {section}{\numberline {1.1}Definición de problema de optimización binivel}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Aplicaciones}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Dificultad computacional de los problemas binivel}{4}{section.1.3}%
+\contentsline {chapter}{\numberline {2.}Preliminares}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Optimización Binivel Caso Optimista}{10}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Transformación de los problemas de dos niveles}{12}{subsection.2.1.1}%
 \contentsline {section}{\numberline {2.2}Sobre los Programas Matemáticos con Restricciones de Equilibrio (MPEC)}{13}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Resultados sobre MPECs}{14}{subsection.2.2.1}%
 \contentsline {section}{\numberline {2.3}Modelación en Julia}{17}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Limitaciones del BilevelJuMP.jl}{18}{subsection.2.3.1}%
-\contentsline {section}{\numberline {2.4}Métodos de Reformulación para Optimización Bilevel}{19}{section.2.4}%
+\contentsline {section}{\numberline {2.4}Métodos de Reformulación para Optimización Binivel}{19}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Método Big-M}{19}{subsection.2.4.1}%
 \contentsline {subsection}{\numberline {2.4.2}Método SOS1}{20}{subsection.2.4.2}%
 \contentsline {subsection}{\numberline {2.4.3}Método ProductMode}{20}{subsection.2.4.3}%
@@ -15,7 +18,7 @@
 \contentsline {section}{\numberline {3.1}Generación del problema}{23}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Requerimientos de entrada}{23}{subsection.3.1.1}%
 \contentsline {subsection}{\numberline {3.1.2}Modificación del Problema Original}{25}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}implementación Algorítmica}{27}{section.3.2}%
+\contentsline {section}{\numberline {3.2}Implementación Algorítmica}{27}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Guía de Usuario}{27}{subsection.3.2.1}%
 \contentsline {subsubsection}{Dependencias}{27}{section*.15}%
 \contentsline {subsubsection}{Importación de la biblioteca}{27}{section*.16}%
@@ -23,20 +26,19 @@
 \contentsline {subsubsection}{Función para diferenciar los niveles}{28}{section*.18}%
 \contentsline {subsubsection}{Declarar Variables}{28}{section*.19}%
 \contentsline {subsubsection}{Declarar Funciones Objetivo}{29}{section*.20}%
-\contentsline {subsubsection}{Tipos de indices activos}{30}{section*.21}%
+\contentsline {subsubsection}{Tipos de índices activos}{30}{section*.21}%
 \contentsline {subsubsection}{Declarar Restricciones}{31}{section*.22}%
 \contentsline {subsubsection}{Introducir el Punto}{33}{section*.23}%
 \contentsline {subsubsection}{Generar el Problema}{33}{section*.24}%
-\contentsline {subsubsection}{Documentación Oficial}{33}{section*.25}%
-\contentsline {chapter}{\numberline {4.}Experimentación}{34}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Problemas Escogidos}{35}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Modelación de la experimentación}{36}{section.4.2}%
-\contentsline {subsubsection}{Obtención de los óptimos}{36}{section*.27}%
-\contentsline {subsubsection}{Generación de los problemas}{37}{section*.28}%
-\contentsline {subsubsection}{Comparación de los algoritmos de Julia}{38}{section*.29}%
-\contentsline {subsection}{\numberline {4.2.1}Resultados:}{38}{subsection.4.2.1}%
-\contentsline {subsubsection}{Problemas Lineales}{39}{section*.30}%
-\contentsline {subsubsection}{Problemas Cuadráticos}{39}{section*.32}%
-\contentsline {subsubsection}{Problemas No Convexos}{39}{section*.34}%
-\contentsline {chapter}{\numberline {5.}Conclusiones}{40}{chapter.5}%
-\contentsline {chapter}{\numberline {6.}Recomendaciones y Trabajo Futuro}{41}{chapter.6}%
+\contentsline {subsubsection}{Documentación Oficial}{34}{section*.25}%
+\contentsline {chapter}{\numberline {4.}Experimentación}{35}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Problemas Escogidos}{36}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Modelación de la experimentación}{37}{section.4.2}%
+\contentsline {subsubsection}{Obtención de los óptimos}{37}{section*.27}%
+\contentsline {subsubsection}{Generación de los problemas}{38}{section*.28}%
+\contentsline {subsubsection}{Comparación de los algoritmos de Julia}{39}{section*.29}%
+\contentsline {subsection}{\numberline {4.2.1}Resultados:}{39}{subsection.4.2.1}%
+\contentsline {subsubsection}{Problemas Lineales}{40}{section*.30}%
+\contentsline {subsubsection}{Problemas Cuadráticos}{40}{section*.32}%
+\contentsline {subsubsection}{Problemas No Convexos}{40}{section*.34}%
+\contentsline {chapter}{\numberline {5.}Conclusiones}{41}{chapter.5}%

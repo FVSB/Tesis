@@ -2,13 +2,13 @@
 En este capítulo se experimentará tomando una serie de problemas, ver \cite{BolibTestProblems}, 
 que sean: Lineales, Cuadráticos y No Convexos. En ella primeramente utilizaremos las bibliotecas de Julia
 para obtener puntos que sean mínimos locales, despues añadir valores aleatorios a esos puntos y posteriormente 
-generar problemas estaciorarios del tipo: Fuertemente, M y C . Posteriormente estos problemas modificados serán nuevamente
+generar problemas estaciorarios del tipo: fuerte, M y C . Posteriormente estos problemas modificados serán nuevamente
 ejecutados por los algoritmos tradicionales de Julia para conocer su efectividad con respecto al valor de la función objetivo del nivel superior.
 
 
 Para ello tomaremos 15 problemas de optimización binivel SLSF, estos serán problemas 
 Lineales, Cuadráticos y No Convexos, dividios en 5 problemas por cada clasificación anterior.
-Estos han sido extraidos de \cite{Floudas1999HandbookOT} para las dos primeras clasificaciones y \cite{BolibTestProblems} para la última.
+Estos han sido extraídos de \cite{Floudas1999HandbookOT} para las dos primeras clasificaciones y \cite{BolibTestProblems} para la última.
 
 \newpage
 \section{Problemas Escogidos}
@@ -59,7 +59,7 @@ cuyos pasos son los siguientes:
             donde por cada optimizador se guarda los parámetros:
             \begin{itemize}
                 \item Estatus del Primal, el cual define si es un punto factible o no.
-                \item Estatus de la Finalización, si terminó porque encontro un óptimo o se estancó en un óptimo local.
+                \item Estatus de la Finalización, si terminó porque encontró un óptimo o se estancó en un óptimo local.
                 \item Valor de la función objetivo del nivel superior.
                 \item El punto óptimo encontrado, en caso de ser hallado.
             \end{itemize} 
@@ -76,12 +76,12 @@ cuyos pasos son los siguientes:
 Se toma el problema original de entrada y el punto obtenido en el paso anterior el cual en cada componente se le hace suma un
 valor aleatorio entre $1e-10$ y $5$, siendo este modificado: $z^*_0$. 
 % Que se generan 3 clases de problemas estacionarios
-Y se generan los 3 problemas bajo los 3 tipos de estacionariedad descritos en cada uno, 
+Se generan los 3 problemas bajo los 3 tipos de estacionariedad descritos en cada uno, 
 % Se toma \alpha=0 y \alpha!=0
 además en cada uno se toma la opcion de $\vec{\alpha}=\vec{0}$ y $\vec{\alpha}\ne \vec{0}$.
-Para los $\vec{\alpha}=\vec{0}$ se genera un vector aleatorio donde cada componente está entre $1e-10$ y $3$.
+Para los $\vec{\alpha}\neq \vec{0}$ se genera un vector aleatorio donde cada componente está entre $1e-10$ y $3$.
 % Como se dividen los indices activos
-Luego para los conjuntos de índices activos de las $v_{j}s$ se dividen en $1/2$ del tipo $J_1^v$ \refeq{J_0_lambda_0_level_inferior} y $1/4$ para los dos restantes.
+Luego para los conjuntos de índices activos de las $v_{j}s$ se dividen en $1/2$ del tipo $J_1^v$ (\refeq{J_0_lambda_0_level_inferior}) y $1/4$ para los dos restantes.
 % Explicar como se modifican los indices activos 
 Con respecto a la selección de los multiplicadores $\beta_j$ y $\gamma_j$ se 
 se generan valores aleatorios entre $1e-10$ y $10$ en caso que estos no tengan que ser $0$, 
@@ -89,15 +89,15 @@ para los casos en que haya más de una combinación de los multiplicadores con r
 se toma un valor aleatorio generado por una distribución uniforme discreta.
 % Como se guarda
 Finalmente cada problema generado es guardado en un archivo \textit{xlsx} con la siguiente designación:
-\textit{(nombre del problema)\_(Tipo de punto estacionario)(generator)\_alpha\_((non\_zero) si $\alpha \neq 0$ y (zero) si $\alpha = 0$).xlsx}.
-Donde se guarda: 
+\textit{(nombre del problema)\_(Tipo de punto estacionario)(generator)\_alpha\_((non\_zero) si $\alpha \neq 0$ y (zero) si $\alpha = 0$).xlsx},
+donde se guarda: 
 \begin{itemize}
     \item Las expresiones de las funciones objetivo de ambos niveles y su valor evaluado en el punto.
     \item Las restricciones de ambos niveles con sus multiplicadores respectivos, el tipo de indice activo y la evaluación de dicha función en el punto.
     \item El punto $z^*_0$.
-    \item El $\vec{bf}.$
-    \item El $\vec{BF}$.
-    \item El $\vec{\alpha}$.
+    \item El vector $\vec{bf}.$
+    \item El vector $\vec{BF}$.
+    \item El multiplicador $\vec{\alpha}$.
 \end{itemize}
 
 \subsubsection{Comparación de los algoritmos de Julia}

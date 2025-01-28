@@ -38,12 +38,12 @@ Dado que en la tesis trataremos sobre problemas binivel de enfoque optimista mos
     & \quad y \in S(x) \notag\\
     &\intertext{donde $S(x)$ es el conjunto de soluciones óptimas del problema parametrizado por $x$} \tag{\theequation}\\
     \min_{y \in Y(x)} & \quad f(x, y) \notag \\
-    \text{s.t.} & \quad v_i(x, y) \leq 0, i=1\ldots s \notag\\
-    & \quad u_i(x,y) = 0, i=1 \ldots t \notag\\
+    \text{s.t.} & \quad v_j(x, y) \leq 0, j=1\ldots s \notag\\
+    & \quad u_j(x,y) = 0, j=1 \ldots t \notag\\
     &\text{Definición de un Problema Binivel Optimista} \notag\\
 \end{align}
 \label{eq:DefBinivelOptimista} 
-\textbf{Donde $M^0(x,y)$ es el conjunto de restricciones comunes para ambos niveles}
+%\textbf{Donde $M^0(x,y)$ es el conjunto de restricciones comunes para ambos niveles}
 
 \begin{samepage}
 %Dimensiones
@@ -63,17 +63,17 @@ Donde
 % Def nivel inferior
 %Dimension de f_i
 &f(x,y), f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R},
-% Dimension de v_i
-& \quad v_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} ,
-% Dimension u_i
-& \quad u_i(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} ,
+% Dimension de v_j
+& \quad v_j(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} ,
+% Dimension u_j
+& \quad u_j(x,y) , f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} ,
 \end{align*} 
 \end{samepage}
 
-\begin{equation*}
-    %Dimension de M_i
-m_i \in M^0(x,y) \| m_i : f \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}
-\end{equation*}
+%\begin{equation*}
+%    %Dimension de M_i
+%m_i \in M^0(x,y) \| m_i : f \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}
+%\end{equation*}
 
 % Esto dejarlo en una sola pagina
 \newpage
@@ -94,7 +94,8 @@ Esta minimización está sujeta a dos tipos de restricciones:
         \item Impuestas por el seguidor, donde $y$ debe pertenecer al conjunto de soluciones óptimas del problema de optimización del seguidor, $\arg\min\{f(x, y) : y \in Y(x)\}$.
         \item En este contexto, $f(x, y)$ es la función objetivo del seguidor, $Y(x)$ representa las restricciones del nivel inferior, las cuales pueden depender de las variables de decisión del líder, $x$.
     \end{itemize}
-	\item Tambien se puede asumir que ambas variables tienen restricciones conjuntas, o sea que $(x,y) \in M^0$
+	\item Tambien se puede asumir que ambas variables tienen restricciones conjuntas, osea las restricciones $ g_i(x,y)<=0, h_i(x,y)=0,v_j(x,y)<=0,u_j(x,y)=0 $ que dependen de las variables $x$ y $y$
+	
 	 % Hablar sobre el enfoque optimista
     \item En el caso del enfoque optimista si para el nivel inferior existen más de una $y \in Y$; sean óptimo este tomará la que más beneficie al nivel superior. 
 \end{itemize}
@@ -111,14 +112,14 @@ Esta minimización está sujeta a dos tipos de restricciones:
         \centering
         \begin{equation}
             \begin{array}{l}
-                \underset{\substack{x, y, \lambda_i}}{\min} \quad F(x, y)\\
+                \underset{\substack{x, y, \lambda_j}}{\min} \quad F(x, y)\\
                 s.a \left\{ 
                 \begin{array}{l}
                     g_i(x, y) \leq 0\\
-                    \nabla_{y} f(x, y) + \sum_{i=1}^{|J_{0}|} \nabla_{y} v_i(x, y) \lambda_i = 0 \\
-                    v_i(x, y) \leq 0 \\
-                    v_i(x, y)\lambda_i = 0 \\
-                    \lambda_i \geq 0\\
+                    \nabla_{y} f(x, y) + \sum_{j=1}^{|J^v_{0}|} \nabla_{y} v_j(x, y) \lambda_j = 0 \\
+                    v_j(x, y) \leq 0 \\
+                    v_j(x, y)\lambda_j = 0 \\
+                    \lambda_j \geq 0\\
                 \end{array}\right.
                 \tag{\theequation}
             \end{array}
@@ -285,7 +286,7 @@ A pesar de sus capacidades, BilevelJuMP.jl presenta algunas limitaciones, entre 
 \begin{itemize}
     \item Enfrentar dificultades en problemas altamente no lineales o con estructuras de optimización complejas que no se puedan representar adecuadamente en la sintaxis de JuMP.
     \item Existencia de ciertas restricciones que podrían no ser compatibles o que requieren transformaciones adicionales que podrían complicar el modelo.
-    \item El problema es de gran escala afectando el rendimiento del solver puede ser un factor crítico.
+    \item El problema es de gran escala afectando el rendimiento del solver, el cual puede ser un factor crítico.
     \item La formulación y resolución de problemas muy específicos o especializados podrían no estar completamente optimizadas en el paquete.
 \end{itemize}
 

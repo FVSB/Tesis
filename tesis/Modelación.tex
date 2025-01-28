@@ -13,11 +13,12 @@ En este capítulo se mostrará la forma y los pasos para generar el problema des
         $ f(x,y) $           & Función del seguidor                                                               \\
         $ v_j(x,y) $              &  Restricciones de desigualdad del seguidor $j=1\ldots s$   \\
         $ u_j(x,y) $     & restricciones de igualdad del seguidor $j=1\ldots t$ \\
-        $ v_{j}^{\star} $    & Restriccion de disigualdad del seguidor activa despues de modificarse el problema   $j=1\ldots s$          \\
+        $ v_{j}^{\star} $    & Restriccion de desigualdad del seguidor activa despues de modificarse el problema   $j=1\ldots s$          \\
         $z_{est}$         & Punto que se desea que sea estacionario\\
         $J_0^g$             & Índices activos del líder \\
         $J_0^v$                & Índices activos del seguidor \\
         $ \alpha  $             & Vector de entrada de dimensión igual cantidad variables seguidor                                                                                                      \\
+        $\mu_i $                & Multiplicador asociado al $g_i(x,y)$ en el líder  \\
         $ \beta_j $               & Multiplicador asociado al $v_{j}^{\star}$ en el líder          \\
         $ \lambda_j $              & Multiplicador asociado al $v_{j}^{\star}$ en el seguidor\\
         $\gamma_j$                & Valor asociado a cada $v_{j}^{\star}$ con $\lambda_j=0$\\
@@ -35,7 +36,7 @@ Para generar un problema es necesario inicialmente introducir un problema de opt
 se desea que sea estacionario y los multiplicadores con signo o valores con ciertas condiciones en dependencia del tipo de estacionariedad requerida.
 
 \begin{samepage}
-El problema de entrada tiene que cumplir con ser un programa de optimizacion binivel como \refeq{eq:DefBinivelOptimista}. 
+El problema de entrada tiene que cumplir con ser un programa de optimización binivel como \refeq{eq:DefBinivelOptimista}. 
 Debe de conocerse sus índices activos de las restricciones de desigualdad en cada nivel:
 \begin{itemize}
     % Leader
@@ -375,28 +376,31 @@ Ejemplo para introducir la restricción:
 
 \begin{itemize}
     \begin{samepage}
-    \item \textbf{$\vec{\alpha}\neq \vec{0}$:}\\
+    \item \textbf{$ \lambda_j \neq 0$:}\\
     \begin{align*}
         &((x_1^2)*(y_1^2))+x_2=0\\
         &\text{Índice activo del tipo J\_Ne\_L0\_v} \refeq{J_neg_lambda_0_level_inferior}\\
         & \beta_j=0.1\\
-        & \lambda_j=0 \\
+        & \lambda_j=0.5 \\
     \end{align*}
     \begin{lstlisting}
-        # Para caso alpha!=0
-        SetFollowerRestriction(model,((x_1^2)*(y_1^2))+x_2==0,J_Ne_L0_v,0.1,0)
+        # Para caso lamda_j=0
+        SetFollowerRestriction(model,((x_1^2)*(y_1^2))+x_2==0,J_Ne_L0_v,0.1,0.5,0)
     \end{lstlisting}
     \end{samepage}
 
     \begin{samepage}
    
-    \item \text{$\vec{\alpha}= \vec{0}$:}\\
+    \item \text{$\lambda_j= 0$:}\\
     
-    Análogo al caso anterior pero con $\gamma_j$ valor de entrada
+    Análogo al caso anterior pero con $\lambda_j=0$ por lo que $\gamma_j$ valor de entrada
     \begin{align*}
+        &  \beta_j=0.1\\
+        &\lambda_j=0\\
         &\gamma_j=0.4
     \end{align*}
     \begin{lstlisting}
+        # Para caso lamda_j!=0
         SetFollowerRestriction(model,((x_1^2)*(y_1^2))+x_2==0,J_Ne_L0_v,0.1,0,0.4)
     \end{lstlisting}
 \end{samepage}

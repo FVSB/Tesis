@@ -123,7 +123,7 @@ Para obtener las condiciones de optimalidad y los algoritmos de solución de los
 Esto significa que para todo valor de $x$, se considera la minimización de la función objetivo del líder en el conjunto dado por las restricciones de ambos individuos y la condición de que la función objetivo del seguidor es menor o igual que el valor más pequeño que alcanza en el conjunto de soluciones factibles del seguidor.
  
 % Al realizar el kkt en el level inferior se transforma a un MPEC
-Otro enfoque clásico consiste en sustituir el problema del nivel inferior por la condicion de KKT, lo que permite transformar problemas de optimización binivel en programas matemáticos con restricciones de equilibrio (MPEC), facilitando así su resolución,ver \cite{AnnotatedBibliographyDempe,Caselli2024BilevelOW,DempeyZemkoho2020}.
+Otro enfoque clásico consiste en sustituir el problema del nivel inferior por la condición de KKT, lo que permite transformar problemas de optimización binivel en programas matemáticos con restricciones de equilibrio (MPEC), facilitando así su resolución,ver \cite{AnnotatedBibliographyDempe,Caselli2024BilevelOW,DempeyZemkoho2020}.
 Conocido como \textit{enfoque KKT} en la literatura, es una de las formas más utilizada para la resolución de problemas de dos niveles en la actualidad, ver \cite{Aussel2021GenericityAO}.
 
 % Flegel Kanzow Sobre MPECs y los ptos estacionarios
@@ -145,7 +145,7 @@ En resumen, obtener garantías sobre soluciones en problemas de optimización de
 % Paper de gema sobte  los ptos estacionarios
 En este contexto, se ha estudiado la estructura genérica de los problemas de complementariedad (MPCC) que surgen del enfoque KKT y Fritz-John (FJ) aplicado a un problema de dos niveles. Se ha demostrado que, para una clase amplia de estos, la condición de que independencia lineal (MPCC-LICQ) se cumple en todos los puntos factibles. Sin embargo, las condiciones de complementariedad estricta (MPCC-SC) y las condiciones de segundo orden (MPCC-SOC) pueden fallar en puntos críticos (estacionarios), incluso en situaciones genéricas, ver \cite{Allende2012SolvingBP}. Esta situación complica aún más la obtención de garantías sobre la solución.
 
-Es importante señalar que existen casos singulares donde los puntos estacionarios pueden ser problemáticos, especialmente cuando el multiplicador (\(\alpha\)) asociado a la condicion de KKT del problema de nivel inferior es igual a cero. En tales circunstancias, la condición MPCC-SC puede no cumplirse, lo que podría llevar a que el método KKT no funcione adecuadamente, ver \cite{Allende2012SolvingBP}.
+Es importante señalar que existen casos singulares donde los puntos estacionarios pueden ser problemáticos, especialmente cuando el multiplicador (\(\alpha\)) asociado a la condición de KKT del problema de nivel inferior es igual a cero. En tales circunstancias, la condición MPCC-SC puede no cumplirse, lo que podría llevar a que el método KKT no funcione adecuadamente, ver \cite{Allende2012SolvingBP}.
 
 % Qué se va a hacer en la tesis
 Basándose en la caracterización de los diferentes tipos de puntos estacionarios establecida por \cite{Flegel2003AFJ}, esta tesis propone desarrollar un generador de problemas que, dado un punto y las funciones $F$, $g_s$, $f$ y $v_S$  que definen un problema de dos niveles, agregarles funciones polinomiales de primer o segundo grado de forma tal que el punto inicial dado sea un punto critico del problema creado. 

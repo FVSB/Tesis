@@ -42,4 +42,5 @@
 \contentsline {subsubsection}{Problemas Lineales}{42}{section*.30}%
 \contentsline {subsubsection}{Problemas Cuadráticos}{42}{section*.32}%
 \contentsline {subsubsection}{Problemas No Convexos}{42}{section*.34}%
-\contentsline {chapter}{\numberline {5.}Conclusiones}{43}{chapter.5}%
+\contentsline {subsubsection}{Análisis de los resultados}{42}{section*.36}%
+\contentsline {chapter}{\numberline {5.}Conclusiones}{44}{chapter.5}%

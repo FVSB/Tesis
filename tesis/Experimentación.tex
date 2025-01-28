@@ -109,7 +109,7 @@ Se presentan los resultados seleccionados bajo los criterios expuestos anteriorm
 % Explicacion de las tablas
 \begin{itemize}
     \item El nombre del problema original desde el cual fue modificado para que fuese estacionario de la clase deseada. 
-    \item El punto al cual se forzó ser estacionario de la clase requerida.
+    \item El punto al cual se forzó ser estacionario de la clase requerida y no de un subconjunto de esta, por ejemplo si es C-estacionario no es M-estacionario.
     \item La evaluación de la función objetivo del punto estacionario.
     \item El punto óptimo hallado por los algoritmos de Julia.
     \item La evaluación de la función objetivo del óptimo.
@@ -160,3 +160,12 @@ Se presentan los resultados seleccionados bajo los criterios expuestos anteriorm
 \resultrow{M-Estacionario}{MitsosBarton2006Ex312}{(0.8,1.85)}{34,94}{(0.8,-0.89)}{6.48}{JuMP}
 \resultrow{$\alpha =0$}{MitsosBarton2006Ex313}{(2.3,4.45)}{-2.15}{(2.3,4.47)}{-2.17}{JuMP}
 \end{resultstable}
+
+
+\subsubsection{Análisis de los resultados}
+Dado la muestra tomada se notó que en los problemas lineales no existe una gran mejora 
+a menos que el caso del \textit{ex9.1.10} en el generado para que fuese fuertemente estacionario, en ambos casos los 3 algotimos generalmente dieron con puntos con similar valor de la función objetivo aunque 
+se tomo como referencia Big-M dado que fue el más eficiente en tiempo y si redondeamos a 2 números después de la coma son prácticamente todos iguales.
+En los problemas cuadráticos se encontró con mayor diferencia entre el valor de la función en el punto estacionario que en el óptimo local alcanzado, en algunos de estos problemas Big-M no pudo hallar un óptimo con calidad posiblemente debido a sus parámetros y continua la tendencia del
+problema que parte desde un punto fuertemente estacionario de tener el mayor rango de mejora.
+En los no convexos continua esta hipótesis dado que los puntos M-estacionarios y fuertemente estacionarios son los de mayor requerimientos, fueron los que lograron encontrar mejores óptimos. 

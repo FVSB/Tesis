@@ -2,8 +2,13 @@
 # Utils script 
 using Random
 
+
+
+function set_seed(new_seed::Number)
 # Random seed
-Random.seed!(1234)
+Random.seed!(new_seed)
+end
+
 """
 Generates a random number greater than zero and less than one.
 

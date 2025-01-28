@@ -3,6 +3,13 @@ from sympy import symbols, sympify,Lt, Le, Gt, Ge, Eq
 import json
 import os
 from enum import Enum,auto
+import random
+import uuid
+
+def get_guid():
+    # Generar un GUID
+    nuevo_guid = uuid.uuid4()
+    return nuevo_guid
 
 #class ActiveIndex(Enum):
 #    Normal=auto()
@@ -31,8 +38,9 @@ def is_equation(expression_str: str) -> bool:
     # Convertir la expresión de string a una expresión simbólica
     expression = sympify(expression_str)
 
+
     # Verificar si la expresión es una ecuacion
-    return isinstance(expression, (Lt, Le, Gt, Ge, Eq))
+    return isinstance(expression, (Lt, Le, Gt, Ge, Eq))  or "==" in expression_str
 
 class Restriction:
     def __init__(self,expression,active_index:str):
@@ -75,6 +83,12 @@ class Page:
         self.x_s:list[str]=[]
         self.y_s:list[str]=[]
         
+        # Point
+        self._point:list[float]=[]
+        
+        # Alpha
+        self._alpha:list[float]=[]
+        self._alpha_zero:bool=True
         # Leader Zone
         self.leader_obj:str=""
         self.leader_restrictions:list[LeaderRestriction]=[]
@@ -84,11 +98,12 @@ class Page:
         self.follower_restrictions:list[FollowerRestriction]=[]
     
         # Si no hay errores
-        self._ok=True
+        self._errors_count:int=0
+        #self._ok=True
         
     @property 
-    def ok(self):
-        self._ok
+    def ok(self)->bool:
+        return self._errors_count==0
     
     @property
     def all_vars(self):
@@ -109,17 +124,109 @@ class Page:
     
     # PAra notificar que hay un problema
     def set_error(self):
-        self._ok=False
+        self._errors_count+=1
         
     def set_ok(self):
-        self._ok=True
+        if self._errors_count==0:
+            return
+           # raise Exception("El valor de la cant de errores no puede ser negativo")
+        self._errors_count-=1
         
     
     def pagina_inicio(self):
         st.title("Problems Generator")
         st.write("¡Bienvenido al generador de problemas!")
-
-
+    def _gen_random_vector(self,_len:int,msg:str,key:str,min_value:int=0,max_value:int=1):
+        max_key=f"min_value_{key}"
+        min_range:float=st.number_input("Valor mínimo",value=min_value,key=max_key)
+        min_key=f"max_value_{key}"
+        max_range:float=st.number_input("Valor máximo",value=max_value,key=min_key)
+        lis_key=f"lis_{key}"
+        lis:list[float]=[]
+        # Si los rangos han cambiado, regenerar la lista
+        current_min = st.session_state[min_key]
+        current_max = st.session_state[max_key]
+        if current_min != min_range or current_max != max_range:
+            st.session_state[lis_key] = [random.uniform(min_range, max_range) for _ in range(_len)]
+            lis=st.session_state[lis_key]
+        else:      
+                
+            if lis_key not in st.session_state:
+                st.session_state[lis_key]=[random.uniform(min_range,max_range) for _ in range(_len)]
+                lis=st.session_state[lis_key]
+            else: # Ahora si esta usar la que estaba
+                lis=st.session_state[lis_key]
+                if len(lis)!=_len: #Entonces crear otra vez
+                    del st.session_state[lis_key]
+                    st.session_state[lis_key]=[random.uniform(min_range,max_range) for _ in range(_len)]
+                    lis=st.session_state[lis_key]
+   
+            
+        st.text(f"{msg}: \n {lis}")
+        return lis
+    def _set_alpha(self):
+        # Entrada de texto del usuario
+        option=st.checkbox("Desea que alpha sea el vector nulo",value=True)
+        
+        if option:
+            # Entonces ahora se dice qu el vector es nulo
+            self._alpha_zero=True
+            return
+        # Poner que alpha no es el vector nulo
+        self._alpha_zero=False
+        alpha_length=len(self.y_s)
+        # Preguntar si desea generarlo aleatorio
+        random_alpha:bool=None
+        random_alpha=st.checkbox("Generar alpha aleatoriamente",value=True)
+        if random_alpha: #Preguntar los rangos
+           
+            # Generar la el vector
+            self._alpha=self._gen_random_vector(alpha_length,"El valor de alpha generado es",key="set_alpha")
+            
+        else: # Si no es valor random entonces es otro
+            numeros_texto = st.text_area("Ingresa una lista de números, separados por comas:")
+            # Procesar el texto ingresado en una lista de números
+            if numeros_texto:
+                try:
+                    numeros = [float(num.strip()) for num in numeros_texto.split(',')]
+                    st.write("Lista de números ingresada:", numeros)
+                    if len(numeros)!=alpha_length:
+                        #Lanzar error 
+                        st.error(f"La cantidad de componente de alpha es {alpha_length} no {len(numeros)}")
+                        self.set_error()
+                    else:
+                        self.set_ok()
+                        self._alpha=numeros
+                        self._alpha_zero=False
+                        st.text(f"El vector alpha es \n {self._alpha}")
+                        
+                except ValueError:
+                    st.error("Por favor, asegúrate de ingresar números válidos, separados por comas.")
+    def set_point(self):
+        random_point=st.checkbox("Desea que el punto sea generado aleatoriamente",value=True)
+        point_len=len(self.x_s)+len(self.y_s)
+        if random_point: # Se genera un punto aleatorioc de length(x+y) valores
+            self._point=self._gen_random_vector(point_len,"El punto que se desea hacer estacionario es",key="set_point")
+            return
+        else: # Si no es valor random entonces es otro
+            numeros_texto = st.text_area("Ingresa una lista de números, separados por comas:")
+            # Procesar el texto ingresado en una lista de números
+            if numeros_texto:
+                try:
+                    numeros = [float(num.strip()) for num in numeros_texto.split(',')]
+                    st.write("Lista de números ingresada:", numeros)
+                    if len(numeros)!=point_len:
+                        #Lanzar error 
+                        st.error(f"La cantidad de componente del punto es {point_len} no {len(numeros)}")
+                        self.set_error()
+                    else:
+                        self.set_ok()
+                        self._point=numeros
+                        st.text(f"El punto es: \n {self._point}")
+                        
+                except ValueError:
+                    st.error("Por favor, asegúrate de ingresar números válidos, separados por comas.") 
+        
     def _get_vars_from_expresion(self,expresion_str:str)->list[str]:
         # Primero ver si es una igualdad pq esta dan problemas
         
@@ -158,10 +265,17 @@ class Page:
     def _input_vars(self)->tuple[int,int]:
 
         leader_count_vars=st.number_input("Cantidad de variables del nivel superior",min_value=1)
-        x_s=[f"x_{i}" for i in range(1, leader_count_vars+1)]
+        if leader_count_vars==1:# Si es uno se llamara x
+            x_s=["x"]
+        else: # Si hay mas de una variable se llamara x_{i}
+            x_s=[f"x_{i}" for i in range(1, leader_count_vars+1)]
         st.write(f"Las variables del nivel superior son {x_s}")
         follower_count_vars=st.number_input("Cantidad de variables del nivel inferior",min_value=1)
-        y_s=[f"y_{i}" for i in range(1,follower_count_vars+1)]
+        if follower_count_vars==1: # Si la cant de variables del follower es 1
+            # Se escribe como y
+            y_s=["y"]
+        else: # Se escribe como y_{i}
+            y_s=[f"y_{i}" for i in range(1,follower_count_vars+1)]
         st.write(f"Las variables del nivel inferior son {y_s}")
         self.x_s=x_s
         self.y_s=y_s
@@ -175,9 +289,18 @@ class Page:
                 st.write(f"La expresion:",key=f"_show_in_latex_{key}")
 
             st.latex(expresion)
-    def _input_expresion(self,msg_input:str,key:str=""):
+    def _input_expresion(self,msg_input:str,key:str="",is_expr_required:bool=False):
         # Entrada de texto para la expresión matemática
         expresion = st.text_input(f"Introduce {msg_input}:",key=f"_input_expresion_{key}")
+        if is_expr_required: # Si la expresion es requerida 
+            if expresion in [None,""," "]: # si la expresion no se ha puesto por hay que añadirla
+                # Entonces no se ha introducido nada por tanto entonces
+                st.error("Se tiene que introducir una expresión")
+                self.set_error()
+            else:
+                # No hay error
+                self.set_ok()
+            
         self._show_in_latex(expresion,key)
         # Entrada de las funciones 
         # Chequear que sean las variables correctas
@@ -193,35 +316,62 @@ class Page:
    
     # manda a preguntar por una funcion objetivo
     def _input_objetive_function(self,key:str="")->str:
-        obj_expresion=self._input_expresion("la función objectivo",key=key)
+        """
+        
+
+        Args:
+            key (str, optional): _description_. Defaults to "".
+
+        Returns:
+            str: _description_
+        """
+        obj_expresion=self._input_expresion("la función objectivo",key=key,is_expr_required=True)
         # Si es una ecuacion mandar error
         if obj_expresion  not in [None,""," "] and is_equation(obj_expresion):
             st.error(f"La función objetivo {obj_expresion} no puede ser una ecuación")
             self.set_error()
+      
         return obj_expresion  
     
-    # Devuelve la expresion de la restriccion y el indice activo, True si es el nivel del lider False si no lo es
-    def _save_expresion_and_active_index_restrictions(self,count:int,is_leader:bool)->tuple[str,str]:
+   
+
+    def _save_expresion_and_active_index_restrictions(self,count:int,is_leader:bool)->tuple[str,str,bool]:
+        """
+        Devuelve la expresion de la restriccion y el indice activo y devuelve True si es una inecuacion estricta, False si es una igualdad
+        Recibe el numero de la expresion y el booleano si es lider o no True si es el nivel del lider False si no lo es
+
+        Args:
+            count (int): Numero de restriccion que es
+            is_leader (bool): True si es una restriccion del lider False si es del follower
+
+        Returns:
+            tuple[str,str]: Devuelve una tupla con la expresion, el indice activo y un booleano para saber si es una inequacion True o una igualdad False
+        """
+        
          # Guardar la expresion
         key=f"Leader_restriction_{count}" if is_leader else f"Follower_restriction_{count}"
         
         # Ahora extraer la expresion
         s="líder" if is_leader else "seguidor"
-        rest_expr=self._input_expresion(f"la restricción del {s}",key=key)
+        rest_expr=self._input_expresion(f"la restricción del {s}",key=key,is_expr_required=True)
         # Guardar los tipos de indices activos del lider
         active_index=self.normal_active_index
         if rest_expr not in [None,""," "] and is_strict_inequality(rest_expr):
             # Si es una inecuacion entonces se dice que tipo de indice activo seleccionar
             temp=self.leader_active_index if is_leader else self.follower_active_index
-            active_index=st.selectbox("Indices activos a seleccionar",temp)
-            
-        return rest_expr,active_index
+            active_index=st.selectbox("Indices activos a seleccionar",temp,key=key)
+            return rest_expr,active_index,True
+        return rest_expr,active_index,False
     def _input_leader_restriction(self,count:int):
         # Decir en que restricciones estamos
-        rest_expr,active_index= self._save_expresion_and_active_index_restrictions(count,True)
-        # Ahora se da la seleccion que se pueda 
-        miu=st.number_input("Valor de miu",key=f"miu_{count}")
-        self.leader_restrictions.append(LeaderRestriction(rest_expr,active_index,miu))
+        rest_expr,active_index,is_inequality= self._save_expresion_and_active_index_restrictions(count,True)
+        # Ahora se da la seleccion que se pueda
+        # Inicializar el indice activo en zero
+        _miu=0
+        if  is_inequality:
+            # Si es una inecuacion se annade 
+            _miu=st.number_input("Valor de miu",key=f"miu_{count}")
+        self.leader_restrictions.append(LeaderRestriction(rest_expr,active_index,_miu))
         
     
     def _input_leader_problem(self):
@@ -241,11 +391,16 @@ class Page:
         st.write(F"Introducir la restriccion del seguidor {count}")
          # Guardar la expresion
           # Decir en que restricciones estamos
-        rest_expr,active_index= self._save_expresion_and_active_index_restrictions(count,False)
+        rest_expr,active_index,is_inequality= self._save_expresion_and_active_index_restrictions(count,False)
         # Ahora por los multiplicadores
-        _lambda=st.number_input("Valor de lambda",key=f"lambda_{count}")
-        _beta=st.number_input("Valor de Beta",key=f"beta_{count}")
-        _gamma=st.number_input("Valor de gamma",key=f"gamma_{count}")
+        # inicializarlos en zero
+        _beta,_lambda,_gamma=0,0,0
+        if is_inequality:
+            # Si es una inecuacion se necesitan los multiplicadores
+            _beta=st.number_input("Valor de Beta",key=f"beta_{count}")
+            _lambda=st.number_input("Valor de lambda",key=f"lambda_{count}",value=0)
+            if _lambda ==0:      
+                _gamma=st.number_input("Valor de gamma",key=f"gamma_{count}")
         self.follower_restrictions.append(FollowerRestriction(
             expression=rest_expr,
             active_index=active_index,
@@ -265,27 +420,35 @@ class Page:
         
     def problem_generator(self):
 
-        # Reiniciar el flag de error al actualizar el texto
-        self.set_ok()
+
 
         st.title("Generar un Problema")
         st.write("Introduce los siguientes datos")
         # Declarar las variables
         with st.expander("Introducir Variables:"):
             x_s,y_s=self._input_vars()
+        # Declarar el valor del vector alpha
+        with st.expander("Introducir el valor del vector alpha"):
+            self._set_alpha()
+        # Declarar el punto 
+        with st.expander("Introducir el punto el cual se desee que el problema generado sea estacionario"):
+            self.set_point()
         # Declarar nivel superior 
         with st.expander("Introducir el nivel superior:"):
             self._input_leader_problem()
         # Declarar nivel inferior
         with st.expander("Introducir el nivel inferior"):
             self._input_follower_problem()
-        print(self.ok)
+
+        if self.ok: #Entonces se puede mandar ha hacer el problema
+            st.button("Generar Problema")
+        print(f"Esta ok:{self.ok}")
     
     def pagina_acerca_de(self):
         st.title("Acerca de")
         st.write("Esta es una aplicación de ejemplo creada con Streamlit.")
 
-#TODO: False poder añadir el valor de alpha.
+
 #TODO: Poner forma que se pueda generar sin poner valores osea solo con seleccionar los puntos
 #TODO: Añadir el punto. 
 Page().run()

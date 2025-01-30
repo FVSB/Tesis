@@ -5,7 +5,7 @@ import os
 from enum import Enum,auto
 import random
 import uuid
-
+import requests  # Añadir este import
 def get_guid():
     # Generar un GUID
     nuevo_guid = uuid.uuid4()
@@ -25,6 +25,12 @@ def get_guid():
 #    J_0_L0_v=auto()
 #    J_Ne_L0_v=auto()
     
+    
+
+
+
+
+
 def is_strict_inequality(expression_str: str) -> bool:
     # Convertir la expresión de string a una expresión simbólica
     expression = sympify(expression_str)
@@ -43,9 +49,32 @@ def is_equation(expression_str: str) -> bool:
     return isinstance(expression, (Lt, Le, Gt, Ge, Eq))  or "==" in expression_str
 
 class Restriction:
+    #Definir el tipo de restriccion
+    def _define_restriction(self,expr):
+        if "==" in expr or "=" in expr:
+            return "Eq"
+        if "<=" in expr:
+            return "LtEq"
+        if ">=" in expr:
+            return "GtEq"
+        if "<" in expr:
+            return "Lt"
+        if ">" in expr:
+            return "Gt"
+        
+    def replace_operators(self,expresion: str) -> str:
+        operadores = ["<=", ">=", "=", "<", ">"]
+        for operador in operadores:
+            expresion = expresion.replace(operador, "==")
+            return expresion
+        return expresion
     def __init__(self,expression,active_index:str):
-        self.expression=expression
+        self.expression=self.replace_operators(expression)
         self.active_index=active_index
+        self.type=self._define_restriction(expression)
+        """
+        El tipo de restriccion ==, < 
+        """
     def __repr__(self):
         return self.expression
     def __str__(self):
@@ -131,7 +160,60 @@ class Page:
             return
            # raise Exception("El valor de la cant de errores no puede ser negativo")
         self._errors_count-=1
-        
+    def generate_problem_json(self):
+        """Genera la estructura JSON especificada a partir de los datos ingresados"""
+        # Construir sección de variables
+        vars_section = {
+            "leader": self.x_s,
+            "follower": self.y_s
+        }
+
+        # Construir funciones objetivo
+        objective_function_section = {
+            "leader": self.leader_obj,
+            "follower": self.follower_obj
+        }
+
+        # Construir restricciones del líder
+        leader_restrictions = []
+        for rest in self.leader_restrictions:
+            leader_restrictions.append({
+                "expresion": rest.expression,
+                "restriction_type": rest.type,
+                "active_index_type": rest.active_index,
+                "miu": rest.miu
+            })
+
+        # Construir restricciones del seguidor
+        follower_restrictions = []
+        for rest in self.follower_restrictions:
+            follower_restrictions.append({
+                "expresion": rest.expression,
+                "restriction_type": rest.type,
+                "active_index_type": rest.active_index,
+                "lambda": rest._lambda,
+                "beta": rest._beta,
+                "gamma": rest._gamma
+            })
+
+        # Construir sección de punto
+        point_dict = {}
+        all_vars = self.x_s + self.y_s
+        for var, value in zip(all_vars, self._point):
+            point_dict[var] = value
+
+        # Ensamblar JSON final
+        return {
+            "vars": vars_section,
+            "objective_function": objective_function_section,
+            "restrictions": {
+                "leader": leader_restrictions,
+                "follower": follower_restrictions
+            },
+            "is_alpha_zero": self._alpha_zero,
+            "alpha_vec": self._alpha if not self._alpha_zero else [],
+            "point": point_dict
+        }
     
     def pagina_inicio(self):
         st.title("Problems Generator")
@@ -440,10 +522,48 @@ class Page:
         with st.expander("Introducir el nivel inferior"):
             self._input_follower_problem()
 
-        if self.ok: #Entonces se puede mandar ha hacer el problema
-            st.button("Generar Problema")
-        print(f"Esta ok:{self.ok}")
-    
+        if self.ok:
+            if st.button("Generar Problema"):
+                try:
+                    problem_data = self.generate_problem_json()
+                    response = requests.post(
+                        "http://127.0.0.1:8080/hola",
+                        json=problem_data,
+                        headers={"Content-Type": "application/json"}
+                    )
+                    
+                    if response.status_code == 200:
+                        # Extraer nombre de archivo de los headers
+                        content_disposition = response.headers.get('Content-Disposition')
+                        filename = 'problema.xlsx'  # Valor por defecto
+                        
+                        if content_disposition:
+                            parts = content_disposition.split(';')
+                            for part in parts:
+                                if 'filename=' in part:
+                                    filename = part.split('=')[1].strip('"')
+                                    break
+                        
+                        # Crear botón de descarga
+                        st.success("Problema generado y enviado exitosamente!")
+                        st.download_button(
+                            label="Descargar Excel",
+                            data=response.content,
+                            file_name=filename,
+                            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                        )
+                        
+                        st.json(problem_data)  # Opcional: mostrar JSON enviado
+                    else:
+                        st.error(f"Error en el servidor: {response.status_code}")
+                except requests.exceptions.ConnectionError:
+                    st.error("No se pudo conectar al servidor. Verifica que esté corriendo en 127.0.0.1:8080")
+                except Exception as e:
+                    st.error(f"Error inesperado: {str(e)}")
+
+    # ... (otros métodos se mantienen igual)
+
+                    
     def pagina_acerca_de(self):
         st.title("Acerca de")
         st.write("Esta es una aplicación de ejemplo creada con Streamlit.")

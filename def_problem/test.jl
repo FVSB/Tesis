@@ -1,7 +1,10 @@
+using JSON
+
+json_string = """
 {
     "vars":{
-        "leader":[],
-        "follower":[]
+        "leader":[1],
+        "follower":[1]
     },
     "objective_function":{
         "leader":"",
@@ -10,24 +13,26 @@
     "restrictions":{
         "leader":[{
            "expresion":"",
-            "restriction_type":"",
             "active_index_type":"",
             "miu":0.4
-
         }],
         "follower":[{
             "expresion":"",
-            "restriction_type":"",
             "active_index_type":"",
             "lambda":0.1,
             "beta":0.9,
             "gamma":0.4
         }]
     },
-    "is_alpha_zero":false,
-    "alpha_vec":[2.3,293],
-    "point":{
-        "x_1":2.2
-    }
-    
+    "alpha_vec":[2.3,293]
 }
+"""
+
+# Intentar parsear el JSON
+try
+    diccionario = JSON.parse(json_string)
+    println("JSON parseado correctamente:")
+    println(diccionario)
+catch e
+    println("Error al parsear JSON: ", e)
+end

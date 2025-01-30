@@ -34,7 +34,7 @@
 \usepackage{mathtools}
 \usepackage{optidef}
 
-% Se añadio ahoira para las referencias
+% Se añadió ahora para las referencias
 \usepackage{cleveref}
 % Comentarios
 %\usepackage{comment}
@@ -46,6 +46,10 @@
 \usepackage{listings}
 %\usepackage{listingsutf8}
 \usepackage{color}
+
+
+% Redefinir el nombre del listing
+\renewcommand{\lstlistingname}{Ejemplo} % <--- AQUÍ EL CAMBIO
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
@@ -88,6 +92,10 @@
 \newcommand{\N}{\mathbb{N}} 
 \newcommand{\Z}{\mathbb{Z}} 
 \newcommand{\Lagr}{\mathcal{L}}
+% Agregar argmin
+% En el preámbulo del documento
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmin}{argmin} % Define el operador argmin
 
 % Dar formato codigo de julia
 \usepackage{listings}
@@ -133,7 +141,7 @@
 \lstset{style=julia-style}
 
 
-% Para que se ajusten autmaticamente las tablas 
+% Para que se ajusten automáticamente las tablas 
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \usepackage{adjustbox}
@@ -162,12 +170,32 @@
     \hline
 }
 
-% Pone automatico los numeros de las ecuaciones
+% Pone automático los números de las ecuaciones
 \numberwithin{equation}{section}
 % Definir un nuevo entorno para teoremas 
 \newtheorem{theorem}{\textbf{Teorema}}
 % Definir un nuevo entorno para las definiciones 
 \newtheorem{definition}{\textbf{Definición}}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{framed}
+
+% Definir el entorno Example
+\newenvironment{Example}[1][]{%
+    \def\examplecaption{#1}%
+    \begin{leftbar}%
+    \par\noindent%
+}{%
+    \end{leftbar}%
+    \ifx\examplecaption\empty\else%
+    \vspace{5pt}%
+    \noindent%
+    {\footnotesize\centering\textbf{Example:} \examplecaption\par}%
+    \fi%
+}
+
 
 \begin{document}
 	\frontmatter

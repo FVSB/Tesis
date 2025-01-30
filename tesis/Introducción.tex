@@ -13,7 +13,7 @@ La optimización de dos niveles, un área fundamental en la investigación opera
 %    \end{aligned}
 % \end{equation}
 
-\textbf{El modelo de dos niveles es:}
+El modelo de dos niveles es:
 
 \begin{table}[H]
 
@@ -44,22 +44,22 @@ x \in R^{n}, \quad \quad y \in R^{m}
 %Dimension de los niveles
 \begin{align*}
     %Nivel superior
-   & F, f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}, 
-   & \quad  T , f :\mathbb{R}^{n} \to \mathbb{R},
+   & F : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}, 
+   & \quad  T :\mathbb{R}^{n} \to \mathbb{R},
    \\
    % Nivel inferior
-    & f, f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} ,
-    & \quad H , f: \mathbb{R}^{m} \to \mathbb{R}, 
+    & f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} ,
+    & \quad H : \mathbb{R}^{m} \to \mathbb{R}, 
 \end{align*}
 % Definir dimension de M^0
 \begin{equation*}
-M^0, f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}
+M^0: \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}
 \end{equation*}
 \end{samepage}
-%Aclarar que la interaccion jerarquica es compleja
+%Aclarar que la interacción jerárquica es compleja
 En otras palabras, el problema de optimización binivel se centra en que el líder (nivel superior) debe tomar decisiones ($x$) que optimicen su objetivo $F(x, y)$, anticipando que el seguidor (nivel inferior) responderá de manera óptima con respecto a su propio objetivo $f(x, y)$, dado el valor de $x$ elegido por el líder. Esta interacción jerárquica entre ambos niveles añade una gran complejidad al problema en comparación con los problemas de optimización de un solo nivel.
 
-%Seccion de aplicaciones
+%Sección de aplicaciones
 \section{Aplicaciones}
 % Aplicaciones 
 Los problemas de optimización de dos niveles son muy utilizados para modelar y analizar mercados eléctricos complejos, ofreciendo una perspectiva única sobre las interacciones estratégicas entre diversos agentes económicos.
@@ -79,7 +79,7 @@ Los modelos binivel también tiene aplicaciones fundamentales en la selección d
 La optimización de dos niveles es una herramienta clave en el diseño y operación de redes industriales sostenibles. Ejemplos notables incluyen redes de agua industrial, 
 % Water integration in eco-industrial parks using a multi-leader-follower approach
 donde en los estudios de \cite{Ramos2016WaterII} se optimizan mediante juegos de múltiples líderes-seguidores, priorizando objetivos ambientales y económicos. Los resultados muestran que las empresas participantes lograron beneficios significativos en escenarios con formulaciones \textbf{KKT} (Karush-Kuhn-Tucker). 
-El enfoque \textbf{MLFG} (Multi-Leader-Follower Game) se utiliza para analizar la optimización de redes de agua en \textbf{EIP} (Entornos Industriales Productivos). En este contexto, las empresas buscan minimizar costos mientras que una autoridad regula el consumo de agua dulce. Se comparan diferentes formulaciones y métodos de solución, mostrando que MLFG es más confiable que la optimización multiobjetivo en escenarios multi-criterio. Además, en \cite{Ramos2016WaterII} se destaca la influencia de la estructura del juego en la configuración óptima, sugiriendo la necesidad de un diseño óptimo para cada planta dentro del EIP. 
+El enfoque \textbf{MFG} (Multi-Leader-Follower Game) se utiliza para analizar la optimización de redes de agua en \textbf{EIP} (Entornos Industriales Productivos). En este contexto, las empresas buscan minimizar costos mientras que una autoridad regula el consumo de agua dulce. Se comparan diferentes formulaciones y métodos de solución, mostrando que MLFG es más confiable que la optimización multiobjetivo en escenarios multi-criterio. Además, en \cite{Ramos2016WaterII} se destaca la influencia de la estructura del juego en la configuración óptima, sugiriendo la necesidad de un diseño óptimo para cada planta dentro del EIP. 
 Los enfoques \textbf{SLMFG} (Single-Leader-Multifollower Game) y \textbf{MLSFG} (Multi-Leader-Single-Follower Game) presentan variaciones en el rol de los participantes: en SLMFG, las empresas son seguidoras y la autoridad es líder, mientras que en MLSFG, ocurre lo contrario. Se resalta que el enfoque MLFG logra equilibrar objetivos económicos y ambientales, generando ahorros significativos mediante la reutilización de recursos. Los resultados indican una reducción en el consumo de agua fresca gracias a las estrategias implementadas, utilizando herramientas como GAMS para modelar los problemas de optimización, ver \cite{Ramos2016WaterII}. 
 % Utility network optimization in eco-industrial parks by a multi-leader follower game methodology
 Además, en \cite{Ramos2018UtilityNO} los autores introducen el concepto de autoridad ambiental en el diseño de redes de servicios públicos, utilizando juegos de múltiples líderes-seguidores y reformulaciones KKT. 
@@ -92,9 +92,20 @@ Además investigaciones como las de \cite{Bhavsar2021ASP} investigan sobre la ap
 % Decir que termino con las aplicaciones 
 Con esto, se concluye la revisión de las aplicaciones de los problemas de optimización binivel en diferentes contextos.
 
-\section{Dificultad computacional de los problemas binivel}
+\section{Dificultades teóricas y computacionales de los problemas binivel}
 % Bilevel Difíciles
 El concepto mismo de solución del problema binivel es complejo. La decisión del líder es solo respecto a un grupo de variables, mientras que las otras influyen en la función objetivo, pero no son decisión de él. Si para un mismo valor de las variables del líder el problema del seguidor tiene diferentes soluciones óptimas, el valor de la función objetivo del líder no estará determinado, sino que depende de cuál de los óptimos escogió el otro agente. 
+
+%Condiciones Necesarias
+% Sobre Valor extremal KKT y algoritmos 
+Para obtener las condiciones de optimalidad y los algoritmos de solución de los modelos binivel se reportan dos enfoques fundamentales. En \cite{DempeyZemkoho2020} se usa la función valor extremal. 
+%Explicación sobre que va el valor extremal
+Esto significa que para todo valor de $x$, se considera la minimización de la función objetivo del líder en el conjunto dado por las restricciones de ambos individuos y la condición de que la función objetivo del seguidor es menor o igual que el valor más pequeño que alcanza en el conjunto de soluciones factibles del seguidor.
+ 
+% Al realizar el kkt en el level inferior se transforma a un MPEC
+Otro enfoque clásico consiste en sustituir el problema del nivel inferior por la condición de KKT, lo que permite transformar problemas de optimización binivel en programas matemáticos con restricciones de equilibrio (MPEC), facilitando así su resolución,ver \cite{AnnotatedBibliographyDempe,Caselli2024BilevelOW,DempeyZemkoho2020}.
+Conocido como \textit{enfoque KKT} en la literatura, es una de las formas más utilizada para la resolución de problemas de dos niveles en la actualidad, ver \cite{Aussel2021GenericityAO}.
+
 
 % NP-Hard
 % The polynomial hierarchy and a simple model for competitive analysis
@@ -104,7 +115,8 @@ Dado que los problemas de optimización de ese tipo son inherentemente difícile
 % Libro Dempe
 % Tesis doctoral Cerulli
 o incluso $\Sigma P2-hard$, ver \cite{phdthesisCerulli, DempeyZemkoho2020},
-se han desarrollado diversos enfoques para abordar su complejidad computacional. Entre los métodos exactos más utilizados se encuentran las reformulaciones basadas en las condiciones KKT, que permiten transformar el problema binivel en un problema mononivel resoluble mediante técnicas tradicionales de programación matemática. Sin embargo, estos enfoques suelen ser computacionalmente intensivos para problemas de gran escala, ver \cite{phdthesisCerulli}.
+se han desarrollado diversos enfoques para abordar su complejidad computacional. 
+Sin embargo, estos enfoques suelen ser computacionalmente intensivos para problemas de gran escala, ver \cite{phdthesisCerulli}.
 %A Review on Bilevel Optimization: From Classical to Evolutionary Approaches and Applications
 En paralelo, los algoritmos metaheurísticos, como los evolutivos, han ganado relevancia al proporcionar aproximaciones eficientes en casos no lineales o no convexos, donde las soluciones exactas son inalcanzables en tiempos razonables, ver \cite{Sinha2017ARO}.
 % Dividir en subproblemas y resolver iterativamente
@@ -117,19 +129,8 @@ Estas técnicas son particularmente útiles en aplicaciones prácticas, como los
 A pesar de estos avances, existen desafíos abiertos. La escalabilidad sigue siendo un problema crítico, ya que el crecimiento exponencial de las opciones en problemas de gran tamaño limita la aplicabilidad de los métodos exactos, ver \cite{DempeyZemkoho2020}. Asimismo, los problemas no convexos carecen de garantías de convergencia hacia el óptimo global, lo que los hace especialmente difíciles de abordar. Finalmente, la incorporación de incertidumbre en los modelos agrega una capa adicional de complejidad, lo que demanda nuevos enfoques híbridos que combinen algoritmos exactos y heurísticos para mejorar la eficiencia computacional sin sacrificar la calidad de las soluciones, ver \cite{phdthesisCerulli,Sinha2017ARO}. Estos avances y desafíos reflejan la importancia de diseñar algoritmos personalizados que aprovechen las estructuras particulares de cada problema binivel. Las aplicaciones industriales, como el diseño de redes ecoindustriales y la gestión de mercados energéticos, destacan la necesidad de enfoques que equilibren precisión y tiempo de cálculo, haciendo de la optimización de dos niveles un área de investigación activa con un impacto significativo en la práctica.
 
 
-% Sobre Valor extremal KKT y algoritmos 
-Para obtener las condiciones de optimalidad y los algoritmos de solución de los modelos binivel se reportan dos enfoques fundamentales. En \cite{DempeyZemkoho2020} se usa la función valor extremal. 
-%Explicacion sobre que va el valor extremal
-Esto significa que para todo valor de $x$, se considera la minimización de la función objetivo del líder en el conjunto dado por las restricciones de ambos individuos y la condición de que la función objetivo del seguidor es menor o igual que el valor más pequeño que alcanza en el conjunto de soluciones factibles del seguidor.
- 
-% Al realizar el kkt en el level inferior se transforma a un MPEC
-Otro enfoque clásico consiste en sustituir el problema del nivel inferior por la condición de KKT, lo que permite transformar problemas de optimización binivel en programas matemáticos con restricciones de equilibrio (MPEC), facilitando así su resolución,ver \cite{AnnotatedBibliographyDempe,Caselli2024BilevelOW,DempeyZemkoho2020}.
-Conocido como \textit{enfoque KKT} en la literatura, es una de las formas más utilizada para la resolución de problemas de dos niveles en la actualidad, ver \cite{Aussel2021GenericityAO}.
 
-% Flegel Kanzow Sobre MPECs y los ptos estacionarios
-%En el contexto de los MPEC, en \cite{Flegel2003AFJ} se exponen varios tipos de puntos estacionarios que son cruciales para analizar la optimalidad. Un punto \textbf{débilmente estacionario} es aquel que satisface las condiciones básicas de equilibrio, siendo una condición necesaria pero no suficiente para la optimalidad local. La \textbf{C-estacionariedad} es una condición más fuerte, que además requiere que el producto de ciertos multiplicadores de Lagrange sea no negativo en el conjunto degenerado. A su vez, la \textbf{M-estacionariedad} es aún más restrictiva, ya que exige condiciones específicas sobre los multiplicadores en el conjunto degenerado (que o bien ambos sean positivos, o su producto sea cero). El artículo también introduce el concepto de \textbf{A-estacionariedad}, que surge del enfoque de Fritz John, donde se requiere que al menos uno de los multiplicadores sea no negativo en el conjunto degenerado. Finalmente, un punto es \textbf{fuertemente estacionario} si ambos multiplicadores son no negativos en el conjunto degenerado, siendo esta la condición más restrictiva y que se da bajo ciertas condiciones como MPEC-LICQ o MPEC-SMFCQ. Por ello, estas condiciones forman una jerarquía donde la M-estacionariedad implica la C-estacionariedad y esta a su vez, implica la estacionariedad débil, siendo la estacionariedad fuerte la más restrictiva de todas. \cite{Flegel2003AFJ}.
-
-% Metodos matematicos que se utilizan KKT y branch and bround
+% Métodos matemáticos que se utilizan KKT y branch and bround
 Los algoritmos que se basan en las condiciones KKT incluyen una variedad de métodos, como técnicas de branch-and-bound y métodos de suavizado, ver \cite{DempeyZemkoho2020}. 
 % Hablar sobre el Suavizado KKT y Del SQP ademas de que el KKT se extiende a algoritmos evolutivos
 Además, se menciona que los algoritmos SQP (Sequential Quadratic Programming) también se fundamentan en las condiciones KKT para resolver problemas suaves con restricciones. 
@@ -139,16 +140,16 @@ Este hecho demuestra su versatilidad diversas áreas de la optimización.
 Los problemas de optimización de dos niveles y la formulación KKT son inherentemente no convexos, lo que implica que los métodos de optimización convexa no son directamente aplicables. Esta no convexidad puede llevar a soluciones subóptimas y a dificultades para encontrar una solución global. 
 Aunque en muchos casos las funciones involucradas en la definición del modelo sean convexas, la estructura general del problema sigue siendo no convexa.
 
-En resumen, obtener garantías sobre soluciones en problemas de optimización de dos niveles es un desafío complejo debido a que por su no convexidad inherente, se presentan dificultades para escapar de óptimos locales, la posible falta de unicidad y la inestabilidad en las soluciones. Los algoritmos frecuentemente dependen de puntos estacionarios, que no siempre corresponden a las soluciones óptimas deseadas. Por lo tanto, es crucial desarrollar métodos especializados que aborden estos problemas y permitan encontrar soluciones globales o aproximaciones adecuadas, ver \cite{DempeyZemkoho2020}.
+En resumen, obtener garantías sobre soluciones en problemas de optimización de dos niveles es un desafío complejo debido a que por su no convexidad inherente, se presentan dificultades para escapar de óptimos locales, la posible falta de unicidad y la inestabilidad en las soluciones. Los algoritmos frecuentemente hallan puntos estacionarios, que no siempre corresponden a las soluciones óptimas deseadas. Por lo tanto, es crucial desarrollar métodos especializados que aborden estos problemas y permitan encontrar soluciones globales o aproximaciones adecuadas, ver \cite{DempeyZemkoho2020}.
 
-% Se añadio la genericidad
-% Paper de gema sobte  los ptos estacionarios
+% Se añadió la genericidad
+% Paper de gema sobre  los puntos estacionarios
 En este contexto, se ha estudiado la estructura genérica de los problemas de complementariedad (MPCC) que surgen del enfoque KKT y Fritz-John (FJ) aplicado a un problema de dos niveles. Se ha demostrado que, para una clase amplia de estos, la condición de que independencia lineal (MPCC-LICQ) se cumple en todos los puntos factibles. Sin embargo, las condiciones de complementariedad estricta (MPCC-SC) y las condiciones de segundo orden (MPCC-SOC) pueden fallar en puntos críticos (estacionarios), incluso en situaciones genéricas, ver \cite{Allende2012SolvingBP}. Esta situación complica aún más la obtención de garantías sobre la solución.
 
 Es importante señalar que existen casos singulares donde los puntos estacionarios pueden ser problemáticos, especialmente cuando el multiplicador (\(\alpha\)) asociado a la condición de KKT del problema de nivel inferior es igual a cero. En tales circunstancias, la condición MPCC-SC puede no cumplirse, lo que podría llevar a que el método KKT no funcione adecuadamente, ver \cite{Allende2012SolvingBP}.
 
 % Qué se va a hacer en la tesis
-Basándose en la caracterización de los diferentes tipos de puntos estacionarios establecida por \cite{Flegel2003AFJ}, esta tesis propone desarrollar un generador de problemas que, dado un punto y las funciones $F$, $g_s$, $f$ y $v_S$  que definen un problema de dos niveles, agregarles funciones polinomiales de primer o segundo grado de forma tal que el punto inicial dado sea un punto critico del problema creado. 
+Basándose en la caracterización de los diferentes tipos de puntos estacionarios establecida por \cite{Flegel2003AFJ}, esta tesis propone desarrollar un generador de problemas que, dado un punto y las funciones $F$, $g_s$, $f$ y $v_S$  que definen un problema de dos niveles, agregarles funciones polinomiales de primer o segundo grado de forma tal que el punto inicial dado sea un punto crítico del problema creado. 
 Este generador facilitará el estudio del comportamiento de algoritmos conocidos en problemas con ahora al menos un punto estacionario conocido.
 El usuario además podrá decidir si quiere un punto crítico con multiplicadores arbitrarios o si $\alpha = \vec{0}$, lográndose estudiar las clases de puntos críticos que aparecen en el caso genérico, o sea en un clase amplia y significativa de los problemas generados y \textbf{BilevelJuMP}
 
@@ -162,7 +163,7 @@ El usuario además podrá decidir si quiere un punto crítico con multiplicadore
 
 % Explicación 
 % 2do cap
-La tesis está compuesta de 3 capítulos, luego del capítulo de introducción, en un segundo capítulo 
+La tesis está compuesta de 3 capítulos luego del capítulo de introducción, en un segundo capítulo 
 se mostrará la notación que se empleará, se define el problema de dos niveles con un líder y un seguidor, y se explica la teoría matemática para su transformación en un problema MPEC, así como los algoritmos de Julia que se utilizarán en ella.
 % 3ero
 En el tercer capítulo se explicará la implementación algorítmica propuesta anteriormente y su correcta utilización. 

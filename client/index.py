@@ -51,7 +51,7 @@ def is_equation(expression_str: str) -> bool:
 class Restriction:
     #Definir el tipo de restriccion
     def _define_restriction(self,expr):
-        if "==" in expr or "=" in expr:
+        if "==" in expr:
             return "Eq"
         if "<=" in expr:
             return "LtEq"
@@ -61,10 +61,14 @@ class Restriction:
             return "Lt"
         if ">" in expr:
             return "Gt"
+        if "=" in expr:
+            return "Eq"
         
     def replace_operators(self,expresion: str) -> str:
         operadores = ["<=", ">=", "=", "<", ">"]
         for operador in operadores:
+            if (not operador in expresion) or "==" in expresion:
+                continue
             expresion = expresion.replace(operador, "==")
             return expresion
         return expresion
@@ -145,6 +149,10 @@ class Page:
     @property
     def follower_active_index(self)->list[str]:
         return["Normal","J_0_LP_v","J_0_L0_v","J_Ne_L0_v"]
+   
+    @property
+    def J_0_LP_V(self)->str:
+        return "J_0_LP_v"
    
     @property
     def normal_active_index(self)->str:
@@ -450,7 +458,7 @@ class Page:
         # Ahora se da la seleccion que se pueda
         # Inicializar el indice activo en zero
         _miu=0
-        if  is_inequality:
+        if  is_inequality and  (active_index != self.normal_active_index):
             # Si es una inecuacion se annade 
             _miu=st.number_input("Valor de miu",key=f"miu_{count}")
         self.leader_restrictions.append(LeaderRestriction(rest_expr,active_index,_miu))
@@ -477,10 +485,12 @@ class Page:
         # Ahora por los multiplicadores
         # inicializarlos en zero
         _beta,_lambda,_gamma=0,0,0
-        if is_inequality:
+        if is_inequality and (active_index != self.normal_active_index):
             # Si es una inecuacion se necesitan los multiplicadores
             _beta=st.number_input("Valor de Beta",key=f"beta_{count}")
-            _lambda=st.number_input("Valor de lambda",key=f"lambda_{count}",value=0)
+            if  active_index ==self.J_0_LP_V:
+                # Si lambda es positivo debe introducirse su valor
+                 _lambda=st.number_input("Valor de lambda",key=f"lambda_{count}",min_value=0.00000000001)
             if _lambda ==0:      
                 _gamma=st.number_input("Valor de gamma",key=f"gamma_{count}")
         self.follower_restrictions.append(FollowerRestriction(

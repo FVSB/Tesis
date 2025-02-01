@@ -1,0 +1,33 @@
+{
+    "vars":{
+        "leader":[],
+        "follower":[]
+    },
+    "objective_function":{
+        "leader":"",
+        "follower":""
+    },
+    "restrictions":{
+        "leader":[{
+           "expresion":"",
+            "restriction_type":"",
+            "active_index_type":"",
+            "miu":0.4
+
+        }],
+        "follower":[{
+            "expresion":"",
+            "restriction_type":"",
+            "active_index_type":"",
+            "lambda":0.1,
+            "beta":0.9,
+            "gamma":0.4
+        }]
+    },
+    "is_alpha_zero":false,
+    "alpha_vec":[2.3,293],
+    "point":{
+        "x_1":2.2
+    }
+    
+}

@@ -1,4 +1,3 @@
-
 # Documentación de la API
 
 La API de `ProblemGenerator` permite generar un archivo Excel a partir de la definición de un problema binivel. La API se comunica mediante peticiones HTTP y acepta un objeto JSON con la estructura necesaria para definir variables, funciones objetivo, restricciones y otros parámetros del problema. A continuación se detalla el uso de los endpoints y se dan ejemplos prácticos.

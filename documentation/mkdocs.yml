@@ -8,6 +8,7 @@ nav:
   - Fundamentos teóricos: fundamentos.md
   - Especificación técnica de funciones: funciones.md 
   - Ejemplo básico: ejemplo.md
+  - Api: api/index.md
      
 
 extra_javascript:

@@ -5,11 +5,17 @@ theme:
 nav:
   - Home: index.md
   - Getting Started: 
-      - Install: getting_started/install.md
-      - tutorial: tutorials/getting_started.md
-      
+      - Install: install.md
+      - tutorial: getting_started.md
+      - other: module_use.md
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML
 markdown_extensions:
   - markdown_katex
+  - pymdownx.arithmatex
+ 
+
 
 
 extra:

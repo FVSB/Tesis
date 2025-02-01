@@ -1,4 +1,4 @@
-# Install the module
+# Instalar el módulo
 
 
 Para instalar del modulo de julia es necesario instalar las siguientes dependencias:

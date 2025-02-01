@@ -4,10 +4,11 @@ theme:
 
 nav:
   - Home: index.md
-  - Getting Started: 
-      - Install: install.md
-      - tutorial: getting_started.md
-      - other: module_use.md
+  - Instalación : install.md
+  - Fundamentos teóricos: fundamentos.md
+  - Especificación técnica de funciones: funciones.md 
+  - Ejemplo básico: ejemplo.md
+     
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML

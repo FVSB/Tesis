@@ -185,9 +185,9 @@ obteniendo el problema de forma reformulada.
 \section{Implementación Algorítmica y Guía de Usuario}
 %region Introducción de la sección
 En la implementación computacional del generador propuesto en la sección anteriores
-se utilizó el lenguaje de programación \textbf{Julia} \cite{Juliadocs} dado a su versatilidad
+se utilizó el lenguaje de programación \textbf{Julia}, ver \cite{Juliadocs}, dado a su versatilidad
 en expresiones y funciones matemáticas implementadas en su paquete base y sus bibliotecas externas como 
-\textbf{BilevelJuMP} \cite{BilevelJump} que permite resolver problemas binivel SLSF lineales y cuadráticos
+\textbf{BilevelJuMP}, ver \cite{BilevelJump}, que permite resolver problemas binivel SLSF lineales y cuadráticos
 sin tener que transformar el problema original y \textbf{JuMP} \cite{JuMPPaper} el cual, es una interfaz robusta para la optimización general,
 todo ello con unas excelentes prestaciones de cómputo. Por ello se brindará una guía de usuario para el uso del generador.
 
@@ -206,7 +206,7 @@ Para una mayor facilidad de compresión del uso de la biblioteca se utiliza este
         & \underset{x_1, x_2}{\text{mín}} 
         && x_1^2 y_1^2 y_2 + x_2 \\
         & \text{s.t.} 
-        && x_1 + y_2 - y_1 > 9, \\
+        && x_1 + y_2 - y_1 \leq 9, \\
         & 
         && \underset{y_1, y_2}{\text{mín}} 
         \quad x_2^2 y_1^2 y_2 + x_1 \\
@@ -393,14 +393,14 @@ llamarse a la función \textbf{SetLeaderRestriction} con:
 
 Ejemplo para introducir la restricción:
 \begin{align*}
-    &x_1+y_2-y_1 > -9 \\
+    &x_1+y_2-y_1 \leq 9 \\
     &\text{Índice activo del tipo J\_0\_g \refeq{J_0_level_superior}}\\
     & \mu_i=0.3
 \end{align*}
 
 \begin{lstlisting}[caption={Introducir restricción del nivel superior}]
     # Ejemplo de restriccion del nivel superior
-    SetLeaderRestriction(model,x_1+y_2-y_1>9,J_0_g,0.3)
+    SetLeaderRestriction(model,x_1+y_2-y_1<=9,J_0_g,0.3)
 \end{lstlisting}
 
 \begin{samepage}
@@ -424,7 +424,7 @@ Ejemplo para introducir la restricción:
     \begin{samepage}
     \item \textbf{$ \lambda_j \neq 0$:}\\
     \begin{align*}
-        &((x_1^2)*(y_1^2))+x_2=0\\
+        &((x_1^2)*(y_1^2))+x_2 \leq 0\\
         &\text{Índice activo del tipo J\_Ne\_L0\_v} \refeq{J_neg_lambda_0_level_inferior}\\
         & \beta_j=0.1\\
         & \lambda_j=0.5 \\
@@ -497,7 +497,7 @@ Se muestra el ejemplo completo para el problema antes propuesto:
     # Min de ((x_2^2)*(y_1^2)*(y_2))+x_1
     SetObjectiveFunction(Lower(model),((x_2^2)*(y_1^2)*(y_2))+x_1)
     # Para caso lamda_j!=0
-    SetFollowerRestriction(model,((x_1^2)*(y_1^2))+x_2==0,J_Ne_L0_v,0.1,0,0.4)
+    SetFollowerRestriction(model,((x_1^2)*(y_1^2))+x_2<=0,J_Ne_L0_v,0.1,0,0.4)
     # Introducir el punto (1,1,1,1)
     SetPoint(model,Dict(x_1=>1,x_2=>1,y_1=>1,y_2=>1))
     # Llamar para generar el problema

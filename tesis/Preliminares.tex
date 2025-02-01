@@ -20,7 +20,7 @@ y por último la modelación de los problemas binivel en el lenguaje de programa
 & \min_{x} \; F(x, y) \\
 & \text{sujeto a } \\
 & G(x) \leq 0, \\
-& y \in \argmin_{y} \left\{ f(x, y) \mid g(x, y) \leq 0 \right\}
+& y \in \argmin_{y} \left\{ f(x, y) \mid v(x, y) \leq 0 \right\}
 \end{aligned}
 \label{eq:ProblemaGeneral}
 \end{equation}
@@ -32,7 +32,7 @@ Bajo el enfoque optimista :
 \begin{equation}
 \begin{aligned}
 & \min_{x} \; \inf_{y \in S(x)} F(x, y) \\
-& \text{con } S(x) = \argmin_{y} \left\{ f(x, y) \mid g(x, y) \leq 0 \right\}
+& \text{con } S(x) = \argmin_{y} \left\{ f(x, y) \mid v(x, y) \leq 0 \right\}
 \end{aligned}
 \label{eq:EnfoqueOptimistaGeneral}
 \end{equation}
@@ -44,7 +44,7 @@ Bajo el enfoque optimista :
 \begin{equation}
 \begin{aligned}
 & \min_{x} \; \sup_{y \in S(x)} F(x, y) \\
-& \text{con } S(x) = \argmin_{y} \left\{ f(x, y) \mid g(x, y) \leq 0 \right\}
+& \text{con } S(x) = \argmin_{y} \left\{ f(x, y) \mid v(x, y) \leq 0 \right\}
 \end{aligned}
 \label{eq:EnfoquePesimistaGeneral}
 \end{equation}
@@ -270,11 +270,11 @@ Este concepto de estacionariedad, sin embargo, es una condición relativamente d
 \begin{itemize}
 % C-estacionario
 \item \begin{definition}[Punto C-estacionario]
-  El punto $z$ es: \textit{C-estacionario} si, para cada $i \in \beta$, $\lambda_i^G\lambda_i^H \geq 0$ se cumple;
+  El punto $z$ es: \textit{C-estacionario} si, para cada $i \in \beta$, $\lambda_i^G\lambda_i^H \geq 0$ se cumple.
 \end{definition}
 %M-Estacionario
 \item \begin{definition}[Punto M-estacionario]
-    El punto $z$ es: \textit{M-estacionario} si, para cada $i \in \beta$, o bien $\lambda_i^G,\lambda_i^H > 0$ $\vee$ $\lambda_i^G \lambda_i^H = 0$
+    El punto $z$ es: \textit{M-estacionario} si, para cada $i \in \beta$, o bien $\lambda_i^G,\lambda_i^H > 0$ $\vee$ $\lambda_i^G \lambda_i^H = 0$.
 \end{definition}
 %Fuertemente estacionario
 \item \begin{definition}[Punto Fuertemente estacionario]

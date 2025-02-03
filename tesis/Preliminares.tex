@@ -335,32 +335,34 @@ A pesar de sus capacidades, BilevelJuMP.jl presenta algunas limitaciones, entre 
 
 % Explicación algoritmos 
 \section{Métodos de Reformulación para Optimización Binivel}
-
-La optimización binivel presenta desafíos particulares debido a su naturaleza jerárquica y las condiciones de complementariedad resultantes. A continuación, se presentan los principales métodos de reformulación implementados en la literatura.
-
+La optimización binivel presenta desafíos particulares debido a su naturaleza jerárquica y las condiciones de complementariedad resultantes. A continuación, se presentan los principales métodos de reformulación implementados en la literatura, basados en la transformación del MPEC \eqref{eq:KKT_Optimista}.
 \subsection{Método Big-M}
 
-El método Big-M es una técnica fundamental para reformular problemas de optimización binivel en problemas MPEC, donde $V$ y $U$ son lineales afines. Este método aborda específicamente las condiciones de complementariedad que surgen en estas reformulaciones, transformando el problema original en un problema de programación lineal mixta entera (MILP).
+El método Big-M (Fortuny-Amat y McCarl)  es una técnica fundamental para reformular problemas de optimización binivel en problemas MPEC. 
+Este método aborda específicamente las condiciones de complementariedad que surgen en estas reformulaciones, transformando el problema original en un problema de programación lineal mixta entera (MILP).
 
-La reformulación mediante Big-M introduce un parámetro M suficientemente grande y variables binarias para transformar las condiciones de complementariedad no lineales en restricciones lineales. Para una condición de complementariedad de la forma $y_i(A_ix + b_i + D_iz) = 0$, el método introduce una variable binaria $f$ y las siguientes restricciones:
+La reformulación mediante Big-M introduce un parámetro M suficientemente grande y variables binarias para transformar las condiciones de complementariedad no lineales en restricciones lineales. Para una condición de complementariedad 
+$v_j(x,y)\lambda_j = 0$ en \eqref{eq:KKT_Optimista}, el método introduce una variable binaria  $f_j \in \{0,1\}$ y cotas superiores $M_p$, $M_d$ bajo  las siguientes restricciones:
 
-\begin{align*}
-A_ix + b_i + D_iz &\leq M_p f_i \\
-y_i &\leq M_d(1 - f_i) \\
-f &\in \{0,1\}
-\end{align*}
+\begin{align}
+    v_j(x,y) &\geq -M_p(1 - f_j) \notag \\
+    \lambda_j &\leq M_d f_j \\
+    f_j &\in \{0,1\} \notag
+\end{align}
 
 donde $M_p$ y $M_d$ son valores grandes para las variables primales y duales, respectivamente. La efectividad del método depende crucialmente de la selección apropiada de estos valores, que deben ser suficientemente grandes para no excluir la solución óptima, pero no excesivamente grandes para evitar inestabilidades numéricas \cite{BilevelJump}.
 
+
 \subsection{Método SOS1}
 
-El método de Conjuntos Ordenados Especiales de tipo 1 (SOS1) representa una alternativa más robusta para reformular las condiciones de complementariedad de Karush-Kuhn-Tucker (KKT) en problemas de optimización binivel. A diferencia del método Big-M, SOS1 no requiere la determinación de parámetros adicionales, lo que lo hace particularmente atractivo en la práctica.
+El método de Conjuntos Ordenados Especiales tipo 1 (SOS1) evita el uso de parámetros Big-M mediante restricciones de tipo conjunto. Para cada par complementario $(v_j, \lambda_j)$:
 
-La reformulación SOS1 transforma una condición de complementariedad en una restricción que especifica que, como máximo, una variable en un conjunto puede tener un valor diferente de cero. Para una condición de complementariedad $y_i(A_ix + b_i + D_iz) = 0$, la reformulación SOS1 se expresa como:
+\begin{equation}
+[v_j(x,y); \lambda_j] \in \text{SOS1} \label{eq:SOS1_reform}
+\end{equation}
 
-\[ [y_i ; A_ix + b_i + D_iz] \in \text{SOS1} \]
+Esta restricción fuerza que al menos una variable en el par sea cero, preservando la no linealidad original sin necesidad de cotas. Es particularmente eficaz en problemas con estructura cónica \cite{BilevelJump}.
 
-Esta formulación está disponible en muchos solucionadores MILP modernos y ha demostrado un rendimiento competitivo, ver \cite{BilevelJump}.
 
 \subsection{Método ProductMode}
 
@@ -368,52 +370,14 @@ El método ProductMode representa un enfoque directo para manejar las condicione
 
 La implementación del ProductMode mantiene la restricción de complementariedad en su forma original:
 
-\[ y_i(A_ix + b_i + D_iz) \leq t \]
+\begin{equation}
+    v_j(x,y) \cdot \lambda_j \leq t \label{eq:ProductMode_reg}
+\end{equation}
 
-donde $t$ es un parámetro de regularización pequeño. Esta formulación, aunque no satisface las condiciones de calificación de restricciones estándar, es útil para obtener soluciones iniciales y puede ser especialmente efectiva cuando se combina con solucionadores NLP, ver \cite{BilevelJump}.
+donde $t > 0$ es un parámetro de regularización pequeño. Esta formulación, aunque no satisface las condiciones de calificación de restricciones estándar, es útil para obtener soluciones iniciales y puede ser especialmente efectiva cuando se combina con solucionadores NLP, ver \cite{BilevelJump}.
 
 
-%% Métodos de Reformulación para Optimización Binivel
-%\section{Métodos de Reformulación para Optimización Binivel 2}
-%
-%La optimización binivel presenta desafíos particulares debido a su naturaleza jerárquica y las condiciones de complementariedad resultantes. A continuación, se presentan los principales métodos de reformulación implementados en la literatura, basados en la transformación del MPEC \eqref{eq:KKT_Optimista}.
-%
-%\subsection{Método Big-M}
-%\label{subsec:BigM}
-%
-%El método Big-M (Fortuny-Amat y McCarl) es una técnica fundamental para reformular problemas MPEC en programas de enteros mixtos (MIP). 
-%Para cada condición de complementariedad $v_j(x,y)\lambda_j = 0$ en \eqref{eq:KKT_Optimista}, se introduce una variable binaria $f_j \in \{0,1\}$ y cotas superiores $M_p$, $M_d$:
-%
-%\begin{align}
-%v_j(x,y) &\geq -M_p(1 - f_j) \notag \\
-%\lambda_j &\leq M_d f_j \\
-%f_j &\in \{0,1\} \notag
-%\end{align}
-%
-%Esta reformulación linealiza las condiciones de complementariedad, permitiendo el uso de solvers MIP. La selección de $M_p$ y $M_d$ es crítica para evitar exclusión de soluciones o inestabilidad numérica \cite[Sección 4.1.3]{BilevelJump}.
-%
-%\subsection{Método SOS1}
-%\label{subsec:SOS1}
-%
-%El método de Conjuntos Ordenados Especiales tipo 1 (SOS1) evita el uso de parámetros Big-M mediante restricciones de tipo conjunto. Para cada par complementario $(v_j, \lambda_j)$:
-%
-%\begin{equation}
-%[v_j(x,y); \lambda_j] \in \text{SOS1} \label{eq:SOS1_reform}
-%\end{equation}
-%
-%Esta restricción fuerza que al menos una variable en el par sea cero, preservando la no linealidad original sin necesidad de cotas. Es particularmente eficaz en problemas con estructura cónica \cite[Sección 4.1.1]{BilevelJump}.
-%
-%\subsection{Método ProductMode}
-%\label{subsec:ProductMode}
-%
-%Este método mantiene las condiciones de complementariedad en su forma no lineal original, aplicable cuando se usan solvers NLP:
-%
-%\begin{equation}
-%v_j(x,y) \cdot \lambda_j \leq t \label{eq:ProductMode_reg}
-%\end{equation}
-%
-%donde $t > 0$ es un parámetro de regularización pequeño. Aunque no garantiza optimalidad global, es útil para obtener soluciones iniciales y manejar restricciones no lineales complejas \cite[Sección 4.1.4]{BilevelJump}.
-%
+
 %\subsection{Comparación de Métodos}
 %La Tabla \ref{tab:comparacion_metodos} resume los requisitos y características de cada método:
 %

@@ -1,5 +1,6 @@
 # Importar dependencias necesarias
-using ProblemGenerator
+#using ProblemGenerator
+include("def_problem/MiModulo.jl")
 # Crear el modelo base del generador alpha=0
 model=GeneratorModel()
 #Declaracion de variables

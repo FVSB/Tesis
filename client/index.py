@@ -5,12 +5,21 @@ import os
 from enum import Enum,auto
 import random
 import uuid
-import requests  # Añadir este import
+import requests 
+from utils import *
 def get_guid():
     # Generar un GUID
     nuevo_guid = uuid.uuid4()
     return nuevo_guid
 
+
+class PointTypes(Enum):
+    C_Estacionario = auto()
+    M_Estacionario = auto()
+    Fuertemente_Estacionario = auto()
+
+    def __str__(self):
+        return self.name
 #class ActiveIndex(Enum):
 #    Normal=auto()
 #    
@@ -134,6 +143,13 @@ class Page:
         self._errors_count:int=0
         #self._ok=True
         
+        # Si se quiere seleccionar o no automático los multiplicadores
+        self.manual_input_mult:bool=True
+        
+        # Tipo de puntos
+        self.point_types:list[str]=["C-Estacionario","M-Estacionario","Fuertemente-Estacionario"]
+        #self.point_type:PointTypes=None
+        self.mult_func_generator=None
     @property 
     def ok(self)->bool:
         return self._errors_count==0
@@ -458,9 +474,13 @@ class Page:
         # Ahora se da la seleccion que se pueda
         # Inicializar el indice activo en zero
         _miu=0
-        if  is_inequality and  (active_index != self.normal_active_index):
-            # Si es una inecuacion se annade 
-            _miu=st.number_input("Valor de miu",key=f"miu_{count}")
+        if  self.manual_input_mult:
+            if  is_inequality and  (active_index != self.normal_active_index):
+                # Si es una inecuacion se annade 
+                _miu=st.number_input("Valor de miu",key=f"miu_{count}")
+        else:
+            _miu=get_random()
+            st.write(f"Valor de miu es:{_miu}")
         self.leader_restrictions.append(LeaderRestriction(rest_expr,active_index,_miu))
         
     
@@ -486,13 +506,25 @@ class Page:
         # inicializarlos en zero
         _beta,_lambda,_gamma=0,0,0
         if is_inequality and (active_index != self.normal_active_index):
-            # Si es una inecuacion se necesitan los multiplicadores
-            _beta=st.number_input("Valor de Beta",key=f"beta_{count}")
-            if  active_index ==self.J_0_LP_V:
-                # Si lambda es positivo debe introducirse su valor
-                 _lambda=st.number_input("Valor de lambda",key=f"lambda_{count}",min_value=0.00000000001)
-            if _lambda ==0:      
-                _gamma=st.number_input("Valor de gamma",key=f"gamma_{count}")
+            if self.manual_input_mult:
+                # Si es una inecuacion se necesitan los multiplicadores
+                _beta=st.number_input("Valor de Beta",key=f"beta_{count}")
+                if  active_index ==self.J_0_LP_V:
+                    # Si lambda es positivo debe introducirse su valor
+                     _lambda=st.number_input("Valor de lambda",key=f"lambda_{count}",min_value=0.00000000001)
+                if _lambda ==0:      
+                    _gamma=st.number_input("Valor de gamma",key=f"gamma_{count}")
+            else:
+                _b,_g=self.mult_func_generator()
+                _beta=_b
+                st.write(f"El valor de Beta es: {_beta}")
+                if  active_index ==self.J_0_LP_V:
+                    _lambda=get_random()*10
+                    st.write(f"El valor de Lambda es: {_lambda}")
+                if _lambda==0:
+                    _gamma=_g
+                    st.write(f"El valor de Gamma es: {_gamma}")
+                    
         self.follower_restrictions.append(FollowerRestriction(
             expression=rest_expr,
             active_index=active_index,
@@ -510,12 +542,30 @@ class Page:
         for count in range(1,count_follower_rest+1):
             self._input_follower_restriction(count)
         
+    def _get_type(self):
+        """
+        Se selecciona si se desea poner o no automático los multiplicadores
+        """
+        manual_input:bool=st.checkbox("Desea ingresar manualmente el valor de los multiplicadores",value=True)
+        self.manual_input_mult=manual_input
+        if not manual_input:
+            # Entonces se pregunta el tipo de punto
+            type_point=st.selectbox("Que tipo de punto desea:",PointTypes)
+            if type_point==PointTypes.C_Estacionario:
+                self.mult_func_generator=get_multiplicadores_c_estacionario
+            elif type_point==PointTypes.Fuertemente_Estacionario:
+                self.mult_func_generator=get_multiplicadores_strong_estacionario
+            elif type_point==PointTypes.M_Estacionario:
+                self.mult_func_generator=get_multiplicadores_m_estacionario
+            else:
+                self.mult_func_generator=None
     def problem_generator(self):
-
-
 
         st.title("Generar un Problema")
         st.write("Introduce los siguientes datos")
+        # Preguntar si desea poner automatico los multiplicadores
+        with st.expander("Tipo de Generación"):
+            self._get_type()
         # Declarar las variables
         with st.expander("Introducir Variables:"):
             x_s,y_s=self._input_vars()
@@ -571,7 +621,7 @@ class Page:
                 except Exception as e:
                     st.error(f"Error inesperado: {str(e)}")
 
-    # ... (otros métodos se mantienen igual)
+
 
                     
     def pagina_acerca_de(self):

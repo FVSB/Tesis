@@ -78,15 +78,21 @@ Retorna el valor de Beta y Gamma
 function get_multiplicadores_c_estacionario()
     # Genera los Beta y Gammas para que el punto sea C-Estacionario
     # Generar un numero entre 1-4 para seleccionar que valores seleccionar
+    #rand_value=rand(1:4)
+    #if rand_value==1 # Entonces Los 2 son mayores que creo
+    #    return (get_rand()*10,get_rand()*10)
+    #elseif rand_value==2
+    #    return (-get_rand()*10,-get_rand()*10)
+    #elseif  rand_value==3
+    #    return (0,get_rand()*10)
+    #else 
+    #    return (get_rand()*10,0)
+    #end
+    #return (0,0)
     rand_value=rand(1:4)
     if rand_value==1 # Entonces Los 2 son mayores que creo
-        return (get_rand()*10,get_rand()*10)
-    elseif rand_value==2
+       
         return (-get_rand()*10,-get_rand()*10)
-    elseif  rand_value==3
-        return (0,get_rand()*10)
-    else 
-        return (get_rand()*10,0)
     end
     return (0,0)
 end
@@ -98,10 +104,17 @@ Gammai libre , betai=0
 function get_multiplicadores_m_estacionario()
     # Generar los Beta y Gamma para que sean punto M-Estacionario
     # Generar un numero entre 1:3 para ver como va
+    #rand_value=rand(1:3)
+    #if rand_value==1 # Entonces Los 2 son mayores que cero
+    #    return (get_rand()*10,get_rand()*10)
+    #elseif rand_value==2 # Beta libre, gamma 0
+    #    return (get_rand()*10,0)
+    #else #Gamma libre, beta 0
+    #    return (0,get_rand()*10)
+    #end
+    #return (0,get_rand()*10)
     rand_value=rand(1:3)
     if rand_value==1 # Entonces Los 2 son mayores que cero
-        return (get_rand()*10,get_rand()*10)
-    elseif rand_value==2 # Beta libre, gamma 0
         return (get_rand()*10,0)
     else #Gamma libre, beta 0
         return (0,get_rand()*10)

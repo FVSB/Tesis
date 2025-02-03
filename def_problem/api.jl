@@ -2,6 +2,7 @@ using HTTP
 using JSON3  # Usamos JSON3 en lugar de JSON
 using XLSX
 using DataFrames
+using ArgParse
 include("solver.jl")
 include("serialize_date.jl")
 
@@ -156,7 +157,7 @@ function handle_request(req::HTTP.Request)
     if req.target == "/hola" && req.method == "GET"
         response = Dict("message" => "¡Hola! Esta es la subdirección /hola")
         return HTTP.Response(200, JSON3.write(response))
-    elseif req.method == "POST"
+    elseif req.method == "POST" && req.target == "/generate"
         println("Intentando leer el JSON...")
         try
             # Parsea el JSON solo para POST
@@ -189,5 +190,48 @@ function handle_request(req::HTTP.Request)
     end
 end
 
-server = HTTP.serve(handle_request, "127.0.0.1", 8080)
-println("Servidor activo en http://127.0.0.1:8080")
+#server = HTTP.serve(handle_request, "127.0.0.1", 8080)
+#println("Servidor activo en http://127.0.0.1:8080")
+
+
+
+
+function parse_arguments()
+    settings = ArgParseSettings(
+        description = "Servidor HTTP en Julia",
+        version = "1.0",
+        add_help = true
+    )
+
+    @add_arg_table! settings begin
+        "--ip", "-i"
+            help = "Dirección IP para escuchar"
+            default = "127.0.0.1"
+        "--port", "-p"
+            help = "Puerto para el servidor"
+            arg_type = Int
+            default = 8080
+    end
+
+    return parse_args(settings)
+end
+
+function main()
+    args = parse_arguments()
+    
+    println("Iniciando servidor en:")
+    println("IP:   $(args["ip"])")
+    println("Puerto: $(args["port"])")
+    
+    server = HTTP.serve(handle_request, args["ip"], args["port"])
+    println("\n✅ Servidor activo en http://$(args["ip"]):$(args["port"])")
+    
+    try
+        wait(server)
+    catch e
+        e isa InterruptException || rethrow(e)
+        println("\n🛑 Servidor detenido")
+    end
+end
+
+main()

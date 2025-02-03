@@ -587,7 +587,7 @@ class Page:
                 try:
                     problem_data = self.generate_problem_json()
                     response = requests.post(
-                        "http://127.0.0.1:8080/hola",
+                        "http://127.0.0.1:8080/generate",
                         json=problem_data,
                         headers={"Content-Type": "application/json"}
                     )

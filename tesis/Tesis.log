@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.23)  4 FEB 2025 11:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.23)  4 FEB 2025 11:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1405,26 +1405,6 @@ LaTeX Info: Redefining \. on input line 200.
 LaTeX Info: Redefining \% on input line 200.
 Package cleveref Info: loaded `spanish' language definitions on input line 200.
  [14]
-pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.204 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.204 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.204 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.204 \begin{equation}
-                      
 Underfull \hbox (badness 1735) in paragraph at lines 216--217
 []\T1/lmr/m/n/12 Dado un vec-tor fac-ti-ble $\OML/lmm/m/it/12 z[]$ \T1/lmr/m/n/12 del MPEC
  []
@@ -1744,14 +1724,14 @@ Package logreq Info: Writing requests to 'Tesis.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  40372 strings out of 474486
- 760159 string characters out of 5744226
+ 760167 string characters out of 5744226
  2169542 words of memory out of 5000000
  61695 multiletter control sequences out of 15000+600000
  628816 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,22n,87p,1329b,2911s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxo10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsco10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Tesis.pdf (56 pages, 695217 bytes).
+Output written on Tesis.pdf (56 pages, 695249 bytes).
 PDF statistics:
  820 PDF objects out of 1000 (max. 8388607)
  252 named destinations out of 1000 (max. 500000)

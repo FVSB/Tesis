@@ -520,7 +520,6 @@ OUTPUT Introducción.aux
 INPUT .\Introducción.tex
 INPUT .\Introducción.tex
 INPUT Introducción.tex
-INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmro12.tfm
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
@@ -530,8 +529,10 @@ OUTPUT Preliminares.aux
 INPUT .\Preliminares.tex
 INPUT .\Preliminares.tex
 INPUT Preliminares.tex
+INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmro12.tfm
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr8.tfm
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr6.tfm
+INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbxo10.tfm
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
@@ -542,7 +543,6 @@ OUTPUT Modelación.aux
 INPUT .\Modelación.tex
 INPUT .\Modelación.tex
 INPUT Modelación.tex
-INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbxo10.tfm
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx12.tfm
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx8.tfm
 INPUT C:\Users\dell\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx6.tfm

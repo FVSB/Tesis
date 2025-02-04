@@ -38,7 +38,7 @@ se desea que sea estacionario y los multiplicadores con signo o valores con cier
 
 \begin{samepage}
 El problema de entrada tiene que cumplir con ser un programa de optimización binivel como \refeq{eq:DefBinivelOptimista}. 
-Debe de conocerse sus índices activos de las restricciones de desigualdad en cada nivel:
+Debe introducirse también sus índices activos de las restricciones de desigualdad en cada nivel para $z_{est}$ :
 \begin{itemize}
     % Leader
     \item Nivel Superior:
@@ -50,13 +50,12 @@ Debe de conocerse sus índices activos de las restricciones de desigualdad en ca
         
     %Follower
     \item Nivel Inferior:
-                Se tiene en cuenta con respecto a los valores de $\lambda_i$ y $v_j(x,y)$.
+                Se tiene en cuenta con respecto a los valores del multiplicador $\lambda_i$ y $v_j(x,y)$.
                 
                 \begin{itemize}
                     %J_0_v_l_0
                     \item \begin{equation}
                         J_1^v=\{j | v_j(x,y)=0 \land \lambda_j=0 \} %al conjunto restricciones de desigualdad que sean índices activos
-                        \label{J_0_lambda_0_level_inferior}
                         \end{equation} 
                     %J_0_v_l_positiva
                     \item \begin{equation}
@@ -75,13 +74,13 @@ Debe de conocerse sus índices activos de las restricciones de desigualdad en ca
 
 % Condiciones
 %Hablar sobre conocer vector \alpha
-Se debe conocer el valor del $\vec{\alpha}$. 
-Además para cada $i \in J_0^G$ (\refeq{J_0_level_superior}) debe de asignarse su $\mu_i \geq 0$ correspondiente,
+Para cada $i \in J_0^G$ (\refeq{J_0_level_superior}) debe de asignarse su multiplicador $\mu_i \geq 0$ correspondiente.
+Además se debe conocer el valor del $\vec{\alpha}$,
 para el nivel inferior debe tenerse en cuenta si $\alpha=\vec{0}$ en cuyo caso afirmativo $\gamma_j$ es un valor de entrada
 
 \begin{samepage}
 % COndiciones \Beta_i \Gamma_i para puntos estacionarios
-Para obtener las diferentes clases de puntos estacionarios debe de introducirse $\beta_j$, $\gamma_j$, en caso de ser este último valor de entrada tal que, en los índices activos $J_3^v$ (\refeq{J_0_lambda_0_level_inferior}), como se muestra a continuación: 
+Para obtener las diferentes clases de puntos estacionarios debe de introducirse $\beta_j$, $\gamma_j$, en caso de ser este último valor de entrada tal que, los multiplicadores $\beta_j$  y $\gamma_j$ de forma tal que en los indices activos $J_1^v$ (\refeq{J_0_lambda_0_level_inferior}): 
 \begin{itemize}
     %C estacionario
     %Betai, gammai>0, betai,gammai<0 o 
@@ -89,7 +88,7 @@ Para obtener las diferentes clases de puntos estacionarios debe de introducirse 
     %Gammai libre , betai=0
     \item \textbf{Punto C-Estacionario:}\\
     \begin{equation}
-        \beta_j * \gamma_i >=0
+        \beta_j * \gamma_j >=0
         \label{Requisitos puntos C-Estacionario}
     \end{equation}
     %M estacionario
@@ -109,7 +108,7 @@ Para obtener las diferentes clases de puntos estacionarios debe de introducirse 
     %Betai, gammai>0,
     \item \textbf{Punto Fuertemente Estacionario}\\
      \begin{equation}
-        \beta_j \land \gamma_j >0
+        \beta_j \land \gamma_j \geq 0
     \label{Requisitos puntos Fuertemente Estacionarios}
     \end{equation}    
 \end{itemize}
@@ -119,7 +118,7 @@ Para obtener las diferentes clases de puntos estacionarios debe de introducirse 
 % Explicar que se hace primero el punto factible
 % Subseccion donde se explica que el punto se hace factible inicialmente
 
-\subsection{Modificación del Problema Original}
+\subsection*{Modificación del Problema Original}
 Después de tener los datos de entrada necesarios se procede a la modificación
 del problema de entrada para que este sea estacionario del tipo requerido, $z_{est}$.
 
@@ -195,11 +194,11 @@ todo ello con unas excelentes prestaciones de cómputo. Por ello se brindará un
 % Después compilar a ProblemGenerator
 La implementación algorítmica se ha llevado a cabo mediante la creación de una biblioteca de Julia
 llamada \textbf{ProblemGenerator}, con una sintaxis \textit{JuMP-like} intuitiva.
-Primero debe tenerse un problema de optimización Binivel SLSF planteado como el \refeq{eq:DefBinivelOptimista}, el punto que se desea a ser estacionario ($z_{est}$), los índices activos descritos anteriormente 
-según el caso así como sus multiplicadores correspondientes al tipo de estacionariedad requerida y el $\vec{\alpha}$.
+Primero debe tenerse un problema de optimización Binivel SLSF planteado como el \refeq{eq:DefBinivelOptimista}, el punto que se desea que sea estacionario ($z_{est}$), los índices activos descritos anteriormente 
+según el caso así como sus multiplicadores correspondientes, que cumplirán las propiedades del tipo de estacionariedad requerida y el $\vec{\alpha}$.
 %endregion
 
-\subsection{Ejemplo a utilizar}
+%\subsection{Ejemplo a utilizar}
 Para una mayor facilidad de compresión del uso de la biblioteca se utiliza este problema ejemplo:
 \begin{equation}
     \begin{aligned}
@@ -217,7 +216,7 @@ Para una mayor facilidad de compresión del uso de la biblioteca se utiliza este
     \label{ProblemaEjemplo}
 \end{equation}
 %Dependencias para la biblioteca
-\subsection{Dependencias}
+%\subsection{Dependencias}
 Se debe tener instalado en el entorno de desarrollo de Julia los siguientes módulos:
 %Se debe tener en cuenta que este paquete instalará las siguientes dependencias
 \begin{itemize}
@@ -226,14 +225,14 @@ Se debe tener instalado en el entorno de desarrollo de Julia los siguientes mód
 \end{itemize}
 
 % Importar la Biblioteca
-\subsection{Importación de la biblioteca}
-Para la utilización de la biblioteca se procese a su importación de la siguiente forma:
+%\subsection{Importación de la biblioteca}
+Para la utilización de la biblioteca se procede a su importación de la siguiente forma:
 \begin{lstlisting}[caption=Importar el Módulo]
     using ProblemGenerator
 \end{lstlisting}
 
 % Crear modelo base
-\subsection{Crear el modelo base}
+%\subsection{Crear el modelo base}
 Para comenzar debe llamarse a la función \textbf{GeneratorModel} para crear el modelo base
 inicial.
 
@@ -251,10 +250,10 @@ Para crear un modelo donde $\vec{\alpha}=\vec{0}$:
   
 %Crear para alpha no nulo
 \begin{samepage}
-\subsubsection{Para $\vec{\alpha}= \neq vec{0}$ }
+\subsubsection{Para $\vec{\alpha} \neq \vec{0}$ }
 
 Para crear un modelo donde $\vec{\alpha}\neq \vec{0}$,
-se tiene que pasar como parámetro el valor del $\alpha$
+se tiene que pasar como parámetro el valor del $\alpha$,
 el cual será un vector de \textit{Number}:
 
 \begin{lstlisting}[caption={Crear el modelo para $\vec{\alpha } \neq \vec{0}$}]
@@ -267,9 +266,9 @@ el cual será un vector de \textit{Number}:
 
 
 % Explicar las funciones Upper y Lower
-\subsection{Función para diferenciar los niveles}
-En caso que se requiera como entrada un \textbf{Problem} se debe declarar
-de que nivel se trata mediante evaluar el model en las funciones \textbf{Upper} para el nivel 
+%\subsection{Función para diferenciar los niveles}
+En caso que se requiera como entrada un \textbf{Problem}, se debe declarar
+de que nivel se trata de evaluar el \textbf{model} en las funciones \textbf{Upper} para el nivel 
 superior y \textbf{Lower} para el inferior.
 
 \subsubsection{Para referirse al nivel superior}
@@ -284,7 +283,7 @@ superior y \textbf{Lower} para el inferior.
 \end{lstlisting}
 
 
-\subsection{Declarar Variables}
+%\subsection{Declarar Variables}
 Las variables deben de 
 declararse bajo la siguiente macro \textbf{@myvariables}, la cual 
 recibe una función \textbf{Upper} o \textbf{Lower} que recibe el modelo
@@ -367,10 +366,10 @@ Los \textbf{RestrictionSetType} deben expresar en código de esta forma:
     J_Ne_L0_v
 \end{lstlisting}
 
-Los \textbf{RestrictionSetType} son un enum de Julia.
+Los \textbf{RestrictionSetType} son un \textit{enum} de Julia.
 
 % Declaración de restricciones
-\subsection{Declarar Restricciones}
+%\subsection{Declarar Restricciones}
 
 Para declarar las restricciones se brindan dos funciones:
 \begin{itemize}
@@ -439,12 +438,10 @@ Ejemplo para introducir la restricción:
    
     \item \text{$\lambda_j= 0$:}\\
     
-    Análogo al caso anterior pero con $\lambda_j=0$ por lo que $\gamma_j$ valor de entrada
-    \begin{align*}
-        &  \beta_j=0.1\\
-        &\lambda_j=0\\
-        &\gamma_j=0.4
-    \end{align*}
+    Análogo al caso anterior pero con $\lambda_j=0$, por lo que $\gamma_j$ valor de entrada
+    \begin{equation*}
+        \beta_j=0.1, \quad \lambda_j=0, \quad \gamma_j=0.4
+    \end{equation*}
     \begin{lstlisting}
         # Para caso lamda_j!=0
         SetFollowerRestriction(model,((x_1^2)*(y_1^2))+x_2<=0,J_Ne_L0_v,0.1,0,0.4)

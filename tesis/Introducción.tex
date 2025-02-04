@@ -1,5 +1,5 @@
 \chapter{Introducción}
-\section{Definición de problema de optimización binivel}
+%\section{Definición de problema de optimización binivel}
 % Obtener una garantía de la solución es muy complejo (generalmente es estacionario y con puntos estacionarios).
 La optimización de dos niveles, un área fundamental en la investigación operativa y la teoría de juegos, presenta desafíos significativos debido a su complejidad inherente. Este tipo de problemas se caracterizan por la interacción entre un líder y un seguidor, donde las decisiones del líder afectan las respuestas del seguidor. Uno de los aspectos más críticos de esta problemática es garantizar la existencia de soluciones óptimas, lo cual se ve complicado por la naturaleza no convexa del problema, incluso cuando las funciones y los conjuntos factibles son convexos. A menudo, los algoritmos utilizados en este contexto solo logran identificar puntos estacionarios o críticos, que no necesariamente representan soluciones locales o globales, ver \cite{DempeyZemkoho2020}.
 
@@ -35,7 +35,7 @@ El modelo de dos niveles es:
  \newpage
  \begin{samepage}
 % Explicar dimensiones 
-\textbf{Donde:}
+donde:
 
 %Dimension de las variables
 \begin{equation*}  
@@ -45,22 +45,22 @@ x \in R^{n}, \quad \quad y \in R^{m}
 \begin{align*}
     %Nivel superior
    & F : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}, 
-   & \quad  T :\mathbb{R}^{n} \to \mathbb{R},
+   & \quad  T \subseteq \mathbb{R}^n ,
    \\
    % Nivel inferior
     & f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R} ,
-    & \quad H : \mathbb{R}^{m} \to \mathbb{R}, 
+    & \quad H \subseteq \mathbb{R}^m , 
 \end{align*}
 % Definir dimension de M^0
 \begin{equation*}
-M^0: \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}
+    M^0 \subseteq \mathbb{R}^{n + m}
 \end{equation*}
 \end{samepage}
 %Aclarar que la interacción jerárquica es compleja
 En otras palabras, el problema de optimización binivel se centra en que el líder (nivel superior) debe tomar decisiones ($x$) que optimicen su objetivo $F(x, y)$, anticipando que el seguidor (nivel inferior) responderá de manera óptima con respecto a su propio objetivo $f(x, y)$, dado el valor de $x$ elegido por el líder. Esta interacción jerárquica entre ambos niveles añade una gran complejidad al problema en comparación con los problemas de optimización de un solo nivel.
 
 %Sección de aplicaciones
-\section{Aplicaciones}
+%\section{Aplicaciones}
 % Aplicaciones 
 Los problemas de optimización de dos niveles son muy utilizados para modelar y analizar mercados eléctricos complejos, ofreciendo una perspectiva única sobre las interacciones estratégicas entre diversos agentes económicos.
 % Mercado Eléctrico
@@ -76,10 +76,10 @@ Otro ejemplo en esta línea se encuentra en \cite{Aussel2017NashEI}, se profundi
 Los modelos binivel también tiene aplicaciones fundamentales en la selección de hiperparámetros en aprendizaje automático, como lo demuestra el trabajo de \cite{DempeyZemkoho2020ML}. El capítulo 6 del libro aborda la optimización de hiperparámetros en problemas de clasificación y regresión, presentando algoritmos innovadores para manejar funciones objetivo no suaves y no convexas. La razón del uso de esta radica en su capacidad para minimizar errores en modelos complejos, mejorando así la precisión general del aprendizaje automático. Además, se implementan algoritmos especializados para abordar problemas no convexos.
 
 % EPI
-La optimización de dos niveles es una herramienta clave en el diseño y operación de redes industriales sostenibles. Ejemplos notables incluyen redes de agua industrial, 
+La optimización de dos niveles es una herramienta clave en el diseño y operación de redes industriales sostenibles. Ejemplos notables se incluyen
 % Water integration in eco-industrial parks using a multi-leader-follower approach
-donde en los estudios de \cite{Ramos2016WaterII} se optimizan mediante juegos de múltiples líderes-seguidores, priorizando objetivos ambientales y económicos. Los resultados muestran que las empresas participantes lograron beneficios significativos en escenarios con formulaciones \textbf{KKT} (Karush-Kuhn-Tucker). 
-El enfoque \textbf{MLFG} (Multi-Leader-Follower Game) se utiliza para analizar la optimización de redes de agua en \textbf{EIP} (Entornos Industriales Productivos). En este contexto, las empresas buscan minimizar costos mientras que una autoridad regula el consumo de agua dulce. Se comparan diferentes formulaciones y métodos de solución, mostrando que MLFG es más confiable que la optimización multiobjetivo en escenarios multi-criterio. Además, en \cite{Ramos2016WaterII} se destaca la influencia de la estructura del juego en la configuración óptima, sugiriendo la necesidad de un diseño óptimo para cada planta dentro del EIP. 
+en los estudios de \cite{Ramos2016WaterII} donde se optimiza el uso del agua a partir de modelar la situación mediante juegos de múltiples líderes-seguidores, priorizando objetivos ambientales y económicos. Los resultados mostraron que las empresas participantes lograron beneficios significativos con las formulaciones \textbf{KKT} (Karush-Kuhn-Tucker) del modelo \textbf{MLFG} (Multi-Leader-Follower Game) utilizado.
+Además, en \cite{Ramos2016WaterII} se destaca la influencia de la estructura del juego en la configuración óptima, sugiriendo la necesidad de un diseño óptimo para cada planta dentro del EIP. 
 Los enfoques \textbf{SLMFG} (Single-Leader-Multifollower Game) y \textbf{MLSFG} (Multi-Leader-Single-Follower Game) presentan variaciones en el rol de los participantes: en SLMFG, las empresas son seguidoras y la autoridad es líder, mientras que en MLSFG, ocurre lo contrario. Se resalta que el enfoque MLFG logra equilibrar objetivos económicos y ambientales, generando ahorros significativos mediante la reutilización de recursos. Los resultados indican una reducción en el consumo de agua fresca gracias a las estrategias implementadas, utilizando herramientas como GAMS para modelar los problemas de optimización, ver \cite{Ramos2016WaterII}. 
 % Utility network optimization in eco-industrial parks by a multi-leader follower game methodology
 Además, en \cite{Ramos2018UtilityNO} los autores introducen el concepto de autoridad ambiental en el diseño de redes de servicios públicos, utilizando juegos de múltiples líderes-seguidores y reformulaciones KKT. 
@@ -89,10 +89,10 @@ En el ámbito del despacho energético bajo restricciones de carbono, en \cite{G
 % SLSF 
 %A subsidy policy to managing hazmat risk in railroad transportation network
 Además estudios como los de \cite{Bhavsar2021ASP} investigan sobre la aplicación de una política de subsidios para gestionar el riesgo de materiales peligrosos en una red de transporte ferroviario. En este modelo, el gobierno actúa como líder, ofreciendo subsidios para incentivar al operador ferroviario (el seguidor) a usar rutas alternativas que eviten los enlaces de alto riesgo en la red, utilizando el enfoque \textbf{SLSF} (Single-Leader-Single-Follower). Los autores utilizan una reformulación de KKT para resolver el problema y aplican su método a un caso real en los Estados Unidos. Se demuestra que incluso subsidios modestos pueden resultar en una reducción significativa del riesgo.
-% Decir que termino con las aplicaciones 
-Con esto, se concluye la revisión de las aplicaciones de los problemas de optimización binivel en diferentes contextos.
 
-\section{Dificultades teóricas y computacionales de los problemas binivel}
+
+%\section{Dificultades teóricas y computacionales de los problemas binivel}
+El estudio de los problemas de dos niveles es de interés de la comunidad científica no solo porque modelan las situaciones antes mencionadas, sino porque es complejo obtener propiedades de sus soluciones así como su cálculo numérico.
 % Bilevel Difíciles
 El concepto mismo de solución del problema binivel es complejo. La decisión del líder es solo respecto a un grupo de variables, mientras que las otras influyen en la función objetivo, pero no son decisión de él. Si para un mismo valor de las variables del líder el problema del seguidor tiene diferentes soluciones óptimas, el valor de la función objetivo del líder no estará determinado, sino que depende de cuál de los óptimos escogió el otro agente. 
 

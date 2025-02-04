@@ -6,13 +6,13 @@ generar problemas estacionarios del tipo: fuerte, M y C . Posteriormente estos p
 ejecutados por los algoritmos tradicionales de Julia para conocer su efectividad con respecto al valor de la función objetivo del nivel superior.
 
 
-Para ello tomaremos 15 problemas de optimización binivel SLSF, estos serán problemas 
-Lineales, Cuadráticos y No Convexos, divididos en 5 problemas por cada clasificación anterior.
+Para ello tomaremos 15 problemas de optimización binivel.
+Entre ellos habrá 3 clases: Lineales, Cuadráticos y No Convexos, donde habrá 5 problemas de cada clase.
 Estos han sido extraídos de \cite{Floudas1999HandbookOT} para las dos primeras clasificaciones y \cite{BolibTestProblems} para la última.
 
 \newpage
-\section{Problemas Escogidos}
-Se muestran los problemas seleccionados para la experimentación.
+%\section{Problemas Escogidos}
+Los problemas escogidos para la experimentación fueron:
 
 %Tabla con los problemas escogidos
 \begin{table}[h!]
@@ -41,15 +41,14 @@ Se muestran los problemas seleccionados para la experimentación.
 \newpage
 \section{Modelación de la experimentación}
 Se describirá el proceso de generar la experimentación. 
-Todos los valores han sido redondeados por exceso a dos cifras después de la coma. 
+Todos los valores, en esta parte, han sido redondeados por exceso a dos cifras después de la coma. 
 
-\subsubsection{Obtención de los óptimos}
+%\subsubsection{Obtención de los óptimos}
 Inicialmente se necesita obtener óptimos de los problemas con los paquetes convencionales de Julia
 cuyos pasos son los siguientes:
 \begin{itemize}
     \item \textbf{Problemas Lineales y Cuadráticos :}\\
-            Con dicho problema se introduce los datos en la interfaz de \textbf{BilevelJuMP}, ver \cite{BilevelJump}, con el cual se utilizan
-            Con ellas utilizamos 3 técnicas entre las ofrecidas por esta:
+            Con dicho problema se introduce los datos en la interfaz de \textbf{BilevelJuMP}, ver \cite{BilevelJump}, con el cual se utilizan 3 técnicas entre las ofrecidas por esta:
             \begin{itemize}
                 \item \textbf{Big-M :} Con el optimizador High-Performance Solver for Linear Programming (HiGHS) y los valores $\text{primal big M} = 100, \quad \text{dual big M} = 100$.
                 \item \textbf{SOS1 :} Con el optimizador Solving Constraint Integer Programs (SCIP).
@@ -65,8 +64,8 @@ cuyos pasos son los siguientes:
             \end{itemize} 
             Posteriormente se analizan los resultados de dichos métodos, se selecciona el de mejor evaluación de la función objetivo.
     \item \textbf{Problemas No Convexos :}\\
-            Con dicho problema al \textbf{BilevelJuMP} no contar con soporte para esta clase de problemas binivel se utiliza \textbf{JuMP}, ver \cite{JuMPPaper}, 
-            por ello se utiliza la reformulación KKT como la de \refeq{eq:KKT_Optimista} y se procede a utilizar la interfaz brindada por este, para el caso de las restricciones de 
+            Al \textbf{BilevelJuMP} no contar con soporte para esta clase de problemas se utiliza \textbf{JuMP}, ver \cite{JuMPPaper}.
+            Por ello se utiliza la reformulación KKT como la de \refeq{eq:KKT_Optimista} y se procede a utilizar la interfaz brindada por este. Para el caso de las restricciones de 
             complementariedad se utiliza \textbf{Complementarity}, ver \cite{Complementarityjl}, con el optimizador Ipopt y análogo al caso anterior se extraen los mismos datos.
 \end{itemize}
 

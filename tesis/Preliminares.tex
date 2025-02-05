@@ -11,11 +11,19 @@ En este capítulo se abordará los conocimientos necesarios para el desarrollo d
 además de nociones clave sobre los Problemas Matemáticos con Restricciones de Equilibrio (MPEC), 
 y por último la modelación de los problemas binivel en el lenguaje de programación Julia y métodos seleccionados implementados en este lenguaje para su resolución. 
 
-\section{Optimización Binivel Caso Optimista}
+\section{Optimización Binivel }
 %Intro de la sección
-
-En los problemas de optimización binivel se consideran dos enfoques principales: el optimista y el pesimista. 
-% Formulación general de optimización binivel
+El problema de optimización binivel en general se define de la siguiente manera
+\begin{equation} \label{eq:Def1Binivel}
+    \begin{array}{l}
+       \min_{x} \quad F(x, y)\\
+        s.a \left\{ \begin{array}{l}
+            x \in T \\
+             y \in S(x) = \arg  \min_{y} \{ f(x, y) \quad s.a \quad y \in  \cal{H}\\
+            x,y \in M^0 
+        \end{array}\right.
+        \end{array} \end{equation}
+En la mayoria de las aplicaciones, los problemas de optimizacion del nivel inferior y superior son modelos de programacion matematica, por lo  que tienen la estructura  *** con S(x)
 \begin{equation}
 \begin{aligned}
 & \min_{x} \; F(x, y) \\
@@ -25,6 +33,22 @@ En los problemas de optimización binivel se consideran dos enfoques principales
 \end{aligned}
 \label{eq:ProblemaGeneral}
 \end{equation}
+Para reducir las notaciones asumimos que en ambos problemas solo hay restricciones de desigualdad. O sea, se considerara el modelo 
+\begin{equation}
+\begin{aligned}
+& \min_{x} \; F(x, y) \\
+& \text{sujeto a } \\
+& G(x) \leq 0, \\
+& y \in \argmin_{y} \left\{ f(x, y) \mid v(x, y) \leq 0 \right\}
+\end{aligned}
+\label{eq:ProblemaGeneral}
+\end{equation} 
+%TODO:
+% ***CON S(x)
+%Para el concepto de solucion es necesario tener en cuenta la decision de ... parrafo de intro cambiado
+%En este sentido, se consideran dos enfoques principales: el optimista y el pesimista.  El problema optimista consiste en  y se 
+%% Formulación general de optimización binivel
+
 
 % DIFERENCIA OPTIMISTA PESIMISTA
 % Decir que en el libro de Dempe se hablan de estos dos enfoques
@@ -116,6 +140,8 @@ donde
 %\end{equation*}
 
 % Esto dejarlo en una sola pagina
+%TODO: RESTRICCIONES DEL LIDER Y DEL SEGUIDOR NO IMPLICITA y EXPLICITA
+ %TODO: RESTRICCIONES DEL LIDER Y DEL SEGUIDOR NO IMPLICITA y EXPLICITA
 \newpage
 
 
@@ -142,7 +168,7 @@ Esta minimización está sujeta a dos tipos de restricciones:
 	
 \end{itemize}
  % Hablar sobre el enfoque optimista
-En el caso del enfoque optimista si para el nivel inferior existen más de un punto que resuelve el problema del nivel inferior y tomará la que más beneficie al nivel superior. 
+%En el caso del enfoque optimista si para el nivel inferior existen más de un punto que resuelve el problema del nivel inferior y tomará la que más beneficie al nivel superior. 
  % Decir que solo restricciones desigualdad
 Por simplicidad solo se consideran restricciones de desigualdad.
 
@@ -177,6 +203,7 @@ Por simplicidad solo se consideran restricciones de desigualdad.
     
 % Añadir aclaratoria
 Los tres últimos grupos de restricciones expresan que $v$ y $\lambda$ están restringidas en signo y que al menos una es 0. Estas condiciones son conocidas como \textbf{restricciones de complementariedad}. Estos modelos corresponden a la clase de problemas de programación matemática con restricciones de complementariedad (MPEC). A continuación, presentamos los resultados de esta área necesarios para el desarrollo de esta tesis.
+%TODO: Como se dijo en la intro existe otra forma, en un problema de programacion matematica  usando funcion del valor extremal sin embargo salvo en casos muy particulares esta no tiene una expresion explicita. La ventaja dsel kkt por mpec es que es una forma explicita, pero se requiere algun tipo de condicion de regularidad del conjunto como LICQ independencia  de v activa, que caso ded no cumpliser poder existir puntos optimos que no lo recoga el kkt. 
 
 \section{Sobre los Programas Matemáticos con Restricciones de Equilibrio (MPEC)}
 %Aca va la sección que explica los MPEC
@@ -216,9 +243,9 @@ A continuación como en \cite{Flegel2003AFJ}, se introduce las siguientes defini
 Dado un vector factible $z^*$ del MPEC \eqref{eq:DefMpec}, definimos los siguientes \textit{conjuntos de índices}:
 \begin{equation}
 \begin{aligned}
-\alpha &:= \alpha(z^*) := \{i|G_i(z^*) = 0, H_i(z^*) > 0\} \\
-\beta &:= \beta(z^*) := \{i|G_i(z^*) = 0, H_i(z^*) = 0\}  \\
-\gamma &:= \gamma(z^*) := \{i|G_i(z^*) > 0, H_i(z^*) = 0\}  \\
+J_G &:= J_G(z^*) := \{i|G_i(z^*) = 0, H_i(z^*) > 0\} \\
+J_{GH}:= J_{GH}:(z^*) := \{i|G_i(z^*) = 0, H_i(z^*) = 0\}  \\
+J_H &:= J_H(z^*) := \{i|G_i(z^*) > 0, H_i(z^*) = 0\}  \\
 \end{aligned}
 \label{eq:ConjuntoDeIndices} 
 \end{equation}
@@ -230,10 +257,11 @@ Para definir calificaciones de restricción alteradas, introducimos el siguiente
 \begin{definition}[Programa No Lineal Ajustado (TNLP)]
 
 Un \textit{Programa No Lineal Ajustado $TNLP := TNLP(z^*)$} es:
+%TODO: INcomporar indices y rango en que se mueven
 \begin{equation}
 \begin{aligned} 
 \min \quad & f(z) \\
-\text{s.t.} \quad & g(z) \leq 0 \quad h(z) = 0  \\
+\text{s.t.} \quad & g_{i}(z) \leq 0 \quad h(z) = 0  \\
 & G_{\alpha \cup \beta}(z) = 0 \quad G_{\gamma}(z) \geq 0  \\
 & H_{\alpha}(z) \geq 0 \quad H_{\gamma \cup \beta}(z) = 0  \\
 & \text{Problema No Lineal Ajustado (TNLP)}  
@@ -250,7 +278,7 @@ El MPEC \eqref{eq:DefMpec} se dice que satisface la \textit{MPEC-LICQ} (MPEC-MFC
 \end{definition}
     
 % Hacer notar que un mínimo de z^* implica la existencia de \lambda^* ....
-En este punto, es importante notar que bajo MPEC-MFCQ, un mínimo local $z^*$ del MPEC \eqref{eq:DefMpec} implica la existencia de un multiplicador de Lagrange $\lambda^*$ tal que $(z^*, \lambda^*)$ satisface las condiciones KKT para el programa \eqref{eq:ProblemaAbstractoTNLP}. Por lo tanto, si asumimos que MPEC-MFCQ se cumple para un mínimo local $z^*$ del MPEC \eqref{eq:DefMpec}, podemos usar cualquier multiplicador de Lagrange $\lambda^*$ (que ahora sabemos que existe) para definir el MPEC-SMFCQ, es decir, tomando $(z^*, \lambda^*)$.
+%En este punto, es importante notar que bajo MPEC-MFCQ, un mínimo local $z^*$ del MPEC \eqref{eq:DefMpec} implica la existencia de un multiplicador de Lagrange $\lambda^*$ tal que $(z^*, \lambda^*)$ satisface las condiciones KKT para el programa \eqref{eq:ProblemaAbstractoTNLP}. Por lo tanto, si asumimos que MPEC-MFCQ se cumple para un mínimo local $z^*$ del MPEC \eqref{eq:DefMpec}, podemos usar cualquier multiplicador de Lagrange $\lambda^*$ (que ahora se sabe que existe) para definir el MPEC-SMFCQ, es decir, tomando $(z^*, \lambda^*)$.
 
 %Definición de los puntos estacionarios del MPEC
 % Flegel and Kanzow 2003
@@ -258,6 +286,8 @@ En el contexto de los MPEC en \cite{Flegel2003AFJ} se exponen varios tipos de pu
 \begin{definition}[Punto Factible]
     Un \textit{punto factible} $z$ del MPEC se llama débilmente estacionario si existe un multiplicador de Lagrange $\lambda = (\lambda^g, \lambda^h, \lambda^G, \lambda^H)$ tal que se cumplen las siguientes condiciones:
     
+%TODO: USar multiplicadores analogos a como esta en el bijnivel de miu lambda beta 
+% EN este orde  mui-g, alpha-h beta-G gamma-H
 \begin{align}
 & \nabla f(z) + \sum_{i=1}^m \lambda_i^g\nabla g_i(z) + \sum_{i=1}^p \lambda_i^h\nabla h_i(z) - \sum_{i=1}^{\ell} [\lambda_i^G\nabla G_i(z) + \lambda_i^H\nabla H_i(z)] = \vec{0} \notag\\
     & \quad \begin{aligned}
@@ -270,7 +300,8 @@ En el contexto de los MPEC en \cite{Flegel2003AFJ} se exponen varios tipos de pu
 \end{definition}
 
 % Definición de puntos estacionarios
-Este concepto de estacionariedad, sin embargo, es una condición relativamente débil. Existen conceptos más fuertes de estacionariedad que se derivan y estudian en otros lugares. En particular, un punto factible $z$ con el correspondiente multiplicador de Lagrange $\lambda = (\lambda^g, \lambda^h, \lambda^G, \lambda^H)$ se llama:
+Este concepto de estacionariedad, sin embargo, es una condición relativamente débil. Existen conceptos más fuertes de estacionariedad que se derivan y estudian en otros lugares. En particular, se tienen las siguientes definiciones:
+% un punto factible $z$ con el correspondiente multiplicador de Lagrange $\lambda = (\lambda^g, \lambda^h, \lambda^G, \lambda^H)$ se llama:
 
 \begin{itemize}
 % C-estacionario
@@ -294,7 +325,8 @@ Este concepto de estacionariedad, sin embargo, es una condición relativamente d
 %\end{definition}
 \end{itemize}
 
-
+%TODO:
+Estas definiciones son condiciones necesarias de optimalidad bajo ciertas condiciones de regularidad, las m;as fuerte basda en la MPEC-LICQ conlleva al siguiente resultado:
 % Teorema que si z^* es min local del MPEC Si se cumple la LICQ entonces existe .....
 \begin{theorem} 
 Sea $z^* \in \mathbb{R}^n$ un mínimo local del MPEC \eqref{eq:DefMpec}. Si MPEC-LICQ se cumple en $z^*$, entonces existe un único multiplicador de Lagrange $\lambda^*$ tal que $(z^*, \lambda^*)$ es \textit{fuertemente estacionario}.
@@ -307,22 +339,24 @@ Sea $z^* \in \mathbb{R}^n$ un mínimo local del MPEC \eqref{eq:DefMpec}. Si MPEC
 BilevelJuMP.jl es un paquete de Julia diseñado para modelar y resolver problemas de \textbf{optimización binivel}, también conocidos como problemas de optimización de dos niveles o jerárquica, para más detalles ver \cite{BilevelJump}.
 Estos problemas se caracterizan por tener dos niveles de decisión: un nivel superior y un nivel inferior, donde las decisiones del nivel superior influyen en las decisiones del nivel inferior, y viceversa \cite{BilevelJump}.
 % Que problemas resuelve
-Este paquete permite abordar una amplia variedad de tipos de problemas, incluyendo:
+Este paquete permite abordar una amplia variedad de tipos de problemas. En este trabajo usaremos las siguientes bibliotecas:
 % Añadir explicación MPEC
-
+\subsection*{JuMP}
+% TODO: PONEWr esto  Permite gestionar una variedad de restricciones compatibles con JuMP, tales como restricciones cuadráticas, no lineales y enteras.
+%Facilita la transformación de problemas binivel en problemas de programación matemática con restricciones de equilibrio (MPEC) y ofrece métodos para abordar las restricciones de complementariedad que surgen en estos casos.
+  %TOD: Poner esto despues de expluicar las reformulaciones
+\subsection*{BilevelJuMP}
+BilevelJuMP.jl facilita la modelación de problemas que pueden representarse en la sintaxis de JuMP, ver documentación en \cite{JuMPPaper}, incluyendo restricciones lineales y no lineales, variables continuas y enteras, y diferentes tipos de objetivos.
 \begin{itemize}
     \item \textbf{Problemas de optimización binivel generales:} BilevelJuMP.jl facilita la modelación de problemas que pueden representarse en la sintaxis de JuMP, ver documentación en \cite{JuMPPaper}, incluyendo restricciones lineales y no lineales, variables continuas y enteras, y diferentes tipos de objetivos.
     
-    \item \textbf{Problemas con restricciones cónicas en el nivel inferior:} Maneja problemas donde el nivel inferior tiene una estructura de \textbf{programación cónica}, definiendo restricciones a través de conos convexos. Esto es útil para aplicar condiciones KKT en la reformulación del problema como MPEC.
+    \item \textbf{Problemas con restricciones de determinados tipos en el nivel superior:} Permite gestionar una variedad de restricciones compatibles con JuMP, tales como restricciones cuadráticas, no lineales y enteras.
     
-    \item \textbf{Problemas con restricciones variadas en el nivel superior:} Permite gestionar una variedad de restricciones compatibles con JuMP, tales como restricciones cónicas, cuadráticas, no lineales y enteras.
+%TODO: MOdificar esto para decir que hace esto.
     
-    \item \textbf{Problemas con restricciones de equilibrio:} Facilita la transformación de problemas binivel en problemas de programación matemática con restricciones de equilibrio (MPEC) y ofrece métodos para abordar las restricciones de complementariedad que surgen en estos casos.
-    
-    \item \textbf{Problemas con variables duales del nivel inferior en el nivel superior:} Permite la utilización de variables duales del nivel inferior explícitamente como variables en el nivel superior, lo cual es crucial para modelar problemas como la fijación de precios en mercados de energía.
     
     \item \textbf{Problemas con diferentes tipos de reformulaciones:} Los usuarios pueden experimentar con diversas reformulaciones para las restricciones de complementariedad en los problemas MPEC, incluyendo SOS1, restricciones de indicador, Fortuny-Amat y McCarl (Big-M), entre otros.
-    
+    %TODO: POner que es comun a los dos 
     \item \textbf{Problemas que requieren solvers MIP y NLP:} BilevelJuMP.jl puede utilizar tanto solucionadores de \textbf{programación lineal mixta entera (MIP)} como solucionadores de \textbf{programación no lineal (NLP)}, dependiendo de las características del problema y la reformulación elegida.
 \end{itemize}
 
@@ -352,6 +386,7 @@ $v_j(x,y)\lambda_j = 0$ en \eqref{eq:KKT_Optimista}, el método introduce una va
 \begin{align}
     v_j(x,y) &\geq -M_p(1 - f_j) \notag \\
     \lambda_j &\leq M_d f_j \\
+	%TODO: EN vez sde f_j poner \delta_j
     f_j &\in \{0,1\} \notag
 \end{align}
 
@@ -363,6 +398,7 @@ donde $M_p$ y $M_d$ son valores grandes para las variables primales y duales, re
 El método de Conjuntos Ordenados Especiales tipo 1 (SOS1) evita el uso de parámetros Big-M mediante restricciones de tipo conjunto. Para cada par complementario $(v_j, \lambda_j)$:
 
 \begin{equation}
+%DONDe SOS1 es v_j * \lambda_j 
 [v_j(x,y); \lambda_j] \in \text{SOS1} \label{eq:SOS1_reform}
 \end{equation}
 
@@ -381,7 +417,7 @@ La implementación del ProductMode mantiene la restricción de complementariedad
 
 donde $t > 0$ es un parámetro de regularización pequeño. Esta formulación, aunque no satisface las condiciones de calificación de restricciones estándar, es útil para obtener soluciones iniciales y puede ser especialmente efectiva cuando se combina con solucionadores NLP, ver \cite{BilevelJump}.
 
-
+% TODO: hjacer suempre cierre capitulo, y dicinedo que se dijo y motivar
 
 %\subsection{Comparación de Métodos}
 %La Tabla \ref{tab:comparacion_metodos} resume los requisitos y características de cada método:

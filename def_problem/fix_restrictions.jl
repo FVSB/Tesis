@@ -88,7 +88,7 @@ function compute_bj(restriction_expr, alpha::Vector, point::Dict, ys_vars::Vecto
 
     # Compute bj based on the restriction set type
     if restriction_set_type == J_0_LP_v  # In this case, gamma must be 0
-        return dot(-vector_val, alpha) / alpha_norm
+        return dot(-vector_val, alpha) / (alpha_norm * alpha_norm)
     else  # For other types, lambda is considered 0
         return (dot(-vector_val, alpha) + gamma) / (alpha_norm * alpha_norm)
     end

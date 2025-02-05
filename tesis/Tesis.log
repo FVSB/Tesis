@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.23)  4 FEB 2025 11:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.23)  5 FEB 2025 14:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1116,7 +1116,14 @@ Package csquotes Info: Redefining alias 'default' -> 'spanish'.
  (Tesis.aux (Title.aux)
 LaTeX Info: Redefining \. on input line 14.
 LaTeX Info: Redefining \% on input line 14.
- (Resumen.aux) (Agradecimientos.aux) (Introducción.aux) (Preliminares.aux) (Modelación.aux
+ (Resumen.aux) (Agradecimientos.aux) (Introducción.aux) (Preliminares.aux
+
+LaTeX Warning: Label `eq:ProblemaGeneral' multiply defined.
+
+
+LaTeX Warning: Label `eq:ProblemaGeneral@cref' multiply defined.
+
+) (Modelación.aux
 
 LaTeX Warning: Label `KKT_del_MPEC' multiply defined.
 
@@ -1328,29 +1335,29 @@ Cap\'{\i }tulo 1.
 
 
 {C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
-LaTeX Info: Redefining \. on input line 77.
-LaTeX Info: Redefining \% on input line 77.
-Package cleveref Info: loaded `spanish' language definitions on input line 77.
+LaTeX Info: Redefining \. on input line 69.
+LaTeX Info: Redefining \% on input line 69.
+Package cleveref Info: loaded `spanish' language definitions on input line 69.
  [2]
-LaTeX Info: Redefining \. on input line 88.
-LaTeX Info: Redefining \% on input line 88.
-Package cleveref Info: loaded `spanish' language definitions on input line 88.
+LaTeX Info: Redefining \. on input line 80.
+LaTeX Info: Redefining \% on input line 80.
+Package cleveref Info: loaded `spanish' language definitions on input line 80.
  [3]
-LaTeX Info: Redefining \. on input line 104.
-LaTeX Info: Redefining \% on input line 104.
-Package cleveref Info: loaded `spanish' language definitions on input line 104.
+LaTeX Info: Redefining \. on input line 96.
+LaTeX Info: Redefining \% on input line 96.
+Package cleveref Info: loaded `spanish' language definitions on input line 96.
  [4]
-LaTeX Info: Redefining \. on input line 130.
-LaTeX Info: Redefining \% on input line 130.
-Package cleveref Info: loaded `spanish' language definitions on input line 130.
+LaTeX Info: Redefining \. on input line 122.
+LaTeX Info: Redefining \% on input line 122.
+Package cleveref Info: loaded `spanish' language definitions on input line 122.
  [5]
-LaTeX Info: Redefining \. on input line 144.
-LaTeX Info: Redefining \% on input line 144.
-Package cleveref Info: loaded `spanish' language definitions on input line 144.
+LaTeX Info: Redefining \. on input line 136.
+LaTeX Info: Redefining \% on input line 136.
+Package cleveref Info: loaded `spanish' language definitions on input line 136.
  [6]
-LaTeX Info: Redefining \. on input line 166.
-LaTeX Info: Redefining \% on input line 166.
-Package cleveref Info: loaded `spanish' language definitions on input line 166.
+LaTeX Info: Redefining \. on input line 158.
+LaTeX Info: Redefining \% on input line 158.
+Package cleveref Info: loaded `spanish' language definitions on input line 158.
  [7])
 LaTeX Info: Redefining \. on input line 213.
 LaTeX Info: Redefining \% on input line 213.
@@ -1366,72 +1373,72 @@ Cap\'{\i }tulo 2.
 
 
 ]
-
-Package caption Warning: \setcaptiontype
-(caption)                outside box or environment on input line 46.
-See the caption package documentation for explanation.
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 46.
-See the caption package documentation for explanation.
-
-LaTeX Info: Redefining \. on input line 60.
-LaTeX Info: Redefining \% on input line 60.
-Package cleveref Info: loaded `spanish' language definitions on input line 60.
-[10]
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 61.
-See the caption package documentation for explanation.
-
 LaTeX Info: Redefining \. on input line 69.
 LaTeX Info: Redefining \% on input line 69.
 Package cleveref Info: loaded `spanish' language definitions on input line 69.
+ [10]
+
+Package caption Warning: \setcaptiontype
+(caption)                outside box or environment on input line 70.
+See the caption package documentation for explanation.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 70.
+See the caption package documentation for explanation.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 85.
+See the caption package documentation for explanation.
+
+LaTeX Info: Redefining \. on input line 93.
+LaTeX Info: Redefining \% on input line 93.
+Package cleveref Info: loaded `spanish' language definitions on input line 93.
 [11]
-LaTeX Info: Redefining \. on input line 119.
-LaTeX Info: Redefining \% on input line 119.
-Package cleveref Info: loaded `spanish' language definitions on input line 119.
+LaTeX Info: Redefining \. on input line 145.
+LaTeX Info: Redefining \% on input line 145.
+Package cleveref Info: loaded `spanish' language definitions on input line 145.
  [12]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 129.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 155.
  (C:\Users\dell\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \. on input line 177.
-LaTeX Info: Redefining \% on input line 177.
-Package cleveref Info: loaded `spanish' language definitions on input line 177.
+LaTeX Info: Redefining \. on input line 203.
+LaTeX Info: Redefining \% on input line 203.
+Package cleveref Info: loaded `spanish' language definitions on input line 203.
  [13{C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
-Package cleveref Info: loaded `spanish' language definitions on input line 200.
+LaTeX Info: Redefining \. on input line 226.
+LaTeX Info: Redefining \% on input line 226.
+Package cleveref Info: loaded `spanish' language definitions on input line 226.
  [14]
-Underfull \hbox (badness 1735) in paragraph at lines 216--217
+Underfull \hbox (badness 1735) in paragraph at lines 242--243
 []\T1/lmr/m/n/12 Dado un vec-tor fac-ti-ble $\OML/lmm/m/it/12 z[]$ \T1/lmr/m/n/12 del MPEC
  []
 
-LaTeX Info: Redefining \. on input line 242.
-LaTeX Info: Redefining \% on input line 242.
-Package cleveref Info: loaded `spanish' language definitions on input line 242.
+LaTeX Info: Redefining \. on input line 268.
+LaTeX Info: Redefining \% on input line 268.
+Package cleveref Info: loaded `spanish' language definitions on input line 268.
 [15]
-LaTeX Info: Redefining \. on input line 269.
-LaTeX Info: Redefining \% on input line 269.
-Package cleveref Info: loaded `spanish' language definitions on input line 269.
+LaTeX Info: Redefining \. on input line 295.
+LaTeX Info: Redefining \% on input line 295.
+Package cleveref Info: loaded `spanish' language definitions on input line 295.
  [16]
-LaTeX Info: Redefining \. on input line 312.
-LaTeX Info: Redefining \% on input line 312.
-Package cleveref Info: loaded `spanish' language definitions on input line 312.
+LaTeX Info: Redefining \. on input line 338.
+LaTeX Info: Redefining \% on input line 338.
+Package cleveref Info: loaded `spanish' language definitions on input line 338.
  [17]
-LaTeX Info: Redefining \. on input line 325.
-LaTeX Info: Redefining \% on input line 325.
-Package cleveref Info: loaded `spanish' language definitions on input line 325.
+LaTeX Info: Redefining \. on input line 351.
+LaTeX Info: Redefining \% on input line 351.
+Package cleveref Info: loaded `spanish' language definitions on input line 351.
  [18]
-LaTeX Info: Redefining \. on input line 348.
-LaTeX Info: Redefining \% on input line 348.
-Package cleveref Info: loaded `spanish' language definitions on input line 348.
+LaTeX Info: Redefining \. on input line 374.
+LaTeX Info: Redefining \% on input line 374.
+Package cleveref Info: loaded `spanish' language definitions on input line 374.
  [19]
-LaTeX Info: Redefining \. on input line 367.
-LaTeX Info: Redefining \% on input line 367.
-Package cleveref Info: loaded `spanish' language definitions on input line 367.
+LaTeX Info: Redefining \. on input line 393.
+LaTeX Info: Redefining \% on input line 393.
+Package cleveref Info: loaded `spanish' language definitions on input line 393.
  [20])
 LaTeX Info: Redefining \. on input line 215.
 LaTeX Info: Redefining \% on input line 215.
@@ -1620,28 +1627,28 @@ Cap\'{\i }tulo 4.
 
 
 ]
-Overfull \hbox (46.13763pt too wide) in paragraph at lines 21--37
+Overfull \hbox (46.13763pt too wide) in paragraph at lines 22--38
  [][] 
  []
 
-LaTeX Info: Redefining \. on input line 41.
-LaTeX Info: Redefining \% on input line 41.
-Package cleveref Info: loaded `spanish' language definitions on input line 41.
+LaTeX Info: Redefining \. on input line 42.
+LaTeX Info: Redefining \% on input line 42.
+Package cleveref Info: loaded `spanish' language definitions on input line 42.
 [39]
-LaTeX Info: Redefining \. on input line 66.
-LaTeX Info: Redefining \% on input line 66.
-Package cleveref Info: loaded `spanish' language definitions on input line 66.
+LaTeX Info: Redefining \. on input line 71.
+LaTeX Info: Redefining \% on input line 71.
+Package cleveref Info: loaded `spanish' language definitions on input line 71.
  [40]
 
-LaTeX Warning: Reference `J_0_lambda_0_level_inferior' on page 41 undefined on input line 83.
+LaTeX Warning: Reference `J_0_lambda_0_level_inferior' on page 41 undefined on input line 90.
 
-LaTeX Info: Redefining \. on input line 96.
-LaTeX Info: Redefining \% on input line 96.
-Package cleveref Info: loaded `spanish' language definitions on input line 96.
+LaTeX Info: Redefining \. on input line 101.
+LaTeX Info: Redefining \% on input line 101.
+Package cleveref Info: loaded `spanish' language definitions on input line 101.
 [41]
-LaTeX Info: Redefining \. on input line 116.
-LaTeX Info: Redefining \% on input line 116.
-Package cleveref Info: loaded `spanish' language definitions on input line 116.
+LaTeX Info: Redefining \. on input line 121.
+LaTeX Info: Redefining \% on input line 121.
+Package cleveref Info: loaded `spanish' language definitions on input line 121.
  [42])
 LaTeX Info: Redefining \. on input line 219.
 LaTeX Info: Redefining \% on input line 219.
@@ -1717,21 +1724,21 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `Tesis.out' has not changed.
-(rerunfilecheck)             Checksum: BBDABC05EFD40C4E8A2B4860CDAB5CAD;4461.
+(rerunfilecheck)             Checksum: 911110914472E2ACB496E4B73D3FCDD0;4388.
 Package logreq Info: Writing requests to 'Tesis.run.xml'.
 \openout1 = `Tesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
  40372 strings out of 474486
- 760167 string characters out of 5744226
+ 760173 string characters out of 5744226
  2169542 words of memory out of 5000000
  61695 multiletter control sequences out of 15000+600000
  628816 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,22n,87p,1329b,2911s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,17n,87p,1329b,2911s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxo10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsco10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro12.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/dell/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Tesis.pdf (56 pages, 695249 bytes).
+Output written on Tesis.pdf (56 pages, 695706 bytes).
 PDF statistics:
  820 PDF objects out of 1000 (max. 8388607)
  252 named destinations out of 1000 (max. 500000)

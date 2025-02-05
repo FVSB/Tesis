@@ -15,24 +15,16 @@ La optimización de dos niveles, un área fundamental en la investigación opera
 
 El modelo de dos niveles es:
 
-\begin{table}[H]
-
-    \[\begin{array}{l}
-        \underset{\substack{x}}{\min} \quad F(x, y)\\
+\begin{equation*} 
+    \begin{array}{l}
+       \min_x \quad F(x, y)\\
         s.a \left\{ \begin{array}{l}
             x \in T \\
-             y \in S(x) = \arg  \underset{\substack{y}}{\min} \{ f(x, y) \quad s.a \quad y \in  H \}\\
-            x,y \in M^0 \\
+             y \in S(x) = \arg  \min_y \{ f(x, y) \quad s.a \quad y \in  H \}\\
+            x,y \in M^0 
         \end{array}\right.
-        \tag{\theequation}
-        \label{eq:Def1Binivel}
-    \end{array}\]\\
+        \end{array} \end{equation*}
 
-
-    \caption*{Problema de Optimización Binivel}
-    \end{table}
-
- \newpage
  \begin{samepage}
 % Explicar dimensiones 
 donde:

@@ -3,6 +3,10 @@
 En este capítulo se mostrará la forma y los pasos para generar el problema deseado en el contexto de un generador de puntos estacionarios para problemas binivel. Este capítulo aborda el diseño y la implementación del generador, explicando detalladamente las metodologías empleadas, los criterios necesarios para asegurar la validez de los puntos obtenidos y los algoritmos utilizados en cada etapa del proceso.
 
 \section{Nomenclatura a utilizar:}
+%TODO: Recorda el problema y la nomenclatura en el anexo 
+% Recordar que el problema va hacia el kkt 
+% Se busca un punto estacionario
+
 \begin{table}[H]
     \centering
     \caption{Nomenclatura a utilizar}
@@ -130,7 +134,7 @@ Primero en caso de que $\alpha \neq 0$ en los $v_j(x,y) \in J_0^v$ se procede a 
 \begin{itemize}
     \item \textbf{ $v_j(x,y) \in J_2^v$ \refeq{J_0_lambda_pos_level_inferior}}:
         \begin{equation}
-            \vec{b_j}=  \frac{{\alpha} \cdot (-\nabla_{y}{v_j(z_{est})}^T \cdot \alpha)}{\|\mathbf{\alpha} \|_2}
+            \vec{b_j}=  \frac{{\alpha} \cdot (-\nabla_{y}{v_j(z_{est})}^T \cdot \alpha)}{\|\mathbf{\alpha} \|_2^2}
         \end{equation}
     \item \textbf{$v_j(x,y) \in J_1^v \lor J_3^v$ (\refeq{J_0_lambda_0_level_inferior},\refeq{J_neg_lambda_0_level_inferior})}\\
     \begin{equation}
@@ -161,7 +165,7 @@ Se plantea las condiciones KKT y se halla $\vec{bf}$ :
 
 \begin{equation}
     \begin{aligned}
-        &\nabla_{y}f(x,y)+\sum_{j=0}^{|V \in J_0|}(\lambda_j\nabla_{y}v_{j}^{\star}(x,y))+\vec{bf}=\vec{0}\\
+        &\nabla_{y}f(x,y)+\sum_{j \in J_2^v}(\lambda_j\nabla_{y}v_{j}^{\star}(x,y))+\vec{bf}=\vec{0}\\
         &\text{KKT del problema del nivel inferior}
     \end{aligned}
     \label{KKT_nivel_inferior}
@@ -175,7 +179,7 @@ obteniendo el problema de forma reformulada.
     \begin{equation}
         \label{KKT_del_MPEC}
     \end{equation}
-	$\nabla_{xy}F(x,y)+\sum_{i=1}^{|G \in J_o|}(\mu_i\nabla_{xy}g(x,y))+[\nabla_{x,y}\nabla_{y}f(x,y)+\sum_{j=1}^{|V \in J_0|}\lambda_j\nabla_{xy}\nabla_{y}v_{j}^{\star}(x,y)]\alpha+\sum_{j=1}^{|V \in J_0|}(\beta_j\nabla_{xy}v_{j}^{\star}(x,y))+\vec{BF}=\vec{0}$  \label{KKT_del_MPEC}
+	$\nabla_{xy}F(x,y)+\sum_{j\in J_o^g|}(\mu_i\nabla_{xy}g(x,y))+[\nabla_{x,y}\nabla_{y}f(x,y)+\sum_{j \in J_1^vg}\lambda_j\nabla_{xy}\nabla_{y}v_{j}^{\star}(x,y)]\alpha+\sum_{j \in J_1^v \cup J_2^v|}(\beta_j\nabla_{xy}v_{j}^{\star}(x,y))+\vec{BF}=\vec{0}$  \label{KKT_del_MPEC}
 \caption*{KKT del MPEC}
 \end{table}
 

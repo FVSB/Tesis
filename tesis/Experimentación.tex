@@ -1,3 +1,4 @@
+
 \chapter{Experimentación}
 En este capítulo se experimentará tomando una serie de problemas, ver \cite{BolibTestProblems}, 
 que sean: Lineales, Cuadráticos y No Convexos. En ella primeramente utilizaremos las bibliotecas de Julia
@@ -45,9 +46,15 @@ Todos los valores, en esta parte, han sido redondeados por exceso a dos cifras d
 
 %\subsubsection{Obtención de los óptimos}
 Inicialmente se necesita obtener óptimos de los problemas con los paquetes convencionales de Julia
-cuyos pasos son los siguientes:
+cuya forma de resolver dependerá de la clase del problema. A continuación definiremos este tipo de clases y como se obtienen los óptimos. 
+
+% Definor problemas lioneales
+
 \begin{itemize}
     \item \textbf{Problemas Lineales y Cuadráticos :}\\
+            Un problema binivel lineal es aquel el cual los problemas del nivel superior e inferior son lineales, análogamente se define el problema cuadrático.
+            % Escribir la definición matemática
+            
             Con dicho problema se introduce los datos en la interfaz de \textbf{BilevelJuMP}, ver \cite{BilevelJump}, con el cual se utilizan 3 técnicas entre las ofrecidas por esta:
             \begin{itemize}
                 \item \textbf{Big-M :} Con el optimizador High-Performance Solver for Linear Programming (HiGHS) y los valores $\text{primal big M} = 100, \quad \text{dual big M} = 100$.

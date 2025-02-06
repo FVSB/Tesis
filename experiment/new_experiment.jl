@@ -468,9 +468,7 @@ function _change_restrictions_to_make_stationary_type(restrictions::Vector{Follo
  # ahora en dependencia del tipo de punto estacionario modificar las constantes
  modify_restriction_to_create_stationary_point(restrictions,stationary_type)
 
-
- experiment_name=experiment_name*"__"*string(stationary_type)
- RunExperiment(experiment,experiment_name)
+ return restrictions
 end
 
 """
@@ -480,10 +478,17 @@ function _RunExperimets_to_all_stationary(experiment::Experiment,experiment_name
 
     restrictions_zero::Vector{FollowerRestrictionProblem}=experiment.model_alpha_zero.follower_restriction_problem 
     # Modificar para alpha nulo
-    _change_restrictions_to_make_stationary_type(restrictions_zero,experiment_name,stationary_type)   
+    t=_change_restrictions_to_make_stationary_type(restrictions_zero,experiment_name,stationary_type)   
+    experiment.model_alpha_zero.follower_restriction_problem = t
+
     restrictions_non_zero::Vector{FollowerRestrictionProblem}=experiment.model_alpha_non_zero.follower_restriction_problem   
     # Modificar para alpha no nulo
-    _change_restrictions_to_make_stationary_type(restrictions_non_zero,experiment_name,stationary_type)  
+    t=_change_restrictions_to_make_stationary_type(restrictions_non_zero,experiment_name,stationary_type)  
+    experiment.model_alpha_non_zero.follower_restriction_problem=t
+
+
+    experiment_name=experiment_name*"__"*string(stationary_type)
+    RunExperiment(experiment,experiment_name)
 end
 
 """

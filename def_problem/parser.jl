@@ -132,7 +132,7 @@
     """
     function add_to_symbolics(variables::Vector{Symbol})
         for var in variables
-            @eval @variables $var
+            @eval Symbolics.@variables $var
         end
     end
     

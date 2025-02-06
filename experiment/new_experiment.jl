@@ -1,16 +1,13 @@
 
 include("../def_problem/MiModulo.jl")
+include("structs.jl")
+include("to_bilevel_jump.jl")
 using Symbolics
 using Random
 using XLSX
 using DataFrames
 
-mutable struct Experiment
-    model_alpha_non_zero::OptimizationModel
-    model_alpha_zero::OptimizationModel
-    leader_vars::Vector
-    follower_vars::Vector
-end
+
 
 function CreateExperiment()
     alpha_::Vector{Number} = [1]
@@ -382,6 +379,7 @@ Seleccionar el tipo de punto estacionario que se quiere
     C_Stationary
     M_Stationary
     Strong_Stationary
+    _alpha_zero
 end
 """
 Dado un Vector de FollowerRestrictionProblem ajusta esten en la proporcion adecuada 
@@ -458,38 +456,44 @@ function modify_restriction_to_create_stationary_point(restrictions::Vector{Foll
     end
 end
 """
-Dado unas restricciones el tipo de restriccion a querer modifica las V_s para que esten 
+Dado unas restricciones el tipo de restricción a querer modifica las V_s para que estén 
 balanceados los indices activos y ademas 
-este genere atraves de estar correctos lo multiplicaodres los lugares estacionarios
+este genere a traves de estar correctos lo multiplicadores los lugares estacionarios
 """
 function _change_restrictions_to_make_stationary_type(restrictions::Vector{FollowerRestrictionProblem},experiment_name::String,stationary_type::StationaryType)
- # Hacer que esten en los indices activos correctos
+ # Hacer que estén en los indices activos correctos
  split_correcto_type_set!(restrictions)
  # ahora en dependencia del tipo de punto estacionario modificar las constantes
  modify_restriction_to_create_stationary_point(restrictions,stationary_type)
-
-
- experiment_name=experiment_name*"__"*string(stationary_type)
- RunExperiment(experiment,experiment_name)
+ return restrictions
 end
 
 """
-Para entrar el tipo de punto que se quiere generar, metodo privado
+Para entrar el tipo de punto que se quiere generar, metido privado
 """
-function _RunExperimets_to_all_stationary(experiment::Experiment,experiment_name::String,stationary_type::StationaryType)
-
-    restrictions_zero::Vector{FollowerRestrictionProblem}=experiment.model_alpha_zero.follower_restriction_problem 
-    # Modificar para alpha nulo
-    _change_restrictions_to_make_stationary_type(restrictions_zero,experiment_name,stationary_type)   
-    restrictions_non_zero::Vector{FollowerRestrictionProblem}=experiment.model_alpha_non_zero.follower_restriction_problem   
-    # Modificar para alpha no nulo
-    _change_restrictions_to_make_stationary_type(restrictions_non_zero,experiment_name,stationary_type)  
+function _RunExperimets_to_all_stationary(experiment::Experiment,experiment_name::String,stationary_type::StationaryType)::ExperimentResult
+    #if stationary_type==_alpha_zero
+        println("Modificar para alpha_zero_")
+        restrictions_zero::Vector{FollowerRestrictionProblem}=experiment.model_alpha_zero.follower_restriction_problem 
+        # Modificar para alpha nulo
+        t=_change_restrictions_to_make_stationary_type(restrictions_zero,experiment_name,stationary_type) 
+        experiment.model_alpha_zero.follower_restriction_problem=t
+    #else  
+        println("Modificar para estacionarios")
+        restrictions_non_zero::Vector{FollowerRestrictionProblem}=experiment.model_alpha_non_zero.follower_restriction_problem   
+        # Modificar para alpha no nulo
+        t=_change_restrictions_to_make_stationary_type(restrictions_non_zero,experiment_name,stationary_type)
+        experiment.model_alpha_non_zero.follower_restriction_problem=t
+    #end
+    experiment_name=experiment_name*"__"*string(stationary_type)
+    println("LLamando a RunExperiment ")
+    return RunExperiment(experiment,experiment_name)
 end
 
 """
 Correr el experimento y guardar en un excel
 """
-function RunExperiment(experiment::Experiment,experiment_name::String)
+function RunExperiment(experiment::Experiment,experiment_name::String)::ExperimentResult
     length_y_vars::Int = length(experiment.follower_vars)
     _alpha=get_rand_vect(length_y_vars)*3
     SetAlpha(experiment.model_alpha_non_zero,_alpha )
@@ -506,11 +510,13 @@ function RunExperiment(experiment::Experiment,experiment_name::String)
     # Serializar el que _alpha no Nulo
     serialize_Experiment(opt_problem_non_zero,_alpha,BF_non_zero,x_vars,y_vars,experiment_name,false)
     # Serializar _alpha Nulo
-    # Serializar _alpha Nulo
     _alpha::Vector{Number}=zeros(length_y_vars)
     serialize_Experiment(opt_problem_zero,_alpha,BF_zero,x_vars,y_vars,experiment_name,true)
    # return dfs
-   println("Experimento Completado")
+   println("Experimento $experiment_name Completado ")
+
+   return ExperimentResult(ProblemResult(opt_problem_non_zero,BF_non_zero),ProblemResult(opt_problem_zero,BF_zero))
+
 end
 
 """
@@ -518,15 +524,36 @@ Crea un experimento de todos los tipos de puntos estacionarios habidos
 """
 function RunExperiment(experiment::Experiment,experiment_name::String,all_stationarys::Bool)
     if !all_stationarys
-         RunExperiment(experiment,experiment_name)
+        println("No se quiere generar los estacionarios")
+        RunExperiment(experiment,experiment_name)
     end
     # Crear uno C_Stationary
-    _RunExperimets_to_all_stationary(experiment,experiment_name,C_Stationary)
-    # Crear uno M_Stationary
-    _RunExperimets_to_all_stationary(experiment,experiment_name,M_Stationary)
-    # Crear uno Strong Stationary
-    _RunExperimets_to_all_stationary(experiment,experiment_name,Strong_Stationary)
+    println("Se va a generar el C-estacionario")
+    c_result::ExperimentResult=_RunExperimets_to_all_stationary(experiment,experiment_name,C_Stationary)
+    
+    leader_vars=experiment.leader_vars
 
-    println("Finilizado el experimento completo")
+    follower_vars=experiment.follower_vars
+  
+    To_BilevelJuMP(c_result.alpha_non_zero,leader_vars,follower_vars)
+ 
+    ## Crear uno M_Stationary
+    #println("Se va a generar el M-estacionario")
+    #m_result::ExperimentResult=_RunExperimets_to_all_stationary(experiment,experiment_name,M_Stationary)
+    ## Crear uno Strong Stationary
+    #println("Se va a generar el fuertemente estacionario")
+    #strong_result::ExperimentResult=_RunExperimets_to_all_stationary(experiment,experiment_name,Strong_Stationary)
+    ## Crear uno alpha=0
+    #println("Se va a generar el alpha=0")
+    #alpha_zero_result::ExperimentResult=_RunExperimets_to_all_stationary(experiment,experiment_name,_alpha_zero)
+    ##Ahora por cada uno generar entonces el problema binivel 
+    #println("Finalizado el experimento completo")
+
+    leader_vars=experiment.leader_vars
+    println("Variables del lider $leader_vars")
+    follower_vars=typeof(experiment.follower_vars)
+    println("Variables del seguidor $follower_vars")
+    
+
     
 end

@@ -19,18 +19,30 @@ from sympy import symbols, diff, sympify
 import re
 
 
+import re
+
 def convertir_expresion_a_julia(expresion: str) -> str:
     """
     Convierte todas las ocurrencias de '**' en la expresión dada por '^'.
+    Además, limita los números decimales a dos cifras después del punto.
 
     Args:
         expresion (str): La expresión matemática o string original.
 
     Returns:
-        str: La expresión modificada con '^' en lugar de '**'.
+        str: La expresión modificada con '^' en lugar de '**' y números redondeados.
     """
-    # Utilizamos re.sub para reemplazar '**' por '^'
+    # Paso 1: Reemplazar '**' por '^'
     expresion_modificada = re.sub(r'\*\*', '^', expresion)
+    
+    # Paso 2: Redondear números decimales a dos cifras
+    def redondear_decimal(match):
+        numero = match.group()  # Captura el número completo (e.g., "3.14159")
+        return f"{float(numero):.2f}"  # Redondea a dos cifras decimales
+    
+    # Usamos una expresión regular para encontrar números decimales
+    expresion_modificada = re.sub(r'\d+\.\d+', redondear_decimal, expresion_modificada)
+    
     return expresion_modificada
 
 
@@ -270,6 +282,7 @@ class ExperimentLinearQuadratic:
                 j+=1
     def _compute_leader_obj_val(self):
         eval_value=eval_function(self.leader_obj,self.get_all_vars,self.point)
+        print(f"El valor de la funcion del lider es {eval_value}")
         self.leader_obj_value=eval_value
     def read_from_excel(self):
         self._objectives_functions()

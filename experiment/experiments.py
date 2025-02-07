@@ -353,7 +353,7 @@ class Experiment:
         temp:str=f"""
         \\begin{{resultstable}}{{Problemas {self.problem_type_name} Seleccionados}}
         \\resultrow{{$\alpha=0$}}{{{best_alpha_zero.problem_name}}}{{{alpha_zero_orig_point}}}{{{alpha_zero_orig_val}}}{{{alpha_zero_optimal_point}}}{{{round(best_alpha_zero.val_obj,2)}}}{{{best_alpha_zero.method_name}}}
-        \\resultrow{{C-Estacionario}}{{{best_c.problem_name}}}{{{c_orig_point}}}{{{c_orig_val}}}{{{c_optimal_point}}}{{{round(best_c.val_obj,2)}}}{{best_c.method_name}}
+        \\resultrow{{C-Estacionario}}{{{best_c.problem_name}}}{{{c_orig_point}}}{{{c_orig_val}}}{{{c_optimal_point}}}{{{round(best_c.val_obj,2)}}}{{{best_c.method_name}}}
         \\resultrow{{M-Estacionario}}{{{best_m.problem_name}}}{{{m_orig_point}}}{{{m_orig_val}}}{{{m_optimal_point}}}{{{round(best_m.val_obj,2)}}}{{{best_m.method_name}}}
         \\resultrow{{Fuertemente-Estacionario}}{{{best_strong.problem_name}}}{{{strong_orig_point}}}{{{strong_orig_val}}}{{{strong_optimal_point}}}{{{round(best_strong.val_obj,2)}}}{{{best_strong.method_name}}}
         \\end{{resultstable}}

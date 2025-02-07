@@ -74,7 +74,7 @@ def main():
         elif opcion_seleccionada==LINEAL:
             start_random_seed=6            
             end_random_seed=11
-            root_folder=""
+            root_folder="/workspaces/Tesis/experiment/linear"
         elif opcion_seleccionada==CUADRATICO:
             start_random_seed=11            
             end_random_seed=16

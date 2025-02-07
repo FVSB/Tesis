@@ -48,7 +48,7 @@ Todos los valores, en esta parte, han sido redondeados por exceso a dos cifras d
 Inicialmente se necesita obtener óptimos de los problemas con los paquetes convencionales de Julia
 cuya forma de resolver dependerá de la clase del problema. A continuación definiremos este tipo de clases y como se obtienen los óptimos. 
 
-% Definor problemas lioneales
+% Definir problemas lineales
 
 \begin{itemize}
     \item \textbf{Problemas Lineales y Cuadráticos :}\\
@@ -142,16 +142,13 @@ Se presentan los resultados seleccionados bajo los criterios expuestos anteriorm
 \subsubsection{Problemas Cuadráticos}
 
 %- Cuadráticos
-%	- C-Estacionario: ex.9.2.1
-%	- Fuertemente: ex9.2.1
-%	- M-Estacionario:ex9.2.5 
-%	- Alpha=0:ex9.2.3
 \begin{resultstable}{Problemas Cuadráticos Seleccionados}
-\resultrow{C-Estacionario}{ex9.2.1}{(1.85,4.65)}{116.01}{(4.1,0)}{1.64}{SOS1}
-\resultrow{Fuertemente-Estacionario}{ex9.2.1}{(1.85,4.65)}{116.01}{(0.15,1.12)}{33.92}{ProductMode}
-\resultrow{M-Estacionario}{ex9.2.5}{(4.75,4.05)}{7.27}{(2.53,2.83)}{0.91}{Product Mode}
-\resultrow{$\alpha =0$}{ex9.2.3}{(1.55,2.7,-5.1,-8.65)}{-10.25}{(0,0,-5.1,-10)}{-14.7}{Big-M}
-\end{resultstable}
+    \resultrow{$\alpha=0$}{ex9.2.1}{( 1.85, 4.65)}{-106.29}{( 2.19, 5.31)}{-108.96}{Product Mode}
+    \resultrow{C-Estacionario}{ex9.2.3}{( 1.55, 2.7, -5.1, -8.65)}{363.83}{( 32.97, -5.86, 15.95, 13.31)}{-1201.53}{SOS1}
+    \resultrow{M-Estacionario}{ex9.2.3}{( 1.55, 2.7, -5.1, -8.65)}{405.85}{( 1.48, 2.65, -5.08, -8.66)}{404.57}{Highs-BigM (100,100)}
+    \resultrow{Fuertemente-Estacionario}{ex9.2.3}{( 1.55, 2.7, -5.1, -8.65)}{293.57}{( -6.9, -7.39, 0.87, -12.87)}{111.17}{Highs-BigM (100,100)}
+    \end{resultstable}
+    
 
 \subsubsection{Problemas No Convexos}
 
@@ -161,11 +158,11 @@ Se presentan los resultados seleccionados bajo los criterios expuestos anteriorm
 %	- M-Estacionarios:MBEx312
 %	- alpha=0:MBEx313
 \begin{resultstable}{Problemas No Convexos Seleccionados}
-\resultrow{C-Estacionario}{MitsosBarton2006Ex312}{(0.8,1.85)}{34,94}{(0.8,1.8)}{34.87}{JuMP}
-\resultrow{Fuertemente-Estacionario}{MitsosBarton2006Ex314}{(2.1,3.3)}{14.31}{(2.1,-1.45)}{5.52}{JuMP}
-\resultrow{M-Estacionario}{MitsosBarton2006Ex312}{(0.8,1.85)}{34,94}{(0.8,-0.89)}{6.48}{JuMP}
-\resultrow{$\alpha =0$}{MitsosBarton2006Ex313}{(2.3,4.45)}{-2.15}{(2.3,4.47)}{-2.17}{JuMP}
-\end{resultstable}
+    \resultrow{$\alpha=0$}{MitsosBarton2006Ex323}{( 1.94, 3.7)}{60.69}{( 3.7, 3.7)}{17.53}{Reformulacion KKT}
+    \resultrow{C-Estacionario}{MitsosBarton2006Ex323}{( 1.94, 3.7)}{179.12}{( 3.7, 3.7)}{179.08}{Reformulacion KKT}
+    \resultrow{M-Estacionario}{MorganPatrone2006a}{( 2.85, 4.45)}{-1.45}{( -89783940.52, -89783940.52)}{-1.45}{Reformulacion KKT}
+    \resultrow{Fuertemente-Estacionario}{MitsosBarton2006Ex312}{( 1.9, 0.15,)}{2.72}{( 0.0, 0.0)}{2.26}{Reformulacion KKT}
+    \end{resultstable}
 
 
 \subsubsection{Análisis de los resultados}

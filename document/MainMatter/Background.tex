@@ -6,7 +6,7 @@ Este tiene dos características principales: primero, el problema del nivel infe
 En términos abstractos, la optimización binivel busca minimizar una función objetivo de nivel superior, $F(x, y)$, donde $x$ son las variables de decisión del líder y $y$ son las variables del seguidor. 
 
 % Explicación del capitulo
-En este capítulo se abordará los conocimientos necesarios para el desarrollo de esta tesis. La primera seccio\'on trata  sobre Optimización Binivel: la definición de solución basada en la existencia de una cierta cooperación entre lideres y seguidores (caso  optimista) y la reformulación KKT. Luego se presentan los conceptos fundamentales  de solución, regularidad y estacionariedad para   Problemas Matemáticos con Restricciones de Equilibrio (MPEC). La tercera secci\'on contiene las prinicipales transformaciones que se aplican a las restricciones de complementariedad para la solucion num\'erica del modelo. Por último, se presenta la modelación de los problemas binivel en el lenguaje de programación Julia y los métodos seleccionados implementados en este lenguaje para su resolución. 
+En este capítulo se abordará los conocimientos necesarios para el desarrollo de esta tesis. La primera seccio\'on trata  sobre Optimización Binivel: la definición de solución basada en la existencia de una cierta cooperación entre lideres y seguidores (caso  optimista) y la reformulación KKT. Luego se presentan los conceptos fundamentales  de solución, regularidad y estacionariedad para   Problemas Matemáticos con Restricciones de Equilibrio (MPEC). La tercera sección contiene las principales transformaciones que se aplican a las restricciones de complementariedad para la solución num\'erica del modelo. Por último, se presenta la modelación de los problemas binivel en el lenguaje de programación Julia y los métodos seleccionados implementados en este lenguaje para su resolución. 
 
 \section{Optimización Binivel }
 %Intro de la sección
@@ -20,7 +20,7 @@ El problema de optimización binivel en general se define de la siguiente manera
             (x,y) \in {\cal{M}}^0 
         \end{array}\right.
         \end{array} \end{equation}
-En la mayor\'ia de las aplicaciones, los problemas de optimizacion del nivel inferior y superior son modelos de programacion matematica, por lo  que, sin p\'erdida de generalidad, se asume que  ${\cal{T}}=\mathbb{R}^n$,  $\cal{H}$ es  $\{y\in \mathbb{R}^m\in v_j(x, y)\leq 0,\;j=1,\ldots,q\}$  y
+En la mayor\'ia de las aplicaciones, los problemas de optimización del nivel inferior y superior son modelos de programación matemática, por lo  que, sin pérdida de generalidad, se asume que  ${\cal{T}}=\mathbb{R}^n$,  $\cal{H}$ es  $\{y\in \mathbb{R}^m\in v_j(x, y)\leq 0,\;j=1,\ldots,q\}$  y
   ${\cal{M}}^0=\{(x,y)\in\mathbb{R}^{n+m},\;g_i(x, y)\leq 0,\;i=1,\ldots,q\}$. El problema es  
 \begin{equation}
 \begin{aligned}
@@ -109,12 +109,12 @@ Los  problemas de dos niveles pueden ser reformulados en un problema de un solo 
 
 % Añadir aclaratoria
 Los tres últimos grupos de restricciones expresan que $v$ y $\lambda$ están restringidas en signo y que al menos una es 0. Estas condiciones son conocidas como \textbf{restricciones de complementariedad}. Estos modelos corresponden a la clase de problemas de programación matemática con restricciones de complementariedad (MPEC). A continuación, presentamos los resultados de esta área necesarios para el desarrollo de esta tesis.
-%TODO: Como se dijo en la intro existe otra forma, en un problema de programacion matematica  usando funcion del valor extremal sin embargo salvo en casos muy particulares esta no tiene una expresion explicita. La ventaja dsel kkt por mpec es que es una forma explicita, pero se requiere algun tipo de condicion de regularidad del conjunto como LICQ independencia  de v activa, que caso ded no cumpliser poder existir puntos optimos que no lo recoga el kkt. 
+%TODO: Como se dijo en la intro existe otra forma, en un problema de programación matemática  usando función del valor extremal sin embargo salvo en casos muy particulares esta no tiene una expresion explicita. La ventaja del kkt por MPEC es que es una forma explicita, pero se requiere algún tipo de condición de regularidad del conjunto como LICQ independencia  de v activa, que caso de no cumplirse poder existir puntos óptimos que no lo recoda el kkt. 
 
-\section{Programaci\' on Matemáticos con Restricciones de Equilibrio (MPEC)}
+\section{Programación Matemática con Restricciones de Equilibrio (MPEC)}
 %Aca va la sección que explica los MPEC
 % Que es un MPEC
-Un \textbf{problema de Programaci\'on Matemático con Restricciones de Equilibrio (MPEC)} es un tipo de  problema de optimizaci\'on no lineal que incluye restricciones de equilibrio, específicamente, restricciones de complementariedad.
+Un \textbf{problema de Programación'on Matemático con Restricciones de Equilibrio (MPEC)} es un tipo de  problema de optimización no lineal que incluye restricciones de equilibrio, específicamente, restricciones de complementariedad.
 
 %Formula MPEC Genérico
 \begin{equation}
@@ -131,7 +131,7 @@ Un \textbf{problema de Programaci\'on Matemático con Restricciones de Equilibri
 
 %Dimensiones MPEC Genérico
 donde $f: \mathbb{R}^{\hat{n}} \to \mathbb{R}$, $g: \mathbb{R}^{\hat{n}} \to \mathbb{R}$, $h: \mathbb{R}^{\hat{n}} \to \mathbb{R}$, $G: \mathbb{R}^{\hat{n}} \to \mathbb{R}$, y $H: \mathbb{R}^{\hat{n}} \to \mathbb{R}$ son funciones continuamente diferenciables. 
-El término de complementariedad se debe a la existencia de las restricciones hom\'onimas 
+El término de complementariedad se debe a la existencia de las restricciones homónimas 
 %Ecuación para poner que son las restricciones de complementariedad
 \begin{equation}
     G_j(z) \geq 0, \; H_j(z) \geq 0, \quad G_j(z)^T H_j(z) = 0,\quad  j=1,\ldots,s. \\ \label{eq:RestriccionesComplementariedadAbstracto}
@@ -143,7 +143,7 @@ Debido a las restricciones de complementariedad, los MPEC no cumplen con las con
 %\subsection{Resultados sobre MPECs}
 
 %Notación de los indices activos del documento
-A continuación como en \cite{Flegel2003AFJ}, se introduce las siguientes definiciones, \'utiles para la obtenci\'on de condiciones necesarias de optimalidad.
+A continuación como en \cite{Flegel2003AFJ}, se introduce las siguientes definiciones, \'utiles para la obtención de condiciones necesarias de optimalidad.
 \begin{definition}[Conjunto de Índices]
 Dado un vector factible $z^*$ del MPEC \eqref{eq:DefMpec}, definimos los siguientes \textit{conjuntos de índices}:
 \begin{equation}
@@ -162,7 +162,7 @@ Para definir condiciones de regularidad para MPEC, introducimos el siguiente pro
 \begin{definition}[Programa No Lineal Relacionado (RNLP)]
 
 Un \textit{Programa No Lineal Relacionado $RNLP_{a,b} := RNLP_{a,b}(z^*)$} es:
-%TODO: INcomporar indices y rango en que se mueven
+%TODO: incorporar indices y rango en que se mueven
 \begin{equation}
 \begin{aligned}
 \min  &\quad  f(z)  \\
@@ -181,7 +181,7 @@ El TNLP \eqref{eq:ProblemaAbstractoTNLP} puede  usarse para definir variantes de
 \begin{definition}[MPEC-LICQ]
 El MPEC \eqref{eq:DefMpec} se dice que satisface la \textit{MPEC-LICQ}  en un vector factible $z^*$ si los correspondientes $RNLP_{a,b}(z^*)$ satisfacen la LICQ  en ese vector $z^*$.
 \end{definition}
-    Cabe destacar que si la LICQ se cumple en  $RNLP_{a,b}(z^*)$ para una partici\'on $(a,b)$ se cumple para todas. 
+    Cabe destacar que si la LICQ se cumple en  $RNLP_{a,b}(z^*)$ para una partición $(a,b)$ se cumple para todas. 
 % Hacer notar que un mínimo de z^* implica la existencia de \lambda^* ....
 %En este punto, es importante notar que bajo MPEC-MFCQ, un mínimo local $z^*$ del MPEC \eqref{eq:DefMpec} implica la existencia de un multiplicador de Lagrange $\lambda^*$ tal que $(z^*, \lambda^*)$ satisface las condiciones KKT para el programa \eqref{eq:ProblemaAbstractoTNLP}. Por lo tanto, si asumimos que MPEC-MFCQ se cumple para un mínimo local $z^*$ del MPEC \eqref{eq:DefMpec}, podemos usar cualquier multiplicador de Lagrange $\lambda^*$ (que ahora se sabe que existe) para definir el MPEC-SMFCQ, es decir, tomando $(z^*, \lambda^*)$.
 
@@ -191,8 +191,8 @@ En el contexto de los MPEC en \cite{Flegel2003AFJ} se exponen varios tipos de pu
 \begin{definition}[Punto Factible]
     Un \textit{punto factible} $z^*$ del MPEC se llama débilmente estacionario si existe un multiplicador de Lagrange $ (\mu, \alpha, \beta, \gamma)$ tal que se cumplen las siguientes condiciones:
     
-%TODO: USar multiplicadores analogos a como esta en el bijnivel de miu lambda beta 
-% EN este orde  mui-g, alpha-h beta-G gamma-H
+%TODO: USar multiplicadores análogos a como esta en el binivel de miu lambda beta 
+% EN este orden  mui-g, alpha-h beta-G gamma-H
 \begin{align}
 & \nabla f(z^*) + \sum_{i=1}^q \mu_i\nabla g_i(z^*) + \sum_{k=1}^{q_0} \alpha_k\nabla h_k(z^*) - \sum_{i=1}^{s} [\beta_j\nabla G_j(z^*) + \gamma_j\nabla H_j(z^*)] = \vec{0} \notag\\
     & \quad \begin{aligned}
@@ -223,7 +223,7 @@ Este concepto de estacionariedad es equivalente al cumplimiento de la estacionar
 \end{definition}
 
 %TODO:
-La $C$ y la $M$ estacionariedad  son condiciones necesarias de optimalidad bajo ciertas condiciones de regularidad, m\'as d\'ebiles que la  MPEC-LICQ. La fuerte conlleva al siguiente resultado:
+La $C$ y la $M$ estacionariedad  son condiciones necesarias de optimalidad bajo ciertas condiciones de regularidad, m\'as débiles que la  MPEC-LICQ. La fuerte conlleva al siguiente resultado:
 % Teorema que si z^* es min local del MPEC Si se cumple la LICQ entonces existe .....
 \begin{theorem} 
 Sea $z^* \in \mathbb{R}^n$ un mínimo local del MPEC \eqref{eq:DefMpec}. Si MPEC-LICQ se cumple en $z^*$, entonces existe un único multiplicador de Lagrange  tal que $(z^*, \mu, ^*)$ es \textit{fuertemente estacionario}.
@@ -239,7 +239,7 @@ H_j(z) &=& 0, & j\in J_H& H_j(z) &\geq& 0, & j\in J_{GH},& H_j(z) &\geq& 0, & j\
 & \text{Problema No Lineal Relajado }  
 \end{array}
 \label{eRNLP}
-\end{equation}Los algoritmos buscan al menos converger a puntos de este tipo.  En la pr\'oxima secci\'on se revisar\'an las reformulaciones que se resuelven  las bibliotecas de Julia.
+\end{equation}Los algoritmos buscan al menos converger a puntos de este tipo.  En la pr\'oxima sección se revisar\'an las reformulaciones que se resuelven  las bibliotecas de Julia.
 \section{Métodos de Reformulación para Optimización Binivel}
 La optimización binivel presenta desafíos particulares debido a su naturaleza jerárquica y las condiciones de complementariedad resultantes. A continuación, se presentan los principales métodos de reformulación implementados en la literatura, basados en la transformación del MPEC \eqref{eq:KKT_Optimista}.
 \subsection{Método Big-M}
@@ -271,7 +271,7 @@ El método de Conjuntos Ordenados Especiales tipo 1 (SOS1) evita el uso de pará
  donde $SOS1=\{(a,b)\in \mathbb{R}: a,b\geq 0,\; ab=0\}$
 
 
-Esta restricción fuerza que al menos una variable en el par sea cero, preservando la no linealidad original sin necesidad de cotas. Note que SOS1 es un cono. Esta es una reformulaci\'on del  MPEC como un problema de optimizaci\'on c\'onica. Es particularmente eficaz en MPECs con restricciones del tipo $u\in K$, donde $K$ es un cono, pues sigue siendo un problema de optimizaci\'on c\'onica  y se pueden aplicar algoritmos espec\'ificos para la resolucion de este tipo de modelos, \cite{BilevelJump}. La dificultad principal es que el cono es no convexo. Una aplicaci\'on de este enfoque se encuentra en \cite{SadddiquiNaturalGasSOS1}.
+Esta restricción fuerza que al menos una variable en el par sea cero, preservando la no linealidad original sin necesidad de cotas. Note que SOS1 es un cono. Esta es una reformulación del  MPEC como un problema de optimización conica. Es particularmente eficaz en MPECs con restricciones del tipo $u\in K$, donde $K$ es un cono, pues sigue siendo un problema de optimización cónica  y se pueden aplicar algoritmos específicos para la resolución de este tipo de modelos, \cite{BilevelJump}. La dificultad principal es que el cono es no convexo. Una aplicación de este enfoque se encuentra en \cite{SadddiquiNaturalGasSOS1}.
 
 
 \subsection{Método ProductMode}
@@ -284,9 +284,9 @@ La implementación del ProductMode mantiene la restricción de complementariedad
     v_j(x,y) \cdot \lambda_j \leq t \label{eq:ProductMode_reg}
 \end{equation}
 
-donde $t > 0$ es un parámetro de regularización pequeño. Esta formulación, aunque no satisface las condiciones de calificación de restricciones estándar, es útil para obtener soluciones iniciales y puede ser especialmente efectiva cuando se combina con solucionadores NLP, ver \cite{BilevelJump}. sin embargo, bajo condiciones naturales, la sucesi\'on que genera converge a puntos C  estacionarios y bajo regularidad hasta fuertemente estacionarios, ver \cite{scholtes12}.  
+donde $t > 0$ es un parámetro de regularización pequeño. Esta formulación, aunque no satisface las condiciones de calificación de restricciones estándar, es útil para obtener soluciones iniciales y puede ser especialmente efectiva cuando se combina con solucionadores NLP, ver \cite{BilevelJump}. sin embargo, bajo condiciones naturales, la sucesión que genera converge a puntos C  estacionarios y bajo regularidad hasta fuertemente estacionarios, ver \cite{scholtes12}.  
 
-% TODO: hjacer suempre cierre capitulo, y dicinedo que se dijo y motivar
+% TODO: hacer siempre cierre capitulo, y diciendo que se dijo y motivar
 
 
 La Tabla \ref{tab:comparacion_metodos} resume los requisitos y características de cada método:
@@ -303,7 +303,7 @@ ProductMode & NLP & Manejo de no linealidades \\
 \label{tab:comparacion_metodos}
 \end{table}
 
-Para casos con restricciones no lineales $v_j(x,y)$, se recomienda combinar ProductMode con técnicas de linealización por tramos \cite[Apéndice B]{BilevelJump}. Todos estos métodos están implementados en BilevelJuMP.jl, permitiendo experimentación con reformulaciones que se pueden encontrqr en \cite[Sección 4]{BilevelJump}.
+Para casos con restricciones no lineales $v_j(x,y)$, se recomienda combinar ProductMode con técnicas de linealización por tramos \cite[Apéndice B]{BilevelJump}. Todos estos métodos están implementados en BilevelJuMP.jl, permitiendo experimentación con reformulaciones que se pueden encontrar en \cite[Sección 4]{BilevelJump}.
 
 %\section{Add}
 %\begin{equation}
@@ -331,7 +331,7 @@ Para casos con restricciones no lineales $v_j(x,y)$, se recomienda combinar Prod
 Este paquete permite abordar una amplia variedad de tipos de problemas. En este trabajo usaremos las  bibliotecas $JuMP$ y BilevelJuMP.
 % Añadir explicación MPEC
 \subsection*{JuMP}
-Esta biblioteca permite resolver problemas de programaci\'on matem\'atica no lineal y discreta. O sea
+Esta biblioteca permite resolver problemas de programación matemática no lineal y discreta. O sea
 $$
     \min F(z)$$
 sujeto a:
@@ -339,17 +339,17 @@ sujeto a:
     & g_i(z) \leq 0, && i = 1,\ldots,q, \\
     & h_k(z)  = 0, && i = 1,\ldots,q_0,\\
 \end{align} donde $z\in \mathbb{R}^p\times  \mathbb{R}^{\hat{n}-p}$.
-JuMP  permite gestionar una variedad de casos diferenciando como si las variables son continuas o discretas y  las restricciones  cuadráticas, lineales, de cotas o no lineales y, similarmente, si   la funci\ 'on objetivo es cuadrática, lineal o no lineal. También permite definir  restricciones de complementariedad  y ofrece métodos para resolver MPECs como ******.
-  %TOD: Poner esto despues de expluicar las reformulaciones
-Pqra m\'as detalles sobre lq biblioteca, ver \cite{JuMPPaper}.
+JuMP  permite gestionar una variedad de casos diferenciando como si las variables son continuas o discretas y  las restricciones  cuadráticas, lineales, de cotas o no lineales y, similarmente, si   la función objetivo es cuadrática, lineal o no lineal. También permite definir  restricciones de complementariedad  y ofrece métodos para resolver MPECs como ******.
+  %TOD: Poner esto después de explicar las reformulaciones
+Para m\'as detalles sobre lq biblioteca, ver \cite{JuMPPaper}.
 \subsection*{BilevelJuMP}BilevelJuMP.jl es un paquete de Julia diseñado para modelar y resolver problemas de \textbf{optimización binivel}, también conocidos como problemas de optimización de dos niveles o jerárquica, para más detalles ver \cite{BilevelJump}.
 
 BilevelJuMP.jl facilita la modelación ya que el problema del seguidor se representa usando la   sintaxis de JuMP que, como se mencionó en la parte anterior,  permite incluir de forma diferenciada  las restricciones lineales y no lineales, las variables continuas y enteras, y diferentes tipos de  funciones objetivos.
-Para el problema del nivel superior gestiona sus restricciones y la funcion objetivo de forma análoga. 
+Para el problema del nivel superior gestiona sus restricciones y la función objetivo de forma análoga. 
 
 %TODO: MOdificar esto para decir que hace esto.
      Los usuarios pueden experimentar con diversas reformulaciones para las restricciones de complementariedad en los problemas MPEC, incluyendo SOS1 y McCarl (Big-M), entre otros.
-    %TODO: POner que es comun a los dos 
+    %TODO: POner que es común a los dos 
  BilevelJuMP.jl puede utilizar tanto solucionadores de \textbf{programación lineal mixta entera (MIP)} como solucionadores de \textbf{programación no lineal (NLP)}, dependiendo de las características del problema y la reformulación elegida. 
 
 %\subsection{Limitaciones del BilevelJuMP.jl}
@@ -363,7 +363,7 @@ A pesar de sus capacidades, BilevelJuMP.jl presenta algunas limitaciones, entre 
     \item La formulación y resolución de problemas muy específicos o especializados podrían no estar completamente optimizadas en el paquete.
 \end{itemize}
 
-Teneindo en cuenta la posibilidad de que los m\'etodos de solución converjan a puntos estacionarios de distinto tipo, resulta interesante comprobar si, conocido un punto de esta naturaleza, el algoritmo logra obtener un punto con  mejor evaluaci\'on de la funcion objetivo. Esta es la motivaci\'on para el dasarrollo del generador de problemas prueba, objeto de esta tesis y que se presentar\ ' en el pr\ oximo cap\'itulo.
+Teniendo en cuenta la posibilidad de que los métodos de solución converjan a puntos estacionarios de distinto tipo, resulta interesante comprobar si, conocido un punto de esta naturaleza, el algoritmo logra obtener un punto con  mejor evaluación de la función objetivo. Esta es la motivación para el desarrollo del generador de problemas prueba, objeto de esta tesis y que se presentará en el próximo capítulo.
 % Explicación algoritmos 
 begin{equation}
 %    \min_{x,y,\lambda_j,f_j} F(x,y)

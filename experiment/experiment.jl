@@ -42,7 +42,18 @@ end
 
 
 
-function create_dataframe(model,x,y,name_optimize_method::String)
+function create_dataframe(resultado,model,x,y,name_optimize_method::String)
+    
+    # Extraer los tiempos y otros datos relevantes
+    tiempos = resultado.times  # Tiempos en nanosegundos
+    min_tiempo = minimum(tiempos) / 1e9  # Tiempo mínimo en segundos
+    max_tiempo = maximum(tiempos) / 1e9  # Tiempo máximo en segundos
+    promedio_tiempo = mean(tiempos) / 1e9  # Tiempo promedio en segundos
+    
+    # Extraer el uso de recursos
+    num_asignaciones = sum(resultado.allocs)  # Total de asignaciones de memoria
+    memoria_usada = maximum(resultado.memory) / (1024^2)  # Memoria máxima usada en MB
+
     println("optimize Method: $name_optimize_method")
     # Escribir el resultado de la solucion primal
     p_s=string(BilevelJuMP.primal_status(model))
@@ -63,17 +74,7 @@ function create_dataframe(model,x,y,name_optimize_method::String)
     f_vars=BilevelJuMP.value.(y)
     println("Followers Vars Value $f_vars")
 
-    resultado=@benchmark optimize!(model)
-    # Extraer los tiempos y otros datos relevantes
-    tiempos = resultado.times  # Tiempos en nanosegundos
-    min_tiempo = minimum(tiempos) / 1e9  # Tiempo mínimo en segundos
-    max_tiempo = maximum(tiempos) / 1e9  # Tiempo máximo en segundos
-    promedio_tiempo = mean(tiempos) / 1e9  # Tiempo promedio en segundos
-    
-    # Extraer el uso de recursos
-    num_asignaciones = sum(resultado.allocs)  # Total de asignaciones de memoria
-    memoria_usada = maximum(resultado.memory) / (1024^2)  # Memoria máxima usada en MB
-
+   
     # Crear un DataFrame para almacenar los resultados
     df_resultados = DataFrame(
     Optimize_Method=name_optimize_method,
@@ -100,9 +101,9 @@ end
 
 function make_experiment(model_with_optimizer,x_s,y_s,optimizer_name::String,problem_name::String)
     # Mandar a optimizar el modelo 
-    optimize!(model)
+    resultado=@benchmark optimize!(model_with_optimizer)
     # Crear el dataframe de respuesta
-    df= create_dataframe(model,x_s,y_s,optimizer_name)
+    df= create_dataframe(resultado,model_with_optimizer,x_s,y_s,optimizer_name)
     # Ahora serializar en un xlxs los datos con el nombre del modelo
     # Guardar el DataFrame en un archivo Excel
     file_name=serialize_in_xlsx(df,problem_name)

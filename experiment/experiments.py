@@ -74,7 +74,7 @@ def create_string_tuple_from_dic(dic:dict,keys:list):
     temp+=f")"
     return temp
 class ExperimentResultAtomic:
-    def __init__(self,problem_name:str,method_name:str,estatus_primal:str,estatus_termination:str,val_obj:float,original_leader_value:float,time_:float,leaders_vars:list[str],follower_vars:list[str],point:dict[str,float]):
+    def __init__(self,problem_name:str,method_name:str,estatus_primal:str,estatus_termination:str,val_obj:float,original_leader_value:float,time_:float,leaders_vars:list[str],follower_vars:list[str],point:dict[str,float],point_list:list[float]):
         self.problem_name:str=problem_name
         self.method_name:str=method_name
         self.estatus_primal:str=estatus_primal
@@ -83,9 +83,20 @@ class ExperimentResultAtomic:
         self.original_leader_value:float=round(original_leader_value,2)
         self.time_:float=time_
         self.point:dict[str,float]=point
+        self.point_list:list[float]=point_list
         self.leaders_vars:list[str]=leaders_vars
         self.follower_vars:list[str]=follower_vars
         
+    def get_point_tupple_string(self)->str:
+        """
+        Devuelve el punto en forma de string
+        """
+        temp=f"("
+        for key in self.point_list:
+            val=round(key,2)
+            temp+=f" {str(val)},"
+        temp+=f")"
+        return temp
     def compute_val(self):
         """
         Computa la diferencia que existe entre el el valor del problema modificado y el optimo de este obtenido en caso del supuesto optimo
@@ -204,6 +215,7 @@ class Experiment:
         Dada la lista que contine la fila
         """
         point:dict[str,float]={}
+        point_list:list[float]=[]
         len_vars_leader=len(leader_vars)
         len_vars_follower=len(follower_vars)
         len_all=len_vars_leader+len_vars_follower
@@ -214,7 +226,8 @@ class Experiment:
         
         for i in range(index_start_x,len(lis)):
             val=lis[i]
-            val=float(val)
+            val=round(float(val),2)
+            point_list.append(val)
             if j<len_vars_leader:
                 point[leader_vars[j]]=val
                 j=+1
@@ -223,7 +236,7 @@ class Experiment:
                 k+=1
           
     
-        handle.push_result(ExperimentResultAtomic(problem_name=handle.problem_name,method_name=lis[0],estatus_primal=lis[1],estatus_termination=lis[2],val_obj=lis[3],original_leader_value=handle.original_evaluation_val,time_=lis[6],leaders_vars=leader_vars,follower_vars=follower_vars,point=point))
+        handle.push_result(ExperimentResultAtomic(problem_name=handle.problem_name,method_name=lis[0],estatus_primal=lis[1],estatus_termination=lis[2],val_obj=lis[3],original_leader_value=handle.original_evaluation_val,time_=lis[6],leaders_vars=leader_vars,follower_vars=follower_vars,point=point,point_list=point_list))
         # Apartir del indice 9 incluyendoilo son las variables
         return handle
     def  _push_into_dict(self,problem_name:str,point_type:str,handle:ExperimentsResult):
@@ -328,16 +341,19 @@ class Experiment:
         alpha_zero_orig_point,alpha_zero_orig_val=self._get_original_point_string(best_alpha_zero.problem_name,ALPHAZERO)
         
         ##
-        all_vars=best_c.leaders_vars+best_c.follower_vars
-        c_optimal_point=create_string_tuple_from_dic(best_c.point,all_vars)
-        m_optimal_point=create_string_tuple_from_dic(best_m.point,all_vars)
-        strong_optimal_point=create_string_tuple_from_dic(best_strong.point,all_vars)
-        alpha_zero_optimal_point=create_string_tuple_from_dic(best_alpha_zero.point,all_vars)
-        
+        #all_vars=best_c.leaders_vars+best_c.follower_vars
+        #c_optimal_point=create_string_tuple_from_dic(best_c.point,all_vars)
+        #m_optimal_point=create_string_tuple_from_dic(best_m.point,all_vars)
+        #strong_optimal_point=create_string_tuple_from_dic(best_strong.point,all_vars)
+        #alpha_zero_optimal_point=create_string_tuple_from_dic(best_alpha_zero.point,all_vars)
+        c_optimal_point=best_c.get_point_tupple_string()
+        m_optimal_point=best_m.get_point_tupple_string()
+        strong_optimal_point=best_strong.get_point_tupple_string()
+        alpha_zero_optimal_point=best_alpha_zero.get_point_tupple_string()
         temp:str=f"""
         \\begin{{resultstable}}{{Problemas {self.problem_type_name} Seleccionados}}
         \\resultrow{{$\alpha=0$}}{{{best_alpha_zero.problem_name}}}{{{alpha_zero_orig_point}}}{{{alpha_zero_orig_val}}}{{{alpha_zero_optimal_point}}}{{{round(best_alpha_zero.val_obj,2)}}}{{{best_alpha_zero.method_name}}}
-        \\resultrow{{C-Estacionario}}{{{best_c.problem_name}}}{{{c_orig_point}}}{{{c_orig_val}}}{{{c_optimal_point}}}{{{round(best_c.val_obj,2)}}}{best_c.method_name}
+        \\resultrow{{C-Estacionario}}{{{best_c.problem_name}}}{{{c_orig_point}}}{{{c_orig_val}}}{{{c_optimal_point}}}{{{round(best_c.val_obj,2)}}}{{best_c.method_name}}
         \\resultrow{{M-Estacionario}}{{{best_m.problem_name}}}{{{m_orig_point}}}{{{m_orig_val}}}{{{m_optimal_point}}}{{{round(best_m.val_obj,2)}}}{{{best_m.method_name}}}
         \\resultrow{{Fuertemente-Estacionario}}{{{best_strong.problem_name}}}{{{strong_orig_point}}}{{{strong_orig_val}}}{{{strong_optimal_point}}}{{{round(best_strong.val_obj,2)}}}{{{best_strong.method_name}}}
         \\end{{resultstable}}

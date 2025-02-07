@@ -94,7 +94,7 @@ class ExperimentsResult:
     def push_result(self,result:ExperimentResultAtomic):
         self.results.append(result)
     
-    def _get_sort_comparation():
+    def _get_sort_comparation(self):
         def sort_comparation(result:ExperimentResultAtomic):
             diference=self.original_evaluation_val-result.val_obj
             if self.original_evaluation_val<result.val_obj:
@@ -112,14 +112,18 @@ class ExperimentsResult:
         # Despues descartar los que no sean FEASIBLE_POINT
         # Filtrar la lista para incluir solo los elementos con estatus_primal igual a "FEASIBLE_POINT"
         filtered_results:list[ExperimentResultAtomic]= list(filter(lambda result: result.estatus_primal == "FEASIBLE_POINT", results))
+        if len(filtered_results)<1:
+            filtered_results=copy.deepcopy(self.results)
         # Priorizar los que su diferencia con el valor objetivo inicial es mayor
         #filtered_results= sorted(filtered_results,key=lambda result:self.original_evaluation_val-result.val_obj,reverse=True)
-        filtered_results= sorted(filtered_results,key=self._get_sort_comparation,reverse=True)
+        #filtered_results= sorted(filtered_results,key=self._get_sort_comparation(),reverse=True)
         
         if len(filtered_results)==1:
             return filtered_results[0]
-        
-        first,second,*_=filtered_results
+        if len(filtered_results)<3:
+            first,second=filtered_results
+        else:
+            first,second,*_=filtered_results
         
         if  first.val_obj==second.val_obj:
             if first.estatus_termination!="OPTIMAL":
@@ -268,17 +272,19 @@ class Experiment:
             
     def _run_experiment_from_type(self,experiments:list[ExperimentLinearQuadratic],type_problem:str)->ExperimentResultAtomic:
         # Por cada tipo de punto mandar a crear el .jl y ejecutar el archivo tomar el path para el excel y guardar data
-        
+        #if len(experiments)<1:
+        #    return
         results_lis:list[ExperimentResultAtomic]=[]
         for experiment in experiments:
             output_excel_path=experiment.run()
             # Mandar a analizar el excel
-            result:ExperimentResultAtomic=self._analize_excel(output_excel_path=output_excel_path,original_leader_value=experiment.leader_obj_value,problem_name=experiment.name,leader_vars=experiment.leader_vars,follower_vars=experiment.leader_vars,point_type=type_problem)
-            results_lis.append(result)
-        results_lis=sorted(results_lis,key=lambda x: experiment.leader_obj_value-x.val_obj,reverse=True )
-       
-        return results_lis[0]
-    
+            #result:ExperimentResultAtomic=self._analize_excel(output_excel_path=output_excel_path,original_leader_value=experiment.leader_obj_value,problem_name=experiment.name,leader_vars=experiment.leader_vars,follower_vars=experiment.leader_vars,point_type=type_problem)
+            #results_lis.append(result)
+        #results_lis=sorted(results_lis,key=lambda x: experiment.leader_obj_value-x.val_obj,reverse=True )
+
+        return 1
+        #return results_lis[0]
+
     def _get_correct_list(self,point_type:str):
         """
         Devuelve la lista de problemas generados en dependencia del tipo de puntos
@@ -341,13 +347,13 @@ class Experiment:
         best_alpha_zero=self._run_experiment_from_type(self.alpha_zero,ALPHAZERO)
         
         # Ahora hacer las tablitas
-        table_str=self._make_result_table(best_c=best_c,best_m=best_m,best_alpha_zero=best_alpha_zero,best_strong=best_strong)
-        
-        guardar_string_en_archivo(f"Resultados_{self.problem_type_name}",table_str,self.sub_folder_name)
+        #table_str=self._make_result_table(best_c=best_c,best_m=best_m,best_alpha_zero=best_alpha_zero,best_strong=best_strong)
+        #
+        #guardar_string_en_archivo(f"Resultados_{self.problem_type_name}",table_str,self.sub_folder_name)
         
         self.serializar_en_archivo(self.sub_folder_name)
         
-        print(f"Se realizo el experimento de {self.problem_type_name} con resultados \n {table_str}")
+        print(f"Se realizo el experimento de {self.problem_type_name} con resultados \n")
         
           
     def start(self):

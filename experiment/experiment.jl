@@ -99,11 +99,11 @@ end
 
 
 
-function make_experiment(model_with_optimizer,x_s,y_s,optimizer_name::String,problem_name::String)
+function make_experiment(model,x_s,y_s,optimizer_name::String,problem_name::String)
     # Mandar a optimizar el modelo 
-    resultado=@benchmark optimize!(model_with_optimizer)
+    resultado=@benchmark optimize!(model)
     # Crear el dataframe de respuesta
-    df= create_dataframe(resultado,model_with_optimizer,x_s,y_s,optimizer_name)
+    df= create_dataframe(resultado,model,x_s,y_s,optimizer_name)
     # Ahora serializar en un xlxs los datos con el nombre del modelo
     # Guardar el DataFrame en un archivo Excel
     file_name=serialize_in_xlsx(df,problem_name)

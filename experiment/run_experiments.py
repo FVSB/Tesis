@@ -37,7 +37,7 @@ def solicitar_parametros_personalizados():
 
 def main():
     # Opciones del menú
-    opciones = [LINEAL, CUADRATICO, NOCONVEXO, "Construir uno distinto"]
+    opciones = [LINEAL, CUADRATICO, NOCONVEXO,"kk" ,"Construir uno distinto"]
     
     # Mostrar el menú interactivo con flechas
     titulo = "Seleccione el tipo de experimento (use las flechas):"
@@ -67,6 +67,10 @@ def main():
             start_random_seed=1
             end_random_seed=6
             root_folder="D:\\GitHub\\Tesis\\experiment\\nonconvex"
+        elif opcion_seleccionada=="kk":
+            start_random_seed=1
+            end_random_seed=6
+            root_folder="/workspaces/Tesis/experiment/kk"
         elif opcion_seleccionada==LINEAL:
             start_random_seed=6            
             end_random_seed=11
@@ -74,7 +78,7 @@ def main():
         elif opcion_seleccionada==CUADRATICO:
             start_random_seed=11            
             end_random_seed=16
-            root_folder="D:\GitHub\Tesis\experiment\quadratic"
+            root_folder="/workspaces/Tesis/experiment/quadratic"
         
         non_convex = (opcion_seleccionada == NOCONVEXO)  # Solo es True si es No Convexo
         

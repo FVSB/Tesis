@@ -53,8 +53,6 @@ model = Model(Ipopt.Optimizer)
 
  35.63 + x - y - 9(x^2)<=0 
 
- 0<=0 
-
  -16.26 + 4.28y<=0 
 
  end)

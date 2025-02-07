@@ -402,12 +402,15 @@ class ExperimentLinearQuadratic:
         temp=f"BilevelJuMP.@objective(Upper(model),Min, {self.leader_obj}) \n"
         if len(self.leader_rest)==0:
             return temp
-        temp+f"""
+        temp+=f"""
               # Restricciones del Nivel Superior
               BilevelJuMP.@constraints(Upper(model),begin \n
         """
         for i, rest in enumerate(self.leader_rest):
-            temp+=f" a{i},{rest.expr}<=0  \n"
+            expr=rest.expr
+            if not( "x" in expr or "y" in expr ):
+                continue
+            temp+=f" a{i+1},{expr}<=0  \n"
             
         temp+="\n end) \n"
         return temp
@@ -420,7 +423,10 @@ class ExperimentLinearQuadratic:
                 BilevelJuMP.@constraints(Lower(model),begin \n
         """
         for i, rest in enumerate(self.follower_rest):
-            temp+=f" c{i},{rest.expr}<=0  \n"
+            expr=rest.expr
+            if not( "x" in expr or "y" in expr ):
+                continue
+            temp+=f" c{i},{expr}<=0  \n"
         temp+="\n end) \n"
         return temp
     def crear_array_string(self,array:list[str]):

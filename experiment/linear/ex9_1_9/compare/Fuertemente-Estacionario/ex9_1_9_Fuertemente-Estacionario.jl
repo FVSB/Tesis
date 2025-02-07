@@ -22,7 +22,7 @@ model = BilevelModel()
 
 # Definir Nivel Superior
 
-BilevelJuMP.@objective(Upper(model),Min, x + y + -1.00x +-1.00y) 
+BilevelJuMP.@objective(Upper(model),Min, x + y + -11.07x +-81.17y) 
 
 
 # Crear el Nivel Inferior
@@ -32,17 +32,18 @@ BilevelJuMP.@objective(Lower(model),Min, -5x - y)
                 # Restricciones Nivel Inferior
                 BilevelJuMP.@constraints(Lower(model),begin 
 
-         c0,-2.67 - x + 1.21y<=0  
- c1,-19.02 - 0.25x + 3.28y<=0  
+         c0,-15.45 - x + 3.28y<=0  
+ c1,-21.03 - 0.25x + 3.60y<=0  
  c2,-4.78 + x<=0  
- c3,-16.69 + x + 1.90y<=0  
+ c3,-28.19 + x + 3.76y<=0  
+ c4,-17.56 + 2.74y<=0  
 
  end) 
 
 
 # Iniciar experimento
-start_experiment(model,[ x ],[ y ],"ex9_1_9_M-Estacionario")
+start_experiment(model,[ x ],[ y ],"ex9_1_9_Fuertemente-Estacionario")
 
          
  # Evaluacion en el punto 
- 0.00
+ -542.78

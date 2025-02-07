@@ -474,6 +474,9 @@ model = BilevelModel()
 # Iniciar experimento
 {self.crear_start_experimento()}
 
+
+# Valor de la función objetivo
+{self.leader_obj_value}
         """
         return file
     

@@ -6,7 +6,7 @@ using Random
 
 # Introducir semilla
 
-Random.seed!(10)
+Random.seed!(8)
 
 # Crear Modelo Base
 model = BilevelModel()
@@ -22,27 +22,27 @@ model = BilevelModel()
 
 # Definir Nivel Superior
 
-BilevelJuMP.@objective(Upper(model),Min, x + y + -1.00x +-1.00y) 
+BilevelJuMP.@objective(Upper(model),Min, -x - 3y + -16.10x +-90.57y) 
 
 
 # Crear el Nivel Inferior
 
-BilevelJuMP.@objective(Lower(model),Min, -5x - y) 
+BilevelJuMP.@objective(Lower(model),Min, y) 
 
                 # Restricciones Nivel Inferior
                 BilevelJuMP.@constraints(Lower(model),begin 
 
-         c0,-2.67 - x + 1.21y<=0  
- c1,-19.02 - 0.25x + 3.28y<=0  
- c2,-4.78 + x<=0  
- c3,-16.69 + x + 1.90y<=0  
+         c0,-80.55 + 9.00y<=0  
+ c1,-166.03 - x + 19.33y<=0  
+ c2,-7.00 + x<=0  
+ c3,-78.78 + 4x + 5.67y<=0  
 
  end) 
 
 
 # Iniciar experimento
-start_experiment(model,[ x ],[ y ],"ex9_1_9_M-Estacionario")
+start_experiment(model,[ x ],[ y ],"ex9_1_2_Fuertemente-Estacionario")
 
          
  # Evaluacion en el punto 
- 0.00
+ -957.15

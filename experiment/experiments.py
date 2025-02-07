@@ -93,19 +93,28 @@ class ExperimentsResult:
         self.results:list[ExperimentResultAtomic]=[]
     def push_result(self,result:ExperimentResultAtomic):
         self.results.append(result)
-        
+    
+    def _get_sort_comparation():
+        def sort_comparation(result:ExperimentResultAtomic):
+            diference=self.original_evaluation_val-result.val_obj
+            if self.original_evaluation_val<result.val_obj:
+                
+                return -100000000000000+diference
+            return diference
+        return sort_comparation
     def compute_winner(self)->ExperimentResultAtomic:
         # Primero si hay solo uno se devuelve ese mismo
         if len(self.results)==1:
             return self.results[0]
         
         results=copy.deepcopy(self.results)
-        
+       
         # Despues descartar los que no sean FEASIBLE_POINT
         # Filtrar la lista para incluir solo los elementos con estatus_primal igual a "FEASIBLE_POINT"
         filtered_results:list[ExperimentResultAtomic]= list(filter(lambda result: result.estatus_primal == "FEASIBLE_POINT", results))
         # Priorizar los que su diferencia con el valor objetivo inicial es mayor
-        filtered_results= sorted(filtered_results,key=lambda result:self.original_evaluation_val-result.val_obj,reverse=True)
+        #filtered_results= sorted(filtered_results,key=lambda result:self.original_evaluation_val-result.val_obj,reverse=True)
+        filtered_results= sorted(filtered_results,key=self._get_sort_comparation,reverse=True)
         
         if len(filtered_results)==1:
             return filtered_results[0]
@@ -259,9 +268,7 @@ class Experiment:
             
     def _run_experiment_from_type(self,experiments:list[ExperimentLinearQuadratic],type_problem:str)->ExperimentResultAtomic:
         # Por cada tipo de punto mandar a crear el .jl y ejecutar el archivo tomar el path para el excel y guardar data
-        #TODO: Quitar esto
-        if len(experiments)<1:
-            return
+        
         results_lis:list[ExperimentResultAtomic]=[]
         for experiment in experiments:
             output_excel_path=experiment.run()
@@ -396,17 +403,20 @@ class Experiment:
             seed=self.start_random_seed+i
             # Ahora tomar los que son c-estacionarios
             for file_path in files:
-                
-                if "C_Stationarygenerator_alpha_non_zero" in file_path:
-                    self.C_Estacionarios.append(self.experiment_class(problem,CESTACIONARIO,file_path,problem_path,random_seed=seed))
-                elif "C_Stationarygenerator_alpha_zero" in file_path:
-                    self.alpha_zero.append(self.experiment_class(problem,ALPHAZERO,file_path,problem_path,random_seed=seed))
-                elif "M_Stationarygenerator_alpha_non_zero" in file_path:
-                    self.M_Estacionario.append(self.experiment_class(problem,MESTACIONARIO,file_path,problem_path,random_seed=seed))
-                elif "Strong_Stationarygenerator_alpha_non_zero" in file_path:
-                    self.Strong_Estacionario.append(self.experiment_class(problem,FUERTEMENTEESTACIONARIO,file_path,problem_path,random_seed=seed))
-                else:
-                    print(f"El archivo {file_path} no tiene clase identificada")
+                try:
+                    if "C_Stationarygenerator_alpha_non_zero" in file_path:
+                        self.C_Estacionarios.append(self.experiment_class(problem,CESTACIONARIO,file_path,problem_path,random_seed=seed))
+                    elif "C_Stationarygenerator_alpha_zero" in file_path:
+                        self.alpha_zero.append(self.experiment_class(problem,ALPHAZERO,file_path,problem_path,random_seed=seed))
+                    elif "M_Stationarygenerator_alpha_non_zero" in file_path:
+                        self.M_Estacionario.append(self.experiment_class(problem,MESTACIONARIO,file_path,problem_path,random_seed=seed))
+                    elif "Strong_Stationarygenerator_alpha_non_zero" in file_path:
+                        self.Strong_Estacionario.append(self.experiment_class(problem,FUERTEMENTEESTACIONARIO,file_path,problem_path,random_seed=seed))
+                    else:
+                        print(f"El archivo {file_path} no tiene clase identificada")
+                except Exception as e:
+                    print(f"Error en el archivo {problem}")
+                    raise Exception(e)
                     
     def find_problem_files(self,dirpath,sub_folder,extension:str):
         problem_files = []
@@ -425,8 +435,8 @@ class Experiment:
                     problem_files.append(file_path)
         return problem_files
 
-print("Hola")
-a=Experiment(root_folder="D:\GitHub\Tesis\experiment\kk",start_random_seed=1,end_random_seed=6,non_convex=True,problem_type_name=NOCONVEXO)
-a.start()
+#print("Hola")
+#a=Experiment(root_folder="D:\GitHub\Tesis\experiment\kk",start_random_seed=1,end_random_seed=6,non_convex=True,problem_type_name=NOCONVEXO)
+#a.start()
 #print(a.C_Estacionarios[0].run())
 

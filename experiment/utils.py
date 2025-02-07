@@ -14,7 +14,7 @@ import subprocess
 from sympy import symbols, sympify
 import copy
 from sympy import symbols, diff, sympify, latex
-
+import numpy as np
 import re
 
 
@@ -187,6 +187,46 @@ def derivar_expresion(expr_str, variables_str: list[str]):
     return derivadas
 
 
+from sympy import symbols, sin, cos, exp, log, sqrt, asin, acos, atan, sinh, cosh, tanh
+from sympy.parsing.sympy_parser import parse_expr
+
+def es_no_lineal(expresion_str, variables):
+    """
+    Determina si una expresión dada es no lineal.
+
+    Parámetros:
+    - expresion_str (str): La expresión matemática en formato de cadena.
+    - variables (list): Lista de nombres de variables (como strings).
+
+    Retorna:
+    - bool: True si la expresión es no lineal, False si es lineal o cuadrática.
+    """
+    # Convertir las variables a símbolos de sympy
+    var_symbols = symbols(variables)
+    
+    # Convertir la expresión de string a una expresión sympy
+    try:
+        expr = parse_expr(expresion_str, transformations="all")
+    except Exception as e:
+        raise ValueError(f"Error al parsear la expresión: {e}")
+    
+    # Verificar si contiene funciones no lineales
+    funciones_no_lineales = {sin, cos, exp, log, sqrt, asin, acos, atan, sinh, cosh, tanh}
+    if any(func in expr.atoms() for func in funciones_no_lineales):
+        return True
+    
+    # Intentar convertir la expresión a un polinomio
+    poly = expr.as_poly(var_symbols)
+    if poly is None:
+        return True  # No es un polinomio -> no lineal
+    
+    # Obtener el grado total del polinomio
+    grado = poly.total_degree()
+    
+    # Si el grado es mayor a 2, es no lineal
+    return grado > 2
+
+
 def procesar_y_ejecutar_archivo_julia(root_path, file_content_julia:str,file_content_latex:str, point_type:str,filename:str="datos"):
     """
     ACA SE AÑADE AL FILENAME el .jl
@@ -280,7 +320,10 @@ class ExperimentLinearQuadratic:
         for i in range(count_filas):
             # Por cada fila extraer:
             expr,evaluation,restriction_type,miu=df.iloc[i].to_list()
+            expr=str(expr)
             self.leader_rest.append(LeaderRestrictions(expr=expr,evaluation=evaluation,restriction_Set_Type=restriction_type,miu=miu))
+ 
+    
     
     def _extract_follower_restrictions(self):
         df=self.all_sheets["Restricciones_del_follower"]
@@ -288,6 +331,7 @@ class ExperimentLinearQuadratic:
         
         for i in range(count_filas):
             expr,evaluation,restriction_type,_lambda,_beta,_gamma=df.iloc[i].to_list()
+            expr=str(expr)
             self.follower_rest.append(FollowerRestrictions(expr=expr,evaluation=evaluation,restriction_Set_Type=restriction_type,_lambda=_lambda,_beta=_beta,_gamma=_gamma))
     
     def _extract_punto(self):
@@ -453,8 +497,8 @@ model = BilevelModel()
         Mandar a ejecutar el archivo
         y devuelve el excel de salida
         """
-        
-        file=convertir_expresion_a_julia(self.write_archivo())
+        file=f"{self.write_archivo()} \n # Evaluacion en el punto \n {round(self.leader_obj_value,2)}"
+        file=convertir_expresion_a_julia(file)
         # guardar el archivo y mandar a correr
         name=self.save_file(file)
         print(f"Finalizado el archivo {name}")
@@ -600,15 +644,35 @@ class ExperimentNonConvex(ExperimentLinearQuadratic):#
             expr+=f"==0"
             temp+=f" @NLconstraint(model,{expr})  \n  "
         return temp
+    def crear_nlconstrainst(self,lnconstrainst:list[FollowerRestrictions])->str:
+        if len(lnconstrainst)<1:
+            return ""
+        temp=f" # Restricciones no lineales \n"
+        
+        for rest in lnconstrainst:
+            temp+=f" @NLconstraint(model,{convertir_expresion_a_julia(rest.expr)}<=0)"
+        
+        return temp
 
     def _crear_restricciones(self):
+        # Filtrar las no lineales primero
+        to_nlconstraint=[]
+        t=self.leader_rest+self.follower_rest
+        all_restrictions=[]
+        for rest in t:
+            if es_no_lineal(rest.expr,self.get_all_vars):
+                to_nlconstraint.append(rest)
+            else:
+                all_restrictions.append(rest)
+        # MAndar hacer las no lineales
+        non_lineal=self.crear_nlconstrainst(to_nlconstraint)
         
         temp=f"""
+        {non_lineal}
 # Restricciones
         @constraints(model,begin
         
         """
-        all_restrictions=self.leader_rest+self.follower_rest
         for rest in all_restrictions:
             temp+=f"\n {rest.expr}<=0 \n"
     
@@ -625,6 +689,7 @@ class ExperimentNonConvex(ExperimentLinearQuadratic):#
             temp+=f" \n @complements(model,0<=-({rest.expr}),l_{i+1}>=0) \n"
             
         return temp
+    
     def write_archivo(self):
         
         file=f"""
@@ -639,6 +704,10 @@ Random.seed!({self.random_seed})
 model = Model(Ipopt.Optimizer)
 
 {self.crear_variables()}
+
+# Definir la funcion objetivo
+
+@objective(model,Min,{convertir_expresion_a_julia(self.leader_obj)})
 
 # Definir KKT
 

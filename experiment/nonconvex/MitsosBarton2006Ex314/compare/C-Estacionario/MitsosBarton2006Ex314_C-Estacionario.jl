@@ -72,4 +72,6 @@ make_experiment(model,[ x ],[ y ],"Reformulacion_KKT","MitsosBarton2006Ex314_C-E
 println("Se Finalizo el experimento MitsosBarton2006Ex314")
 
         
-        
+         
+ # Evaluacion en el punto 
+ -19.06

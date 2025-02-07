@@ -74,17 +74,45 @@ def create_string_tuple_from_dic(dic:dict,keys:list):
     temp+=f")"
     return temp
 class ExperimentResultAtomic:
-    def __init__(self,problem_name:str,method_name:str,estatus_primal:str,estatus_termination:str,val_obj:float,time_:float,leaders_vars:list[str],follower_vars:list[str],point:dict[str,float]):
+    def __init__(self,problem_name:str,method_name:str,estatus_primal:str,estatus_termination:str,val_obj:float,original_leader_value:float,time_:float,leaders_vars:list[str],follower_vars:list[str],point:dict[str,float],point_list:list[float]):
         self.problem_name:str=problem_name
         self.method_name:str=method_name
         self.estatus_primal:str=estatus_primal
         self.estatus_termination:str=estatus_termination
         self.val_obj:float=round(val_obj,2)
+        self.original_leader_value:float=round(original_leader_value,2)
         self.time_:float=time_
         self.point:dict[str,float]=point
+        self.point_list:list[float]=point_list
         self.leaders_vars:list[str]=leaders_vars
         self.follower_vars:list[str]=follower_vars
         
+    def get_point_tupple_string(self)->str:
+        """
+        Devuelve el punto en forma de string
+        """
+        temp=f"("
+        for key in self.point_list:
+            val=round(key,2)
+            temp+=f" {str(val)},"
+        temp+=f")"
+        return temp
+    def compute_val(self):
+        """
+        Computa la diferencia que existe entre el el valor del problema modificado y el optimo de este obtenido en caso del supuesto optimo
+        ser mayor que el valor original se penaliza esto sumando -1000000000000 a esa diferencia
+        """
+        diference=self.original_leader_value-self.val_obj
+        if self.original_leader_value<self.val_obj:
+            return -100000000000000+diference
+        return diference
+    
+    def __lt__(self,other):
+        if not isinstance(other,ExperimentResultAtomic):
+            raise Exception(f"other es de clase {type(other)} no de clase ExperimentResultAtomic")
+        
+        return self.compute_val()<other.compute_val()
+    
 class ExperimentsResult:
     def __init__(self,problem_name:str,original_evaluation_val:float,point_type:str):
         self.problem_name:str=problem_name
@@ -94,14 +122,7 @@ class ExperimentsResult:
     def push_result(self,result:ExperimentResultAtomic):
         self.results.append(result)
     
-    def _get_sort_comparation(self):
-        def sort_comparation(result:ExperimentResultAtomic):
-            diference=self.original_evaluation_val-result.val_obj
-            if self.original_evaluation_val<result.val_obj:
-                
-                return -100000000000000+diference
-            return diference
-        return sort_comparation
+    
     def compute_winner(self)->ExperimentResultAtomic:
         # Primero si hay solo uno se devuelve ese mismo
         if len(self.results)==1:
@@ -115,8 +136,7 @@ class ExperimentsResult:
         if len(filtered_results)<1:
             filtered_results=copy.deepcopy(self.results)
         # Priorizar los que su diferencia con el valor objetivo inicial es mayor
-        #filtered_results= sorted(filtered_results,key=lambda result:self.original_evaluation_val-result.val_obj,reverse=True)
-        #filtered_results= sorted(filtered_results,key=self._get_sort_comparation(),reverse=True)
+        filtered_results= sorted(filtered_results,key=lambda result:result.val_obj,reverse=False)
         
         if len(filtered_results)==1:
             return filtered_results[0]
@@ -129,9 +149,8 @@ class ExperimentsResult:
             if first.estatus_termination!="OPTIMAL":
                 return second
             return first if first.time_<=second.time_ else second
-            
-            
-
+             
+        return first
 
 
 
@@ -196,6 +215,7 @@ class Experiment:
         Dada la lista que contine la fila
         """
         point:dict[str,float]={}
+        point_list:list[float]=[]
         len_vars_leader=len(leader_vars)
         len_vars_follower=len(follower_vars)
         len_all=len_vars_leader+len_vars_follower
@@ -206,7 +226,8 @@ class Experiment:
         
         for i in range(index_start_x,len(lis)):
             val=lis[i]
-            val=float(val)
+            val=round(float(val),2)
+            point_list.append(val)
             if j<len_vars_leader:
                 point[leader_vars[j]]=val
                 j=+1
@@ -214,10 +235,8 @@ class Experiment:
                 point[follower_vars[k]]=val
                 k+=1
           
-        
-
-            
-        handle.push_result(ExperimentResultAtomic(problem_name=handle.problem_name,method_name=lis[0],estatus_primal=lis[1],estatus_termination=lis[2],val_obj=lis[3],time_=lis[6],leaders_vars=leader_vars,follower_vars=follower_vars,point=point))
+    
+        handle.push_result(ExperimentResultAtomic(problem_name=handle.problem_name,method_name=lis[0],estatus_primal=lis[1],estatus_termination=lis[2],val_obj=lis[3],original_leader_value=handle.original_evaluation_val,time_=lis[6],leaders_vars=leader_vars,follower_vars=follower_vars,point=point,point_list=point_list))
         # Apartir del indice 9 incluyendoilo son las variables
         return handle
     def  _push_into_dict(self,problem_name:str,point_type:str,handle:ExperimentsResult):
@@ -272,18 +291,20 @@ class Experiment:
             
     def _run_experiment_from_type(self,experiments:list[ExperimentLinearQuadratic],type_problem:str)->ExperimentResultAtomic:
         # Por cada tipo de punto mandar a crear el .jl y ejecutar el archivo tomar el path para el excel y guardar data
-        #if len(experiments)<1:
+        #if len(experiments)<1: # Descomentar solo para testear
         #    return
         results_lis:list[ExperimentResultAtomic]=[]
         for experiment in experiments:
             output_excel_path=experiment.run()
             # Mandar a analizar el excel
-            #result:ExperimentResultAtomic=self._analize_excel(output_excel_path=output_excel_path,original_leader_value=experiment.leader_obj_value,problem_name=experiment.name,leader_vars=experiment.leader_vars,follower_vars=experiment.leader_vars,point_type=type_problem)
-            #results_lis.append(result)
-        #results_lis=sorted(results_lis,key=lambda x: experiment.leader_obj_value-x.val_obj,reverse=True )
+            result:ExperimentResultAtomic=self._analize_excel(output_excel_path=output_excel_path,original_leader_value=experiment.leader_obj_value,problem_name=experiment.name,leader_vars=experiment.leader_vars,follower_vars=experiment.leader_vars,point_type=type_problem)
+            results_lis.append(result)
+        results_lis=sorted(results_lis,reverse=True )
 
-        return 1
-        #return results_lis[0]
+        if len(results_lis)<1:
+            raise Exception(f"La lista de ganadores en la categoria {type_problem} es de len 0")
+        
+        return results_lis[0]
 
     def _get_correct_list(self,point_type:str):
         """
@@ -320,16 +341,19 @@ class Experiment:
         alpha_zero_orig_point,alpha_zero_orig_val=self._get_original_point_string(best_alpha_zero.problem_name,ALPHAZERO)
         
         ##
-        all_vars=best_c.leaders_vars+best_c.follower_vars
-        c_optimal_point=create_string_tuple_from_dic(best_c.point,all_vars)
-        m_optimal_point=create_string_tuple_from_dic(best_m.point,all_vars)
-        strong_optimal_point=create_string_tuple_from_dic(best_strong.point,all_vars)
-        alpha_zero_optimal_point=create_string_tuple_from_dic(best_alpha_zero.point,all_vars)
-        
+        #all_vars=best_c.leaders_vars+best_c.follower_vars
+        #c_optimal_point=create_string_tuple_from_dic(best_c.point,all_vars)
+        #m_optimal_point=create_string_tuple_from_dic(best_m.point,all_vars)
+        #strong_optimal_point=create_string_tuple_from_dic(best_strong.point,all_vars)
+        #alpha_zero_optimal_point=create_string_tuple_from_dic(best_alpha_zero.point,all_vars)
+        c_optimal_point=best_c.get_point_tupple_string()
+        m_optimal_point=best_m.get_point_tupple_string()
+        strong_optimal_point=best_strong.get_point_tupple_string()
+        alpha_zero_optimal_point=best_alpha_zero.get_point_tupple_string()
         temp:str=f"""
         \\begin{{resultstable}}{{Problemas {self.problem_type_name} Seleccionados}}
         \\resultrow{{$\alpha=0$}}{{{best_alpha_zero.problem_name}}}{{{alpha_zero_orig_point}}}{{{alpha_zero_orig_val}}}{{{alpha_zero_optimal_point}}}{{{round(best_alpha_zero.val_obj,2)}}}{{{best_alpha_zero.method_name}}}
-        \\resultrow{{C-Estacionario}}{{{best_c.problem_name}}}{{{c_orig_point}}}{{{c_orig_val}}}{{{c_optimal_point}}}{{{round(best_c.val_obj,2)}}}{best_c.method_name}
+        \\resultrow{{C-Estacionario}}{{{best_c.problem_name}}}{{{c_orig_point}}}{{{c_orig_val}}}{{{c_optimal_point}}}{{{round(best_c.val_obj,2)}}}{{best_c.method_name}}
         \\resultrow{{M-Estacionario}}{{{best_m.problem_name}}}{{{m_orig_point}}}{{{m_orig_val}}}{{{m_optimal_point}}}{{{round(best_m.val_obj,2)}}}{{{best_m.method_name}}}
         \\resultrow{{Fuertemente-Estacionario}}{{{best_strong.problem_name}}}{{{strong_orig_point}}}{{{strong_orig_val}}}{{{strong_optimal_point}}}{{{round(best_strong.val_obj,2)}}}{{{best_strong.method_name}}}
         \\end{{resultstable}}
@@ -347,9 +371,9 @@ class Experiment:
         best_alpha_zero=self._run_experiment_from_type(self.alpha_zero,ALPHAZERO)
         
         # Ahora hacer las tablitas
-        #table_str=self._make_result_table(best_c=best_c,best_m=best_m,best_alpha_zero=best_alpha_zero,best_strong=best_strong)
+        table_str=self._make_result_table(best_c=best_c,best_m=best_m,best_alpha_zero=best_alpha_zero,best_strong=best_strong)
         #
-        #guardar_string_en_archivo(f"Resultados_{self.problem_type_name}",table_str,self.sub_folder_name)
+        guardar_string_en_archivo(f"Resultados_{self.problem_type_name}",table_str,self.sub_folder_name)
         
         self.serializar_en_archivo(self.sub_folder_name)
         

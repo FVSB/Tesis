@@ -49,6 +49,9 @@ BilevelJuMP.@objective(Lower(model),Min, (-30 + x + 2y)^2)
 # Iniciar experimento
 start_experiment(model,[ x ],[ y ],"ex9_2_2_Fuertemente-Estacionario")
 
+
+# Valor de la función objetivo
+-2976.34
          
  # Evaluacion en el punto 
  -2976.34

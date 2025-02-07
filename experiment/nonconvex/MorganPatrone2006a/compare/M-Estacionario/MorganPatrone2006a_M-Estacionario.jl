@@ -72,4 +72,6 @@ make_experiment(model,[ x ],[ y ],"Reformulacion_KKT","MorganPatrone2006a_M-Esta
 println("Se Finalizo el experimento MorganPatrone2006a")
 
         
-        
+         
+ # Evaluacion en el punto 
+ -1.45

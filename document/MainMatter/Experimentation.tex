@@ -1,0 +1,176 @@
+
+\chapter{Experimentación}
+En este capítulo se experimentará tomando una serie de problemas, ver \cite{BolibTestProblems}, 
+que sean: Lineales, Cuadráticos y No Convexos. En ella primeramente utilizaremos las bibliotecas de Julia
+para obtener puntos que sean mínimos locales, después añadir valores aleatorios a esos puntos y posteriormente 
+generar problemas estacionarios del tipo: fuerte, M y C . Posteriormente estos problemas modificados serán nuevamente
+ejecutados por los algoritmos tradicionales de Julia para conocer su efectividad con respecto al valor de la función objetivo del nivel superior.
+
+
+Para ello tomaremos 15 problemas de optimización binivel.
+Entre ellos habrá 3 clases: Lineales, Cuadráticos y No Convexos, donde habrá 5 problemas de cada clase.
+Estos han sido extraídos de \cite{Floudas1999HandbookOT} para las dos primeras clasificaciones y \cite{BolibTestProblems} para la última.
+
+\newpage
+%\section{Problemas Escogidos}
+Los problemas escogidos para la experimentación fueron:
+
+%Tabla con los problemas escogidos
+\begin{table}[h!]
+\centering
+\caption{Problemas Seleccionados}
+\begin{tabular}{ | m{5cm} | m{5cm} | m{5cm} | }
+  
+  \hline
+  \textbf{No Convexos} & \textbf{Lineales} & \textbf{Cuadráticos} \\
+  \hline
+  MitsosBarton2006Ex312 & ex9.1.1 & ex9.2.1 \\
+  \hline
+  MitsosBarton2006Ex313 & ex9.1.2 & ex9.2.2 \\
+  \hline
+  MitsosBarton2006Ex314 & ex9.1.8 & ex9.2.3\\
+  \hline
+  MitsosBarton2006Ex323 & ex9.1.9 & ex9.2.4\\
+  \hline
+  MorganPatrone2006a & ex9.1.10 & ex9.2.5 \\
+  \hline
+\end{tabular}
+\end{table}
+
+
+
+\newpage
+\section{Modelación de la experimentación}
+Se describirá el proceso de generar la experimentación. 
+Todos los valores, en esta parte, han sido redondeados por exceso a dos cifras después de la coma. 
+
+%\subsubsection{Obtención de los óptimos}
+Inicialmente se necesita obtener óptimos de los problemas con los paquetes convencionales de Julia
+cuya forma de resolver dependerá de la clase del problema. A continuación definiremos este tipo de clases y como se obtienen los óptimos. 
+
+% Definor problemas lioneales
+
+\begin{itemize}
+    \item \textbf{Problemas Lineales y Cuadráticos :}\\
+            Un problema binivel lineal es aquel el cual los problemas del nivel superior e inferior son lineales, análogamente se define el problema cuadrático.
+            % Escribir la definición matemática
+            
+            Con dicho problema se introduce los datos en la interfaz de \textbf{BilevelJuMP}, ver \cite{BilevelJump}, con el cual se utilizan 3 técnicas entre las ofrecidas por esta:
+            \begin{itemize}
+                \item \textbf{Big-M :} Con el optimizador High-Performance Solver for Linear Programming (HiGHS) y los valores $\text{primal big M} = 100, \quad \text{dual big M} = 100$.
+                \item \textbf{SOS1 :} Con el optimizador Solving Constraint Integer Programs (SCIP).
+                \item \textbf{ProductMode :} Con el optimizador Interior Point Optimizer (Ipopt).
+            \end{itemize} 
+            Cada uno de los resultados de evaluar el problema en cada forma anterior se guarda en un formato \textit{.xlsx}
+            donde por cada optimizador se guarda los parámetros:
+            \begin{itemize}
+                \item Estatus del Primal, el cual define si es un punto factible o no.
+                \item Estatus de la Finalización, si terminó porque encontró un óptimo o se estancó en un óptimo local.
+                \item Valor de la función objetivo del nivel superior.
+                \item El punto óptimo encontrado, en caso de ser hallado.
+            \end{itemize} 
+            Posteriormente se analizan los resultados de dichos métodos, se selecciona el de mejor evaluación de la función objetivo.
+    \item \textbf{Problemas No Convexos :}\\
+            Al \textbf{BilevelJuMP} no contar con soporte para esta clase de problemas se utiliza \textbf{JuMP}, ver \cite{JuMPPaper}.
+            Por ello se utiliza la reformulación KKT como la de \ref{eq:KKT_Optimista} y se procede a utilizar la interfaz brindada por este. Para el caso de las restricciones de 
+            complementariedad se utiliza \textbf{Complementarity}, ver \cite{Complementarityjl}, con el optimizador Ipopt y análogo al caso anterior se extraen los mismos datos.
+\end{itemize}
+
+
+\subsubsection{Generación de los problemas}
+% Como se modifica el punto
+Se toma el problema original de entrada y el punto obtenido en el paso anterior el cual en cada componente se le hace suma un
+valor aleatorio entre $1e-10$ y $5$, siendo este modificado: $z^*_0$. 
+% Que se generan 3 clases de problemas estacionarios
+Se generan los 3 problemas bajo los 3 tipos de estacionariedad descritos en cada uno, 
+% Se toma \alpha=0 y \alpha!=0
+además en cada uno se toma la opción de $\vec{\alpha}=\vec{0}$ y $\vec{\alpha}\ne \vec{0}$.
+Para los $\vec{\alpha}\neq \vec{0}$ se genera un vector aleatorio donde cada componente está entre $1e-10$ y $3$.
+% Como se dividen los indices activos
+Luego para los conjuntos de índices activos de las $v_{j}s$ se dividen en $1/2$ del tipo $J_1^v$ (\ref{J_0_lambda_0_level_inferior}) y $1/4$ para los dos restantes.
+% Explicar como se modifican los indices activos 
+Con respecto a la selección de los multiplicadores $\beta_j$ y $\gamma_j$ se 
+se generan valores aleatorios entre $1e-10$ y $10$ en caso que estos no tengan que ser $0$, 
+para los casos en que haya más de una combinación de los multiplicadores con respecto a su igualdad a $0$
+se toma un valor aleatorio generado por una distribución uniforme discreta.
+% Como se guarda
+Finalmente cada problema generado es guardado en un archivo \textit{xlsx} con la siguiente designación:
+\textit{(nombre del problema)\_(Tipo de punto estacionario)(generator)\_alpha\_((non\_zero) si $\alpha \neq 0$ y (zero) si $\alpha = 0$).xlsx},
+donde se guarda: 
+\begin{itemize}
+    \item Las expresiones de las funciones objetivo de ambos niveles y su valor evaluado en el punto.
+    \item Las restricciones de ambos niveles con sus multiplicadores respectivos, el tipo de indice activo y la evaluación de dicha función en el punto.
+    \item El punto $z^*_0$.
+    \item El vector $\vec{bf}.$
+    \item El vector $\vec{BF}$.
+    \item El multiplicador $\vec{\alpha}$.
+\end{itemize}
+
+\subsubsection{Comparación de los algoritmos de Julia}
+Después de tener generados los problemas se utilizan los mismos métodos de Julia mencionados anteriormente
+para obtener óptimos de cada problema generado y se elige como representante el que más haya superado su óptimo o en caso de no superar el que mayor distancia tenga con el valor objetivo inicial.
+
+\subsection{Resultados:}
+Se presentan los resultados seleccionados bajo los criterios expuestos anteriormente en las siguientes tablas que contienen:
+% Explicación de las tablas
+\begin{itemize}
+    \item El nombre del problema original desde el cual fue modificado para que fuese estacionario de la clase deseada. 
+    \item El punto al cual se forzó ser estacionario de la clase requerida y no de un subconjunto de esta, por ejemplo si es C-estacionario no es M-estacionario.
+    \item La evaluación de la función objetivo del punto estacionario.
+    \item El punto óptimo hallado por los algoritmos de Julia.
+    \item La evaluación de la función objetivo del óptimo.
+    \item Método seleccionado.
+\end{itemize}
+
+\subsubsection{Problemas Lineales} 
+% Tabla con los problemas lineales escogidos
+%- Lineales
+%	- C-Estacionario: ex9.1.8
+%	- Fuertemente: ex9.1.10
+%	- M-Estacionario:ex9.1.8
+%	- Alpha=0: ex9.1.8
+\begin{resultstable}{Problemas Lineales Seleccionados}
+    \resultrow{C-Estacionario}{ex9.1.8}{(2.55,1.25,4.25,2.15)}{ -1.72}{(3.16,0.79,.5.6,0)}{ -2.72}{Big-M}
+    \resultrow{Fuertemente-Estacionario}{ex9.1.10}{(52.15,20.25,104.6,2.05)}{-31.75}{(267,90.35,100,0)}{-393.65}{Big-M}
+    \resultrow{M-Estacionario}{ex9.1.8}{(2.55,1.25,4.25,2.15)}{-1.72}{(3.03,2.85,0,0)}{-3.20}{Big-M}
+    \resultrow{$\alpha=0$}{ex9.1.8}{(2.55,1.25,4.25,2.15)}{-1.72}{(3.34,0.8,3.68,0)}{-4.05}{Big-M}
+    \end{resultstable}
+
+    %\resultrow{$\alpha =0$}{ex9.2.3}{(1.55,2.7,-5.1,-8.65)}{-10.25}{(0,0,-5.1,-10)}{-14.7}{Big-M}
+
+
+\subsubsection{Problemas Cuadráticos}
+
+%- Cuadráticos
+%	- C-Estacionario: ex.9.2.1
+%	- Fuertemente: ex9.2.1
+%	- M-Estacionario:ex9.2.5 
+%	- Alpha=0:ex9.2.3
+\begin{resultstable}{Problemas Cuadráticos Seleccionados}
+\resultrow{C-Estacionario}{ex9.2.1}{(1.85,4.65)}{116.01}{(4.1,0)}{1.64}{SOS1}
+\resultrow{Fuertemente-Estacionario}{ex9.2.1}{(1.85,4.65)}{116.01}{(0.15,1.12)}{33.92}{ProductMode}
+\resultrow{M-Estacionario}{ex9.2.5}{(4.75,4.05)}{7.27}{(2.53,2.83)}{0.91}{Product Mode}
+\resultrow{$\alpha =0$}{ex9.2.3}{(1.55,2.7,-5.1,-8.65)}{-10.25}{(0,0,-5.1,-10)}{-14.7}{Big-M}
+\end{resultstable}
+
+\subsubsection{Problemas No Convexos}
+
+%- No Convexos:
+%	- C-Estacionarios: MBEx312
+%	- Fuertemente: MBEx314
+%	- M-Estacionarios:MBEx312
+%	- alpha=0:MBEx313
+\begin{resultstable}{Problemas No Convexos Seleccionados}
+\resultrow{C-Estacionario}{MitsosBarton2006Ex312}{(0.8,1.85)}{34,94}{(0.8,1.8)}{34.87}{JuMP}
+\resultrow{Fuertemente-Estacionario}{MitsosBarton2006Ex314}{(2.1,3.3)}{14.31}{(2.1,-1.45)}{5.52}{JuMP}
+\resultrow{M-Estacionario}{MitsosBarton2006Ex312}{(0.8,1.85)}{34,94}{(0.8,-0.89)}{6.48}{JuMP}
+\resultrow{$\alpha =0$}{MitsosBarton2006Ex313}{(2.3,4.45)}{-2.15}{(2.3,4.47)}{-2.17}{JuMP}
+\end{resultstable}
+
+
+\subsubsection{Análisis de los resultados}
+En el caso de los problemas lineales los 3 algoritmos generalmente dieron con puntos con similar valor de la función objetivo aunque 
+se tomó como referencia Big-M dado que fue el más eficiente en tiempo y si redondeamos a 2 números después de la coma son prácticamente todos iguales.
+En los problemas cuadráticos se encontró con mayor diferencia entre el valor de la función en el punto estacionario que en el óptimo local alcanzado, en algunos de estos problemas Big-M no pudo hallar un óptimo con calidad posiblemente debido a sus parámetros y continua la tendencia del
+problema que parte desde un punto fuertemente estacionario de tener el mayor rango de mejora.
+En los no convexos continua esta hipótesis dado que los puntos M-estacionarios y fuertemente estacionarios son los de mayor requerimientos, fueron los que lograron encontrar mejores óptimos. 

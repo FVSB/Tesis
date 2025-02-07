@@ -13,14 +13,22 @@ import shutil
 import subprocess
 from sympy import symbols, sympify
 import copy
-from sympy import symbols, diff, sympify
-
-
-import re
-
+from sympy import symbols, diff, sympify, latex
 
 import re
 
+
+import re
+def convertir_expresion_2_decimales(expression:str)->str:
+     # Paso 1: Redondear números decimales a dos cifras
+    def redondear_decimal(match):
+        numero = match.group()  # Captura el número completo (e.g., "3.14159")
+        return f"{float(numero):.2f}"  # Redondea a dos cifras decimales
+    
+    # Usamos una expresión regular para encontrar números decimales
+    expresion_modificada = re.sub(r'\d+\.\d+', redondear_decimal, expression)
+    
+    return expresion_modificada
 def convertir_expresion_a_julia(expresion: str) -> str:
     """
     Convierte todas las ocurrencias de '**' en la expresión dada por '^'.
@@ -35,15 +43,15 @@ def convertir_expresion_a_julia(expresion: str) -> str:
     # Paso 1: Reemplazar '**' por '^'
     expresion_modificada = re.sub(r'\*\*', '^', expresion)
     
-    # Paso 2: Redondear números decimales a dos cifras
-    def redondear_decimal(match):
-        numero = match.group()  # Captura el número completo (e.g., "3.14159")
-        return f"{float(numero):.2f}"  # Redondea a dos cifras decimales
-    
-    # Usamos una expresión regular para encontrar números decimales
-    expresion_modificada = re.sub(r'\d+\.\d+', redondear_decimal, expresion_modificada)
-    
-    return expresion_modificada
+    ## Paso 2: Redondear números decimales a dos cifras
+    #def redondear_decimal(match):
+    #    numero = match.group()  # Captura el número completo (e.g., "3.14159")
+    #    return f"{float(numero):.2f}"  # Redondea a dos cifras decimales
+    #
+    ## Usamos una expresión regular para encontrar números decimales
+    #expresion_modificada = re.sub(r'\d+\.\d+', redondear_decimal, expresion_modificada)
+   
+    return  convertir_expresion_2_decimales(expresion_modificada)
 
 
 
@@ -67,7 +75,44 @@ def fix_expression(expr_str):
     expr_str = re.sub(r'-\s*\+', '-', expr_str)  # Reemplaza '- +' por '-'
     expr_str = re.sub(r'-\s*-', '+', expr_str)   # Reemplaza '- -' por '+'
     
-    return expr_str
+    return convertir_expresion_2_decimales(expr_str)
+
+
+def expresion_a_latex(expresion_str: str, variables: list[list]) -> str:
+    """
+    Convierte una expresión matemática dada como string en su representación LaTeX.
+    
+    Args:
+        expresion_str (str): La expresión matemática como string (ejemplo: "x**2 + sin(y)").
+        variables (list[str]): Lista de variables involucradas en la expresión (ejemplo: ["x", "y"]).
+    
+    Returns:
+        str: El código LaTeX correspondiente a la expresión.
+    """
+    # Arreglar la expresion 
+    expresion_str=fix_expression(expr_str=expresion_str)
+    # Convertir las variables en símbolos de SymPy
+    simbolos = symbols(" ".join(variables))
+    
+    # Si hay solo una variable, asegurarse de que sea una tupla
+    if len(variables) == 1:
+        simbolos = (simbolos,)
+    else:
+        simbolos = tuple(simbolos)
+    
+    try:
+        # Interpretar la expresión como una expresión simbólica de SymPy
+        expresion = sympify(expresion_str)
+        
+        # Convertir la expresión a LaTeX
+        latex_code = latex(expresion)
+        return latex_code
+    except Exception as e:
+        raise ValueError(f"Error al procesar la expresión: {e}")
+
+
+
+
 def eval_function(expresion_str:str, nombres_variables:list[str], punto:dict[str,float])->float:
     """
     Evalúa una expresión matemática dada como string en un punto específico.
@@ -142,12 +187,13 @@ def derivar_expresion(expr_str, variables_str: list[str]):
     return derivadas
 
 
-def procesar_y_ejecutar_archivo_julia(root_path, file_content, point_type:str,filename:str="datos"):
+def procesar_y_ejecutar_archivo_julia(root_path, file_content_julia:str,file_content_latex:str, point_type:str,filename:str="datos"):
     """
     ACA SE AÑADE AL FILENAME el .jl
     devuelve la ruta al excel generado por el archivo
     """
     _filename=f"{filename}.jl"
+    _filename_latex=f"{filename}.tex"
     # Construir rutas de directorios
     compare_dir = os.path.join(root_path, "compare")
     type_estacionario_dir = os.path.join(compare_dir, point_type)
@@ -163,8 +209,13 @@ def procesar_y_ejecutar_archivo_julia(root_path, file_content, point_type:str,fi
     # Crear y escribir el archivo .jl
     file_path = os.path.join(type_estacionario_dir, _filename)
     with open(file_path, "w", encoding="utf-8") as archivo:
-        archivo.write(file_content)
+        archivo.write(file_content_julia)
     
+    # Crear y escribir el archivo .tex
+    file_path = os.path.join(type_estacionario_dir, _filename_latex)
+    with open(file_path, "w", encoding="utf-8") as archivo:
+        archivo.write(file_content_latex)
+        
     # Ejecutar el archivo .jl con Julia
     try:
         # Llamar a Julia desde el directorio c_estacionario
@@ -291,6 +342,8 @@ class ExperimentLinearQuadratic:
         self._extract_punto()
         self._extract_BF_and_fix_obj_leader()
         self._compute_leader_obj_val()
+        latex_str=self._create_latex_string()
+        self.in_latex_expresion=latex_str
     def crear_variables(self):
         temp="\n"
         temp+="# Variables del Lider \n"
@@ -381,7 +434,7 @@ model = BilevelModel()
         """
         # Tomar el path del excel de salida
         print(f"mandar a procesar {file}")
-        excel_output=procesar_y_ejecutar_archivo_julia(self.dir_path,file,self.point_type,f"{self.name}_{self.point_type}")
+        excel_output=procesar_y_ejecutar_archivo_julia(self.dir_path,file,self.in_latex_expresion,self.point_type,f"{self.name}_{self.point_type}")
         return excel_output
     def __str__(self):
         return f"""
@@ -446,15 +499,74 @@ model = BilevelModel()
         # Valor de la evaluación
         self.leader_obj_value:float=0
         
+        
+        # Expresion en latex
+        self.in_latex_expresion:str=""
+        """
+        Variable con el str de como se debe escribir en latex
+        """
         self.read_from_excel()
 
+########################
+#
+#   Crear string to latex
+#
+#######################
+    def _leader_expr_to_latex(self)->str:
+        return expresion_a_latex(self.leader_obj,self.get_all_vars)
+    def _follower_expr_to_latex(self)->str:
+        return expresion_a_latex(self.follower_obj,self.get_all_vars)
+    def _create_restriction_to_latex(self,restrictions:list[Restrictions])->str:
+        temp=f""
+        for i,rest in enumerate(restrictions):
+            expr=rest.expr
+            expr=expresion_a_latex(expr,self.get_all_vars)
+            temp+=f" {expr} \leq 0"
+            if i<len(restrictions)-1:
+                temp+=f" {"\\"}{"\\"}"
+                temp+=" \n"
+        return temp
+    def _create_leader_rest_latex(self)->str:
+        return self._create_restriction_to_latex(self.leader_rest)
+       
+    def _create_follower_rest_latex(self)->str:
+        return self._create_restriction_to_latex(self.follower_rest)
+            
+#    \begin{bilevelmodel}{Lineal}{Nombre del Problema}
+#    \begin{upperlevel}{F(x,y) = x + y}{
+#        x + y \leq 10 \\
+#        x, y \geq 0
+#    }
+#    \end{upperlevel}
+#    
+#    \begin{lowerlevel}{f(x,y) = 2x - y}{
+#        2x + y \leq 8 \\
+#        x, y \geq 0
+#    }
+#    \end{lowerlevel}
+#\end{bilevelmodel}
+
+    def _create_latex_string(self):
+        temp=f"""
+\\begin{{bilevelmodel}}{{{self.point_type}}}{{{self.name}}}
+    \\begin{{upperlevel}}{{{self._leader_expr_to_latex()}}}{"{"}
+        {self._create_leader_rest_latex()}
+    {"}"}
+    \\end{{upperlevel}}
+    \\begin{{lowerlevel}}{{{self._follower_expr_to_latex()}}}{"{"}
+        {self._create_follower_rest_latex()}
+    {"}"}
+    \\end{{lowerlevel}}
+\\end{{bilevelmodel}}
     
+        """
+        return temp
     @property
     def get_all_vars(self)->list[str]:
         return self.leader_vars+self.follower_vars
 
 
-class ExperimentNonConvex(ExperimentLinearQuadratic):
+class ExperimentNonConvex(ExperimentLinearQuadratic):#
     def crear_variables(self):
         temp=f"""
         # Definir variables \n

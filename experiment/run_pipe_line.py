@@ -12,7 +12,7 @@ from sympy import symbols, diff, sympify
 from utils import *
 CESTACIONARIO="C-Estacionario"
 MESTACIONARIO="M-Estacionario"
-FUERTEMENTEESTACIONARIO="Fuertmente-Estacionario"
+FUERTEMENTEESTACIONARIO="Fuertemente-Estacionario"
 ALPHAZERO="Alpha-Zero"
 
 

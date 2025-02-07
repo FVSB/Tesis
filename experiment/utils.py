@@ -18,6 +18,23 @@ from sympy import symbols, diff, sympify
 
 import re
 
+
+def convertir_expresion_a_julia(expresion: str) -> str:
+    """
+    Convierte todas las ocurrencias de '**' en la expresión dada por '^'.
+
+    Args:
+        expresion (str): La expresión matemática o string original.
+
+    Returns:
+        str: La expresión modificada con '^' en lugar de '**'.
+    """
+    # Utilizamos re.sub para reemplazar '**' por '^'
+    expresion_modificada = re.sub(r'\*\*', '^', expresion)
+    return expresion_modificada
+
+
+
 def fix_expression(expr_str):
     # 1. Agregar '*' entre números y variables (ej: '3y_1' → '3*y_1')
     expr_str = re.sub(
@@ -92,10 +109,8 @@ def derivar_expresion(expr_str, variables_str: list[str]):
     except Exception as e:
         raise ValueError(f"Error al crear símbolos SymPy: {e}")
     
-    # Asegurarse de que variables sea siempre iterable
-    if not isinstance(variables, tuple):
-        variables = (variables,)  # Convertir a tupla si es un solo símbolo
     
+  
     # Convertir la expresión string en una expresión simbólica de SymPy
     try:
         expr = sympify(expr_str)
@@ -106,6 +121,7 @@ def derivar_expresion(expr_str, variables_str: list[str]):
     derivadas = {}
     for var_name, var in zip(variables_str, variables):
         try:
+           # print(f"Se va a derivar {expr} and {var}")
             derivada = diff(expr, var)  # Calcular la derivada
             derivadas[var_name] = str(derivada)  # Convertir la derivada a string
         except Exception as e:
@@ -372,7 +388,7 @@ model = BilevelModel()
         y devuelve el excel de salida
         """
         
-        file=self.write_archivo()
+        file=convertir_expresion_a_julia(self.write_archivo())
         # guardar el archivo y mandar a correr
         name=self.save_file(file)
         print(f"Finalizado el archivo {name}")
@@ -515,7 +531,7 @@ model = Model(Ipopt.Optimizer)
 
 # Resolver el modelo
 
-make_experiment(model,{self.crear_array_string(self.leader_vars)},{self.crear_array_string(self.follower_vars)},"Reformulacion_KKT","{self.name}")
+make_experiment(model,{self.crear_array_string(self.leader_vars)},{self.crear_array_string(self.follower_vars)},"Reformulacion_KKT","{self.name}_{self.point_type}")
 
 println("Se Finalizo el experimento {self.name}")
 

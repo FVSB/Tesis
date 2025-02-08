@@ -1,28 +1,17 @@
 \chapter*{Introducción}\label{chapter:introduction}
 \addcontentsline{toc}{chapter}{Introducción}
 
-%\section{Definición de problema de optimización binivel}
 % Obtener una garantía de la solución es muy complejo (generalmente es estacionario y con puntos estacionarios).
 La optimización de dos niveles, un área fundamental en la investigación operativa y la teoría de juegos, presenta desafíos significativos debido a su complejidad inherente. Este tipo de problemas se caracterizan por la interacción entre un líder y un seguidor, donde las decisiones del líder afectan las respuestas del seguidor. Uno de los aspectos más críticos de esta problemática es garantizar la existencia de soluciones óptimas, lo cual se ve complicado por la naturaleza no convexa del problema, incluso cuando las funciones y los conjuntos factibles son convexos. A menudo, los algoritmos utilizados en este contexto solo logran identificar puntos estacionarios o críticos, que no necesariamente representan soluciones locales o globales, ver \cite{DempeyZemkoho2020}.
-
-% Definición de problema binivel
-%\begin{equation}
-%    \begin{aligned}
-%    \text{minimizar} & \quad F(x, y) \\
-%    \text{sujeto a} & \quad G(x, y) \geq 0 \quad (\text{restricciones de desigualdad}) \\
-%    & \quad H(x, y) = 0 \quad (\text{restricciones de igualdad}) \\
-%    & \quad y \in S(x) = \arg \min_{y} \{ f(x, y) \mid V(x, y) \geq 0, U(x, y) = 0 \}.
-%    \end{aligned}
-% \end{equation}
 
 El modelo de dos niveles es:
 
 \begin{equation*} 
     \begin{array}{l}
-       \min_x \quad F(x, y)\\
+       \min_{x} \quad F(x, y)\\
         s.a \left\{ \begin{array}{l}
             x \in {\cal{T}}, \\
-             y \in S(x) = \arg  \min_y \{ f(x, y) \quad s.a \quad y \in  {\cal{H}}(x) \},,\\
+             y \in S(x) = \arg  \min_{y} \{ f(x, y) \quad s.a \quad y \in  {\cal{H}}(x) \},,\\
            ( x,y) \in {\cal{M}}^0, 
         \end{array}\right.
         \end{array} \end{equation*}

@@ -960,6 +960,43 @@
       \verb https://api.semanticscholar.org/CorpusID:4003323
       \endverb
     \endentry
+    \entry{Scmidtbiblio}{misc}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e4ea16f7538b0a87fbf3b03dc9ed846e}{%
+           family={Schmidt},
+           familyi={S\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d9cd58b2e2aeb6b66aa1eba90e640d69}{%
+           family={Beck},
+           familyi={B\bibinitperiod},
+           given={Yasmine},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5b11c276a2530a8fab634a9fbdbd95e1}
+      \strng{fullhash}{5b11c276a2530a8fab634a9fbdbd95e1}
+      \strng{bibnamehash}{5b11c276a2530a8fab634a9fbdbd95e1}
+      \strng{authorbibnamehash}{5b11c276a2530a8fab634a9fbdbd95e1}
+      \strng{authornamehash}{5b11c276a2530a8fab634a9fbdbd95e1}
+      \strng{authorfullhash}{5b11c276a2530a8fab634a9fbdbd95e1}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Gentle and Incomplete Introduction to Bilevel Optimization}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://www.lamsade.dauphine.fr/poc/sites/default/files/bilevel-optimization.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.lamsade.dauphine.fr/poc/sites/default/files/bilevel-optimization.pdf
+      \endverb
+    \endentry
     \entry{SadddiquiNaturalGasSOS1}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=608cac97baa39d75bf233be04b7fda5d}{%
@@ -2031,6 +2068,43 @@
       \verb https://api.semanticscholar.org/CorpusID:4003323
       \endverb
     \endentry
+    \entry{Scmidtbiblio}{misc}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e4ea16f7538b0a87fbf3b03dc9ed846e}{%
+           family={Schmidt},
+           familyi={S\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d9cd58b2e2aeb6b66aa1eba90e640d69}{%
+           family={Beck},
+           familyi={B\bibinitperiod},
+           given={Yasmine},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5b11c276a2530a8fab634a9fbdbd95e1}
+      \strng{fullhash}{5b11c276a2530a8fab634a9fbdbd95e1}
+      \strng{bibnamehash}{5b11c276a2530a8fab634a9fbdbd95e1}
+      \strng{authorbibnamehash}{5b11c276a2530a8fab634a9fbdbd95e1}
+      \strng{authornamehash}{5b11c276a2530a8fab634a9fbdbd95e1}
+      \strng{authorfullhash}{5b11c276a2530a8fab634a9fbdbd95e1}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Gentle and Incomplete Introduction to Bilevel Optimization}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://www.lamsade.dauphine.fr/poc/sites/default/files/bilevel-optimization.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.lamsade.dauphine.fr/poc/sites/default/files/bilevel-optimization.pdf
+      \endverb
+    \endentry
     \entry{SadddiquiNaturalGasSOS1}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=608cac97baa39d75bf233be04b7fda5d}{%
@@ -2160,6 +2234,7 @@
       \endverb
     \endentry
   \enddatalist
+  \missing{scholtes12}
 \endrefsection
 \endinput
 

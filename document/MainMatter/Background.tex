@@ -108,8 +108,9 @@ Los  problemas de dos niveles pueden ser reformulados en un problema de un solo 
      
 
 % Añadir aclaratoria
-Los tres últimos grupos de restricciones expresan que $v$ y $\lambda$ están restringidas en signo y que al menos una es 0. Estas condiciones son conocidas como \textbf{restricciones de complementariedad}. Estos modelos corresponden a la clase de problemas de programación matemática con restricciones de complementariedad (MPEC). A continuación, presentamos los resultados de esta área necesarios para el desarrollo de esta tesis.
-%TODO: Como se dijo en la intro existe otra forma, en un problema de programación matemática  usando función del valor extremal sin embargo salvo en casos muy particulares esta no tiene una expresion explicita. La ventaja del kkt por MPEC es que es una forma explicita, pero se requiere algún tipo de condición de regularidad del conjunto como LICQ independencia  de v activa, que caso de no cumplirse poder existir puntos óptimos que no lo recoda el kkt. 
+Los tres últimos grupos de restricciones expresan que $v$ y $\lambda$ están restringidas en signo y que al menos una es 0. Estas condiciones son conocidas como \textbf{restricciones de complementariedad}. Estos modelos corresponden a la clase de problemas de programación matemática con restricciones de complementariedad (MPEC). 
+Como se mencionó en la introducción, existe un enfoque alternativo mediante un problema de programación matemática utilizando la función del valor extremal. Sin embargo, esta función carece de una expresión explícita, exceptuando casos muy específicos. La ventaja del método KKT para MPEC radica en que proporciona una forma explícita, aunque requiere ciertas condiciones de regularidad del conjunto, como la Condición de Calificación de Restricciones de Independencia Lineal (LICQ), por sus siglas en ingles, de las restricciones activas. En caso de no cumplirse estas condiciones, podrían existir puntos óptimos que no satisfagan las condiciones KKT.
+A continuación, presentamos los resultados de esta área necesarios para el desarrollo de esta tesis.
 
 \section{Programación Matemática con Restricciones de Equilibrio (MPEC)}
 %Aca va la sección que explica los MPEC
@@ -162,27 +163,26 @@ Para definir condiciones de regularidad para MPEC, introducimos el siguiente pro
 \begin{definition}[Programa No Lineal Relacionado (RNLP)]
 
 Un \textit{Programa No Lineal Relacionado $RNLP_{a,b} := RNLP_{a,b}(z^*)$} es:
-%TODO: incorporar indices y rango en que se mueven
 \begin{equation}
 \begin{aligned}
 \min  &\quad  f(z)  \\
 \text{s.t.} &\quad \begin{matrix} g_i(z)& \leq& 0, &i=1,\ldots,q, \\ h_k(z) &=& 0,&k=1\ldots,m, \\
  G_j(z) &=& 0, & j\in J_G\cup J_{a},& G_j(z) &\geq& 0, & j\in J_H,\\ 
 H_j(z) &=& 0, & j\in J_H\cup J_{b},& H_j(z) &\geq& 0, & j\in J_G,\end{matrix}\\
-& \text{Problema No Lineal Ajustado (TNLP)}  
+& \text{Problema No Lineal Relacionado (RNLP)}  
 \end{aligned}
 \label{eq:ProblemaAbstractoTNLP}
 \end{equation}
     donde $a\cup b=J_{GH}$.
 \end{definition}
 
-El TNLP \eqref{eq:ProblemaAbstractoTNLP} puede  usarse para definir variantes de regularidad y condiciones necesarias de optimalidad  adecuadas para MPEC como son la  restricción estándar de independencia lineal (LICQ en su forma abreviada) y la de punto de KKT .
+El RLNP \eqref{eq:ProblemaAbstractoTNLP} puede  usarse para definir variantes de regularidad y condiciones necesarias de optimalidad  adecuadas para MPEC como son la  restricción estándar de independencia lineal (LICQ en su forma abreviada) y la de punto de KKT .
 
 \begin{definition}[MPEC-LICQ]
 El MPEC \eqref{eq:DefMpec} se dice que satisface la \textit{MPEC-LICQ}  en un vector factible $z^*$ si los correspondientes $RNLP_{a,b}(z^*)$ satisfacen la LICQ  en ese vector $z^*$.
 \end{definition}
     Cabe destacar que si la LICQ se cumple en  $RNLP_{a,b}(z^*)$ para una partición $(a,b)$ se cumple para todas. 
-% Hacer notar que un mínimo de z^* implica la existencia de \lambda^* ....
+%TODO: Hacer notar que un mínimo de z^* implica la existencia de \lambda^* ....
 %En este punto, es importante notar que bajo MPEC-MFCQ, un mínimo local $z^*$ del MPEC \eqref{eq:DefMpec} implica la existencia de un multiplicador de Lagrange $\lambda^*$ tal que $(z^*, \lambda^*)$ satisface las condiciones KKT para el programa \eqref{eq:ProblemaAbstractoTNLP}. Por lo tanto, si asumimos que MPEC-MFCQ se cumple para un mínimo local $z^*$ del MPEC \eqref{eq:DefMpec}, podemos usar cualquier multiplicador de Lagrange $\lambda^*$ (que ahora se sabe que existe) para definir el MPEC-SMFCQ, es decir, tomando $(z^*, \lambda^*)$.
 
 %Definición de los puntos estacionarios del MPEC
@@ -191,7 +191,7 @@ En el contexto de los MPEC en \cite{Flegel2003AFJ} se exponen varios tipos de pu
 \begin{definition}[Punto Factible]
     Un \textit{punto factible} $z^*$ del MPEC se llama débilmente estacionario si existe un multiplicador de Lagrange $ (\mu, \alpha, \beta, \gamma)$ tal que se cumplen las siguientes condiciones:
     
-%TODO: USar multiplicadores análogos a como esta en el binivel de miu lambda beta 
+% USar multiplicadores análogos a como esta en el binivel de miu lambda beta 
 % EN este orden  mui-g, alpha-h beta-G gamma-H
 \begin{align}
 & \nabla f(z^*) + \sum_{i=1}^q \mu_i\nabla g_i(z^*) + \sum_{k=1}^{q_0} \alpha_k\nabla h_k(z^*) - \sum_{i=1}^{s} [\beta_j\nabla G_j(z^*) + \gamma_j\nabla H_j(z^*)] = \vec{0} \notag\\
@@ -206,23 +206,21 @@ En el contexto de los MPEC en \cite{Flegel2003AFJ} se exponen varios tipos de pu
 
 % Definición de puntos estacionarios
 Este concepto de estacionariedad es equivalente al cumplimiento de la estacionariedad cl\'asica en el problema $RNLP_{J_{GH},J_{GH}}$. De ah\'i que  es una condición relativamente débil. Existen conceptos más fuertes de estacionariedad que se derivan y estudian en otros lugares. En particular, se tienen las siguientes definiciones:
-% un punto factible $z$ con el correspondiente multiplicador de Lagrange $\lambda = (\lambda^g, \lambda^h, \lambda^G, \lambda^H)$ se llama:
-
 
 % C-estacionario
  \begin{definition}[Punto C-estacionario]
-  El punto $z^*$ es: \textit{C-estacionario} si, para cada $i \in J_{GH}$, $\lambda_i^G\lambda_i^H \geq 0$ se cumple.
+  El punto $z^*$ es: \textit{C-estacionario} si, para cada $i \in J_{GH}$, $\beta_j\gamma_j \geq 0$ se cumple.
 \end{definition}
 %M-Estacionario
 \begin{definition}[Punto M-estacionario]
-    El punto $z^*$ es: \textit{M-estacionario} si, para cada $i \in J_{GH}$, o bien $\lambda_i^G,\lambda_i^H > 0$ $\vee$ $\lambda_i^G \lambda_i^H = 0$.
+    El punto $z^*$ es: \textit{M-estacionario} si, para cada $i \in J_{GH}$, o bien $\beta_j,\gamma_j > 0$ $\vee$ $\beta_j \gamma_j = 0$.
 \end{definition}
 %Fuertemente estacionario
  \begin{definition}[Punto Fuertemente estacionario]
-    El punto $z^*$ es: \textit{fuertemente estacionario}  si, para cada $i \in J_{GH}$, $\lambda_i^G, \lambda_i^H \geq 0$.
+    El punto $z^*$ es: \textit{fuertemente estacionario}  si, para cada $i \in J_{GH}$, $\beta_j, \gamma_j \geq 0$.
 \end{definition}
 
-%TODO:
+
 La $C$ y la $M$ estacionariedad  son condiciones necesarias de optimalidad bajo ciertas condiciones de regularidad, m\'as débiles que la  MPEC-LICQ. La fuerte conlleva al siguiente resultado:
 % Teorema que si z^* es min local del MPEC Si se cumple la LICQ entonces existe .....
 \begin{theorem} 
@@ -305,77 +303,75 @@ ProductMode & NLP & Manejo de no linealidades \\
 
 Para casos con restricciones no lineales $v_j(x,y)$, se recomienda combinar ProductMode con técnicas de linealización por tramos \cite[Apéndice B]{BilevelJump}. Todos estos métodos están implementados en BilevelJuMP.jl, permitiendo experimentación con reformulaciones que se pueden encontrar en \cite[Sección 4]{BilevelJump}.
 
-%\section{Add}
-%\begin{equation}
-%    \min_{x,y,\lambda_j,f_j} F(x,y)
-%\end{equation}
-%
-%sujeto a:
-%\begin{align}
-%    & g_i(x,y) \leq 0, && i = 1,\ldots,q, \\
-%    & \nabla_y f(x,y) + \sum_{j=1}^s \nabla_y v_j(x,y) \lambda_j = 0, \\
-%    & v_j(x,y) \leq 0, && j = 1,\ldots,s, \\
-%    & \lambda_j \geq 0, && j = 1,\ldots,s, \\
-%    & v_j(x,y) \geq -M_p \cdot (1-f_j), && \text{(no lineal si } v_j \text{ es no lineal)} \\
-%    & \lambda_j \leq M_d \cdot f_j, && j = 1,\ldots,s, \\
-%    & f_j \in \{0,1\}, && j = 1,\ldots,s.
-%\end{align}
-% Modelación en Julia
+
 % Se explica de que va BilevelJump
 \section{Modelación en Julia}
 
 % Que es Julia
+El lenguaje de programación Julia se ha posicionado como una herramienta revolucionaria en el ámbito de la computación científica y la optimización matemática. Desarrollado en el MIT, Julia fue diseñado desde sus cimientos para abordar el denominado "problema de los dos lenguajes", donde tradicionalmente los investigadores se veían obligados a prototipar en un lenguaje de alto nivel como Python y luego reimplementar en C++ o Fortran para obtener rendimiento óptimo. Julia logra combinar la facilidad de uso de lenguajes dinámicos como Python con el rendimiento de lenguajes compilados como C, gracias a su sistema de tipos y su compilador LLVM.
+%Usos
+Una de las características más destacadas de Julia es su sintaxis expresiva y natural para la formulación matemática. El lenguaje permite escribir código que se asemeja notablemente a las expresiones matemáticas tradicionales, facilitando la traducción directa de modelos matemáticos a código ejecutable. Esta característica es particularmente valiosa en el campo de la optimización, donde la claridad en la expresión de modelos matemáticos es crucial. Julia alcanza velocidades de ejecución comparables a C y Fortran, superando significativamente a Python en cálculos numéricos intensivos, con mejoras de rendimiento que pueden alcanzar órdenes de magnitud en determinadas aplicaciones.
+%Uso empresarial
+La interoperabilidad de Julia con otros lenguajes de programación constituye una ventaja significativa para proyectos de optimización complejos. A través de paquetes como PyCall, RCall, y JavaCall, Julia puede integrarse perfectamente con bibliotecas establecidas en Python, R y Java. Esta capacidad permite aprovechar el extenso ecosistema de estos lenguajes mientras se mantiene el rendimiento superior de Julia en los cálculos críticos de optimización. Además, Julia puede llamar directamente a funciones de C y Fortran sin overhead adicional, permitiendo la reutilización de código legacy optimizado y la integración con sistemas empresariales existentes.
+%Uso en optimizacion
+El ecosistema de optimización en Julia está encabezado por JuMP (Julia for Mathematical Programming), un lenguaje de modelado algebraico embebido que permite expresar problemas de optimización de manera natural y eficiente. JuMP se destaca por su capacidad para manejar problemas de gran escala y su integración perfecta con diversos solucionadores, tanto comerciales como de código abierto. La extensión BilevelJuMP amplía estas capacidades al dominio de la optimización binivel, permitiendo la formulación y resolución de problemas jerárquicos complejos, un área de creciente importancia en la investigación de optimización moderna.
 
+Julia facilita la integración con solucionadores de alto rendimiento como Ipopt para optimización no lineal, SCIP para programación entera mixta, y HiGHS para programación lineal. La interfaz nativa de Julia con estos solucionadores minimiza el overhead de comunicación, resultando en tiempos de resolución significativamente menores comparados con interfaces basadas en Python. Por ejemplo, en problemas de optimización no lineal de gran escala, la combinación de JuMP con Ipopt puede ejecutarse hasta 10 veces más rápido que implementaciones equivalentes en Python utilizando Pyomo o AMPL, lo que demuestra la eficiencia del ecosistema de Julia en aplicaciones prácticas.
+
+La capacidad de Julia para escalar eficientemente en entornos de computación distribuida y GPUs es particularmente relevante para problemas de optimización de gran escala. El lenguaje incluye soporte nativo para computación paralela y distribuida, permitiendo la paralelización de algoritmos de optimización con mínimas modificaciones al código. Paquetes como DistributedArrays y CUDA.jl facilitan la implementación de algoritmos de optimización en clusters y GPUs, respectivamente, manteniendo la sintaxis clara y expresiva característica de Julia.
+
+En el ámbito específico de la optimización matemática, Julia presenta ventajas significativas sobre Python, particularmente en términos de rendimiento y expresividad. Mientras que Python requiere de bibliotecas como Numpy y Scipy para operaciones numéricas eficientes, Julia proporciona estas capacidades de manera nativa. En problemas de optimización complejos, las implementaciones en Julia con JuMP típicamente requieren menos código y se ejecutan más rápidamente que sus equivalentes en Python utilizando Pyomo o CVXPY. Estudios comparativos han demostrado que Julia con JuMP puede resolver problemas de optimización típicos entre 2 y 10 veces más rápido que implementaciones equivalentes en Python, dependiendo de la naturaleza y escala del problema. Esta ventaja se hace más pronunciada en problemas que requieren múltiples evaluaciones de la función objetivo o restricciones complejas, atribuyéndose principalmente a la compilación Just-In-Time de Julia, la ausencia de overhead en la llamada a funciones, y la integración más eficiente con los solucionadores de optimización.
 
 % Que problemas resuelve
-Este paquete permite abordar una amplia variedad de tipos de problemas. En este trabajo usaremos las  bibliotecas $JuMP$ y BilevelJuMP.
+Por los argumentos anteriores en este trabajo utilizaremos este lenguaje de programación con principalmente los módulos \textbf{JuMP} y \textbf{BilevelJuMP}, de los cuales se describe a continuación.
 % Añadir explicación MPEC
 \subsection*{JuMP}
-Esta biblioteca permite resolver problemas de programación matemática no lineal y discreta. O sea
-$$
-    \min F(z)$$
-sujeto a:
-\begin{align}
-    & g_i(z) \leq 0, && i = 1,\ldots,q, \\
-    & h_k(z)  = 0, && i = 1,\ldots,q_0,\\
-\end{align} donde $z\in \mathbb{R}^p\times  \mathbb{R}^{\hat{n}-p}$.
-JuMP  permite gestionar una variedad de casos diferenciando como si las variables son continuas o discretas y  las restricciones  cuadráticas, lineales, de cotas o no lineales y, similarmente, si   la función objetivo es cuadrática, lineal o no lineal. También permite definir  restricciones de complementariedad  y ofrece métodos para resolver MPECs como ******.
+JuMP (Julia for Mathematical Programming) es una biblioteca de modelado algebraico integrada en Julia que permite formular y resolver problemas de optimización matemática de manera eficiente y expresiva. Esta biblioteca está diseñada para abordar problemas de programación matemática que pueden expresarse en la forma general:
+
+\begin{equation}
+\min_{z} F(z)
+\end{equation}
+
+sa:
+\begin{equation}
+\begin{aligned}
+    & g_i(z) \leq 0, && i = 1,\ldots,q,  \\
+    & h_k(z)  = 0, && k = 1,\ldots,q_0,\\
+\end{aligned}
+\end{equation}
+
+donde \(z \in \mathbb{R}^p \times \mathbb{Z}^{\hat{n}-p}\) representa el vector de variables de decisión, que puede incluir tanto componentes continuos como discretos. La función \(F(z)\) representa el objetivo a minimizar, mientras que \(g_i(z)\) y \(h_k(z)\) representan las restricciones de desigualdad e igualdad, respectivamente.
+
+JuMP proporciona una interfaz intuitiva y matemáticamente rigurosa para la construcción de estos modelos mediante un conjunto de macros especializadas. La macro \textbf{@variable} se utiliza para declarar las variables de decisión, permitiendo especificar su naturaleza (continua o discreta) y sus dominios. Por ejemplo, podemos declarar variables continuas no negativas o variables enteras acotadas.
+
+La función objetivo se define mediante la macro \textbf{@objective}, que acepta expresiones lineales, cuadráticas o no lineales. JuMP distingue automáticamente entre estos tipos de expresiones y selecciona los métodos de solución apropiados. La sintaxis es clara y cercana a la notación matemática tradicional, lo que facilita la traducción de modelos matemáticos a código ejecutable.
+
+Para la especificación de restricciones, JuMP ofrece dos macros principales: \textbf{@constraint} para restricciones lineales y cuadráticas, y \textbf{@NLconstraint} para restricciones no lineales generales. La biblioteca identifica automáticamente la naturaleza de las restricciones y las procesa de manera eficiente. Las restricciones pueden incluir desigualdades, igualdades y expresiones más complejas que involucren funciones no lineales.
+
+Una característica particularmente potente de JuMP es su integración con el paquete \textbf{Complementarity.jl}, que permite la formulación de problemas de complementariedad matemática (MPECs). Esto es especialmente útil para problemas de optimización jerárquica o de equilibrio, donde las condiciones de complementariedad son fundamentales. Las restricciones de complementariedad se pueden expresar de manera natural utilizando la sintaxis proporcionada por estas bibliotecas.
+
+Una vez que el modelo está completamente especificado, la función \textbf{optimize!} se utiliza para resolver el problema utilizando el solucionador seleccionado. JuMP es compatible con una amplia gama de solucionadores, tanto de código abierto como comerciales, y selecciona automáticamente el más apropiado según la estructura del problema (lineal, cuadrático, no lineal, entero mixto, etc.).
+
+Es importante destacar que JuMP maneja eficientemente la diferenciación automática para problemas no lineales, lo que permite calcular gradientes y Hessianas de manera precisa y eficiente, mejorando significativamente el rendimiento y la robustez de los métodos de optimización utilizados.
   %TOD: Poner esto después de explicar las reformulaciones
-Para m\'as detalles sobre lq biblioteca, ver \cite{JuMPPaper}.
-\subsection*{BilevelJuMP}BilevelJuMP.jl es un paquete de Julia diseñado para modelar y resolver problemas de \textbf{optimización binivel}, también conocidos como problemas de optimización de dos niveles o jerárquica, para más detalles ver \cite{BilevelJump}.
+Para m\'as detalles sobre la biblioteca, ver \cite{JuMPPaper}.
+\subsection*{BilevelJuMP}
+\textbf{BilevelJuMP.jl} es una extensión especializada de Julia diseñada específicamente para abordar problemas de optimización binivel, también conocidos como problemas de optimización jerárquica o de dos niveles. Esta biblioteca se construye sobre la base de JuMP, aprovechando su sintaxis intuitiva y capacidades de modelado mientras agrega funcionalidades específicas para la formulación y resolución de problemas jerárquicos.
 
-BilevelJuMP.jl facilita la modelación ya que el problema del seguidor se representa usando la   sintaxis de JuMP que, como se mencionó en la parte anterior,  permite incluir de forma diferenciada  las restricciones lineales y no lineales, las variables continuas y enteras, y diferentes tipos de  funciones objetivos.
-Para el problema del nivel superior gestiona sus restricciones y la función objetivo de forma análoga. 
+Este facilita la modelación de esta jerarquía propia de los problemas binivel permitiendo que el problema del seguidor se formule utilizando la sintaxis familiar de JuMP. Esto significa que los usuarios pueden especificar restricciones lineales y cuadráticas, definir variables tanto continuas como enteras, y trabajar con diferentes tipos de funciones objetivo, manteniendo la claridad y expresividad características de JuMP. 
 
-%TODO: MOdificar esto para decir que hace esto.
-     Los usuarios pueden experimentar con diversas reformulaciones para las restricciones de complementariedad en los problemas MPEC, incluyendo SOS1 y McCarl (Big-M), entre otros.
-    %TODO: POner que es común a los dos 
- BilevelJuMP.jl puede utilizar tanto solucionadores de \textbf{programación lineal mixta entera (MIP)} como solucionadores de \textbf{programación no lineal (NLP)}, dependiendo de las características del problema y la reformulación elegida. 
+De manera análoga, el problema del nivel superior se gestiona con la misma flexibilidad, permitiendo la especificación de sus propias restricciones y función objetivo.
 
-%\subsection{Limitaciones del BilevelJuMP.jl}
+Una característica notable de BilevelJuMP.jl es su capacidad para manejar diferentes reformulaciones de las restricciones de complementariedad en problemas MPEC (Mathematical Programs with Equilibrium Constraints). Los usuarios pueden experimentar con diversas técnicas de reformulación, incluyendo el método SOS1 (Special Ordered Sets of type 1), la reformulación de McCarl (conocida como Big-M) y ProductMode, descritos anteriormente, adaptando la resolución del problema según las necesidades específicas del caso.
 
-A pesar de sus capacidades, BilevelJuMP.jl presenta algunas limitaciones, entre las cuales se encuentran:
+La versatilidad de BilevelJuMP.jl se evidencia en su compatibilidad con diversos tipos de solucionadores. La biblioteca puede utilizar tanto solucionadores de programación lineal mixta entera (MIP) como solucionadores de programación no lineal (NLP), seleccionando el más apropiado según las características particulares del problema y la reformulación elegida. Esta flexibilidad permite abordar una amplia gama de problemas binivel con diferentes estructuras y complejidades.
 
-\begin{itemize}
-    \item Enfrentar dificultades en problemas altamente no lineales o con estructuras de optimización complejas que no se puedan representar adecuadamente en la sintaxis de JuMP.
-    \item Existencia de ciertas restricciones que podrían no ser compatibles o que requieren transformaciones adicionales que podrían complicar el modelo.
-    \item El problema es de gran escala afectando el rendimiento del solver, el cual puede ser un factor crítico.
-    \item La formulación y resolución de problemas muy específicos o especializados podrían no estar completamente optimizadas en el paquete.
-\end{itemize}
+Sin embargo, es importante reconocer las limitaciones inherentes a BilevelJuMP.jl. Este no permite problemas no convexos, además puede encontrar dificultades al manejar problemas altamente no lineales o con estructuras de optimización particularmente complejas que desafían la representación estándar en la sintaxis de JuMP. Algunas restricciones específicas podrían requerir transformaciones adicionales que incrementan la complejidad del modelo, y en casos de problemas de gran escala, el rendimiento del solucionador puede convertirse en un factor crítico que afecte la eficiencia de la resolución.
+
+Adicionalmente, la formulación y resolución de problemas muy específicos o especializados podría no estar completamente optimizada dentro del paquete, lo que podría requerir adaptaciones o consideraciones especiales por parte del usuario. Estas limitaciones, aunque importantes de considerar, no disminuyen la utilidad general de BilevelJuMP.jl como una herramienta poderosa para la optimización binivel, sino que más bien definen el alcance de su aplicabilidad óptima.
+
+Para más detalles sobre la biblioteca, ver \cite{BilevelJump}.
+
 
 Teniendo en cuenta la posibilidad de que los métodos de solución converjan a puntos estacionarios de distinto tipo, resulta interesante comprobar si, conocido un punto de esta naturaleza, el algoritmo logra obtener un punto con  mejor evaluación de la función objetivo. Esta es la motivación para el desarrollo del generador de problemas prueba, objeto de esta tesis y que se presentará en el próximo capítulo.
-% Explicación algoritmos 
-begin{equation}
-%    \min_{x,y,\lambda_j,f_j} F(x,y)
-%\end{equation}
-%
-%sujeto a:
-%\begin{align}
-%    & g_i(x,y) \leq 0, && i = 1,\ldots,q, \\
-%    & \nabla_y f(x,y) + \sum_{j=1}^s \nabla_y v_j(x,y) \lambda_j = 0, \\
-%    & v_j(x,y) \leq 0, && j = 1,\ldots,s, \\
-%    & \lambda_j \geq 0, && j = 1,\ldots,s, \\
-%    & v_j(x,y) \geq -M_p \cdot (1-f_j), && \text{(no lineal si } v_j \text{ es no lineal)} \\
-%    & \lambda_j \leq M_d \cdot f_j, && j = 1,\ldots,s, \\
-%    & f_j \in \{0,1\}, && j = 1,\ldots,s.
-%\end{align}
+

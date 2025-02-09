@@ -3,128 +3,114 @@
 %region Nomenclatura 
 En este capítulo se mostrará la forma y los pasos para generar el problema deseado en el contexto de un generador de puntos estacionarios para problemas binivel. Este capítulo aborda el diseño y la implementación del generador, explicando detalladamente las metodologías empleadas, los criterios necesarios para asegurar la validez de los puntos obtenidos y los algoritmos utilizados en cada etapa del proceso.
 
-\section{Nomenclatura a utilizar:}
-%TODO: Recorda el problema y la nomenclatura en el anexo 
-% Recordar que el problema va hacia el kkt 
-% Se busca un punto estacionario
-
-\begin{table}[H]
-    \centering
-    \caption{Nomenclatura a utilizar}
-    \begin{tabular}{l m{360pt}}
-        $F(x,y)$              & Función del líder.                                                                                                          \\
-        $ g_i(x,y) $              & Restricciones de desigualdad del líder   $ i=1\ldots q$.                                                                                                        \\
-        $ h_i(x,y) $                 & Restricciones de igualdad del líder   $ i=1\ldots r$.                    \\
-        $ f(x,y) $           & Función del seguidor.                                                               \\
-        $ v_j(x,y) $              &  Restricciones de desigualdad del seguidor $j=1\ldots s$.   \\
-        $ u_j(x,y) $     & restricciones de igualdad del seguidor $j=1\ldots t$. \\
-        $ v_{j}^{\star} $    & Restricción de desigualdad del seguidor activa después de modificarse el problema   $j=1\ldots s$.          \\
-        $z_{est}$         & Punto que se desea que sea estacionario.\\
-        $J_0^g$             & Índices activos del líder. \\
-        $J_0^v$                & Índices activos del seguidor. \\
-        $ \alpha  $             & Vector de entrada de dimensión igual cantidad variables seguidor.                                                                                                      \\
-        $\mu_i $                & Multiplicador asociado al $g_i(x,y)$ en el líder.  \\
-        $ \beta_j $               & Multiplicador asociado al $v_{j}^{\star}$ en el líder.          \\
-        $ \lambda_j $              & Multiplicador asociado al $v_{j}^{\star}$ en el seguidor.\\
-        $\gamma_j$                & Valor asociado a cada $v_{j}^{\star}$ con $\lambda_j=0$.\\
-    \end{tabular}
-
-    \end{table}
-
-
-%endregion
-\section{Generación del problema}
-A continuación se mostrarán los pasos a seguir para generar el problema deseado donde el punto sea estacionario de la clase específica.
-
-\subsection{Requerimientos de entrada}
-
-Para generar un problema es necesario inicialmente introducir un problema de optimización binivel del tipo SLSF, un punto ($z_{est}$), el cual
-se desea que sea estacionario y los multiplicadores con signo o valores con ciertas condiciones en dependencia del tipo de estacionariedad requerida.
-
-%
-El problema de entrada tiene que cumplir con ser un programa de optimización binivel como \ref{eq:DefBinivelOptimista}. 
-Debe introducirse también sus índices activos de las restricciones de desigualdad en cada nivel para $z_{est}$ :
+\section{Notaciones:}
+ El problema binivel optimista, definido en (\ref{eq:ProblemaGeneral}), consiste en
+\begin{equation}
+\begin{aligned}
+& \min_{x} \; F(x, y) \\
+& \text{sujeto a } \\
+& g_i(x, y)\leq 0,\;i=1,\ldots,q, \\
+& y \in \argmin_{y} \left\{ f(x, y) \mid v_j(x, y)\leq 0,\;j=1,\ldots,q ,\right\}
+\end{aligned}
+\end{equation}
+Luego el modelo se puede definir usando solo las funciones 
 \begin{itemize}
-    % Leader
-    \item Nivel Superior:
-            \begin{equation}
-             J_0^G=\{i | g_i(x,y)=0\}
-            \label{J_0_level_superior} %al conjunto restricciones de desigualdad que sean índices activos del nivel superior
-            \end{equation}\\
-    donde estos índices activos tienen un $\mu_i$ relacionados.
-        
-    %Follower
-    \item Nivel Inferior:
-                Se tiene en cuenta con respecto a los valores del multiplicador $\lambda_i$ y $v_j(x,y)$.
-                
-                \begin{itemize}
-                    %J_0_v_l_0
-                    \item \begin{equation}
-                        J_1^v=\{j | v_j(x,y)=0 \land \lambda_j=0 \} %al conjunto restricciones de desigualdad que sean índices activos
-                        \label{J_0_lambda_0_level_inferior}
+    \item$F(x,y)$: Función del líder.                                                                                                          \\
+       \item $ g_i(x,y) $:               Restricciones de desigualdad del líder,  $ i=1,\ldots, q$.       \\
+        \item $ f(x,y) $:            Función del seguidor.                                                               \\
+       \item $ v_j(x,y) $:                Restricciones de desigualdad del seguidor, $j=1\ldots s$.   \\
+    \end{itemize}
+A este modelo se le aplicar\'a el enfoque KKT, obteni\'endose
+ \begin{equation}
+            \begin{array}{l}
+                \underset{\substack{x, y, \lambda_j}}{\min} \quad F(x, y)\\
+                s.a \left\{ 
+                \begin{array}{l}
+                    g_i(x, y) \leq 0, i=1\ldots q,\\
+                    \nabla_{y} f(x, y) + \sum_{j=1}^{s} \nabla_{y} v_j(x, y) \lambda_j = 0, \\
+                    v_j(x, y) \leq 0, j=1\ldots s,\\
+                    v_j(x, y)\lambda_j = 0, j=1\ldots s, \\
+                    \lambda_j \geq 0, j=1\ldots s.\\
+                \end{array}\right.
+            \end{array}
+        \end{equation} introducido en \ref{eq:KKT_Optimista}.
+
+La condici\'on de estacionariedad est\'a dada por ser la soluci\'on del sistema 
+
+$$\begin{matrix}
+ \nabla_z F(z_{est}) + \sum_{i=1}^q \mu_i\nabla_z g_i(z_{est}) +\sum_{i=1}^{s} \beta_j\nabla v_j(z_{est}) +\\+\sum_{k=1}^{q_0} \alpha_k\nabla_z[  \nabla_{y} f((z_{est}) +\sum_{j=1}^{s} \nabla_{y} v_j((z_{est}) \lambda_j]&=&0\\
+ \alpha  \nabla_{y} v_j(x, y)-\gamma_j&=&0\end{matrix}$$
+
+donde, denotando  \begin{equation}\label{activeg} J_0^g=\{i: g_i(x,y)=0\}\end{equation}    como los \'indices activos del líder,         $$J_0^v=\{j: v_j(x,y)=0\},$$  los del seguidor y  $$J_0^\lambda=\{j:  \lambda_j=0\},$$ como  los elementos de $\lambda$ que son 0,
+  $$\begin{matrix}
+        & \beta_j= 0,\; j\in \{1,\ldots, s\}\setminus J_0^v,\\
+        &  \gamma_j= 0,\; j\in \{1,\ldots, s\}\setminus J_0^\lambda,  \\
+        & g_i(z_{est}) \leq 0, \quad \mu_i \geq 0, \quad \mu_i g_i(z_{est}) = 0, i=1,\ldots, q.
+    \end{matrix}$$ 
+
+De esta forma  
+\begin{itemize}\item$ \alpha\in \mathbb{R}^m  $: multiplicador asociado a la condici\'on de KKT del problema de nivel inferior.                                                                                                     
+       \item  $\mu_i \in \mathbb{R}^q$:  multiplicador asociado a las restricciones  $g_i(x,y)$ del líder.  \item        $ \beta_j\in \mathbb{R}^s  $:              multiplicador asociado  a las restricciones   $v_{j}$ del líder.          
+   \item        $\gamma_j\in \mathbb{R}^s$:            multiplicador asociado a las  restricciones  $\lambda_j \geq 0$.\end{itemize}
+
+
+
+Condiciones extra respecto al signo de $\beta$ y $\gamma$ se tendr\'an en cuenta en dependencia de si el usuario escoge que sea  C,M, fuerte estacionario o cumpla  la condici\'on $\alpha=0$.  Es por esto que el conjunto $\{1,\ldots, s\}$  se particiona en 
+ \begin{equation} \label{J_pos_lambda_0_level_inferior}
+                        J_1^v=\{j | v_j(x,y)=0 \land \lambda_j>0 \} %al conjunto restricciones de desigualdad que sean índices activos
                         \end{equation} 
-                    %J_0_v_l_positiva
-                    \item \begin{equation}
-                        J_2^v=\{j | v_j(x,y)=0 \land \lambda_j>0 \}
+                     \begin{equation}
+                        J_2^v=\{j | v_j(x,y)=0 \land \lambda_j=0 \}
                         \label{J_0_lambda_pos_level_inferior}
                     \end{equation}
-                    %J_Ne_L0_v
-                    \item \begin{equation}
+                  
+ \begin{equation}
                         J_3^v=\{j | v_j(x,y)< 0 \land \lambda_j=0 \}
                         \label{J_neg_lambda_0_level_inferior}
                     \end{equation}
-                \end{itemize}
-    Cada índice activo tiene multiplicadores $\beta_j$ y en dependencia del caso $\gamma_j$ asociados.
-\end{itemize}
-%
+            
+    
+Cada índice activo tiene multiplicadores $\beta_j$ y en dependencia del caso $\gamma_j$ asociados. De esta forma 
+$\beta_j= 0,\; j\in  J_3^v,\; \gamma_j= 0,\; j\in J_1^v.$  Las condiciones de signo de la clase de punto estacionario correspondiente se analizan para $\beta_j, \gamma_j= 0,\; j\in J_2^v.$
+       
 
-% Condiciones
-%Hablar sobre conocer vector \alpha
-Para cada $i \in J_0^G$ (\ref{J_0_level_superior}) debe de asignarse su multiplicador $\mu_i \geq 0$ correspondiente.
-Además se debe conocer el valor del $\vec{\alpha}$,
-para el nivel inferior debe tenerse en cuenta si $\alpha=\vec{0}$ en cuyo caso afirmativo $\gamma_j$ es un valor de entrada
+Usando estas notaciones, en la pr\'oxima secci\'on se muestra como se genera le problema.
 
-%
-% COndiciones \Beta_i \Gamma_i para puntos estacionarios
-Para obtener las diferentes clases de puntos estacionarios debe de introducirse $\beta_j$, $\gamma_j$, en caso de ser este último valor de entrada tal que, los multiplicadores $\beta_j$  y $\gamma_j$ de forma tal que en los indices activos $J_1^v$ (\ref{J_0_lambda_0_level_inferior}): 
+
+   %     $ v_{j}^{\star} $     Restricción de desigualdad del seguidor activa después de modificarse el problema   $j=1\ldots s$.          \\
+
+%endregion
+\section{Generación del problema sobre Julia}
+A continuación se mostrarán los pasos a seguir para generar el problema deseado.
+\subsection{Datos de entrada}
+
+Lo primero  que hace el usuario es escoger si $\alpha=0$ o no. En el segundo caso se le solicita que  introduzca el valor de dicho multiplicador. Luego se
+declaran las  variables diferenciando las del l\'ider $x$ y las del seguidor $y$. Se chequea que la dimensi\'on de   $\alpha$  y de $y$ coincidan. 
+
+Con las variables se introduce la funci\'on objetivo del l\'ider $F(x,y)$ y las restricciones $ g_1(x,y),\ldots, g_q(x,y)$. En cada caso el usuario define si desea que sea activa o no y para las activas  le introduce el correspondiente multiplicador $\mu_j$. De esta forma se construye el conjunto $J_0^G=\{i | g_i(x,y)=0\}$ y se logra que  $g_i(x,y)\mu_i=0$ para todo $i=1,\ldots,q$. Se le advierte al usuario que $\mu_j$ debe ser no negativo, d\'andole la posibilidad de cambiarlo de haber cometido un error.
+
+De manera an\'aloga se procede con la funci\'on objetivo del seguidor $f(x,y)$,  sus restricciones  $ v_1(x,y),\ldots, v_s(x,y)$ y sus multiplicadores $\lambda$  no negativos. Sabiendo que al menos uno de ellos $v_j(x,y)\lambda_j=0$, se construye la partici\'on $(J_1^v,J_2^v,J_3^v)$  del conjunto $\{1,\ldots,s\}$  descrita en (\ref{J_pos_lambda_0_level_inferior}),  (\ref{J_0_lambda_pos_level_inferior}),  (\ref{J_neg_lambda_0_level_inferior}).
+
+Finalmente se introducen el resto de los multiplicadores,  a saber $\beta$ y $\gamma$,  de forma que cumplan la condici\'on de la clase de estacionariedad correspondiente. Se consideran dos casos diferentes
 \begin{itemize}
-    %C estacionario
-    %Betai, gammai>0, betai,gammai<0 o 
-    %Betai libre gammai=0
-    %Gammai libre , betai=0
-    \item \textbf{Punto C-Estacionario:}\\
-    \begin{equation}
-        \beta_j * \gamma_j >=0
-        \label{Requisitos puntos C-Estacionario}
-    \end{equation}
-    %M estacionario
-    %Betai, gammai>0,
-    %Betai libre gammai=0
-    %Gammai libre , betai=0
-    \item \textbf{Punto M-Estacionario}\\
-    \begin{equation}
-        \begin{aligned}
-            &\beta_j \land \gamma_j>0\\
-            &\beta_j \quad \text{Libre} \quad \gamma_j=0\\
-            &\beta_j=0 \quad \gamma_j \quad \text{Libre}\\
-        \end{aligned}
-        \label{Requisitos puntos M-Estacionarios}
-    \end{equation}
-    %Fuertemente estacionario
-    %Betai, gammai>0,
-    \item \textbf{Punto Fuertemente Estacionario}\\
-     \begin{equation}
-        \beta_j \land \gamma_j \geq 0
-    \label{Requisitos puntos Fuertemente Estacionarios}
-    \end{equation}    
+\item {\textbf{ $\alpha=0$}}: Se hace autom\'aticamente $\gamma =0$   y el  usuario introduce el multiplicador $\beta_j, j=1,\ldots,s $ de forma tal que: 
+
+\item[]\begin{center} {\textbf{ C-estacionario:}} \end{center}\begin{itemize}\item si $j\in J_1^v\cup J_2^v$: $\beta_j$ libre.\item si $j\in J_3^v$: $\beta_j=0$.\end{itemize}
+\item[]\begin{center} {\textbf{ M-estacionario:}} \end{center}\begin{itemize}\item si $j\in J_1^v\cup J_2^v$: $\beta_j$ libre.\item si $j\in J_3^v$: $\beta_j=0$.\end{itemize}
+\item[]\begin{center} {\textbf{ fuertemente-estacionario:}} \end{center}\begin{itemize}\item si $j\in J_1^v$: $\beta_j$ libre.\item si $j\in J_2^v$: $\beta_j\geq 0$.\item si $j\in J_3^v$: $\beta_j=0$.
 \end{itemize}
-% Especificar que en caso de  que alpha no se el vector nulo se asume que gamma_i es 0
-\textbf{En caso que $\vec{\alpha} \neq \vec{0}$ se asume que $\gamma_j=0$ en las condiciones anteriores.}
+\item  {\textbf{$\alpha\neq 0$:}} si cada $j=1,\ldots,q$ se introduce el par de multiplicadores $\beta_j, \gamma_j, j=1,\ldots,s$ de forma tal que: 
+\item[]\begin{center} {\textbf{ C-estacionario:}} \end{center}\begin{itemize}\item si $j\in J_1^v$: $\beta_j$ libre, $\gamma_j=0$.\item si $j\in J_2^v$: $\beta_j\gamma_j\geq 0$.\item si $j\in J_3^v$: $\beta_j=0,\gamma_j$ libre.\end{itemize}
+\item[]\begin{center} {\textbf{ M-estacionario:}} \end{center}\begin{itemize}\item si $j\in J_1^v$: $\beta_j$ libre, $\gamma_j=0$.\item si $j\in J_2^v$: $\beta_j,\gamma_j> 0$ o $\beta_j\gamma_j=0$.\item si $j\in J_3^v$: $\beta_j=0,\gamma_j$ libre.\end{itemize}
+\item[]\begin{center} {\textbf{fuertemente-estacionario:}} \end{center}\begin{itemize}\item si $j\in J_1^v$: $\beta_j$ libre, $\gamma_j=0$.\item si $j\in J_2^v$: $\beta_j,\gamma_j\geq 0$.\item si $j\in J_3^v$: $\beta_j=0,\gamma_j$ libre.
+\end{itemize}
+\end{itemize}
 
-% Explicar que se hace primero el punto factible
-% Subseccion donde se explica que el punto se hace factible inicialmente
 
-\subsection*{Modificación del Problema Original}
+
+% COndiciones \Beta_i \Gamma_i para puntos estacionarios
+
+\subsection{Modificación del Problema Original}
 Después de tener los datos de entrada necesarios se procede a la modificación
 del problema de entrada para que este sea estacionario del tipo requerido, $z_{est}$.
 
@@ -134,57 +120,75 @@ Primero en caso de que $\alpha \neq 0$ en los $v_j(x,y) \in J_0^v$ se procede a 
 
 %Como calcular b_j
 \begin{itemize}
-    \item \textbf{ $v_j(x,y) \in J_2^v$ \ref{J_0_lambda_pos_level_inferior}}:
+    \item \textbf{ $v_j(x,y) \in J_!^v$ \ref{J_pos_lambda_0_level_inferior}}:
         \begin{equation}
             \vec{b_j}=  \frac{{\alpha} \cdot (-\nabla_{y}{v_j(z_{est})}^T \cdot \alpha)}{\|\mathbf{\alpha} \|_2^2}
         \end{equation}
-    \item \textbf{$v_j(x,y) \in J_1^v \lor J_3^v$ (\ref{J_0_lambda_0_level_inferior},\ref{J_neg_lambda_0_level_inferior})}\\
+    \item \textbf{$v_j(x,y) \in J_2^v \lor J_3^v$ (\ref{J_0_lambda_pos_level_inferior}), (\ref{J_neg_lambda_0_level_inferior})}\\
     \begin{equation}
         \vec{b_j}=  \frac{{\alpha} \cdot ((-\nabla_{y}{v_j(z_{est})}^T \cdot \alpha)+\gamma_j)}{\|\mathbf{\alpha} \|_2^2}
     \end{equation}
 \end{itemize}
 
+Si $\alpha=0$, como $\gamma=0$, se toma  $\vec{b_j}=0$
+            
+Después de realizado el cálculo del $b_j$, se procede a modificar la función por una constante para lograr que sean activas en $z_{est}$ aquellas que fueron escogidas por el usuario y que todas sean no positivas. Para ello se evalua $$\hat{v_j}=v_{j}(z_{est})+ ({\vec{b_j}}^T)\cdot (y_1,y_2,\dots,y_m).$$ Se considean los siguientes casos
+\begin{itemize}
+    \item Si $\hat{v_j}\neq 0$ y $j\in J_1^v\cup J_2^v$, entonces $c_j^v=-\hat{v_j}$.
+\item Si $\hat{v_j}\geq 0$ y $j\in J_3^v$,  entonces  $c_j^v$ se obtiene generando un número aleatorio entre $(-\hat{v_j}-.001, -10)$ ***chequea.
+\item En otro caso $c_j^v=0$.\end{itemize}
 
-Después de realizado el calculo del $b_j$ se procede a modificar su índice activo correspondiente:
-
+De ahí que las restricciones del nivel inferior tengan la forma 
 \begin{equation}
-	v_{j}^{\star}(z_{est})=v_{j}(z_{est})+ ({\vec{b_j}}^T)\cdot (y_1,y_2,\dots,y_m)
+	v_{j}^{\star}(x,y)=v_{j}(x,y)+ ({\vec{b_j}}^T)\cdot (y_1,y_2,\dots,y_m)+c_j^v
 \end{equation}
 %
+Con estas condiciones se logra que 
+$$\begin{array}{rcll} \alpha \nabla_y v_{j}^{\star}(z_{est})&=&0,& j\in J_1^v,\\ \alpha \nabla_y v_{j}^{\star}(z_{est})-\gamma_j&=&0,& j\in J_2^v\cup J_3^v,\\
+  v_{j}^{\star}(z_{est})&=&0,& j\in J_1^v\cup J_2^v, \\  v_{j}^{\star}(z_{est})&<&0,& j\in J_3^v.\end{array}$$
 
 % Explicar que se hace el punto factible en las restricciones
-Luego en todas las restricciones del nivel inferior y superior
-se evalúa el punto y se verifica si es factible. En caso de no ser factible 
-bajo las nuevas restricciones se añaden constantes $c_i$ en el caso de las restricciones del
-nivel superior y $c_j$ para las del inferior. Esto conlleva a que sea un punto factible en el conjunto
-de restricciones de ambos niveles sin perjudicar las propiedades relacionadas con la convexidad al ser una adicción
-de funciones lineales. 
+De forma análoga se agregan constantes  $c_i^g$  a las restricciones del líder,  teniéndose que para $$g_{i}^{\star}(x,y)=g_{i}(x,y)+c_i^g,$$ se cumple
 
-% Explicar que se realiza el KKT del nivel inferior
-Al hacer factible se procede a realizar el KKT del nivel inferior con las modificaciones anteriores evaluado en $z_{est}$.
+$$\begin{array}{rcll} 
+  g_{i}^{\star}(z_{est})&=&0,& j\in J_0^g,\\  g_{i}^{\star}(z_{est})&<&0,& j\in \{1, \ldots, q\}\setminus J_0^g.\end{array}$$
 
-Se plantea las condiciones KKT y se halla $\vec{bf}$ :
+Solo falta lograr el cumplimiento de las condiciones de KKT del problema del seguidor. Para ello se considera el sistema 
 
 \begin{equation}
     \begin{aligned}
-        &\nabla_{y}f(x,y)+\sum_{j \in J_2^v}(\lambda_j\nabla_{y}v_{j}^{\star}(x,y))+\vec{bf}=\vec{0}\\
+        &\nabla_{y}f(z_{est})+\sum_{j \in J_2^v}(\lambda_j\nabla_{y}v_{j}^{\star}(z_{est}))+\vec{bf}=\vec{0}.\\
         &\text{KKT del problema del nivel inferior}
     \end{aligned}
     \label{KKT_nivel_inferior}
 \end{equation}
-\linebreak
-%Explicar que como se había hallado ya el KKT del level inf ahora se puede realizar completo
-Finalmente podemos construir la reformulación en MPEC como \ref{eq:KKT_Optimista} calculando el $\vec{BF}$ y 
-obteniendo el problema de forma reformulada.
-% MPEC all KKT 
-\begin{table}[H]
-    \begin{equation}
-        \label{KKT_del_MPEC}
-    \end{equation}
-	$\nabla_{xy}F(x,y)+\sum_{j\in J_o^g|}(\mu_i\nabla_{xy}g(x,y))+[\nabla_{x,y}\nabla_{y}f(x,y)+\sum_{j \in J_1^vg}\lambda_j\nabla_{xy}\nabla_{y}v_{j}^{\star}(x,y)]\alpha+\sum_{j \in J_1^v \cup J_2^v|}(\beta_j\nabla_{xy}v_{j}^{\star}(x,y))+\vec{BF}=\vec{0}$  \label{KKT_del_MPEC}
-\caption*{KKT del MPEC}
-\end{table}
 
+De esta manera la funci\'on objetivo del seguidor es
+$$f^{\star}(x,y)=f(x,y)+\vec{bf}y$$
+
+
+%Explicar que como se había hallado ya el KKT del level inf ahora se puede realizar completo
+Finalmente se toman  las derivadas del sistema de KKT con respecto a $(x,y)$. Para ello  se considera el sistema
+% MPEC all KKT 
+ 
+    $$
+       \nabla_{xy}F(z_{est})+\sum_{j\in J_o^g|}(\mu_i\nabla_{xy}g(z_{est}))+[\nabla_{x,y}\nabla_{y}f(z_{est})+\sum_{j \in J_1^vg}\lambda_j\nabla_{xy}\nabla_{y}v_{j}^{\star}(z_{est})]\alpha+$$ $$\sum_{j \in J_1^v \cup J_2^v|}(\beta_j\nabla_{xy}v_{j}^{\star}(z_{est})+\vec{BF}=\vec{0},
+   $$
+y se obtiene
+
+$$F^{\star}(x,y)=F(x,y)+\vec{BF}(x,y)^T.$$
+De esta forma el problema de dos niveles 
+\begin{equation}
+\begin{aligned}
+& \min_{x} \; F^{\star}(x, y) \\
+& \text{sujeto a } \\
+& g_i^{\star}(x, y)\leq 0,\;i=1,\ldots,q, \\
+& y \in \argmin_{y} \left\{ f^{\star}(x, y) \mid v_j^{\star}(x, y)\leq 0,\;j=1,\ldots,q ,\right\}
+\end{aligned}
+\end{equation}
+cumple que el punto $(z_{est},\lambda_{est})$ es un punto estacionario del modelo MPEC correspondiente.
+
+La salida del generador son las funciones $F^{\star}(x,y), f^{\star}(x,y),$, $g_1^{\star}(x,y),\ldots,g_q^{\star}(x,y)$, $v_1^{\star}(x,y),\ldots,v_s^{\star}(x,y)$.
 % Explicación algorítmica y manual de usuario
 
 \section{Implementación Algorítmica y Guía de Usuario}
@@ -194,14 +198,15 @@ se utilizó el lenguaje de programación \textbf{Julia}, ver \cite{Juliadocs}, d
 en expresiones y funciones matemáticas implementadas en su paquete base y sus bibliotecas externas como 
 \textbf{BilevelJuMP}, ver \cite{BilevelJump}, que permite resolver problemas binivel SLSF lineales y cuadráticos
 sin tener que transformar el problema original y \textbf{JuMP} \cite{JuMPPaper} el cual, es una interfaz robusta para la optimización general,
-todo ello con unas excelentes prestaciones de cómputo. Por ello se brindará una guía de usuario para el uso del generador.
+todo ello con unas excelentes prestaciones de cómputo. Por ello se brinda una guía de usuario para el uso del generador disponible en 
+\href{https://fvsb.github.io/Tesis/}{https://fvsb.github.io/Tesis/}.  
 
 %\subsection{Guía de Usuario}
 % Después compilar a ProblemGenerator
 La implementación algorítmica se ha llevado a cabo mediante la creación de una biblioteca de Julia
 llamada \textbf{ProblemGenerator}, con una sintaxis \textit{JuMP-like} intuitiva.
 Primero debe tenerse un problema de optimización Binivel SLSF planteado como el \ref{eq:DefBinivelOptimista}, el punto que se desea que sea estacionario ($z_{est}$), los índices activos descritos anteriormente 
-según el caso así como sus multiplicadores correspondientes, que cumplirán las propiedades del tipo de estacionariedad requerida y el $\vec{\alpha}$.
+según el caso así como sus multiplicadores correspondientes, que cumplirán las propiedades del tipo de estacionariedad requerida y la opci\'on de tener  $\vec{\alpha}$ igual a o didtinto de cero.
 %endregion
 
 %\subsection{Ejemplo a utilizar}
@@ -351,12 +356,12 @@ que los tipos de índices activos.
         \end{itemize}
     \item \textbf{Nivel Superior}:
      \begin{itemize}
-        \item \textbf{J\_0\_g} Si es un índice como en \ref{J_0_level_superior}.
+        \item \textbf{J\_0\_g} Si es un índice como en (\ref{activeg}).
      \end{itemize}
     \item \textbf{Nivel Inferior}:
     \begin{itemize}
-        \item \textbf{J\_0\_LP\_v} Si es un índice como en \ref{J_0_lambda_pos_level_inferior}.
-        \item  \textbf{J\_0\_L0\_v} Si es un índice como en \ref{J_0_lambda_0_level_inferior}.
+        \item \textbf{J\_0\_LP\_v} Si es un índice como en \ref{J_pos_lambda_0_level_inferior}.
+        \item  \textbf{J\_0\_L0\_v} Si es un índice como en \ref{J_0_lambda_pos_level_inferior}.
         \item  \textbf{J\_Ne\_L0\_v} Si es un índice como en \ref{J_neg_lambda_0_level_inferior}.
     \end{itemize}
 \end{itemize}
@@ -508,9 +513,3 @@ Se muestra el ejemplo completo para el problema antes propuesto:
 \end{lstlisting}
 
 
-\subsection{Documentación Oficial}
-Para mayor información visitar la documentación oficial del generador:
-
-\begin{center}
-\href{https://fvsb.github.io/Tesis/}{https://fvsb.github.io/Tesis/}. 
-\end{center}

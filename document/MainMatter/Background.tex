@@ -6,7 +6,7 @@ Este tiene dos características principales: primero, el problema del nivel infe
 En términos abstractos, la optimización binivel busca minimizar una función objetivo de nivel superior, $F(x, y)$, donde $x$ son las variables de decisión del líder y $y$ son las variables del seguidor. 
 
 % Explicación del capitulo
-En este capítulo se abordará los conocimientos necesarios para el desarrollo de esta tesis. La primera seccio\'on trata  sobre Optimización Binivel: la definición de solución basada en la existencia de una cierta cooperación entre lideres y seguidores (caso  optimista) y la reformulación KKT. Luego se presentan los conceptos fundamentales  de solución, regularidad y estacionariedad para   Problemas Matemáticos con Restricciones de Equilibrio (MPEC). La tercera sección contiene las principales transformaciones que se aplican a las restricciones de complementariedad para la solución num\'erica del modelo. Por último, se presenta la modelación de los problemas binivel en el lenguaje de programación Julia y los métodos seleccionados implementados en este lenguaje para su resolución. 
+En este capítulo se abordará los conocimientos necesarios para el desarrollo de esta tesis. La primera seccio\'on trata  sobre Optimización Binivel: la definición de solución basada en la existencia de una cierta cooperación entre lideres y seguidores (caso  optimista) y la reformulación KKT. Luego se presentan los conceptos fundamentales  de solución, regularidad y estacionariedad para Problemas Matemáticos con Restricciones de Equilibrio (MPEC). La tercera sección contiene las principales transformaciones que se aplican a las restricciones de complementariedad para la solución num\'erica del modelo. Por último, se presenta la modelación de los problemas binivel en el lenguaje de programación Julia y los métodos seleccionados implementados en este lenguaje para su resolución. 
 
 \section{Optimización Binivel }
 %Intro de la sección
@@ -40,7 +40,7 @@ En el enfoque optimista, se asume que el seguidor, que actúa en el nivel inferi
     % Enfoque optimista (selección favorable)
     \begin{equation}  \label{eq:EnfoqueOptimistaGeneral}
     \begin{matrix}
-    & \min_{x} \; \inf_{y \in S(x)} F(x, y) \\
+    & \min_{x} \; \inf_{y \in S(x)} F(x, y) \\& g_i(x, y)\leq 0,\;i=1,\ldots,q, \\
     & \text{con } S(x) = \argmin_{y} \left\{ f(x, y) \mid v(x, y) \leq 0 \right\}
     \end{matrix}
     \end{equation}
@@ -54,7 +54,7 @@ Por otro lado, el enfoque pesimista asume que el seguidor seleccionará la opci�
 % Enfoque pesimista (peor caso)
 \begin{equation}
 \begin{aligned}
-& \min_{x} \; \sup_{y \in S(x)} F(x, y) \\
+    & \min_{x} \; \sup_{y \in S(x)} F(x, y) \\& g_i(x, y)\leq 0,\;i=1,\ldots,q, \\
 & \text{con } S(x) = \argmin_{y} \left\{ f(x, y) \mid v(x, y) \leq 0 \right\}
 \end{aligned}
 \label{eq:EnfoquePesimistaGeneral}
@@ -91,7 +91,7 @@ Los  problemas de dos niveles pueden ser reformulados en un problema de un solo 
 		%Para el caso de los SLSMG donde se tiene un problema de optimización en el nivel inferior este sustituye por de las condiciones KKT de este, obteniendo un MPEC \autocite{aussel2020}.
         
 % 
-        \begin{equation}\label{eq:KKT_Optimista}   
+        \begin{equation}   
             \begin{array}{l}
                 \underset{\substack{x, y, \lambda_j}}{\min} \quad F(x, y)\\
                 s.a \left\{ 
@@ -103,6 +103,7 @@ Los  problemas de dos niveles pueden ser reformulados en un problema de un solo 
                     \lambda_j \geq 0, j=1\ldots s.\\
                 \end{array}\right.
             \end{array}
+            \label{eq:KKT_Optimista}
         \end{equation}
      
 

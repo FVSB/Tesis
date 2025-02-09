@@ -10,7 +10,29 @@
     % Que se comparó
     Los problemas modificados fueron sometidos nuevamente a algoritmos tradicionales implementados en Julia para evaluar su efectividad frente a los puntos estacionarios generados. Se realizó un análisis comparativo destacando los casos más relevantes de cada categoría de puntos estacionarios, considerando la evaluación de la función objetivo del nivel superior en el punto donde se garantizó la estacionariedad, contrastándola con los resultados obtenidos por las bibliotecas convencionales.
     
+% Tabla principal con subtablas
+\begin{resultstablee}{Resultados de los problemas}
 
+    \multicolumn{9}{|c|}{\textbf{Alpha-Zero}} \\
+    \hline
+    \resultroww{Tipo A}{Problema 1}{(1, 2)}{5.0}{(3, 4)}{10.0}{Método X}{Factible}{Convergencia}
+    \resultroww{Tipo B}{Problema 2}{(5, 6)}{15.0}{(7, 8)}{20.0}{Método Y}{No factible}{Iteraciones máximas}
+    
+    \multicolumn{9}{|c|}{\textbf{C-Estacionario}} \\
+    \hline
+    \resultroww{Tipo C}{Problema 3}{(2, 3)}{7.0}{(4, 5)}{12.0}{Método Z}{Factible}{Convergencia}
+    \resultroww{Tipo D}{Problema 4}{(6, 7)}{18.0}{(8, 9)}{25.0}{Método W}{No factible}{Error numérico}
+    
+    \multicolumn{9}{|c|}{\textbf{M-Estacionario}} \\
+    \hline
+    \resultroww{Tipo E}{Problema 5}{(3, 4)}{9.0}{(5, 6)}{14.0}{Método V}{Factible}{Convergencia}
+    \resultroww{Tipo F}{Problema 6}{(7, 8)}{20.0}{(9, 10)}{30.0}{Método U}{No factible}{Iteraciones máximas}
+    
+    \multicolumn{9}{|c|}{\textbf{Fuertemente-Estacionario}} \\
+    \hline
+    \resultroww{Tipo G}{Problema 7}{(4, 5)}{11.0}{(6, 7)}{16.0}{Método T}{Factible}{Convergencia}
+    \resultroww{Tipo H}{Problema 8}{(8, 9)}{22.0}{(10, 11)}{35.0}{Método S}{No factible}{Error numérico}
+\end{resultstablee}
             
         
 \end{conclusions}

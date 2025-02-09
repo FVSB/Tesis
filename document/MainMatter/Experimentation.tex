@@ -9,11 +9,15 @@ Los problemas modificados serán posteriormente evaluados utilizando algoritmos 
 Para garantizar un análisis exhaustivo y representativo, se han seleccionado un total de quince problemas de optimización binivel, distribuidos equitativamente entre las tres categorías mencionadas, asignando cinco problemas a cada una de ellas. Los problemas correspondientes a las categorías Lineales y Cuadráticos han sido extraídos de \cite{Floudas1999HandbookOT}, mientras que los problemas No Convexos provienen de \cite{BolibTestProblems}. Esta selección diversa permite una evaluación comprehensiva de las diferentes características y comportamientos de los problemas de optimización binivel bajo estudio.
 
 
-%\section{Problemas Escogidos}
+
+\section{Modelación de la experimentación}
+En esta sección se describe el proceso de experimentación, donde se toman las siguientes consideraciones. 
+Todos los valores, han sido redondeados por exceso a dos cifras decimales. 
+
 Los problemas escogidos para la experimentación fueron:
 
 %Tabla con los problemas escogidos
-\begin{table}[h!]
+\begin{table}[H]
 \centering
 \caption{Problemas Seleccionados}
 \begin{tabular}{ | m{5cm} | m{5cm} | m{5cm} | }
@@ -34,32 +38,24 @@ Los problemas escogidos para la experimentación fueron:
 \end{tabular}
 \end{table}
 
-
-
-
-\section{Modelación de la experimentación}
-Se describirá el proceso de generar la experimentación. 
-Todos los valores, en esta parte, han sido redondeados por exceso a dos cifras después de la coma. 
-
-%\subsubsection{Obtención de los óptimos}
-Inicialmente se necesita obtener óptimos de los problemas con los paquetes convencionales de Julia
-cuya forma de resolver dependerá de la clase del problema. A continuación definiremos este tipo de clases y como se obtienen los óptimos. 
+Inicialmente se computan óptimos de los problemas con los paquetes convencionales de Julia
+cuya forma de resolver dependerá de la clase del problema. A continuación definiremos cada tipo de clase y como se obtienen los óptimos. 
 
 % Definir problemas lineales
 
 \begin{itemize}
     \item \textbf{Problemas Lineales y Cuadráticos :}\\
-            Un problema binivel lineal es aquel el cual los problemas del nivel superior e inferior son lineales, análogamente se define el problema cuadrático.
+            Un problema binivel lineal es aquel en el cual los problemas del nivel superior e inferior son lineales, análogamente se define el problema cuadrático.
             % Escribir la definición matemática
             
-            Con dicho problema se introduce los datos en la interfaz de \textbf{BilevelJuMP}, ver \cite{BilevelJump}, con el cual se utilizan 3 técnicas entre las ofrecidas por esta:
+            Con dicho problema se introducen los datos en la interfaz de \textbf{BilevelJuMP}, ver \cite{BilevelJump}, con el cual se utilizan 3 técnicas entre las ofrecidas por esta:
             \begin{itemize}
                 \item \textbf{Big-M :} Con el optimizador High-Performance Solver for Linear Programming (HiGHS) y los valores $\text{primal big M} = 100, \quad \text{dual big M} = 100$.
                 \item \textbf{SOS1 :} Con el optimizador Solving Constraint Integer Programs (SCIP).
                 \item \textbf{ProductMode :} Con el optimizador Interior Point Optimizer (Ipopt).
             \end{itemize} 
-            Cada uno de los resultados de evaluar el problema en cada forma anterior se guarda en un formato \textit{.xlsx}
-            donde por cada optimizador se guarda los parámetros:
+            Cada uno de los resultados de evaluar el problema en cada forma anterior se guardan en un formato \textit{.xlsx}
+            donde por cada optimizador se guardan los parámetros:
             \begin{itemize}
                 \item Estatus del Primal, el cual define si es un punto factible o no.
                 \item Estatus de la Finalización, si terminó porque encontró un óptimo o se estancó en un óptimo local.
@@ -76,8 +72,8 @@ cuya forma de resolver dependerá de la clase del problema. A continuación defi
 
 
 \subsubsection{Generación de los problemas}
-Para la generación de los problemas, se toma los problemas seleccionados anteriormente con su punto óptimo calculado por las bibliotecas antes dichas, para ello mediante código de julia se procede a generar los 4 tipos de problemas modificados: con \textit{$\alpha =0 $}, \textit{C-Estacionario}, \textit{M-Estacionario} y \textit{Fuertemente Estacionario}, mediante 
-código de Julia para dichos experimentos. Cada experimento se realizará con semillas para poder replicar dichos experimentos, cuya asignación se muestra en las tablas siguientes:
+Para la generación de los problemas, se toman los problemas seleccionados anteriormente con su punto óptimo calculado por las bibliotecas antes dichas, para ello mediante código de Julia se procede a generar los 4 tipos de problemas modificados: con \textit{$\alpha =0 $}, \textit{C-Estacionario}, \textit{M-Estacionario} y \textit{Fuertemente Estacionario}, mediante 
+código de Julia para dichos experimentos. Cada experimento se realizará con semillas para poder replicarlos, cuya asignación se muestran en las tablas siguientes:
 
 
 
@@ -148,8 +144,14 @@ código de Julia para dichos experimentos. Cada experimento se realizará con se
     \end{table}
 
     \section{Metodología de Generación y Experimentación}
+    % Aclarar que son replicable
+    % Aclarar que se divide en generar problemas, esos problemas guardarlos, después mandarlos a julia a ver como rinden
+    La experimentación consta de 3 partes fundamentales: generación del problema perturbado (para cumplir con cierta clase de estacionariedad en un punto dado), cómputo de óptimos del problema, análisis de los resultados.
 
-    La generación de los diferentes tipos de problemas se realiza utilizando las mismas semillas de generación para los cuatro tipos, manteniendo también la consistencia en las semillas para hallar los óptimos en estos problemas generados. La implementación sigue una sintaxis similar a la descrita en el capítulo anterior, dado que esta nueva implementación incorpora y extiende la anterior.
+    %
+    Para la generación de los diferentes tipos de problemas perturbados utiliza semillas para la generación de los valores aleatorios para una replicación del mismo.
+    La implementación sigue una sintaxis similar a la descrita en el capítulo anterior, dado que esta nueva implementación incorpora y extiende la anterior, pero permite 
+    que con solo introducir un problema base se puedan generar los 4 tipos de problemas perturbados.
     
     El proceso de modificación de los puntos comienza con el problema original de entrada y el punto obtenido previamente. A cada componente de este punto se le añade un valor aleatorio en el intervalo $[1e-10, 5]$, obteniendo así el punto modificado $z^*_0$. Para los casos donde $\vec{\alpha}\neq \vec{0}$, se genera un vector aleatorio con componentes en el intervalo $[1e-10, 3]$. En cuanto a los conjuntos de índices activos de las $v_{j}s$, estos se distribuyen siguiendo una proporción específica: $1/2$ corresponde al tipo $J_1^v$ (\ref{J_0_lambda_0_level_inferior}), mientras que el $1/4$ restante se divide entre los tipos \ref{J_0_lambda_pos_level_inferior} y \ref{J_neg_lambda_0_level_inferior}.
     
@@ -161,11 +163,9 @@ código de Julia para dichos experimentos. Cada experimento se realizará con se
     
     %Análisis Comparativo de Algoritmos
     
-    %Para la evaluación de los problemas generados, se emplean los métodos de Julia previamente mencionados. La selección del resultado representativo se basa en dos criterios principales: se elige aquel que haya superado en mayor medida su óptimo inicial, o en caso de no existir tal superación, se selecciona el que presente la mayor distancia respecto al valor objetivo inicial.
-    
     %Presentación de Resultados
     
-    Los resultados seleccionados se presentan en tablas estructuradas que incluyen información fundamental para cada problema. Estas tablas contienen el nombre del problema original que fue modificado para alcanzar la estacionariedad de la clase deseada, el punto al cual se forzó ser estacionario de la clase requerida (asegurando que no pertenezca a un subconjunto de esta), la evaluación de la función objetivo en el punto estacionario, el punto óptimo identificado por los algoritmos de Julia, la evaluación de la función objetivo en este óptimo, y el método seleccionado para su obtención.
+    Los resultados seleccionados se presentan en tablas estructuradas que incluyen información fundamental para cada problema. Estas tablas contienen el nombre del problema original que fue modificado para alcanzar la estacionariedad de la clase deseada, el punto al cual se forzó ser estacionario de la clase requerida (asegurando que no pertenezca a un subconjunto de esta), la evaluación de la función objetivo en el punto estacionario, el punto óptimo identificado por los algoritmos de Julia, la evaluación de la función objetivo en este óptimo, el método seleccionado para su obtención y el tiempo requerido para su ejecución.
 
 \subsection{Problemas Lineales} 
   
@@ -201,7 +201,7 @@ código de Julia para dichos experimentos. Cada experimento se realizará con se
     
 %Analisis
 En los problemas de Alpha Zero, se mostró cierta complejidad para SOS1, el cual en algunos casos no pudo determinar puntos, mientras que Big-M logró completar los objetivos. 
-Los puntos hallados en los problemas, eran distantes en sus componentes mayoritariamente indicando que el posible valor óptimo no está en una vecindad del punto inicial, siendo la diferencia de componente a componente, tan grande como $1e+20$.
+Los puntos hallados en los problemas eran mayoritariamente distantes en sus componentes con respecto al punto estacionario original,  indicando que el posible valor óptimo no está en una vecindad del punto inicial, siendo la diferencia de componente a componente, tan grande como $1e+20$.
 En términos generales de rendimiento, Big-M tuvo un excelente desempeño, seguido de SOS1 y por último de ProductMode. 
 En este caso el problema que mayor mejora tuvo fue el ex9.1.1
 %endregion
@@ -233,8 +233,8 @@ En este caso el problema que mayor mejora tuvo fue el ex9.1.1
     
  \end{resultstablee} 
 
- En los problemas de C-Estacionario los valores cuya evaluación inicial era 0, no se notó mejora en el valor de la función objetivo.Big-M tuvo problemas para hallar el óptimo, probablemente debido a los valores extremos de este,
- En ex9.1.1, ex9.1.10, ex9.1.9 y ex9.1.9 los métodos hallaron óptimos que sus componentes tienen diferencias considerables pero sin grandes mejoras en cuanto al valor objetivo en la mayoría de los casos. 
+ En los problemas de C-Estacionario donde la evaluación del punto estacionario inicial es 0, no mejoró el valor de la función objetivo evaluada en el óptimo. El método Big-M tuvo problemas para hallar el óptimo, probablemente debido a los valores extremos de este.
+
  
  
     
@@ -267,7 +267,7 @@ En este caso el problema que mayor mejora tuvo fue el ex9.1.1
 
 
  En los problemas de M-Estacionario, los algoritmos tuvieron grandes dificultades para encontrar el óptimo. 
- Solo en el último problema, 9.1.9, se logró una solución factible. SOS1 no logró dar ningún resultado, mientras que ProductMode se quedaba en puntos localmente insatisfactibles y Big-M problemáticamente por los valores de M. 
+ Los problemas ex9.1.10 y ex9.1.9 son los unicos en los que Julia halló puntos óptimos, en el primero halló un punto óptimo cuya evaluación es cercana a la del punto estacionario inicial aunque sin estar en una vecindad de este, el segundo halló mediante Big-M y SOS1 puntos óptimos que están en la vecindad del punto estacionario inicial y  ProductMode localizó un punto óptimo cuya evaluación es igual a la evaluación del punto estacionario inicial aunque este no se encuentra en una vecindad. ProductMode tuvo complicaciones para hallar los óptimos en este tipo de problemas.
  
   
 \subsubsection{Fuertemente Estacionario}
@@ -294,8 +294,8 @@ En este caso el problema que mayor mejora tuvo fue el ex9.1.1
     
     
  \end{resultstablee} 
- En los problemas de Fuertemente Estacionario, excepto en los problemas ex9.1.1 y ex9.1.9 los métodos tuvieron problemas en la mayoría de los problemas.
- En los problemas que dieron una solución óptima se obtuvieron puntos que componente a componente con numéricamente iguales.
+ En los problemas de tipo Fuertemente Estacionario, los métodos de Julia presentaron complicaciones  en  ex9.1.1 y ex9.1.9 donde en ambos casos Big-M, SOS1 y ProductMode hallaron puntos óptimos en la vecindad del punto estacionario inicial.
+
 
 %region Best Lineales
 \subsubsection{Problemas relevantes de cada categoría de punto:}
@@ -310,7 +310,7 @@ En este caso el problema que mayor mejora tuvo fue el ex9.1.1
     
 %endregion
 En los problemas analizados se evidencia que mientras más fuertes sean las condiciones de los puntos es más probable de hallar óptimos en la vecindad del punto original, 
-así como también es probable que los algoritmos no logren encontrar un valor óptimo y terminen con puntos insatisfactibles.
+así como también es probable que los algoritmos no logren encontrar un valor óptimo y terminen con puntos no factible.
 El método SOS1 tuvo dificultades para obtener alguna solución, mientras que Big-M tuvo mayormente problemas asociados a sus valores extremos, teniendo ProductMode un comportamiento similar a este aunque con mayor tiempo de cómputo.
 Además no existe caso en el que el valor objetivo halla sido peor que el valor inicial estacionario.
    
@@ -377,8 +377,7 @@ Además no existe caso en el que el valor objetivo halla sido peor que el valor 
  \end{resultstablee} 
 En estos tipos de puntos los problemas ex9.2.1 y ex.9.2.4 obtuvieron peor evaluación del óptimo propuesto que el del punto estacionario inicial en SOS1 y ProductMode, 
 en ellos Big-M no pudo entregar ningún resultado. En el resto de problemas se obtuvieron puntos óptimos en vecindades cercanas y con evaluación cercana al punto estacionario original,
-excepto en ex9.2.3 que los 3 métodos lograron encontrar puntos óptimos que componente a componente con respecto el punto estacionario inicial se encuentran distantes, así como sus evaluaciones en las cuales 
-las mejora es significativa.
+excepto en ex9.2.3 que los 3 métodos lograron encontrar puntos óptimos que aunque no se encuentran en la vecindad del punto estacionario inicial sus evaluaciones mejoran a la de este.
 
 
     
@@ -439,10 +438,8 @@ las mejora es significativa.
 \resultrow{Fuertemente-Estacionario}{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{293.57}{( -6.90, -7.39, 0.87, -12.87,)}{111.17}{Highs-BigM (100,100)} 
 \end{resultstable}
 
-En este tipo de problemas, aunque no se encontraron dificultades en los algoritmos para encontrar un punto óptimo, excepto en el caso fuertemente estacionario, 
-hubo una mejora entre puntos con condiciones más fuertes respecto a que coincida el punto óptimo con el punto estacionario inicial. 
-Sin embargo, en el caso de fuertemente estacionario, esto puede deberse a la naturaleza de este tipo de problemas, 
-además de intuir que en estos puntos los métodos de Julia puedan tener complicaciones.
+En este tipo de problemas excepto en el caso fuertemente estacionario no se encontraron dificultades en los algoritmos para encontrar un punto óptimo. Existe una mejora entre los tipos de puntos con condiciones más fuertes respecto a que a que el óptimo hallado por Julia se encuentre en una vecindad del punto estacionario inicial. 
+
 
 %endregion
 \subsection{Problemas No Convexos}
@@ -546,7 +543,7 @@ además de intuir que en estos puntos los métodos de Julia puedan tener complic
 El análisis de los experimentos realizados en este capítulo permite observar distintos comportamientos según el tipo de problema analizado.
 %Lineales 
 En los problemas lineales, se evidenció que, a medida que se imponen condiciones más fuertes en los puntos, aumenta la probabilidad de hallar óptimos en la vecindad del punto original. 
-Sin embargo, estas mismas condiciones también incrementan la posibilidad de que los algoritmos no logren encontrar una solución óptima y terminen en puntos insatisfactibles. 
+Sin embargo, estas mismas condiciones también incrementan la posibilidad de que los algoritmos no logren encontrar una solución óptima y terminen en puntos no factible. 
 En particular, el método SOS1 presentó dificultades para obtener alguna solución, mientras que el método Big-M mostró problemas asociados a valores extremos. 
 Un comportamiento similar se observó en ProductMode, aunque este último requirió un mayor tiempo de cómputo. 
 Cabe destacar que en ningún caso el valor objetivo fue peor que el valor inicial estacionario.  

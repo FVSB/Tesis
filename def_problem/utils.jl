@@ -16,7 +16,7 @@ Generates a random number greater than zero and less than one.
 - `Float64`: A random number slightly greater than zero.
 """
 function get_rand()
-    epsilon = 1e-10
+    epsilon = 1e-2
     rand_value=rand() + epsilon
     return my_round(rand_value)
 end
@@ -31,7 +31,7 @@ export get_rand
 
 #Genera un vector aleatorio de dimension n
 function get_rand_vect(n)::Vector{Number}
-    epsilon = 1e-10
+    epsilon = 1e-2
     return  my_round.(rand(n) .+epsilon)
  end
 

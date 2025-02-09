@@ -56,18 +56,19 @@ De esta forma
 
 
 Condiciones extra respecto al signo de $\beta$ y $\gamma$ se tendr\'an en cuenta en dependencia de si el usuario escoge que sea  C,M, fuerte estacionario o cumpla  la condici\'on $\alpha=0$.  Es por esto que el conjunto $\{1,\ldots, s\}$  se particiona en 
- \begin{equation} \label{J_pos_lambda_0_level_inferior}
-                        J_1^v=\{j | v_j(x,y)=0 \land \lambda_j>0 \} %al conjunto restricciones de desigualdad que sean índices activos
-                        \end{equation} 
-                     \begin{equation}
-                        J_2^v=\{j | v_j(x,y)=0 \land \lambda_j=0 \}
-                        \label{J_0_lambda_pos_level_inferior}
-                    \end{equation}
+ \begin{equation} 
+ J_1^v=\{j | v_j(x,y)=0 \land \lambda_j>0 \} %al conjunto restricciones de desigualdad que sean índices activos
+ \label{J_0_lambda_pos_level_inferior}
+ \end{equation} 
+ \begin{equation}
+    J_2^v=\{j | v_j(x,y)=0 \land \lambda_j=0 \}
+    \label{J_0_lambda_0_level_inferior}
+\end{equation}
                   
  \begin{equation}
-                        J_3^v=\{j | v_j(x,y)< 0 \land \lambda_j=0 \}
-                        \label{J_neg_lambda_0_level_inferior}
-                    \end{equation}
+    J_3^v=\{j | v_j(x,y)< 0 \land \lambda_j=0 \}
+    \label{J_neg_lambda_0_level_inferior}
+\end{equation}
             
     
 Cada índice activo tiene multiplicadores $\beta_j$ y en dependencia del caso $\gamma_j$ asociados. De esta forma 
@@ -89,7 +90,7 @@ declaran las  variables diferenciando las del l\'ider $x$ y las del seguidor $y$
 
 Con las variables se introduce la funci\'on objetivo del l\'ider $F(x,y)$ y las restricciones $ g_1(x,y),\ldots, g_q(x,y)$. En cada caso el usuario define si desea que sea activa o no y para las activas  le introduce el correspondiente multiplicador $\mu_j$. De esta forma se construye el conjunto $J_0^G=\{i | g_i(x,y)=0\}$ y se logra que  $g_i(x,y)\mu_i=0$ para todo $i=1,\ldots,q$. Se le advierte al usuario que $\mu_j$ debe ser no negativo, d\'andole la posibilidad de cambiarlo de haber cometido un error.
 
-De manera an\'aloga se procede con la funci\'on objetivo del seguidor $f(x,y)$,  sus restricciones  $ v_1(x,y),\ldots, v_s(x,y)$ y sus multiplicadores $\lambda$  no negativos. Sabiendo que al menos uno de ellos $v_j(x,y)\lambda_j=0$, se construye la partici\'on $(J_1^v,J_2^v,J_3^v)$  del conjunto $\{1,\ldots,s\}$  descrita en (\ref{J_pos_lambda_0_level_inferior}),  (\ref{J_0_lambda_pos_level_inferior}),  (\ref{J_neg_lambda_0_level_inferior}).
+De manera an\'aloga se procede con la funci\'on objetivo del seguidor $f(x,y)$,  sus restricciones  $ v_1(x,y),\ldots, v_s(x,y)$ y sus multiplicadores $\lambda$  no negativos. Sabiendo que al menos uno de ellos $v_j(x,y)\lambda_j=0$, se construye la partici\'on $(J_1^v,J_2^v,J_3^v)$  del conjunto $\{1,\ldots,s\}$  descrita en (\ref{J_0_lambda_pos_level_inferior}),  (\ref{J_0_lambda_0_level_inferior}),  (\ref{J_neg_lambda_0_level_inferior}).
 
 Finalmente se introducen el resto de los multiplicadores,  a saber $\beta$ y $\gamma$,  de forma que cumplan la condici\'on de la clase de estacionariedad correspondiente. Se consideran dos casos diferentes
 \begin{itemize}
@@ -120,11 +121,11 @@ Primero en caso de que $\alpha \neq 0$ en los $v_j(x,y) \in J_0^v$ se procede a 
 
 %Como calcular b_j
 \begin{itemize}
-    \item \textbf{ $v_j(x,y) \in J_!^v$ \ref{J_pos_lambda_0_level_inferior}}:
+    \item \textbf{ $v_j(x,y) \in J_!^v$ \ref{J_0_lambda_pos_level_inferior}}:
         \begin{equation}
             \vec{b_j}=  \frac{{\alpha} \cdot (-\nabla_{y}{v_j(z_{est})}^T \cdot \alpha)}{\|\mathbf{\alpha} \|_2^2}
         \end{equation}
-    \item \textbf{$v_j(x,y) \in J_2^v \lor J_3^v$ (\ref{J_0_lambda_pos_level_inferior}), (\ref{J_neg_lambda_0_level_inferior})}\\
+    \item \textbf{$v_j(x,y) \in J_2^v \lor J_3^v$ (\ref{J_0_lambda_0_level_inferior}), (\ref{J_neg_lambda_0_level_inferior})}\\
     \begin{equation}
         \vec{b_j}=  \frac{{\alpha} \cdot ((-\nabla_{y}{v_j(z_{est})}^T \cdot \alpha)+\gamma_j)}{\|\mathbf{\alpha} \|_2^2}
     \end{equation}
@@ -360,8 +361,8 @@ que los tipos de índices activos.
      \end{itemize}
     \item \textbf{Nivel Inferior}:
     \begin{itemize}
-        \item \textbf{J\_0\_LP\_v} Si es un índice como en \ref{J_pos_lambda_0_level_inferior}.
-        \item  \textbf{J\_0\_L0\_v} Si es un índice como en \ref{J_0_lambda_pos_level_inferior}.
+        \item \textbf{J\_0\_LP\_v} Si es un índice como en \ref{J_0_lambda_pos_level_inferior}.
+        \item  \textbf{J\_0\_L0\_v} Si es un índice como en \ref{J_0_lambda_0_level_inferior}.
         \item  \textbf{J\_Ne\_L0\_v} Si es un índice como en \ref{J_neg_lambda_0_level_inferior}.
     \end{itemize}
 \end{itemize}

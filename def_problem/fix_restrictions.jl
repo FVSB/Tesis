@@ -105,11 +105,7 @@ Adjusts the given value based on the specified restriction set type.
 The adjusted value according to the rules for the given restriction set type.
 """
 function Fix_value(value::Num, restriction_set_type::RestrictionSetType)::Num
-    # If the restriction set type is "Normal", return 0 as no adjustment is needed
-    if restriction_set_type in [Normal]
-        return 0
-    end
-
+   
     # If the restriction set type is "J_Ne_L0_v", apply specific adjustments
     if restriction_set_type in [J_Ne_L0_v]
         if value < 0

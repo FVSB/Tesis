@@ -2,85 +2,113 @@
 \input{Problems/export}
 
     
-\begin{resultstablee}{Resultados de los problemas Lineal} 
 
+\begin{resultstablee}{Resultados de los problemas Lineal del tipo Alpha-Zero}
     
-    
-
-    \multicolumn{9}{|c|}{\textbf{Alpha-Zero}} \\
-    \hline  
-
-\resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{18.59}{( 6.13, 6.85, -173.65,)}{-1820.0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.00046779663909999995} 
+    \resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{18.59}{( 6.13, 6.85, -173.65,)}{-1820.0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.00046779663909999995} 
 \resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{18.59}{( 6.13, 6.85, -1.19e+19,)}{-1.2384285244918673e+20}{Product-Mode}{NEARLY-FEASIBLE-POINT}{ALMOST-LOCALLY-SOLVED}{0.018216050283636365} 
-\resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{-0.48}{( 1.65, 34.73, 102.20, 100.00,)}{-240.0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0005916887039552061} 
-\\
-\hline
+ \hline  
+ \resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{-0.48}{( 1.65, 34.73, 102.20, 100.00,)}{-240.0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0005916887039552061} 
 \resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{-0.48}{( -1.01e+20, 3.37e+19, 676781.00, 2.02e+20,)}{-4.8528604996887255e+20}{Product-Mode}{INFEASIBLE-POINT}{NORM-LIMIT}{0.09548243956603773} 
-\resultroww{ex9.1.2}{( 7.00, 8.95,)}{0.0}{( 7.00, 8.95,)}{0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0005095908938271605} 
+ \hline  
+ \resultroww{ex9.1.2}{( 7.00, 8.95,)}{0.0}{( 7.00, 8.95,)}{0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0005095908938271605} 
 \resultroww{ex9.1.2}{( 7.00, 8.95,)}{0.0}{( 7.00, 8.95,)}{0}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.0036491232397660818} 
 \resultroww{ex9.1.2}{( 7.00, 8.95,)}{0.0}{( 7.00, 8.95,)}{0}{Product-Mode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.012145625483009709} 
-\resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( -200.00, 0.00, -203.20, 201.25,)}{0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0006034477299367704} 
+ \hline  
+ \resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( -200.00, 0.00, -203.20, 201.25,)}{0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0006034477299367704} 
 \resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( 5.14, 1.30, 5.82, 0.00,)}{0}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.003330911396264176} 
 \resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( -3837804609426.00, 3837804592535.52, 7675609168177.35, 15351218387033.80,)}{0}{Product-Mode}{INFEASIBLE-POINT}{OTHER-ERROR}{0.0392210034453125} 
-\resultroww{ex9.1.9}{( 4.78, 6.17,)}{3.98}{( 8.61, -1.48,)}{-2.9}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0004643262269} 
+ \hline  
+ \resultroww{ex9.1.9}{( 4.78, 6.17,)}{3.98}{( 8.61, -1.48,)}{-2.9}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0004643262269} 
 \resultroww{ex9.1.9}{( 4.78, 6.17,)}{3.98}{( 8.61, -1.48,)}{-2.9}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.005123980320000001} 
 \resultroww{ex9.1.9}{( 4.78, 6.17,)}{3.98}{( 4.79, 6.17,)}{3.98}{Product-Mode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.009638699485549133} 
+ \hline  
+ 
+    
+    
+ \end{resultstablee} 
 
     
+    
 
-    \multicolumn{9}{|c|}{\textbf{C-Estacionario}} \\
-    \hline  
-
+    \begin{resultstablee}{Resultados de los problemas Lineal del tipo C-Estacionario}
+    
     \resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{74.95}{( 0.00, 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0004682440455} 
 \resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{74.95}{( 6.25, 10.36, 6.60,)}{-27.94}{Product-Mode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.01053818123628692} 
-\resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{0.0}{( 50.81, 17.80, 126.86, 163.97,)}{0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0006909111494300806} 
+ \hline  
+ \resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{0.0}{( 50.81, 17.80, 126.86, 163.97,)}{0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0006909111494300806} 
 \resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{0.0}{( 53.73, 19.59, 0.00, -664.87,)}{0}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.003464193543372658} 
 \resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{0.0}{( 50.81, 17.80, 126.75, 163.24,)}{0}{Product-Mode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.0068813606955922865} 
-\resultroww{ex9.1.2}{( 7.00, 8.95,)}{-533.33}{( 7.00, 8.95,)}{-533.62}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.00036514324190000004} 
+ \hline  
+ \resultroww{ex9.1.2}{( 7.00, 8.95,)}{-533.33}{( 7.00, 8.95,)}{-533.62}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.00036514324190000004} 
 \resultroww{ex9.1.2}{( 7.00, 8.95,)}{-533.33}{( 7.00, 8.95,)}{-533.62}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.0028385706895963617} 
 \resultroww{ex9.1.2}{( 7.00, 8.95,)}{-533.33}{( 7.00, 8.95,)}{-533.62}{Product-Mode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.011949152739234449} 
-\resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( 0.00, 0.00, 0.00, 0.00,)}{0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0004503267894} 
+ \hline  
+ \resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( 0.00, 0.00, 0.00, 0.00,)}{0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0004503267894} 
 \resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( 4.79, 1.52, -4.91, 0.00,)}{0}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.003091181772136223} 
 \resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( 157622.80, -157616.49, -204903418.75, -19264423.52,)}{0}{Product-Mode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.006741560248313091} 
-\resultroww{ex9.1.9}{( 4.78, 6.17,)}{-359.91}{( 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0005221321025021026} 
+ \hline  
+ \resultroww{ex9.1.9}{( 4.78, 6.17,)}{-359.91}{( 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0005221321025021026} 
 \resultroww{ex9.1.9}{( 4.78, 6.17,)}{-359.91}{( 4.78, 6.68,)}{-385.79}{Product-Mode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.005467831646608316} 
+ \hline  
+ 
+    
+    
+ \end{resultstablee} 
 
     
+    
 
-    \multicolumn{9}{|c|}{\textbf{M-Estacionario}} \\
-    \hline  
-
+    \begin{resultstablee}{Resultados de los problemas Lineal del tipo M-Estacionario}
+    
     \resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{-350.25}{( 0.00, 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0006334388676526839} 
 \resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{-350.25}{( 6.10, 2.56, 0.19,)}{-353.19}{Product-Mode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.009341708173831776} 
-\resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{256.63}{( -561.59, -215.62, -247.16, -207.74,)}{255.12}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0007100866538461538} 
+ \hline  
+ \resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{256.63}{( -561.59, -215.62, -247.16, -207.74,)}{255.12}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0007100866538461538} 
 \resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{256.63}{( -405840425249201.62, -154685870165387.44, -231326563895116.47, -137694383270963.31,)}{-440622026211.5}{Product-Mode}{INFEASIBLE-POINT}{ITERATION-LIMIT}{0.659487631} 
-\resultroww{ex9.1.2}{( 7.00, 8.95,)}{-42.7}{( 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0004965854824447335} 
+ \hline  
+ \resultroww{ex9.1.2}{( 7.00, 8.95,)}{-42.7}{( 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0004965854824447335} 
 \resultroww{ex9.1.2}{( 7.00, 8.95,)}{-42.7}{( 0.31, 0.13,)}{-1.87}{Product-Mode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.00501175204321608} 
-\resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{-17.69}{( 0.00, 0.00, 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.00045952245730000003} 
+ \hline  
+ \resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{-17.69}{( 0.00, 0.00, 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.00045952245730000003} 
 \resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{-17.69}{( -0.14, 0.43, -0.13, 0.12,)}{-0.83}{Product-Mode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.004769426563097514} 
-\resultroww{ex9.1.9}{( 4.78, 6.17,)}{0.0}{( 4.78, 6.16,)}{0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0004206910923} 
+ \hline  
+ \resultroww{ex9.1.9}{( 4.78, 6.17,)}{0.0}{( 4.78, 6.16,)}{0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0004206910923} 
 \resultroww{ex9.1.9}{( 4.78, 6.17,)}{0.0}{( 4.78, 6.16,)}{0}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.00354871923541963} 
 \resultroww{ex9.1.9}{( 4.78, 6.17,)}{0.0}{( -99475.59, -82209.03,)}{0}{Product-Mode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.007394484687407407} 
+ \hline  
+ 
+    
+    
+ \end{resultstablee} 
 
     
+    
 
-    \multicolumn{9}{|c|}{\textbf{Fuertemente-Estacionario}} \\
-    \hline  
-
+    \begin{resultstablee}{Resultados de los problemas Lineal del tipo Fuertemente-Estacionario}
+    
     \resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{-195.55}{( 6.14, 6.84, 3.11,)}{-195.39}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0017798902932761088} 
 \resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{-195.55}{( 6.14, 6.84, 3.11,)}{-195.39}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.005630886166854566} 
 \resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{-195.55}{( 6.14, 6.84, 3.11,)}{-195.39}{Product-Mode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.00896522621005386} 
-\resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{-17921.11}{( 0.00, 0.00, 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0005715590879475077} 
+ \hline  
+ \resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{-17921.11}{( 0.00, 0.00, 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0005715590879475077} 
 \resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{-17921.11}{( -151.11, 3.00, 39.70, -20.88,)}{-5686.3}{Product-Mode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.010776944681034482} 
-\resultroww{ex9.1.2}{( 7.00, 8.95,)}{-957.15}{( 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0006340764801227152} 
+ \hline  
+ \resultroww{ex9.1.2}{( 7.00, 8.95,)}{-957.15}{( 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0006340764801227152} 
 \resultroww{ex9.1.2}{( 7.00, 8.95,)}{-957.15}{( 7.00, 2.20,)}{-325.17}{Product-Mode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.007307757475146198} 
-\resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{-222.34}{( 0.00, 0.00, 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0006772643256480219} 
+ \hline  
+ \resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{-222.34}{( 0.00, 0.00, 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0006772643256480219} 
 \resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{-222.34}{( -1180748808400.02, 46459818920.77, -1663916387913.37, 1630567769460.85,)}{-82526799750.46}{Product-Mode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.05180543995876288} 
-\resultroww{ex9.1.9}{( 4.78, 6.17,)}{-542.78}{( 4.78, 6.17,)}{-542.6}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.00045500844910000005} 
+ \hline  
+ \resultroww{ex9.1.9}{( 4.78, 6.17,)}{-542.78}{( 4.78, 6.17,)}{-542.6}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.00045500844910000005} 
 \resultroww{ex9.1.9}{( 4.78, 6.17,)}{-542.78}{( 4.78, 6.17,)}{-542.6}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.004884637435972629} 
 \resultroww{ex9.1.9}{( 4.78, 6.17,)}{-542.78}{( 4.78, 6.17,)}{-542.6}{Product-Mode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.00781831336973479} 
-
+ \hline  
+ 
+    
+    
  \end{resultstablee} 
 
+    
 
 \end{appendices}

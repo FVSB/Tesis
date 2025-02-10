@@ -643,6 +643,74 @@
       \verb https://api.semanticscholar.org/CorpusID:248524800
       \endverb
     \endentry
+    \entry{SymbolicsPaper}{article}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=741b18d2576ad0cdd23998a5cf6d05e5}{%
+           family={Gowda},
+           familyi={G\bibinitperiod},
+           given={Shashi},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=20505ba2d4ff3726270435a325081550}{%
+           family={Ma},
+           familyi={M\bibinitperiod},
+           given={Yingbo},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=61098ee435f5a99220266c3fdf173fcc}{%
+           family={Cheli},
+           familyi={C\bibinitperiod},
+           given={Alessandro},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c8cd67bdc3b6cca3233dbde53bf34ea3}{%
+           family={Gwozdz},
+           familyi={G\bibinitperiod},
+           given={Maja},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=de802ff42d9c902868c57a332dbac5e0}{%
+           family={Shah},
+           familyi={S\bibinitperiod},
+           given={Viral\bibnamedelima B},
+           giveni={V\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=01a6ca61fcd12a3a071ec49304df57f8}{%
+           family={Edelman},
+           familyi={E\bibinitperiod},
+           given={Alan},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c454e867cc51042dbb2c4a284006599f}{%
+           family={Rackauckas},
+           familyi={R\bibinitperiod},
+           given={Christopher},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b23ac0f69148f89116e649eaf2519acd}
+      \strng{fullhash}{27df3e61bf8ca739546ab7156322c8e8}
+      \strng{bibnamehash}{27df3e61bf8ca739546ab7156322c8e8}
+      \strng{authorbibnamehash}{27df3e61bf8ca739546ab7156322c8e8}
+      \strng{authornamehash}{b23ac0f69148f89116e649eaf2519acd}
+      \strng{authorfullhash}{27df3e61bf8ca739546ab7156322c8e8}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2105.03949}
+      \field{title}{High-performance symbolic-numerics via multiple dispatch}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://symbolics.juliasymbolics.org/stable/
+      \endverb
+      \verb{url}
+      \verb https://symbolics.juliasymbolics.org/stable/
+      \endverb
+    \endentry
     \entry{Gu2020BilevelOL}{article}{}
       \name{author}{6}{}{%
         {{un=0,uniquepart=base,hash=82c7f68e3cf2dd65d9cb473b0d0f5743}{%
@@ -769,6 +837,38 @@
       \endverb
       \verb{url}
       \verb https://docs.julialang.org/en/v1/
+      \endverb
+    \endentry
+    \entry{LinearAlgebraJL}{manual}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=82b6a8b0591c61bab6698a8252ced541}{%
+           family={Language},
+           familyi={L\bibinitperiod},
+           given={The\bibnamedelima Julia},
+           giveni={T\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{82b6a8b0591c61bab6698a8252ced541}
+      \strng{fullhash}{82b6a8b0591c61bab6698a8252ced541}
+      \strng{bibnamehash}{82b6a8b0591c61bab6698a8252ced541}
+      \strng{authorbibnamehash}{82b6a8b0591c61bab6698a8252ced541}
+      \strng{authornamehash}{82b6a8b0591c61bab6698a8252ced541}
+      \strng{authorfullhash}{82b6a8b0591c61bab6698a8252ced541}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2025-02-09}
+      \field{title}{LinearAlgebra - Julia Documentation}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/
+      \endverb
+      \verb{url}
+      \verb https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/
       \endverb
     \endentry
     \entry{JuMPPaper}{article}{}
@@ -1751,6 +1851,74 @@
       \verb https://api.semanticscholar.org/CorpusID:248524800
       \endverb
     \endentry
+    \entry{SymbolicsPaper}{article}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=741b18d2576ad0cdd23998a5cf6d05e5}{%
+           family={Gowda},
+           familyi={G\bibinitperiod},
+           given={Shashi},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=20505ba2d4ff3726270435a325081550}{%
+           family={Ma},
+           familyi={M\bibinitperiod},
+           given={Yingbo},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=61098ee435f5a99220266c3fdf173fcc}{%
+           family={Cheli},
+           familyi={C\bibinitperiod},
+           given={Alessandro},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c8cd67bdc3b6cca3233dbde53bf34ea3}{%
+           family={Gwozdz},
+           familyi={G\bibinitperiod},
+           given={Maja},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=de802ff42d9c902868c57a332dbac5e0}{%
+           family={Shah},
+           familyi={S\bibinitperiod},
+           given={Viral\bibnamedelima B},
+           giveni={V\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=01a6ca61fcd12a3a071ec49304df57f8}{%
+           family={Edelman},
+           familyi={E\bibinitperiod},
+           given={Alan},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c454e867cc51042dbb2c4a284006599f}{%
+           family={Rackauckas},
+           familyi={R\bibinitperiod},
+           given={Christopher},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b23ac0f69148f89116e649eaf2519acd}
+      \strng{fullhash}{27df3e61bf8ca739546ab7156322c8e8}
+      \strng{bibnamehash}{27df3e61bf8ca739546ab7156322c8e8}
+      \strng{authorbibnamehash}{27df3e61bf8ca739546ab7156322c8e8}
+      \strng{authornamehash}{b23ac0f69148f89116e649eaf2519acd}
+      \strng{authorfullhash}{27df3e61bf8ca739546ab7156322c8e8}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2105.03949}
+      \field{title}{High-performance symbolic-numerics via multiple dispatch}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://symbolics.juliasymbolics.org/stable/
+      \endverb
+      \verb{url}
+      \verb https://symbolics.juliasymbolics.org/stable/
+      \endverb
+    \endentry
     \entry{Gu2020BilevelOL}{article}{}
       \name{author}{6}{}{%
         {{un=0,uniquepart=base,hash=82c7f68e3cf2dd65d9cb473b0d0f5743}{%
@@ -1877,6 +2045,38 @@
       \endverb
       \verb{url}
       \verb https://docs.julialang.org/en/v1/
+      \endverb
+    \endentry
+    \entry{LinearAlgebraJL}{manual}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=82b6a8b0591c61bab6698a8252ced541}{%
+           family={Language},
+           familyi={L\bibinitperiod},
+           given={The\bibnamedelima Julia},
+           giveni={T\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{82b6a8b0591c61bab6698a8252ced541}
+      \strng{fullhash}{82b6a8b0591c61bab6698a8252ced541}
+      \strng{bibnamehash}{82b6a8b0591c61bab6698a8252ced541}
+      \strng{authorbibnamehash}{82b6a8b0591c61bab6698a8252ced541}
+      \strng{authornamehash}{82b6a8b0591c61bab6698a8252ced541}
+      \strng{authorfullhash}{82b6a8b0591c61bab6698a8252ced541}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2025-02-09}
+      \field{title}{LinearAlgebra - Julia Documentation}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/
+      \endverb
+      \verb{url}
+      \verb https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/
       \endverb
     \endentry
     \entry{JuMPPaper}{article}{}

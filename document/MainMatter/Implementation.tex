@@ -10,7 +10,7 @@ En este capítulo se mostrará la forma y los pasos para generar el problema des
 & \min_{x} \; F(x, y) \\
 & \text{sujeto a } \\
 & g_i(x, y)\leq 0,\;i=1,\ldots,q, \\
-& y \in \argmin_{y} \left\{ f(x, y) \mid v_j(x, y)\leq 0,\;j=1,\ldots,q ,\right\}
+& y \in \argmin_{y} \left\{ f(x, y) \mid v_j(x, y)\leq 0,\;j=1,\ldots,s ,\right\}
 \end{aligned}
 \end{equation}
 Luego el modelo se puede definir usando solo las funciones 
@@ -55,7 +55,7 @@ De esta forma
 
 
 
-Condiciones extra respecto al signo de $\beta$ y $\gamma$ se tendrán en cuenta en dependencia de si el usuario escoge que sea  C,M, fuerte estacionario o cumpla  la condición $\alpha=0$.  Es por esto que el conjunto $\{1,\ldots, s\}$  se particiona en 
+Condiciones extra respecto al signo de $\beta$ y $\gamma$ se tendrán en cuenta en dependencia de si el usuario escoge que sea  C , M, fuertemente estacionario o cumpla  la condición $\alpha=0$.  Es por esto que el conjunto $\{1,\ldots, s\}$  se particiona en 
  \begin{equation} 
  J_1^v=\{j | v_j(x,y)=0 \land \lambda_j>0 \} %al conjunto restricciones de desigualdad que sean índices activos
  \label{J_0_lambda_pos_level_inferior}

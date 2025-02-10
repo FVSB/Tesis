@@ -101,53 +101,67 @@
 %\usepackage[utf8]{inputenc}
 %\usepackage{geometry}
 \usepackage{adjustbox}
+% Rotar esto
+\usepackage{rotating}
 
 % Hoja a4
 %\geometry{a4paper, margin=1in}
 % Hoja Carta
 %\geometry{letterpaper, margin=1in}
 \newenvironment{resultstable}[1]{
+    \begin{landscape} % Hace que la hoja sea completamente horizontal
+        \renewcommand{\arraystretch}{1.5} % Aumenta el espacio entre filas
+        \centering
     \begin{table}[H]
         \centering
         \caption{#1}
         \begin{adjustbox}{max width=\textwidth}
         \begin{tabular}{| l | l | l | l | l | l | l | }
             \hline
-            \textbf{Tipo de punto} & \textbf{Nombre del problema} & \textbf{Punto estacionario} & \textbf{Valor objetivo del punto estacionario} & \textbf{Punto óptimo} & \textbf{Valor del punto óptimo} & \textbf{Método seleccionado}\\
+            \textbf{\Huge Tipo de punto} & \textbf{\Huge Nombre del problema} & \Huge \textbf{Punto estacionario} & \textbf{\Huge Valor objetivo del punto estacionario} & \textbf{\Huge Punto óptimo} & \textbf{\Huge Valor del punto óptimo} & \textbf{\Huge Método seleccionado}\\
             \hline
 }{
         \end{tabular}
         \end{adjustbox}
     \end{table}
+\end{landscape}
 }
 
 \newcommand{\resultrow}[7]{
-    #1 & #2 & #3 & #4 & #5 & #6 & #7 \\
+    \Huge#1 & \Huge#2 & \Huge#3 & \Huge#4 & \Huge#5 & \Huge#6 & \Huge#7 \\
     \hline
 }
 
 \usepackage{adjustbox} % Para ajustar el ancho de las tablas
 \usepackage{multirow}  % Para manejar celdas combinadas
+\usepackage{lscape}    % Para páginas en horizontal
+\usepackage{adjustbox} % Para escalar la tabla
+\usepackage{array}     % Para mejorar el espaciado de las filas
 
-% Definición del entorno para la tabla principal
-\newenvironment{resultstablee}[1]{
+\newenvironment{resultstablee}[1]{%
+    \begin{landscape} % Hace que la hoja sea completamente horizontal
+    \renewcommand{\arraystretch}{1.5} % Aumenta el espacio entre filas
+    \centering
     \begin{table}[H]
         \centering
-        \caption{#1}
-        \begin{adjustbox}{max width=\textwidth}
+        \caption{ #1} % Hace que el título de la tabla sea más grande
+        \begin{adjustbox}{max width=\textheight} % Usa toda la altura de la página horizontal
+        \Huge % Hace que todo el contenido de la tabla sea más grande
         \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
             \hline
-            \textbf{Nombre del problema}  & \textbf{Punto estacionario}  & \textbf{Valor objetivo del punto estacionario} & \textbf{Punto óptimo} & \textbf{Valor del punto óptimo} & \textbf{Método seleccionado}& \textbf{Estatus Primal} & \textbf{Estatus Terminación} & \textbf{Tiempo Promedio} \\
+            \textbf{\Huge Nombre del problema}  & \textbf{\Huge Punto estacionario}  & \textbf{\Huge Valor objetivo} & \textbf{\Huge Punto óptimo} & \textbf{\Huge Valor óptimo} & \textbf{\Huge Método} & \textbf{\Huge Estatus Primal} & \textbf{\Huge Terminación} & \textbf{\Huge Tiempo Promedio} \\
             \hline
-}{
+}{%
         \end{tabular}
         \end{adjustbox}
     \end{table}
+    \end{landscape}
 }
+
 
 % Comando para agregar filas a las subtablas
 \newcommand{\resultroww}[9]{
-    #1 & #2 & #3 & #4 & #5 & #6 & #7 & #8 & #9  \\
+    \Huge#1 & \Huge#2 & \Huge#3 & \Huge#4 & \Huge#5 & \Huge#6 & \Huge#7 & \Huge#8 & \Huge#9  \\
     \hline
 }
 

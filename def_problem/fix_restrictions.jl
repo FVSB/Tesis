@@ -120,6 +120,64 @@ function Fix_value(value::Num, restriction_set_type::RestrictionSetType)::Num
     return value * -1
 end
 
+"""
+    fix_multiplicator(restriction_type::RestrictionType, type_point_set::RestrictionSetType, _lambda::Number, _beta::Number, _gamma::Number) -> Tuple{Number, Number, Number}
+
+Fixes the values of _beta and _gamma based on the given restriction type and point set type.
+
+# Arguments
+- `restriction_type::RestrictionType`: The type of restriction.
+- `restriction_set_type::RestrictionSetType`: The type of point set.
+- `_lambda::Number`: The lambda value.
+- `_beta::Number`: The beta value.
+- `_gamma::Number`: The gamma value.
+- `_miu::Number`: The miu value
+
+# Returns
+- `(Number, Number, Number,Number)`: A tuple containing the fixed values of _lambda, _beta, _gamma and _miu.
+
+# Description
+This function adjusts the values of _beta and _gamma based on the provided restriction type and point set type. If the restriction type is `GtEq` or `Gt`, or if the point set type is `J_Ne_L0_v`, the function sets _beta to 0. If _lambda is 0 and _gamma is also 0, _gamma is assigned a random value using `get_rand()`. Otherwise, if _lambda is not 0 and _gamma is not 0, _gamma is set to 0.
+"""
+function fix_multiplicator(restriction_type::RestrictionType, restriction_set_type::RestrictionSetType, _lambda::Number, _beta::Number, _gamma::Number,_miu::Number)
+    # Check if restriction type is GtEq or Gt, or if type point set is J_Ne_L0_v
+    if restriction_set_type ==J_0_g && _miu<0
+        _miu=get_rand()
+        @warn "miu must be 0 because index are active J_0_g"
+        return _lambda,_beta,_lambda,_miu
+        
+    end
+    
+    if restriction_type in [GtEq, Gt] || restriction_set_type == J_Ne_L0_v
+        # If true, set _beta to 0
+        _beta = 0
+        @warn "Beta most be 0 because the restriction is v_j neg"
+    end
+    if restriction_set_type in [J_0_L0_v,J_Ne_L0_v]
+        if _lambda!=0
+            _lambda=0
+            @warn "lambda_j must be 0 because is in restriction set type  $restriction_set_type"
+        end
+    end
+
+    # Check if _lambda is 0
+    if _lambda == 0
+        # If true and if _gamma is also 0, assign a random value to _gamma
+        if _gamma == 0
+            _gamma = get_rand()
+            @warn "gamma_j most can't be 0 because lambda_j is 0"
+        end
+    else
+        # If _lambda is not 0 and _gamma is not 0, set _gamma to 0
+        if _gamma != 0
+            _gamma = 0
+            @warn "gamma_j must be 0 because lambda_j not 0"
+        end
+    end
+    # Return the updated values of _lambda, _beta, and _gamma
+    return _lambda, _beta, _gamma
+end
+
 
 """
     Restriction_init(expr_str, point, restriction_type, restriction_set_type, miu, beta, lambda, gamma, alpha, ys_vars, is_alpha_zero)
@@ -184,6 +242,10 @@ function Restriction_init(expr_str::String, point::Dict, restriction_type::Restr
     # Update the expression with the add value
     new_expr=new_expr+fix_value
     # Return a new `Restriction_Func` object
+
+    #fix multiplicator
+    #lambda,beta,gamma,miu=fix_multiplicator(restriction_type,restriction_set_type,lambda,beta,gamma,miu)
+
     Restriction_Func(
         vars_name=vars_name,
         expr_str=expr_str,

@@ -169,263 +169,67 @@ código de Julia para dichos experimentos. Cada experimento se realizará con se
 
 \subsection{Problemas Lineales} 
   
-\subsubsection{Tablas}
-\begin{resultstablee}{Resultados de los problemas Lineal del tipo Alpha-Zero}
-    
-    \resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{18.59}{( 6.13, 6.85, -173.65,)}{-1820.0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.00046779663909999995} 
-\resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{18.59}{( 6.13, 6.85, -1.19e+19,)}{-1.2384285244918673e+20}{ProductMode}{NEARLY-FEASIBLE-POINT}{ALMOST-LOCALLY-SOLVED}{0.018216050283636365} 
- \hline  
- \resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{-0.48}{( 1.65, 34.73, 102.20, 100.00,)}{-240.0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0005916887039552061} 
-\resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{-0.48}{( -1.01e+20, 3.37e+19, 676781.00, 2.02e+20,)}{-4.8528604996887255e+20}{ProductMode}{INFEASIBLE-POINT}{NORM-LIMIT}{0.09548243956603773} 
- \hline  
- \resultroww{ex9.1.2}{( 7.00, 8.95,)}{0.0}{( 7.00, 8.95,)}{0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0005095908938271605} 
-\resultroww{ex9.1.2}{( 7.00, 8.95,)}{0.0}{( 7.00, 8.95,)}{0}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.0036491232397660818} 
-\resultroww{ex9.1.2}{( 7.00, 8.95,)}{0.0}{( 7.00, 8.95,)}{0}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.012145625483009709} 
- \hline  
- \resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( -200.00, 0.00, -203.20, 201.25,)}{0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0006034477299367704} 
-\resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( 5.14, 1.30, 5.82, 0.00,)}{0}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.003330911396264176} 
-\resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( -3837804609426.00, 3837804592535.52, 7675609168177.35, 15351218387033.80,)}{0}{ProductMode}{INFEASIBLE-POINT}{OTHER-ERROR}{0.0392210034453125} 
- \hline  
- \resultroww{ex9.1.9}{( 4.78, 6.17,)}{3.98}{( 8.61, -1.48,)}{-2.9}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0004643262269} 
-\resultroww{ex9.1.9}{( 4.78, 6.17,)}{3.98}{( 8.61, -1.48,)}{-2.9}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.005123980320000001} 
-\resultroww{ex9.1.9}{( 4.78, 6.17,)}{3.98}{( 4.79, 6.17,)}{3.98}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.009638699485549133} 
- \hline  
-
- \end{resultstablee}   
-
-
- \begin{resultstablee}{Resultados de los problemas Lineal del tipo C-Estacionario}
-    
-    \resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{74.95}{( 0.00, 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0004682440455} 
-\resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{74.95}{( 6.25, 10.36, 6.60,)}{-27.94}{ProductMode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.01053818123628692} 
- \hline  
- \resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{0.0}{( 50.81, 17.80, 126.86, 163.97,)}{0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0006909111494300806} 
-\resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{0.0}{( 53.73, 19.59, 0.00, -664.87,)}{0}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.003464193543372658} 
-\resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{0.0}{( 50.81, 17.80, 126.75, 163.24,)}{0}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.0068813606955922865} 
- \hline  
- \resultroww{ex9.1.2}{( 7.00, 8.95,)}{-533.33}{( 7.00, 8.95,)}{-533.62}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.00036514324190000004} 
-\resultroww{ex9.1.2}{( 7.00, 8.95,)}{-533.33}{( 7.00, 8.95,)}{-533.62}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.0028385706895963617} 
-\resultroww{ex9.1.2}{( 7.00, 8.95,)}{-533.33}{( 7.00, 8.95,)}{-533.62}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.011949152739234449} 
- \hline  
- \resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( 0.00, 0.00, 0.00, 0.00,)}{0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0004503267894} 
-\resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( 4.79, 1.52, -4.91, 0.00,)}{0}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.003091181772136223} 
-\resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( 157622.80, -157616.49, -204903418.75, -19264423.52,)}{0}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.006741560248313091} 
- \hline  
- \resultroww{ex9.1.9}{( 4.78, 6.17,)}{-359.91}{( 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0005221321025021026} 
-\resultroww{ex9.1.9}{( 4.78, 6.17,)}{-359.91}{( 4.78, 6.68,)}{-385.79}{ProductMode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.005467831646608316} 
- \hline  
- \end{resultstablee} 
-
-
- 
- \begin{resultstablee}{Resultados de los problemas Lineal del tipo M-Estacionario}
- 
- \resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{-350.25}{( 0.00, 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0006334388676526839} 
-\resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{-350.25}{( 6.10, 2.56, 0.19,)}{-353.19}{ProductMode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.009341708173831776} 
-\hline  
-\resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{256.63}{( -561.59, -215.62, -247.16, -207.74,)}{255.12}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0007100866538461538} 
-\resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{256.63}{( -405840425249201.62, -154685870165387.44, -231326563895116.47, -137694383270963.31,)}{-440622026211.5}{ProductMode}{INFEASIBLE-POINT}{ITERATION-LIMIT}{0.659487631} 
-\hline  
-\resultroww{ex9.1.2}{( 7.00, 8.95,)}{-42.7}{( 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0004965854824447335} 
-\resultroww{ex9.1.2}{( 7.00, 8.95,)}{-42.7}{( 0.31, 0.13,)}{-1.87}{ProductMode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.00501175204321608} 
-\hline  
-\resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{-17.69}{( 0.00, 0.00, 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.00045952245730000003} 
-\resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{-17.69}{( -0.14, 0.43, -0.13, 0.12,)}{-0.83}{ProductMode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.004769426563097514} 
-\hline  
-\resultroww{ex9.1.9}{( 4.78, 6.17,)}{0.0}{( 4.78, 6.16,)}{0}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0004206910923} 
-\resultroww{ex9.1.9}{( 4.78, 6.17,)}{0.0}{( 4.78, 6.16,)}{0}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.00354871923541963} 
-\resultroww{ex9.1.9}{( 4.78, 6.17,)}{0.0}{( -99475.59, -82209.03,)}{0}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.007394484687407407} 
-\hline  
-
- 
- 
-\end{resultstablee}
-
-\begin{resultstablee}{Resultados de los problemas Lineal del tipo Fuertemente-Estacionario}
-    
-    \resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{-195.55}{( 6.14, 6.84, 3.11,)}{-195.39}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0017798902932761088} 
-\resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{-195.55}{( 6.14, 6.84, 3.11,)}{-195.39}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.005630886166854566} 
-\resultroww{ex9.1.1}{( 6.05, 6.85, 3.10,)}{-195.55}{( 6.14, 6.84, 3.11,)}{-195.39}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.00896522621005386} 
- \hline  
- \resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{-17921.11}{( 0.00, 0.00, 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0005715590879475077} 
-\resultroww{ex9.1.10}{( 51.55, 18.10, 102.20, 0.20,)}{-17921.11}{( -151.11, 3.00, 39.70, -20.88,)}{-5686.3}{ProductMode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.010776944681034482} 
- \hline  
- \resultroww{ex9.1.2}{( 7.00, 8.95,)}{-957.15}{( 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0006340764801227152} 
-\resultroww{ex9.1.2}{( 7.00, 8.95,)}{-957.15}{( 7.00, 2.20,)}{-325.17}{ProductMode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.007307757475146198} 
- \hline  
- \resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{-222.34}{( 0.00, 0.00, 0.00, 0.00,)}{0.0}{Highs-BigM (100,100)}{NO-SOLUTION}{INFEASIBLE}{0.0006772643256480219} 
-\resultroww{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{-222.34}{( -1180748808400.02, 46459818920.77, -1663916387913.37, 1630567769460.85,)}{-82526799750.46}{ProductMode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.05180543995876288} 
- \hline  
- \resultroww{ex9.1.9}{( 4.78, 6.17,)}{-542.78}{( 4.78, 6.17,)}{-542.6}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.00045500844910000005} 
-\resultroww{ex9.1.9}{( 4.78, 6.17,)}{-542.78}{( 4.78, 6.17,)}{-542.6}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.004884637435972629} 
-\resultroww{ex9.1.9}{( 4.78, 6.17,)}{-542.78}{( 4.78, 6.17,)}{-542.6}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.00781831336973479} 
- \hline  
- 
-    
-    
- \end{resultstablee} 
-
- \begin{resultstable}{Problemas Lineal Seleccionados}
-    \resultrow{$\alpha=0$}{ex9.1.1}{( 6.05, 6.85, 3.1,)}{18.59}{( -173.65,)}{-1820.0}{Highs-BigM (100,100)}
-    \resultrow{C-Estacionario}{ex9.1.8}{( 4.50, 1.60, 6.10, 1.55,)}{0.0}{( 157622.80, -157616.49, -204903418.75, -19264423.52,)}{0}{ProductMode}
-    \resultrow{M-Estacionario}{ex9.1.9}{( 4.78, 6.17,)}{0.0}{( -99475.59, -82209.03,)}{0}{ProductMode}
-    \resultrow{Fuertemente-Estacionario}{ex9.1.1}{( 6.05, 6.85, 3.10,)}{-195.55}{( 6.14, 6.84, 3.11,)}{-195.39}{Highs-BigM (100,100)}
-    \end{resultstable}
-
-%region Resultados Lineales
-
-%region Alpha-zero
 
 \subsubsection{$\alpha =0$}
+La tabla con los resultados de estos tipos de problema es \ref{result:linear_alpha_zero}.
 
-%Analisis
+
 En los problemas de Alpha Zero, se mostró cierta complejidad para SOS1, el cual en algunos casos no pudo determinar puntos, mientras que Big-M logró completar los objetivos. 
 Los puntos hallados en los problemas eran mayoritariamente distantes en sus componentes con respecto al punto estacionario original,  indicando que el posible valor óptimo no está en una vecindad del punto inicial, siendo la diferencia de componente a componente, tan grande como $1e+20$.
 En términos generales de rendimiento, Big-M tuvo un excelente desempeño, seguido de SOS1 y por último de ProductMode. 
 En este caso el problema que mayor mejora tuvo fue el ex9.1.1
-%endregion
 
-%region C-Estacionario
+
+
 \subsubsection{C-Estacionario}
-    
- En los problemas de C-Estacionario donde la evaluación del punto estacionario inicial es 0, no mejoró el valor de la función objetivo evaluada en el óptimo. El método Big-M tuvo problemas para hallar el óptimo, probablemente debido a los valores extremos de este.
+La tabla con los resultados de estos tipos de problema es \ref{result:linear_c_estacionario}.
+ 
+En los problemas de C-Estacionario donde la evaluación del punto estacionario inicial es 0, no mejoró el valor de la función objetivo evaluada en el óptimo. El método Big-M tuvo problemas para hallar el óptimo, probablemente debido a los valores extremos de este.
+ 
 
- 
- 
-    
-%endregion   
  
 
 \subsubsection{M-Estacionario}
+La tabla con los resultados de estos tipos de problema es \ref{result:linear_m_estacionario}.
 
- En los problemas de M-Estacionario, los algoritmos tuvieron grandes dificultades para encontrar el óptimo. 
- Los problemas ex9.1.10 y ex9.1.9 son los únicos en los que Julia halló puntos óptimos, en el primero halló un punto óptimo cuya evaluación es cercana a la del punto estacionario inicial aunque sin estar en una vecindad de este, el segundo halló mediante Big-M y SOS1 puntos óptimos que están en la vecindad del punto estacionario inicial y  ProductMode localizó un punto óptimo cuya evaluación es igual a la evaluación del punto estacionario inicial aunque este no se encuentra en una vecindad. ProductMode tuvo complicaciones para hallar los óptimos en este tipo de problemas.
+En los problemas de M-Estacionario, los algoritmos tuvieron grandes dificultades para encontrar el óptimo. 
+Los problemas ex9.1.10 y ex9.1.9 son los únicos en los que Julia halló puntos óptimos, en el primero halló un punto óptimo cuya evaluación es cercana a la del punto estacionario inicial aunque sin estar en una vecindad de este, el segundo halló mediante Big-M y SOS1 puntos óptimos que están en la vecindad del punto estacionario inicial y  ProductMode localizó un punto óptimo cuya evaluación es igual a la evaluación del punto estacionario inicial aunque este no se encuentra en una vecindad. ProductMode tuvo complicaciones para hallar los óptimos en este tipo de problemas.
  
   
 \subsubsection{Fuertemente Estacionario}
+La tabla con los resultados de estos tipos de problema es \ref{result:linear_fuertemente_estacionario}.
     
  En los problemas de tipo Fuertemente Estacionario, los métodos de Julia presentaron complicaciones  en  ex9.1.1 y ex9.1.9 donde en ambos casos Big-M, SOS1 y ProductMode hallaron puntos óptimos en la vecindad del punto estacionario inicial.
 
 
-%region Best Lineales
-\subsubsection{Problemas relevantes de cada categoría de punto:}
- 
 
+\subsubsection{Problemas relevantes de cada categoría de punto}
 
-    
-%endregion
+La tabla con los resultados de estos tipos de problema es \ref{result:linear_resultados_seleccionados}.
+
 En los problemas analizados se evidencia que mientras más fuertes sean las condiciones de los puntos es más probable de hallar óptimos en la vecindad del punto original, 
 así como también es probable que los algoritmos no logren encontrar un valor óptimo y terminen con puntos insatisfactibles.
 El método SOS1 tuvo dificultades para obtener alguna solución, mientras que Big-M tuvo mayormente problemas asociados a sus valores extremos, teniendo ProductMode un comportamiento similar a este aunque con mayor tiempo de cómputo.
 Además no existe caso en el que el valor objetivo halla sido peor que el valor inicial estacionario.
    
 
-%endregion
-% C-Estacionario
+o
 
 \subsection{Problemas Cuadráticos}
 
 
-\begin{resultstablee}{Resultados de los problemas Cuadrático del tipo Alpha-Zero}
-    	    
-    \resultroww{ex9.2.1}{( 1.85, 4.65,)}{-106.29}{( 2.19, 5.31,)}{-108.96}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.01085754318478261} 
-\resultroww{ex9.2.1}{( 1.85, 4.65,)}{-106.29}{( 2.19, 5.31,)}{-108.96}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.007574700737878789} 
- \hline  
- \resultroww{ex9.2.2}{( 14.45, 14.40,)}{-415.5}{( 14.45, 14.40,)}{-415.5}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.002536806859319452} 
-\resultroww{ex9.2.2}{( 14.45, 14.40,)}{-415.5}{( 14.45, 14.40,)}{-415.5}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.00493924387734916} 
- \hline  
- \resultroww{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{8.98}{( -3.85, 2.70, -5.10, -11.35,)}{30.31}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0014682835419126327} 
-\resultroww{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{8.98}{( -3.85, 2.70, -5.10, -11.35,)}{30.31}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.006388017097186701} 
-\resultroww{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{8.98}{( -3.85, 2.70, -5.10, -11.35,)}{30.31}{ProductMode}{NEARLY-FEASIBLE-POINT}{ALMOST-LOCALLY-SOLVED}{0.01848814341697417} 
- \hline  
- \resultroww{ex9.2.4}{( 4.25, 4.85, 4.70,)}{-91.56}{( 0.15, 4.85, -4.70,)}{43.8}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.0032146947907276237} 
-\resultroww{ex9.2.4}{( 4.25, 4.85, 4.70,)}{-91.56}{( 0.15, 4.85, -4.70,)}{43.8}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.004554985538742023} 
- \hline  
- \resultroww{ex9.2.5}{( 4.75, 4.05,)}{3.4}{( 4.75, 4.05,)}{3.4}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.017031251261904762} 
-\resultroww{ex9.2.5}{( 4.75, 4.05,)}{3.4}{( 4.75, 4.05,)}{3.4}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.00521551028914405} 
- \hline      
- \end{resultstablee} 
-
-
- \begin{resultstablee}{Resultados de los problemas Cuadrático del tipo C-Estacionario}
-    
-    \resultroww{ex9.2.1}{( 1.85, 4.65,)}{-17.97}{( 1.85, 2.39,)}{16.72}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.030418006612121212} 
-\resultroww{ex9.2.1}{( 1.85, 4.65,)}{-17.97}{( 1.85, 2.39,)}{16.72}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.04917132575490196} 
- \hline  
- \resultroww{ex9.2.2}{( 14.45, 14.40,)}{-1327.11}{( 14.48, 14.40,)}{-1327.01}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.003636090177713037} 
-\resultroww{ex9.2.2}{( 14.45, 14.40,)}{-1327.11}{( 14.48, 14.40,)}{-1327.01}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.0051832394190871375} 
- \hline  
- \resultroww{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{363.83}{( -0.18, 49.63, 5.89, 19.45,)}{-548.42}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0045629535242451965} 
-\resultroww{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{363.83}{( 32.97, -5.86, 15.95, 13.31,)}{-1201.53}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.0051704202712215324} 
-\resultroww{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{363.83}{( -0.18, 49.63, 5.89, 19.45,)}{-548.42}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.004764864257633587} 
- \hline  
- \resultroww{ex9.2.4}{( 4.25, 4.85, 4.70,)}{-33.88}{( -4.22, -0.13, -4.09,)}{11.48}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.0038767353470178156} 
-\resultroww{ex9.2.4}{( 4.25, 4.85, 4.70,)}{-33.88}{( -4.22, -0.13, -4.09,)}{11.48}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.003738380746067416} 
- \hline  
- \resultroww{ex9.2.5}{( 4.75, 4.05,)}{-42.78}{( 4.43, 4.19,)}{-42.9}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.011993493127098322} 
-\resultroww{ex9.2.5}{( 4.75, 4.05,)}{-42.78}{( 4.43, 4.19,)}{-42.9}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.003723685645786726} 
- \hline  
- \end{resultstablee} 
-
- \begin{resultstablee}{Resultados de los problemas Cuadrático del tipo M-Estacionario}
-    
-    \resultroww{ex9.2.1}{( 1.85, 4.65,)}{-41.57}{( 1.85, 4.61,)}{-41.63}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.003688455623059867} 
-\resultroww{ex9.2.1}{( 1.85, 4.65,)}{-41.57}{( 1.85, 4.61,)}{-41.63}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.0146413623625731} 
- \hline  
- \resultroww{ex9.2.2}{( 14.45, 14.40,)}{-619.42}{( 11.02, 9.49,)}{-488.71}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.019986648072} 
-\resultroww{ex9.2.2}{( 14.45, 14.40,)}{-619.42}{( 11.02, 9.49,)}{-488.71}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.0027599958350857778} 
- \hline  
- \resultroww{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{405.85}{( 1.48, 2.65, -5.08, -8.66,)}{404.57}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.001168006057492931} 
-\resultroww{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{405.85}{( 1.48, 2.65, -5.08, -8.66,)}{404.57}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.0031234532765957446} 
-\resultroww{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{405.85}{( 1.48, 2.65, -5.08, -8.66,)}{404.57}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.00878768395606327} 
- \hline  
- \resultroww{ex9.2.4}{( 4.25, 4.85, 4.70,)}{-53.06}{( -303.76, -14.82, -288.94,)}{43860.69}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.006881493973829201} 
-\resultroww{ex9.2.4}{( 4.25, 4.85, 4.70,)}{-53.06}{( -303.76, -14.82, -288.94,)}{43860.69}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.004288314234536082} 
- \hline  
- \resultroww{ex9.2.5}{( 4.75, 4.05,)}{-123.02}{( 4.73, 4.06,)}{-123.3}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.028344932163841808} 
-\resultroww{ex9.2.5}{( 4.75, 4.05,)}{-123.02}{( 4.73, 4.06,)}{-123.3}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.0050364884899193555} 
- \hline  
- \end{resultstablee} 
-
- \begin{resultstablee}{Resultados de los problemas Cuadrático del tipo Fuertemente-Estacionario}
-    
-    \resultroww{ex9.2.1}{( 1.85, 4.65,)}{-379.69}{( 1.85, 4.65,)}{-379.65}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.008176077955810147} 
-\resultroww{ex9.2.1}{( 1.85, 4.65,)}{-379.69}{( 1.85, 4.65,)}{-379.65}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.005971634445639188} 
- \hline  
- \resultroww{ex9.2.2}{( 14.45, 14.40,)}{-2976.34}{( 14.45, 14.40,)}{-2976.34}{ProductMode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.006671206622162884} 
- \hline  
- \resultroww{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{293.57}{( -6.90, -7.39, 0.87, -12.87,)}{111.17}{Highs-BigM (100,100)}{FEASIBLE-POINT}{OPTIMAL}{0.0013926462687237028} 
-\resultroww{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{293.57}{( -6.90, -7.39, 0.87, -12.87,)}{111.17}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.003255103333767927} 
-\resultroww{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{293.57}{( -6.90, -7.39, 0.87, -12.87,)}{111.17}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.020168756826612906} 
- \hline  
- \resultroww{ex9.2.4}{( 4.25, 4.85, 4.70,)}{-23.39}{( -46.77, 0.00, -76.20,)}{3537.11}{ProductMode}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.006134994812039312} 
- \hline  
- \resultroww{ex9.2.5}{( 4.75, 4.05,)}{-197.17}{( -0.56, 4.83,)}{-236.14}{SOS1}{FEASIBLE-POINT}{OPTIMAL}{0.007121795407988588} 
-\resultroww{ex9.2.5}{( 4.75, 4.05,)}{-197.17}{( -0.56, 4.83,)}{-236.14}{ProductMode}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.007361066086892489} 
- \hline  
-
- \end{resultstablee} 
-
-
-    
-\begin{resultstable}{Problemas Cuadrático Seleccionados}
-    \resultrow{$\alpha=0$}{ex9.2.1}{( 1.85, 4.65,)}{-106.29}{( 2.19, 5.31,)}{-108.96}{ProductMode}
-    \resultrow{C-Estacionario}{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{363.83}{( 32.97, -5.86, 15.95, 13.31,)}{-1201.53}{SOS1}
-    \resultrow{M-Estacionario}{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{405.85}{( 1.48, 2.65, -5.08, -8.66,)}{404.57}{Highs-BigM (100,100)}
-    \resultrow{Fuertemente-Estacionario}{ex9.2.3}{( 1.55, 2.70, -5.10, -8.65,)}{293.57}{( -6.90, -7.39, 0.87, -12.87,)}{111.17}{Highs-BigM (100,100)} 
-    \end{resultstable}
-    
-%region Resultados Cuadraticos
+%region Resultados Cuadráticos
 \subsubsection{$\alpha =0$}
-    	
-         En los problemas ex9.2.3 y ex9.2.4, los métodos encontraron puntos cuyo valor de la función objetivo es considerablemente peor que el del punto estacionario inicial. 
-         En estos casos, los puntos óptimos propuestos son los mismos, lo que sugiere que este tipo de punto puede causar perturbaciones en los métodos para hallar óptimos. 
-         Los dos problemas restantes no lograron encontrar un valor óptimo considerablemente menor al del valor objetivo en el punto estacionario inicial. 
-         Sin embargo, los métodos lograron obtener supuestos óptimos en todos los problemas.
+La tabla con los resultados de estos tipos de problema es \ref{result:cuadraticos_alpha_zero}.
+
+En los problemas ex9.2.3 y ex9.2.4, los métodos encontraron puntos cuyo valor de la función objetivo es considerablemente peor que el del punto estacionario inicial. 
+En estos casos, los puntos óptimos propuestos son los mismos, lo que sugiere que este tipo de punto puede causar perturbaciones en los métodos para hallar óptimos. 
+Los dos problemas restantes no lograron encontrar un valor óptimo considerablemente menor al del valor objetivo en el punto estacionario inicial. 
+Sin embargo, los métodos lograron obtener supuestos óptimos en todos los problemas.
     
 \subsubsection{C-Estacionario}   
+La tabla con los resultados de estos tipos de problema es \ref{result:cuadraticos_c_estacionario}.
 
-   
 En estos tipos de puntos los problemas ex9.2.1 y ex.9.2.4 obtuvieron peor evaluación del óptimo propuesto que el del punto estacionario inicial en SOS1 y ProductMode, 
 en ellos Big-M no pudo entregar ningún resultado. En el resto de problemas se obtuvieron puntos óptimos en vecindades cercanas y con evaluación cercana al punto estacionario original,
 excepto en ex9.2.3 que los 3 métodos lograron encontrar puntos óptimos que aunque no se encuentran en la vecindad del punto estacionario inicial sus evaluaciones mejoran a la de este.
@@ -433,19 +237,21 @@ excepto en ex9.2.3 que los 3 métodos lograron encontrar puntos óptimos que aun
 
     
 \subsubsection{M-Estacionario}
-  
- En estos problemas no se obtuvo ninguna mejora significativa. 
- En los problemas ex9.2.2 y ex9.2.4, se encontró un punto distante del punto estacionario original, tanto componente a componente como en su evaluación. 
- El resto de los problemas obtuvieron puntos cercanos al original. 
- En todos los problemas, los métodos que devolvieron algún valor lograron encontrar un candidato a óptimo.
+La tabla con los resultados de estos tipos de problema es \ref{result:cuadraticos_m_estacionario}.  
+
+En estos problemas no se obtuvo ninguna mejora significativa. 
+En los problemas ex9.2.2 y ex9.2.4, se encontró un punto distante del punto estacionario original, tanto componente a componente como en su evaluación. 
+El resto de los problemas obtuvieron puntos cercanos al original. 
+En todos los problemas, los métodos que devolvieron algún valor lograron encontrar un candidato a óptimo.
     
 \subsubsection{Fuertemente Estacionario}
-   
- En los problemas ex9.2.2 y ex9.2.4 no se lograron obtener puntos óptimos, mientras que en el ex9.2.3 se logró una mejora considerable en los tres métodos, 
- constatando que Big-M es el método más rápido de solución.
+La tabla con los resultados de estos tipos de problema es \ref{result:cuadraticos_m_estacionario}.   
+
+En los problemas ex9.2.2 y ex9.2.4 no se lograron obtener puntos óptimos, mientras que en el ex9.2.3 se logró una mejora considerable en los tres métodos, 
+constatando que Big-M es el método más rápido de solución.
 
 \subsubsection{Problemas relevantes de cada categoría de punto:}
-
+La tabla con los resultados de estos tipos de problema es \ref{result:cuadraticos_seleccionados}.
 
 En este tipo de problemas excepto en el caso fuertemente estacionario no se encontraron dificultades en los algoritmos para encontrar un punto óptimo. Existe una mejora entre los tipos de puntos con condiciones más fuertes respecto a que a que el óptimo hallado por Julia se encuentre en una vecindad del punto estacionario inicial. 
 
@@ -453,95 +259,23 @@ En este tipo de problemas excepto en el caso fuertemente estacionario no se enco
 \subsection{Problemas No Convexos}
 
 
-\begin{resultstablee}{Resultados de los problemas No Convexo del tipo Alpha-Zero}
-    
-    \resultroww{MitsosBarton2006Ex312}{( 1.90, 0.15,)}{0.92}{( 1.90, 0.15,)}{0.91}{Reformulacion KKT}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.03566443956834532} 
-    \hline  
-    \resultroww{MitsosBarton2006Ex313}{( 1.05, 2.85,)}{-0.5}{( 1.05, 2.85,)}{-0.5}{Reformulacion KKT}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.03757509242424242} 
-    \hline  
-    \resultroww{MitsosBarton2006Ex314}{( 0.90, 2.70,)}{-8.4}{( 0.90, 2.70,)}{-8.4}{Reformulacion KKT}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.0474979219047619} 
-    \hline  
-    \resultroww{MitsosBarton2006Ex323}{( 1.94, 3.70,)}{60.69}{( -1.83, 3.70,)}{17.53}{Reformulacion KKT}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.045412499090909095} 
-    \hline  
-    \resultroww{MorganPatrone2006a}{( 2.85, 4.45,)}{3.27}{( 2.85, 4.45,)}{3.27}{Reformulacion KKT}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.044472833928571424} 
-    \hline  
-    
-       
-       
-    \end{resultstablee} 
-    \begin{resultstablee}{Resultados de los problemas No Convexo del tipo C-Estacionario}
-    
-        \resultroww{MitsosBarton2006Ex312}{( 1.90, 0.15,)}{1.27}{( 1.90, 0.15,)}{1.25}{Reformulacion KKT}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.022789461467889908} 
-     \hline  
-     \resultroww{MitsosBarton2006Ex313}{( 1.05, 2.85,)}{-6.15}{( 1.05, 1.10,)}{-2.02}{Reformulacion KKT}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.017918101449275362} 
-     \hline  
-     \resultroww{MitsosBarton2006Ex314}{( 0.90, 2.70,)}{-19.06}{( 0.90, 0.95,)}{-8.66}{Reformulacion KKT}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.018785589393939393} 
-     \hline  
-     \resultroww{MitsosBarton2006Ex323}{( 1.94, 3.70,)}{179.12}{( 1.94, 3.70,)}{179.08}{Reformulacion KKT}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.04403823539823009} 
-     \hline  
-     \resultroww{MorganPatrone2006a}{( 2.85, 4.45,)}{-1.8}{( 0.68, 0.00,)}{-0.43}{Reformulacion KKT}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.025443517435897435} 
-     \hline  
-     
-        
-        
-     \end{resultstablee} 
-     
-     \begin{resultstablee}{Resultados de los problemas No Convexo del tipo M-Estacionario}
-    
-
-     \resultroww{MitsosBarton2006Ex312}{( 1.90, 0.15,)}{3.71}{( 1.90, -0.80,)}{4.02}{Reformulacion KKT}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.23159810909090908} 
-     \hline  
-     \resultroww{MitsosBarton2006Ex313}{( 1.05, 2.85,)}{-7.97}{( 1.05, 1.10,)}{-2.52}{Reformulacion KKT}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.017772621146953403} 
-     \hline  
-     \resultroww{MitsosBarton2006Ex314}{( 0.90, 2.70,)}{-12.1}{( 0.90, 0.95,)}{-6.5}{Reformulacion KKT}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.02129611379310345} 
-     \hline  
-     \resultroww{MitsosBarton2006Ex323}{( 1.94, 3.70,)}{9.32}{( 1.94, 3.50,)}{9.69}{Reformulacion KKT}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.048881390196078435} 
-     \hline  
-     \resultroww{MorganPatrone2006a}{( 2.85, 4.45,)}{-1.45}{( 2.85, -89783940.52,)}{-1.45}{Reformulacion KKT}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.08921844821428572} 
-     \hline  
-     
-        
-        
-     \end{resultstablee}
-
-
-     \begin{resultstablee}{Resultados de los problemas No Convexo del tipo Fuertemente-Estacionario}
-    
-        \resultroww{MitsosBarton2006Ex312}{( 1.90, 0.15,)}{2.72}{( 1.90, 0.00,)}{2.26}{Reformulacion KKT}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.023039427906976745} 
-     \hline  
-    \resultroww{MitsosBarton2006Ex313}{( 1.05, 2.85,)}{-7.89}{( 1.05, 1.10,)}{-2.86}{Reformulacion KKT}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.07522934179104478} 
-     \hline  
-     \resultroww{MitsosBarton2006Ex314}{( 0.90, 2.70,)}{-39.2}{( 0.90, 0.95,)}{-15.75}{Reformulacion KKT}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.015471115887850467} 
-     \hline  
-     \resultroww{MitsosBarton2006Ex323}{( 1.94, 3.70,)}{-421.1}{( 1.94, 3.64,)}{-415.75}{Reformulacion KKT}{INFEASIBLE-POINT}{LOCALLY-INFEASIBLE}{0.05190893125} 
-     \hline  
-     \resultroww{MorganPatrone2006a}{( 2.85, 4.45,)}{-85.51}{( 2.85, 4.45,)}{-85.56}{Reformulacion KKT}{FEASIBLE-POINT}{LOCALLY-SOLVED}{0.07928214603174603} 
-     \hline  
-    
-     \end{resultstablee} 
-
-
-    \begin{resultstable}{Problemas No Convexo Seleccionados}
-    \resultrow{$\alpha=0$}{MitsosBarton2006Ex323}{( 1.94, 3.7,)}{60.69}{( 3.7, 3.7,)}{17.53}{Reformulacion KKT}
-    \resultrow{C-Estacionario}{MitsosBarton2006Ex323}{( 1.94, 3.7,)}{179.12}{( 3.7, 3.7,)}{179.08}{Reformulacion KKT}
-    \resultrow{M-Estacionario}{MitsosBarton2006Ex313}{( 1.05, 2.85,)}{-7.97}{( 1.05, 1.10,)}{-2.52}{Reformulacion KKT}
-    \resultrow{Fuertemente-Estacionario}{MitsosBarton2006Ex312}{( 1.9, 0.15,)}{2.72}{( 0.0, 0.0,)}{2.26}{Reformulacion KKT}
-    \end{resultstable}
 %region Problemas No Convexos
 \subsubsection{$\alpha =0$}
+La tabla con los resultados de estos tipos de problema es \ref{result:no_convexos_alpha_zero}.
 
  En este tipo de puntos, las soluciones halladas por Julia coinciden con el punto inicial, excepto en el problema MitsosBarton2006Ex323.
     
 \subsubsection{C-Estacionario}
+La tabla con los resultados de estos tipos de problema es \ref{result:no_convexos_c_estacionario}.
 
  En este tipo de problemas, las soluciones halladas por Julia empeoran en los problemas MitsosBarton2006Ex313 y MitsosBarton2006Ex314, aun teniendo el valor de las variables del nivel superior iguales al punto estacionario inicial. Además, en MorganPatrone2006a no fue posible hallar el óptimo.
 \subsubsection{M-Estacionario}
-   
+La tabla con los resultados de estos tipos de problema es \ref{result:no_convexos_m_estacionario}.  
 
  En este tipo de puntos, solo obtuvieron solución los problemas MitsosBarton2006Ex313 y MitsosBarton2006Ex314, obteniendo en ambos casos peores resultados del valor óptimo hallado por Julia en comparación con el valor del punto estacionario inicial, aunque los puntos coinciden en las variables del nivel superior.
     
 \subsubsection{Fuertemente Estacionario}
- 
+La tabla con los resultados de estos tipos de problema es \ref{result:cuadraticos_fuertmente_estacionario}.
 
  En este tipo de puntos, excepto en el problema MitsosBarton2006Ex323,
  se obtuvieron puntos óptimos, 
@@ -550,9 +284,10 @@ En este tipo de problemas excepto en el caso fuertemente estacionario no se enco
      
 
 \subsubsection{Problemas relevantes de cada categoría de punto:}
+La tabla con los resultados de estos tipos de problema es \ref{result:no_convexos_seleccionados}.
 
-    Después de analizar los puntos en este tipo de problemas, los resultados brindan información que sugiere que, mientras más fuertes son las condiciones del punto, los algoritmos no encuentran puntos óptimos mejores que el estacionario inicial. Esto parece deberse a que, por la propia reformulación del problema, es más probable que no se pueda optimizar correctamente el problema del nivel inferior. Además, la tendencia indica que, mientras más fuertes sean las condiciones del punto, es más probable que las variables del nivel superior coincidan en el punto óptimo hallado por Julia y el punto estacionario inicial.
-%endregion   
+Después de analizar los puntos en este tipo de problemas, los resultados brindan información que sugiere que, mientras más fuertes son las condiciones del punto, los algoritmos no encuentran puntos óptimos mejores que el estacionario inicial. Esto parece deberse a que, por la propia reformulación del problema, es más probable que no se pueda optimizar correctamente el problema del nivel inferior. Además, la tendencia indica que, mientras más fuertes sean las condiciones del punto, es más probable que las variables del nivel superior coincidan en el punto óptimo hallado por Julia y el punto estacionario inicial.
+  
 
 
 \subsection{Análisis de los resultados}

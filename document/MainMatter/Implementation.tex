@@ -136,7 +136,7 @@ Si $\alpha=0$, como $\gamma=0$, se toma  $\vec{b_j}=0$
 Después de realizado el cálculo del $b_j$, se procede a modificar la función por una constante para lograr que sean activas en $z_{est}$ aquellas que fueron escogidas por el usuario y que todas sean no positivas. Para ello se evalua $$\hat{v_j}=v_{j}(z_{est})+ ({\vec{b_j}}^T)\cdot (y_1,y_2,\dots,y_m).$$ Se consideran los siguientes casos
 \begin{itemize}
     \item Si $\hat{v_j}\neq 0$ y $j\in J_1^v\cup J_2^v$, entonces $c_j^v=-\hat{v_j}$.
-\item Si $\hat{v_j}\geq 0$ y $j\in J_3^v$,  entonces  $c_j^v$ se obtiene generando un número aleatorio entre $(-\hat{v_j}-.01, -10)$.
+\item Si $\hat{v_j}\geq 0$ y $j\in J_3^v$,  entonces  $c_j^v$ se obtiene generando un número aleatorio entre $(-(\hat{v_j}+0.01), -(\hat{v_j}+1))$.
 \item En otro caso $c_j^v=0$.\end{itemize}
 
 De ahí que las restricciones del nivel inferior tengan la forma 
@@ -405,7 +405,7 @@ llamarse a la función \textbf{SetLeaderRestriction} con:
 Ejemplo para introducir la restricción:
 \begin{align*}
     &x_1+y_2-y_1 \leq 9 \\
-    &\text{Índice activo del tipo J\_0\_g \ref{J_0_level_superior}}\\
+    &\text{Índice activo del tipo J\_0\_g \ref{activeg}}\\
     & \mu_i=0.3
 \end{align*}
 
@@ -538,4 +538,21 @@ La documentación técnica y guías de usuario se encuentran en desarrollo activ
     \includegraphics[width=\textwidth]{Graphics/Ejemplo_introducir_follower_rest.png}
     \caption{Ejemplo de generación de problema en punto Fuertemente Estacionario}
     \label{fig:example_strong_stationary_front_generator}
+\end{figure}
+
+% Añadir video demo 
+\begin{figure}[H]
+    \centering
+    \includemedia[
+  width=0.8\linewidth,
+  height=0.5\linewidth,
+  activate=pageopen,
+  addresource=Graphics/visual_tesis_example.mp4,
+  flashvars={
+    source=demo_front.mp4
+    &loop=true
+    &scaleMode=letterbox
+  }
+]{}{VPlayer.swf}
+\caption{Demostración en Video de la Aplicación Gráfica}
 \end{figure}

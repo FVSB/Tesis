@@ -1097,6 +1097,36 @@
       \verb https://www.lamsade.dauphine.fr/poc/sites/default/files/bilevel-optimization.pdf
       \endverb
     \endentry
+    \entry{scholtes12}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a9e24ec540daaa1f9749462d71ab2142}{%
+           family={Scholtes},
+           familyi={S\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a9e24ec540daaa1f9749462d71ab2142}
+      \strng{fullhash}{a9e24ec540daaa1f9749462d71ab2142}
+      \strng{bibnamehash}{a9e24ec540daaa1f9749462d71ab2142}
+      \strng{authorbibnamehash}{a9e24ec540daaa1f9749462d71ab2142}
+      \strng{authornamehash}{a9e24ec540daaa1f9749462d71ab2142}
+      \strng{authorfullhash}{a9e24ec540daaa1f9749462d71ab2142}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Optimization}
+      \field{number}{4}
+      \field{title}{Convergence properties of a regularization scheme for mathematical programs with complementarity constraints}
+      \field{volume}{11}
+      \field{year}{2001}
+      \field{pages}{918\bibrangedash 936}
+      \range{pages}{19}
+    \endentry
     \entry{SadddiquiNaturalGasSOS1}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=608cac97baa39d75bf233be04b7fda5d}{%
@@ -2305,6 +2335,36 @@
       \verb https://www.lamsade.dauphine.fr/poc/sites/default/files/bilevel-optimization.pdf
       \endverb
     \endentry
+    \entry{scholtes12}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a9e24ec540daaa1f9749462d71ab2142}{%
+           family={Scholtes},
+           familyi={S\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a9e24ec540daaa1f9749462d71ab2142}
+      \strng{fullhash}{a9e24ec540daaa1f9749462d71ab2142}
+      \strng{bibnamehash}{a9e24ec540daaa1f9749462d71ab2142}
+      \strng{authorbibnamehash}{a9e24ec540daaa1f9749462d71ab2142}
+      \strng{authornamehash}{a9e24ec540daaa1f9749462d71ab2142}
+      \strng{authorfullhash}{a9e24ec540daaa1f9749462d71ab2142}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Optimization}
+      \field{number}{4}
+      \field{title}{Convergence properties of a regularization scheme for mathematical programs with complementarity constraints}
+      \field{volume}{11}
+      \field{year}{2001}
+      \field{pages}{918\bibrangedash 936}
+      \range{pages}{19}
+    \endentry
     \entry{SadddiquiNaturalGasSOS1}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=608cac97baa39d75bf233be04b7fda5d}{%
@@ -2434,7 +2494,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{scholtes12}
 \endrefsection
 \endinput
 

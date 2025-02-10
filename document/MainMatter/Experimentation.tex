@@ -2,7 +2,7 @@
 \chapter{Experimentación}
 
 
-En este capítulo se presenta la fase experimental basada en una selección de problemas de optimización binivel extraídos de la literatura especializada \cite{BolibTestProblems}. El estudio abarca tres categorías fundamentales de problemas: Lineales, Cuadráticos y No Convexos. La metodología experimental se desarrollará mediante la utilización de las bibliotecas de Julia para la identificación de mínimos locales, seguida de la perturbación de estos puntos mediante la introducción de valores aleatorios. A partir de estas modificaciones, se procederá a la generación de problemas estacionarios clasificados en 4 tipos específicos: $\alpha = 0$, C, M y fuerte
+En este capítulo se presenta la fase experimental basada en una selección de problemas de optimización binivel extraídos de la literatura especializada \cite{BolibTestProblems}. El estudio abarca tres categorías fundamentales de problemas: Lineales, Cuadráticos y No Convexos. La metodología experimental se desarrollará mediante la utilización de las bibliotecas de Julia para la identificación de mínimos locales, seguida de la perturbación de estos puntos mediante la introducción de valores aleatorios. A partir de estas modificaciones, se procederá a la generación de problemas estacionarios clasificados en 4 tipos específicos: $\alpha = 0$, \textit{C}, \textit{M} y \textit{fuerte}
 
 Los problemas modificados serán posteriormente evaluados utilizando algoritmos tradicionales implementados en Julia, con el objetivo de analizar su eficacia en relación al valor de la función objetivo del nivel superior. Este proceso permitirá determinar el impacto de las modificaciones realizadas y la robustez de los algoritmos frente a las variaciones introducidas.
 
@@ -152,7 +152,7 @@ código de Julia para dichos experimentos. Cada experimento se realizará con se
     La implementación sigue una sintaxis similar a la descrita en el capítulo anterior, dado que esta nueva implementación incorpora y extiende la anterior, pero permite 
     que con solo introducir un problema base se puedan generar los 4 tipos de problemas perturbados.
     
-    El proceso de modificación de los puntos comienza con el problema original de entrada y el punto obtenido previamente. A cada componente de este punto se le añade un valor aleatorio en el intervalo $[1e-10, 5]$, obteniendo así el punto modificado $z^*_0$. Para los casos donde $\vec{\alpha}\neq \vec{0}$, se genera un vector aleatorio con componentes en el intervalo $[1e-10, 3]$. En cuanto a los conjuntos de índices activos de las $v_{j}s$, estos se distribuyen siguiendo una proporción específica: $1/2$ corresponde al tipo $J_1^v$ (\ref{J_0_lambda_0_level_inferior}), mientras que el $1/4$ restante se divide entre los tipos \ref{J_0_lambda_pos_level_inferior} y \ref{J_neg_lambda_0_level_inferior}.
+    El proceso de modificación de los puntos comienza con el problema original de entrada y el punto obtenido previamente. A cada componente de este punto se le añade un valor aleatorio en el intervalo $[5e-10, 5]$, obteniendo así el punto modificado $z^*_0$. Para los casos donde $\vec{\alpha}\neq \vec{0}$, se genera un vector aleatorio con componentes en el intervalo $[3e-10, 3]$. En cuanto a los conjuntos de índices activos de las $v_{j}s$, estos se distribuyen siguiendo una proporción específica: $1/2$ corresponde al tipo $J_1^v$ (\ref{J_0_lambda_0_level_inferior}), mientras que el $1/4$ restante se divide entre los tipos \ref{J_0_lambda_pos_level_inferior} y \ref{J_neg_lambda_0_level_inferior}.
     
     La selección de los multiplicadores $\lambda_j$ $\beta_j$ y $\gamma_j$ se realiza mediante la generación de valores aleatorios en el intervalo $[1e-2, 10]$ cuando estos no deben ser $0$. En los casos donde existen múltiples combinaciones posibles de multiplicadores con respecto a su igualdad a $0$, se utiliza una distribución uniforme discreta para la selección aleatoria.
     
@@ -245,7 +245,7 @@ El resto de los problemas obtuvieron puntos cercanos al original.
 En todos los problemas, los métodos que devolvieron algún valor lograron encontrar un candidato a óptimo.
     
 \subsubsection{Fuertemente Estacionario}
-La tabla con los resultados de estos tipos de problema es \ref{result:cuadraticos_m_estacionario}.   
+La tabla con los resultados de estos tipos de problema es \ref{result:cuadraticos_fuertmente_estacionario}.   
 
 En los problemas ex9.2.2 y ex9.2.4 no se lograron obtener puntos óptimos, mientras que en el ex9.2.3 se logró una mejora considerable en los tres métodos, 
 constatando que Big-M es el método más rápido de solución.
@@ -275,7 +275,7 @@ La tabla con los resultados de estos tipos de problema es \ref{result:no_convexo
  En este tipo de puntos, solo obtuvieron solución los problemas MitsosBarton2006Ex313 y MitsosBarton2006Ex314, obteniendo en ambos casos peores resultados del valor óptimo hallado por Julia en comparación con el valor del punto estacionario inicial, aunque los puntos coinciden en las variables del nivel superior.
     
 \subsubsection{Fuertemente Estacionario}
-La tabla con los resultados de estos tipos de problema es \ref{result:cuadraticos_fuertmente_estacionario}.
+La tabla con los resultados de estos tipos de problema es \ref{result:no_convexos_fuertemente_estacionario}.
 
  En este tipo de puntos, excepto en el problema MitsosBarton2006Ex323,
  se obtuvieron puntos óptimos, 

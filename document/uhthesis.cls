@@ -162,9 +162,21 @@
 \newenvironment{opinion}%
   {\chapter*{Opinión del tutor}}%
   {}
-\newenvironment{acknowledgements}%
-  {\chapter*{Agradecimientos}}%
-  {}
+% Personalización del entorno "acknowledgements"
+\makeatletter
+\newenvironment{acknowledgements}{
+    \cleardoublepage % Comienza en una nueva página
+    \thispagestyle{plain} % Estilo de página simple
+    \vspace*{2cm} % Espacio superior
+    \begin{center}
+        {\sffamily\Large\bfseries Agradecimientos}
+    \end{center}
+    \vspace{1cm} % Espacio después del título
+    \quotation % Texto con sangría
+}{
+    \endquotation
+}
+
 \newenvironment{resumen}%
   {\chapter*{Resumen}}%
   {}

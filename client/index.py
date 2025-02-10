@@ -519,7 +519,7 @@ class Page:
                 _beta=_b
                 st.write(f"El valor de Beta es: {_beta}")
                 if  active_index ==self.J_0_LP_V:
-                    _lambda=get_random()*10
+                    _lambda=get_random()
                     st.write(f"El valor de Lambda es: {_lambda}")
                 if _lambda==0:
                     _gamma=_g

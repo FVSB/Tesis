@@ -2,7 +2,7 @@
 \chapter{Experimentación}
 
 
-En este capítulo se presenta la fase experimental basada en una selección de problemas de optimización binivel extraídos de la literatura especializada \cite{BolibTestProblems}. El estudio abarca tres categorías fundamentales de problemas: Lineales, Cuadráticos y No Convexos. La metodología experimental se desarrollará mediante la utilización de las bibliotecas de Julia para la identificación de mínimos locales, seguida de la perturbación de estos puntos mediante la introducción de valores aleatorios. A partir de estas modificaciones, se procederá a la generación de problemas estacionarios clasificados en 4 tipos específicos: $\alpha = 0$, fuerte, M y C.
+En este capítulo se presenta la fase experimental basada en una selección de problemas de optimización binivel extraídos de la literatura especializada \cite{BolibTestProblems}. El estudio abarca tres categorías fundamentales de problemas: Lineales, Cuadráticos y No Convexos. La metodología experimental se desarrollará mediante la utilización de las bibliotecas de Julia para la identificación de mínimos locales, seguida de la perturbación de estos puntos mediante la introducción de valores aleatorios. A partir de estas modificaciones, se procederá a la generación de problemas estacionarios clasificados en 4 tipos específicos: $\alpha = 0$, C, M y fuerte
 
 Los problemas modificados serán posteriormente evaluados utilizando algoritmos tradicionales implementados en Julia, con el objetivo de analizar su eficacia en relación al valor de la función objetivo del nivel superior. Este proceso permitirá determinar el impacto de las modificaciones realizadas y la robustez de los algoritmos frente a las variaciones introducidas.
 
@@ -13,8 +13,7 @@ Para garantizar un análisis exhaustivo y representativo, se han seleccionado un
 \section{Modelación de la experimentación}
 En esta sección se describe el proceso de experimentación, donde se toman las siguientes consideraciones. 
 Todos los valores, han sido redondeados por exceso a dos cifras decimales. 
-
-Los problemas escogidos para la experimentación fueron:
+Los problemas escogidos para la experimentación son:
 
 %Tabla con los problemas escogidos
 \begin{table}[H]
@@ -145,7 +144,7 @@ código de Julia para dichos experimentos. Cada experimento se realizará con se
 
     \section{Metodología de Generación y Experimentación}
     % Aclarar que son replicable
-    % Aclarar que se divide en generar problemas, esos problemas guardarlos, después mandarlos a julia a ver como rinden
+    % Aclarar que se divide en generar problemas, esos problemas guardarlos, después mandarlos a Julia a ver como rinden
     La experimentación consta de 3 partes fundamentales: generación del problema perturbado (para cumplir con cierta clase de estacionariedad en un punto dado), cómputo de óptimos del problema, análisis de los resultados.
 
     %
@@ -164,8 +163,9 @@ código de Julia para dichos experimentos. Cada experimento se realizará con se
     %Análisis Comparativo de Algoritmos
     
     %Presentación de Resultados
-    
-    Los resultados seleccionados se presentan en tablas estructuradas que incluyen información fundamental para cada problema. Estas tablas contienen el nombre del problema original que fue modificado para alcanzar la estacionariedad de la clase deseada, el punto al cual se forzó ser estacionario de la clase requerida (asegurando que no pertenezca a un subconjunto de esta), la evaluación de la función objetivo en el punto estacionario, el punto óptimo identificado por los algoritmos de Julia, la evaluación de la función objetivo en este óptimo, el método seleccionado para su obtención y el tiempo requerido para su ejecución.
+    Los resultados seleccionados se presentan en tablas estructuradas que incluyen información fundamental para cada problema, hay una por cada tipo de problema y tipo de punto lo que hace una total de 12. Estas tablas contienen el nombre del problema original que fue modificado para alcanzar la estacionariedad de la clase deseada, el punto al cual se forzó ser estacionario de la clase requerida (asegurando que no pertenezca a un subconjunto de esta), la evaluación de la función objetivo en el punto estacionario, el punto óptimo identificado por los algoritmos de Julia, la evaluación de la función objetivo en este óptimo, el método seleccionado para su obtención y el tiempo requerido para su ejecución. Además al final de cada tipo de problema existe una tabla la cual por cada tipo de punto se pone un problema característico el cual obtuvo mejor evaluación de la función objetivo con respecto al del mejor óptimo.
+
+
 
 \subsection{Problemas Lineales} 
   
@@ -310,7 +310,7 @@ En este caso el problema que mayor mejora tuvo fue el ex9.1.1
     
 %endregion
 En los problemas analizados se evidencia que mientras más fuertes sean las condiciones de los puntos es más probable de hallar óptimos en la vecindad del punto original, 
-así como también es probable que los algoritmos no logren encontrar un valor óptimo y terminen con puntos no factible.
+así como también es probable que los algoritmos no logren encontrar un valor óptimo y terminen con puntos insatisfactibles.
 El método SOS1 tuvo dificultades para obtener alguna solución, mientras que Big-M tuvo mayormente problemas asociados a sus valores extremos, teniendo ProductMode un comportamiento similar a este aunque con mayor tiempo de cómputo.
 Además no existe caso en el que el valor objetivo halla sido peor que el valor inicial estacionario.
    
@@ -440,7 +440,6 @@ excepto en ex9.2.3 que los 3 métodos lograron encontrar puntos óptimos que aun
 
 En este tipo de problemas excepto en el caso fuertemente estacionario no se encontraron dificultades en los algoritmos para encontrar un punto óptimo. Existe una mejora entre los tipos de puntos con condiciones más fuertes respecto a que a que el óptimo hallado por Julia se encuentre en una vecindad del punto estacionario inicial. 
 
-
 %endregion
 \subsection{Problemas No Convexos}
 
@@ -543,15 +542,17 @@ En este tipo de problemas excepto en el caso fuertemente estacionario no se enco
 El análisis de los experimentos realizados en este capítulo permite observar distintos comportamientos según el tipo de problema analizado.
 %Lineales 
 En los problemas lineales, se evidenció que, a medida que se imponen condiciones más fuertes en los puntos, aumenta la probabilidad de hallar óptimos en la vecindad del punto original. 
-Sin embargo, estas mismas condiciones también incrementan la posibilidad de que los algoritmos no logren encontrar una solución óptima y terminen en puntos no factible. 
+Sin embargo, estas mismas condiciones también incrementan la posibilidad de que los algoritmos no logren encontrar una solución óptima y terminen en puntos insatisfactibles. 
 En particular, el método SOS1 presentó dificultades para obtener alguna solución, mientras que el método Big-M mostró problemas asociados a valores extremos. 
 Un comportamiento similar se observó en ProductMode, aunque este último requirió un mayor tiempo de cómputo. 
 Cabe destacar que en ningún caso el valor objetivo fue peor que el valor inicial estacionario.  
+
 % Cuadráticos
 En los problemas cuadráticos, los algoritmos en general no presentaron dificultades para encontrar puntos óptimos, salvo en los casos de condiciones fuertemente estacionarias. 
 Se observó una mejora en la coincidencia entre el punto óptimo y el punto estacionario inicial cuando las condiciones eran más estrictas. 
 No obstante, en el caso de condiciones fuertemente estacionarias, esta tendencia podría deberse a la naturaleza de estos problemas, 
-lo que sugiere que los métodos implementados en Julia podrían enfrentar dificultades en dichos escenarios.  
+lo que sugiere que los métodos implementados en Julia podrían enfrentar dificultades en dichos escenarios. 
+ 
 % No convexos
 En el caso de los problemas no convexos, los resultados indican que, a medida que las condiciones del punto se fortalecen, 
 los algoritmos tienden a no encontrar puntos óptimos superiores al estacionario inicial. 

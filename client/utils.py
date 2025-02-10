@@ -1,6 +1,6 @@
 import random
 
-def get_random(epsilon=1e-10):
+def get_random(epsilon=1e-2):
     # Generar un número aleatorio entre 0 y 1
     numero_aleatorio = random.random()
     
@@ -21,7 +21,7 @@ def get_multiplicadores_c_estacionario():
     
     if rand_value == 1:  # Entonces los dos son mayores que cero
      
-        return (-get_random() * 10, -get_random() * 10)
+        return (-get_random() , -get_random() )
    
     
     return (0, 0) 
@@ -35,11 +35,11 @@ def get_multiplicadores_m_estacionario():
     
     if rand_value == 1:  # Entonces los dos son mayores que cero
      
-        return (0, get_random() * 10)
+        return (0, get_random() )
     else:
-        return (get_random() * 10, 0)
+        return (get_random() , 0)
    
     
 def get_multiplicadores_strong_estacionario():
 
-    return (get_random() * 10, get_random() * 10)
+    return (get_random() , get_random() )

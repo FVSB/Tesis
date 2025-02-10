@@ -353,6 +353,8 @@ Una vez que el modelo está completamente especificado, la función \textbf{opti
 Para m\'as detalles sobre la biblioteca, ver \cite{JuMPPaper}.
 \subsection*{BilevelJuMP}
 \textbf{BilevelJuMP.jl} es una extensión especializada de Julia diseñada específicamente para abordar problemas de optimización binivel, también conocidos como problemas de optimización jerárquica o de dos niveles. Esta biblioteca se construye sobre la base de JuMP, aprovechando su sintaxis intuitiva y capacidades de modelado mientras agrega funcionalidades específicas para la formulación y resolución de problemas jerárquicos.
+% Decir los de los estatus primales y de terminacion 
+Además los estados primales y estados de terminación son análogos a los proporcionados por JuMP, manteniendo así la consistencia en la interfaz de programación. Esto significa que los usuarios familiarizados con JuMP encontrarán una experiencia similar al consultar el estado de las soluciones y la terminación de los problemas de optimización binivel.
 
 Este facilita la modelación de esta jerarquía propia de los problemas binivel permitiendo que el problema del seguidor se formule utilizando la sintaxis familiar de JuMP. Esto significa que los usuarios pueden especificar restricciones lineales y cuadráticas, definir variables tanto continuas como enteras, y trabajar con diferentes tipos de funciones objetivo, manteniendo la claridad y expresividad características de JuMP. 
 
@@ -371,3 +373,58 @@ Para más detalles sobre la biblioteca, ver \cite{BilevelJump}.
 
 Teniendo en cuenta la posibilidad de que los métodos de solución converjan a puntos estacionarios de distinto tipo, resulta interesante comprobar si, conocido un punto de esta naturaleza, el algoritmo logra obtener un punto con  mejor evaluación de la función objetivo. Esta es la motivación para el desarrollo del generador de problemas prueba, objeto de esta tesis y que se presentará en el próximo capítulo.
 
+\subsection*{Symbolics}
+Symbolics.jl representa un avance significativo en el campo de la computación simbólica dentro del ecosistema de Julia, 
+ofreciendo un conjunto robusto de herramientas para la manipulación algebraica y el cálculo simbólico. Esta biblioteca se destaca por su 
+capacidad para manejar expresiones matemáticas de manera abstracta, 
+permitiendo operaciones como diferenciación, integración y simplificación simbólica con una eficiencia notable. 
+El diseño de Symbolics.jl aprovecha las características fundamentales de Julia, como su sistema de tipos y 
+compilación JIT, para proporcionar un rendimiento excepcional en comparación con sistemas tradicionales de 
+computación simbólica. La biblioteca permite la creación y manipulación de variables simbólicas que pueden 
+representar cualquier expresión matemática, implementando capacidades robustas de diferenciación automática 
+que incluyen el cálculo de derivadas parciales y totales. Una característica particularmente relevante es su 
+sistema de simplificación de expresiones, que utiliza algoritmos avanzados para reducir automáticamente la 
+complejidad de expresiones matemáticas extensas. La integración de Symbolics.jl con el resto del ecosistema 
+Julia es seamless, lo que facilita su uso en conjunto con otros paquetes orientados al cálculo numérico y 
+la resolución de ecuaciones diferenciales. Esta interoperatividad resulta especialmente valiosa en aplicaciones 
+que requieren tanto manipulación simbólica como evaluación numérica, como el modelado matemático, el 
+análisis numérico y la optimización. 
+La biblioteca sobresale en la generación automática de expresiones optimizadas para cálculos numéricos, 
+lo que la hace particularmente útil en el contexto de la optimización matemática, donde la eficiencia en la 
+evaluación de funciones objetivo y restricciones es crucial. Además, su capacidad para derivar expresiones 
+simbólicas de gradientes y hessianas de manera automática la convierte en una herramienta fundamental para 
+problemas de optimización que requieren información de derivadas de orden superior.
+
+Para más detalles sobre la biblioteca, ver \cite{SymbolicsPaper}
+
+\subsection*{LinearAlgebra}
+LinearAlgebra constituye uno de los módulos fundamentales del núcleo de Julia, 
+proporcionando una implementación robusta y eficiente de operaciones de álgebra 
+lineal esenciales para la computación científica y la optimización matemática. 
+Este módulo se distingue por su capacidad para manejar operaciones matriciales 
+complejas con un rendimiento comparable al de bibliotecas altamente optimizadas 
+como BLAS y LAPACK, mientras mantiene una sintaxis intuitiva y cercana a la 
+notación matemática tradicional. LinearAlgebra implementa una amplia gama de 
+operaciones matriciales fundamentales, 
+incluyendo descomposiciones matriciales (LU, QR, SVD, Cholesky), 
+cálculo de autovalores y autovectores, y operaciones 
+básicas como productos matriciales y vectoriales, 
+con optimizaciones específicas para diferentes tipos de matrices 
+(densas, dispersas, simétricas, triangulares). 
+La biblioteca destaca por su sistema de tipos especializados 
+que permite representar eficientemente estructuras matriciales específicas, 
+como matrices simétricas, hermíticas o triangulares, aprovechando sus 
+propiedades matemáticas para optimizar tanto el almacenamiento como las 
+operaciones computacionales. Una característica particularmente relevante 
+es su integración natural con el sistema de despacho múltiple de Julia, 
+que permite que las operaciones se optimicen automáticamente según los 
+tipos de datos involucrados, resultando en un rendimiento excepcional sin 
+sacrificar la claridad del código. Esta eficiencia es crucial en el contexto 
+de la optimización matemática, donde las operaciones de álgebra lineal son 
+frecuentemente el cuello de botella computacional en la evaluación de funciones 
+objetivo y restricciones. Además, el módulo proporciona funcionalidades 
+avanzadas como la factorización de matrices dispersas y el cálculo de normas 
+matriciales, que son esenciales en algoritmos de optimización numérica y 
+métodos iterativos de resolución de sistemas lineales.
+
+Para más detalles sobre la biblioteca, ver \cite{LinearAlgebraJL}

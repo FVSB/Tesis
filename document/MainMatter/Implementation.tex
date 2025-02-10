@@ -514,3 +514,28 @@ Se muestra el ejemplo completo para el problema antes propuesto:
 \end{lstlisting}
 
 
+
+\subsection*{API e Implementación Gráfica}
+La solución computacional integra una API REST 
+desarrollada en Julia mediante HTTP.jl y una interfaz gráfica web implementada en Python con \textit{Streamlit}. 
+La arquitectura cliente-servidor aprovecha la eficiencia de Julia para los cálculos matemáticos en el backend mientras proporciona una 
+interfaz de usuario accesible a través de Streamlit. 
+La interfaz facilita la generación de problemas en distintos puntos estacionarios, 
+automatizando la generación de multiplicadores $\lambda_j$, $\beta_j$, $\gamma_j$ según el tipo de punto requerido. 
+El sistema permite la generación automática de puntos aleatorios y del vector $\vec{\alpha}$ dentro de intervalos configurables, 
+establecidos por defecto en $[0,1]$, y ofrece la exportación de los problemas generados en formato Excel. 
+La documentación técnica y guías de usuario se encuentran en desarrollo activo en los repositorios oficiales del proyecto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Graphics/front_streamlitpng.png}
+    \caption{Pantalla principal de generación del problema}
+    \label{fig:front_generator_page}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Graphics/Ejemplo_introducir_follower_rest.png}
+    \caption{Ejemplo de generación de problema en punto Fuertemente Estacionario}
+    \label{fig:example_strong_stationary_front_generator}
+\end{figure}

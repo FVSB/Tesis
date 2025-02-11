@@ -180,7 +180,7 @@ por parte de los métodos de Julia, en 3 de ellos el valor del óptimo fue capaz
 
 \subsubsection{C-Estacionario}
 
-En los problemas con un punto C-Estacionario conocido hubo 2 problemas para los cuales Julia no dió óptimo. En los 3 restantes la evaluación de las soluciones obtenidas por los métodos  y los puntos estacionarios iniciales fueron cercanas, en estos casos SOS1 logró dar solución en todos al igual que ProductMode, aunque este devolvió óptimos locales. Big-M no logró ofrecer solución en ninguno de los 5 casos. Cabe destacar que Big-M puede tener dificultades en ciertos problemas por los valores de asociados al valor de las cotas de las cotas $M_p$ y $M_d$.
+En los problemas con un punto C-Estacionario conocido hubo 2 problemas para los cuales Julia no dio óptimo. En los 3 restantes la evaluación de las soluciones obtenidas por los métodos  y los puntos estacionarios iniciales fueron cercanas, en estos casos SOS1 logró dar solución en todos al igual que ProductMode, aunque este devolvió óptimos locales. Big-M no logró ofrecer solución en ninguno de los 5 casos. Cabe destacar que Big-M puede tener dificultades en ciertos problemas por los valores de asociados al valor de las cotas de las cotas $M_p$ y $M_d$.
 
 
 
@@ -188,7 +188,7 @@ En los problemas con un punto C-Estacionario conocido hubo 2 problemas para los 
 
 Para los problemas con este tipo de punto estacionario conocido solo hubo 2 casos en los que se halló óptimo.
 En ambos los valores de la evaluación de punto inicial y del óptimo fueron casi iguales 
-En el primero solo Big-M dió solución mientras que en el segundo los 3 métodos devolvieron resultados, 
+En el primero solo Big-M dio solución mientras que en el segundo los 3 métodos devolvieron resultados, 
 siendo el de ProductMode un óptimo local. El método más rápido en calcular la solución fue Big-M.
 
   
@@ -223,7 +223,7 @@ El método Big-M solo funcionó en un problema donde mejoró con respecto a la e
   
 Para este tipo de puntos en todos los problemas el criterio de parada fue porque se había alcanzado la optimalidad en al menos un 
 algoritmo.
-Big-M solo funcionó en un problema donde halló una solución cercana al punto estacionario inicial, siendo el más rápido 
+Big-M solo funcionó en un problema, donde halló una solución cercana al punto estacionario inicial, siendo el más rápido 
 en este problema. Solo en 3 casos  se logró  un óptimo con evaluación  similar al punto estacionario inicial  y  cercano a este. 
 ProductMode solo obtuvo óptimos locales. SOS1 obtuvo soluciones de forma más rápida en dos problemas mientras que ProductMode en el 
 resto. En dos casos la solución obtenida es peor que el punto propuesto.

@@ -114,7 +114,7 @@
 %\geometry{letterpaper, margin=1in}
 \newenvironment{resultstable}[1]{
     \begin{landscape} % Hace que la hoja sea completamente horizontal
-        \renewcommand{\arraystretch}{1.5} % Aumenta el espacio entre filas
+       % \renewcommand{\arraystretch}{1.5} % Aumenta el espacio entre filas
         \centering
     \begin{table}[H]
         \centering
@@ -133,41 +133,37 @@
 
 \newcommand{\resultrow}[7]{
     \Huge#1 & \Huge#2 & \Huge#3 & \Huge#4 & \Huge#5 & \Huge#6 & \Huge#7 \\
-    \hline
 }
 
 \usepackage{adjustbox} % Para ajustar el ancho de las tablas
 \usepackage{multirow}  % Para manejar celdas combinadas
-\usepackage{lscape}    % Para páginas en horizontal
-\usepackage{adjustbox} % Para escalar la tabla
-\usepackage{array}     % Para mejorar el espaciado de las filas
 
-\newenvironment{resultstablee}[1]{%
-    %\begin{landscape} % Hace que la hoja sea completamente horizontal
-    \renewcommand{\arraystretch}{1.5} % Aumenta el espacio entre filas
-    \centering
+% Definición del entorno para la tabla principal
+\newenvironment{resultstablee}[1]{
+    \renewcommand{\arraystretch}{2.5} % Aumenta el espacio entre filas
     \begin{table}[H]
         \centering
-        \caption{ #1} % Hace que el título de la tabla sea más grande
-        \begin{adjustbox}{max width=\textheight} % Usa toda la altura de la página horizontal
-        \Huge % Hace que todo el contenido de la tabla sea más grande
+        \caption{#1}
+        \begin{adjustbox}{max width=\textwidth}
+        \Huge
         \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
             \hline
-            \textbf{\Huge Nombre del problema}  & \textbf{\Huge Punto estacionario}  & \textbf{\Huge Valor objetivo} & \textbf{\Huge Punto óptimo} & \textbf{\Huge Valor óptimo} & \textbf{\Huge Método} & \textbf{\Huge Estatus Primal} & \textbf{\Huge Terminación} & \textbf{\Huge Tiempo Promedio} \\
+            \textbf{\Huge Nombre del problema}  & \textbf{ \Huge Punto estacionario}  & \textbf{\Huge Valor objetivo del punto estacionario} & \textbf{\Huge Punto óptimo} & \textbf{\Huge Valor del punto óptimo} & \textbf{\Huge Método seleccionado}& \textbf{\Huge Estatus Primal} & \textbf{\Huge Estatus Terminación} & \textbf{\Huge Tiempo Promedio} \\
             \hline
-}{%
+}{
         \end{tabular}
         \end{adjustbox}
     \end{table}
-    %\end{landscape}
 }
-
 
 % Comando para agregar filas a las subtablas
 \newcommand{\resultroww}[9]{
     \Huge#1 & \Huge#2 & \Huge#3 & \Huge#4 & \Huge#5 & \Huge#6 & \Huge#7 & \Huge#8 & \Huge#9  \\
     \hline
 }
+    
+
+
 
 
 % Tabla principal con subtablas

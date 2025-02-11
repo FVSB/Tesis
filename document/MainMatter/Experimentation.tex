@@ -174,7 +174,7 @@ código de Julia para dichos experimentos. Cada experimento se realizará con se
 %La tabla con los resultados de estos tipos de problema es \ref{result:linear_alpha_zero}.
 
 En todos problemas lineales cuyos multiplicador $\alpha=0$ existió solución óptima 
-por parte de los métodos de Julia, en 3 de ellos el valor del óptimo fue capaz de mejorar el valor de la función objetivo en el punto estacionario inicial donde Big-M fue el que obtuvo el de menor valor en cada uno, que coincidió con SOS1 cuando este ofreció respuesta. Además hubo dos problemas cuya evaluación inicial coincidió con la del óptimo, siendo 0 en ambos casos. ProductMode obtuvo punto infactibles en 3 ocaciones. 
+por parte de los métodos de Julia, en 3 de ellos el valor del óptimo fue capaz de mejorar el valor de la función objetivo en el punto estacionario inicial donde Big-M fue el que obtuvo el de menor valor en cada uno, que coincidió con SOS1 cuando este ofreció respuesta. Además hubo dos problemas cuya evaluación inicial coincidió con la del óptimo, siendo 0 en ambos casos. ProductMode obtuvo puntos infactibles en 3 ocasiones. 
 
 
 
@@ -202,28 +202,28 @@ Análogo al tipo de punto anterior  fueron 2 problemas los que tuvieron óptimos
 
 %region Resultados Cuadráticos
 \subsubsection{$\alpha =0$}
-En el caso en que los puntos estacionarios tengan multiplicador $\alpha=0$, existio al menos un metodo que fue capaz de hallar la soluci\'on óptima. El método Big-M solo funciono en un caso y calculó una solucion con peor evaluacion de la función objetivo respecto al punto estacionario inicial. Mientras ProductMode y SOS1 hallaron soluciones en todos los casos, sin embargo solo en un caso logro mejorar el punto inicial y propone una solucion peor en otros dos casos. 
+En el caso en que los puntos estacionarios tengan multiplicador $\alpha=0$, existió al menos un método que fue capaz de hallar la solución óptima. El método Big-M solo funciono en un caso y calculó una solución con peor evaluación de la función objetivo respecto al punto estacionario inicial. Mientras ProductMode y SOS1 hallaron soluciones en todos los casos, sin embargo solo en un caso logro mejorar el punto inicial y propone una solución peor en otros dos casos. 
 
 \subsubsection{C-Estacionario}   
 Como en  el caso anterior al menos un algoritmo fue capaz de resolver los modelos. 
-El método Big-M solo funcionó en un problema donde mejoro con respecto a la evaluacion del punto estacionario inicial, al igual que  ProductMode y SOS1. Además en 2 problemas los metodos hallaron puntos con peor evaluación de la función objetivo que en el punto estacionario inicial. En otros 2 modelos se obtuvieron óptimos cercanos a este.
+El método Big-M solo funcionó en un problema donde mejoro con respecto a la evaluación del punto estacionario inicial, al igual que  ProductMode y SOS1. Además en 2 problemas los métodos hallaron puntos con peor evaluación de la función objetivo que en el punto estacionario inicial. En otros 2 modelos se obtuvieron óptimos cercanos a este.
 
 
 
     
 \subsubsection{M-Estacionario}
   
-Para este tipo de puntos en todos los problemas el criterio de parada fue porque se habia alcanzado la optimalidad en al menos un algoritmo.
-Big-M solo funcionó en un problema donde hallo una solucion cercana al del punto estacionario inicial siendo el más rapido en este problema. Solo en 3 problemas  se logró  un óptimo con evaluación  similar al punto estacionario inicial  y   cercano a este. ProductMode solo obtuvo óptimos locales. SOS1 obtuvo soluciones de forma más rapida en dos problemas mientras que ProductMode en el resto. En dos casos la solucion obtenida es peor que el punto propuesto.
+Para este tipo de puntos en todos los problemas el criterio de parada fue porque se había alcanzado la optimalidad en al menos un algoritmo.
+Big-M solo funcionó en un problema donde hallo una solución cercana al del punto estacionario inicial siendo el más rápido en este problema. Solo en 3 problemas  se logró  un óptimo con evaluación  similar al punto estacionario inicial  y   cercano a este. ProductMode solo obtuvo óptimos locales. SOS1 obtuvo soluciones de forma más rapida en dos problemas mientras que ProductMode en el resto. En dos casos la solución obtenida es peor que el punto propuesto.
     
 \subsubsection{Fuertemente Estacionario} 
-Hubo un problema que ningun enfoque logro resolver. En cuanto al resto  Big-M solo dio solución en un problema, construido usando el ex9.2.3 como base. Los métodos ProductMode y SOS1 solo lograron hallar tres puntos factibles que eran puntos óptimos locales y en dos casos logró mejorar la solucion inicial, pero con tiempos similares. Hubo un problema que ningún método logró resolver.
+Hubo un problema que ningún enfoque logro resolver. En cuanto al resto  Big-M solo dio solución en un problema, construido usando el ex9.2.3 como base. Los métodos ProductMode y SOS1 solo lograron hallar tres puntos factibles que eran puntos óptimos locales y en dos casos logró mejorar la solución inicial, pero con tiempos similares. Hubo un problema que ningún método logró resolver.
 
 
 %endregion
 \subsection{Problemas No Convexos}
 
-En este caso solo se resuelve  la reformulacion KKT con el paquete IPOPt, ya que BilevelJump solo resuelve problemas convexos. Los resultados son muy similares. En ningun caso logro mejorar el punto inicial hallado. Para $\alpha =0$ esto sucedio en todos los casos excepto en el problema MitsosBarton2006Ex323 en que el algoritmo fallo. Para  problemas con puntos C-estacionarios conocidos generados,  en un caso coincidieron y en  los problemas MitsosBarton2006Ex313 y MitsosBarton2006Ex314 las soluciones halladas por Julia fueron peores que la ya conocida. Vale destacar que el valor de las variables del nivel superior son iguales al punto estacionario inicial. En el resto la soluciones el algoritmo no hallo solucion factible.   Para puntos M-estacionarios, solo se obtuvieron solucines los problemas MitsosBarton2006Ex313 y MitsosBarton2006Ex314, obteniendo en ambos casos peores resultados del valor óptimo hallado por Julia en comparación con el valor del punto estacionario inicial. En la clase de fuertemente conexos, excepto en el problema MitsosBarton2006Ex323,
+En este caso solo se resuelve  la reformulación KKT con el paquete IPOPt, ya que BilevelJump solo resuelve problemas convexos. Los resultados son muy similares. En ningún caso logro mejorar el punto inicial hallado. Para $\alpha =0$ esto sucedió en todos los casos excepto en el problema MitsosBarton2006Ex323 en que el algoritmo fallo. Para  problemas con puntos C-estacionarios conocidos generados,  en un caso coincidieron y en  los problemas MitsosBarton2006Ex313 y MitsosBarton2006Ex314 las soluciones halladas por Julia fueron peores que la ya conocida. Vale destacar que el valor de las variables del nivel superior son iguales al punto estacionario inicial. En el resto la soluciones el algoritmo no hallo solución factible.   Para puntos M-estacionarios, solo se obtuvieron soluciones los problemas MitsosBarton2006Ex313 y MitsosBarton2006Ex314, obteniendo en ambos casos peores resultados del valor óptimo hallado por Julia en comparación con el valor del punto estacionario inicial. En la clase de fuertemente conexos, excepto en el problema MitsosBarton2006Ex323,
  se obtuvieron puntos óptimos. Solo mejoran levemente su valor en MitsosBarton2006Ex312. 
  Además, en todos los casos, los valores de las variables del nivel superior coinciden.
      

@@ -11,7 +11,16 @@
     Los problemas modificados fueron sometidos nuevamente a algoritmos tradicionales implementados en Julia para evaluar su efectividad frente a los puntos estacionarios generados. Se realizó un análisis comparativo destacando los casos más relevantes de cada categoría de puntos estacionarios, considerando la evaluación de la función objetivo del nivel superior en el punto donde se garantizó la estacionariedad, contrastándola con los resultados obtenidos por las bibliotecas convencionales.
     
 % Decir sobre resultados
-Si bien la experimentación debe ser mayor, se observan las dificultades en la solución algorítmica de problemas simples.
+Si bien la experimentación debe ser mayor, se observan las dificultades en la solución algorítmica. Hubo varios problemas que no fueron solubles por ninguno de los algoritmos de Julia, inclusive dieron soluciones infactibles, si bien se sabían por la forma de generación que tenían al menos el punto estacionario generado como punto factible.
+Esto demuestra la dificultad estructural de los problemas de optimización de dos niveles y la necesidad de trabajar en algoritmos para su solución.
 
+
+
+%Recomendaciones
+Como resultado de la investigación realizada, se han identificado varias líneas de trabajo futuro que permitirían expandir y mejorar los resultados obtenidos. En primer lugar, se recomienda ampliar el alcance de la experimentación numérica para incluir una mayor diversidad de problemas de optimización binivel. Esta expansión permitiría validar la robustez y versatilidad del algoritmo propuesto en diferentes contextos y escenarios de aplicación.
+    
+En segunda instancia, se sugiere profundizar en la investigación sobre la implementación del algoritmo desarrollado como criterio de parada en nuevos métodos de optimización binivel. Esta línea de investigación podría contribuir significativamente al desarrollo de algoritmos más eficientes y confiables, mejorando la capacidad de detectar y verificar puntos estacionarios durante el proceso de optimización.
+
+Finalmente, se propone el desarrollo de una interfaz gráfica más intuitiva y funcional que facilite la generación automática de puntos según el tipo de estacionariedad requerida. Esta mejora en la usabilidad del software permitiría que usuarios con diferentes niveles de experiencia puedan aprovechar las capacidades del algoritmo de manera más efectiva, ampliando así su aplicabilidad práctica en diversos campos de estudio.
         
 \end{conclusions}

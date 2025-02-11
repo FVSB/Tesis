@@ -171,122 +171,68 @@ código de Julia para dichos experimentos. Cada experimento se realizará con se
   
 
 \subsubsection{$\alpha =0$}
-La tabla con los resultados de estos tipos de problema es \ref{result:linear_alpha_zero}.
+%La tabla con los resultados de estos tipos de problema es \ref{result:linear_alpha_zero}.
 
+En todos problemas lineales cuyos multiplicador $\alpha=0$ existió solución óptima 
+por parte de los métodos de Julia, en 3 de ellos el valor del óptimo fue capaz de mejorar el valor de la función objetivo en el punto estacionario inicial donde Big-M fue el que obtuvo el de menor valor en cada uno, que coincidió con SOS1 cuando este ofreció respuesta. Además hubo dos problemas cuya evaluación inicial coincidió con la del óptimo, siendo 0 en ambos casos. ProductMode obtuvo punto infactibles en 3 ocaciones. 
 
-En los problemas de Alpha Zero, se mostró cierta complejidad para SOS1, el cual en algunos casos no pudo determinar puntos, mientras que Big-M logró completar los objetivos. 
-Los puntos hallados en los problemas eran mayoritariamente distantes en sus componentes con respecto al punto estacionario original,  indicando que el posible valor óptimo no está en una vecindad del punto inicial, siendo la diferencia de componente a componente, tan grande como $1e+20$.
-En términos generales de rendimiento, Big-M tuvo un excelente desempeño, seguido de SOS1 y por último de ProductMode. 
-En este caso el problema que mayor mejora tuvo fue el ex9.1.1
 
 
 
 \subsubsection{C-Estacionario}
-La tabla con los resultados de estos tipos de problema es \ref{result:linear_c_estacionario}.
- 
-En los problemas de C-Estacionario donde la evaluación del punto estacionario inicial es 0, no mejoró el valor de la función objetivo evaluada en el óptimo. El método Big-M tuvo problemas para hallar el óptimo, probablemente debido a los valores extremos de este.
- 
+
+En los problemas de C-Estacionario hubo 2 problemas para los cuales no hubo óptimo. En los 3 restantes la evaluación de los óptimos ofrecidos por los métodos y los puntos estacionarios iniciales fueron cercanas, en estos casos SOS1 logró dar solución en todos al igual que ProductMode, aunque este devolvió óptimos locales y   Big-M no logró ofrecer solución en uno de estos casos.
+
 
  
 
 \subsubsection{M-Estacionario}
-La tabla con los resultados de estos tipos de problema es \ref{result:linear_m_estacionario}.
 
-En los problemas de M-Estacionario, los algoritmos tuvieron grandes dificultades para encontrar el óptimo. 
-Los problemas ex9.1.10 y ex9.1.9 son los únicos en los que Julia halló puntos óptimos, en el primero halló un punto óptimo cuya evaluación es cercana a la del punto estacionario inicial aunque sin estar en una vecindad de este, el segundo halló mediante Big-M y SOS1 puntos óptimos que están en la vecindad del punto estacionario inicial y  ProductMode localizó un punto óptimo cuya evaluación es igual a la evaluación del punto estacionario inicial aunque este no se encuentra en una vecindad. ProductMode tuvo complicaciones para hallar los óptimos en este tipo de problemas.
- 
+Para los problemas con este tipo de punto estacionario solo hubieron 2 casos en los que se halló óptimo, en ambos los valores de la evaluación de punto inicial y del óptimo fueron casi iguales, en el primero solo Big-M dió solución; mientras que en el segundo los 3 métodos devolvieron resultados, siendo el de ProductMode un óptimo local.  
   
 \subsubsection{Fuertemente Estacionario}
-La tabla con los resultados de estos tipos de problema es \ref{result:linear_fuertemente_estacionario}.
-    
- En los problemas de tipo Fuertemente Estacionario, los métodos de Julia presentaron complicaciones  en  ex9.1.1 y ex9.1.9 donde en ambos casos Big-M, SOS1 y ProductMode hallaron puntos óptimos en la vecindad del punto estacionario inicial.
 
-
-
-\subsubsection{Problemas relevantes de cada categoría de punto}
-
-La tabla con los resultados de estos tipos de problema es \ref{result:linear_resultados_seleccionados}.
-
-En los problemas analizados se evidencia que mientras más fuertes sean las condiciones de los puntos es más probable de hallar óptimos en la vecindad del punto original, 
-así como también es probable que los algoritmos no logren encontrar un valor óptimo y terminen con puntos insatisfactibles.
-El método SOS1 tuvo dificultades para obtener alguna solución, mientras que Big-M tuvo mayormente problemas asociados a sus valores extremos, teniendo ProductMode un comportamiento similar a este aunque con mayor tiempo de cómputo.
-Además no existe caso en el que el valor objetivo halla sido peor que el valor inicial estacionario.
+Análogo al tipo de punto anterior  fueron 2 problemas los que tuvieron óptimos con características análogas a las anteriores y coincidieron los tipos de resultados de ProductMode, en este caso en ambos problemas los 3 métodos obtuvieron solución en ambos casos. 
    
 
-o
+
 
 \subsection{Problemas Cuadráticos}
 
 
 %region Resultados Cuadráticos
 \subsubsection{$\alpha =0$}
-La tabla con los resultados de estos tipos de problema es \ref{result:cuadraticos_alpha_zero}.
+En el caso en que los puntos estacionarios tengan multiplicador $\alpha=0$, existio al menos un metodo que fue capaz de hallar la soluci\'on óptima. El método Big-M solo funciono en un caso y calculó una solucion con peor evaluacion de la función objetivo respecto al punto estacionario inicial. Mientras ProductMode y SOS1 hallaron soluciones en todos los casos, sin embargo solo en un caso logro mejorar el punto inicial y propone una solucion peor en otros dos casos. 
 
-En los problemas ex9.2.3 y ex9.2.4, los métodos encontraron puntos cuyo valor de la función objetivo es considerablemente peor que el del punto estacionario inicial. 
-En estos casos, los puntos óptimos propuestos son los mismos, lo que sugiere que este tipo de punto puede causar perturbaciones en los métodos para hallar óptimos. 
-Los dos problemas restantes no lograron encontrar un valor óptimo considerablemente menor al del valor objetivo en el punto estacionario inicial. 
-Sin embargo, los métodos lograron obtener supuestos óptimos en todos los problemas.
-    
 \subsubsection{C-Estacionario}   
-La tabla con los resultados de estos tipos de problema es \ref{result:cuadraticos_c_estacionario}.
+Como en  el caso anterior al menos un algoritmo fue capaz de resolver los modelos. 
+El método Big-M solo funcionó en un problema donde mejoro con respecto a la evaluacion del punto estacionario inicial, al igual que  ProductMode y SOS1. Además en 2 problemas los metodos hallaron puntos con peor evaluación de la función objetivo que en el punto estacionario inicial. En otros 2 modelos se obtuvieron óptimos cercanos a este.
 
-En estos tipos de puntos los problemas ex9.2.1 y ex.9.2.4 obtuvieron peor evaluación del óptimo propuesto que el del punto estacionario inicial en SOS1 y ProductMode, 
-en ellos Big-M no pudo entregar ningún resultado. En el resto de problemas se obtuvieron puntos óptimos en vecindades cercanas y con evaluación cercana al punto estacionario original,
-excepto en ex9.2.3 que los 3 métodos lograron encontrar puntos óptimos que aunque no se encuentran en la vecindad del punto estacionario inicial sus evaluaciones mejoran a la de este.
 
 
     
 \subsubsection{M-Estacionario}
-La tabla con los resultados de estos tipos de problema es \ref{result:cuadraticos_m_estacionario}.  
-
-En estos problemas no se obtuvo ninguna mejora significativa. 
-En los problemas ex9.2.2 y ex9.2.4, se encontró un punto distante del punto estacionario original, tanto componente a componente como en su evaluación. 
-El resto de los problemas obtuvieron puntos cercanos al original. 
-En todos los problemas, los métodos que devolvieron algún valor lograron encontrar un candidato a óptimo.
+  
+Para este tipo de puntos en todos los problemas el criterio de parada fue porque se habia alcanzado la optimalidad en al menos un algoritmo.
+Big-M solo funcionó en un problema donde hallo una solucion cercana al del punto estacionario inicial siendo el más rapido en este problema. Solo en 3 problemas  se logró  un óptimo con evaluación  similar al punto estacionario inicial  y   cercano a este. ProductMode solo obtuvo óptimos locales. SOS1 obtuvo soluciones de forma más rapida en dos problemas mientras que ProductMode en el resto. En dos casos la solucion obtenida es peor que el punto propuesto.
     
-\subsubsection{Fuertemente Estacionario}
-La tabla con los resultados de estos tipos de problema es \ref{result:cuadraticos_fuertmente_estacionario}.   
+\subsubsection{Fuertemente Estacionario} 
+Hubo un problema que ningun enfoque logro resolver. En cuanto al resto  Big-M solo dio solución en un problema, construido usando el ex9.2.3 como base. Los métodos ProductMode y SOS1 solo lograron hallar tres puntos factibles que eran puntos óptimos locales y en dos casos logró mejorar la solucion inicial, pero con tiempos similares. Hubo un problema que ningún método logró resolver.
 
-En los problemas ex9.2.2 y ex9.2.4 no se lograron obtener puntos óptimos, mientras que en el ex9.2.3 se logró una mejora considerable en los tres métodos, 
-constatando que Big-M es el método más rápido de solución.
-
-\subsubsection{Problemas relevantes de cada categoría de punto:}
-La tabla con los resultados de estos tipos de problema es \ref{result:cuadraticos_seleccionados}.
-
-En este tipo de problemas excepto en el caso fuertemente estacionario no se encontraron dificultades en los algoritmos para encontrar un punto óptimo. Existe una mejora entre los tipos de puntos con condiciones más fuertes respecto a que el óptimo hallado por Julia se encuentre en una vecindad del punto estacionario inicial. 
 
 %endregion
 \subsection{Problemas No Convexos}
 
-
-%region Problemas No Convexos
-\subsubsection{$\alpha =0$}
-La tabla con los resultados de estos tipos de problema es \ref{result:no_convexos_alpha_zero}.
-
- En este tipo de puntos, las soluciones halladas por Julia coinciden con el punto inicial, excepto en el problema MitsosBarton2006Ex323.
-    
-\subsubsection{C-Estacionario}
-La tabla con los resultados de estos tipos de problema es \ref{result:no_convexos_c_estacionario}.
-
- En este tipo de problemas, las soluciones halladas por Julia empeoran en los problemas MitsosBarton2006Ex313 y MitsosBarton2006Ex314, aun teniendo el valor de las variables del nivel superior iguales al punto estacionario inicial. Además, en MorganPatrone2006a no fue posible hallar el óptimo.
-\subsubsection{M-Estacionario}
-La tabla con los resultados de estos tipos de problema es \ref{result:no_convexos_m_estacionario}.  
-
- En este tipo de puntos, solo obtuvieron solución los problemas MitsosBarton2006Ex313 y MitsosBarton2006Ex314, obteniendo en ambos casos peores resultados del valor óptimo hallado por Julia en comparación con el valor del punto estacionario inicial, aunque los puntos coinciden en las variables del nivel superior.
-    
-\subsubsection{Fuertemente Estacionario}
-La tabla con los resultados de estos tipos de problema es \ref{result:no_convexos_fuertemente_estacionario}.
-
- En este tipo de puntos, excepto en el problema MitsosBarton2006Ex323,
- se obtuvieron puntos óptimos, 
- los cuales solo mejoran levemente su valor en MitsosBarton2006Ex312. 
+En este caso solo se resuelve  la reformulacion KKT con el paquete IPOPt, ya que BilevelJump solo resuelve problemas convexos. Los resultados son muy similares. En ningun caso logro mejorar el punto inicial hallado. Para $\alpha =0$ esto sucedio en todos los casos excepto en el problema MitsosBarton2006Ex323 en que el algoritmo fallo. Para  problemas con puntos C-estacionarios conocidos generados,  en un caso coincidieron y en  los problemas MitsosBarton2006Ex313 y MitsosBarton2006Ex314 las soluciones halladas por Julia fueron peores que la ya conocida. Vale destacar que el valor de las variables del nivel superior son iguales al punto estacionario inicial. En el resto la soluciones el algoritmo no hallo solucion factible.   Para puntos M-estacionarios, solo se obtuvieron solucines los problemas MitsosBarton2006Ex313 y MitsosBarton2006Ex314, obteniendo en ambos casos peores resultados del valor óptimo hallado por Julia en comparación con el valor del punto estacionario inicial. En la clase de fuertemente conexos, excepto en el problema MitsosBarton2006Ex323,
+ se obtuvieron puntos óptimos. Solo mejoran levemente su valor en MitsosBarton2006Ex312. 
  Además, en todos los casos, los valores de las variables del nivel superior coinciden.
      
 
-\subsubsection{Problemas relevantes de cada categoría de punto:}
-La tabla con los resultados de estos tipos de problema es \ref{result:no_convexos_seleccionados}.
+    
 
-Después de analizar los puntos en este tipo de problemas, los resultados brindan información que sugiere que, mientras más fuertes son las condiciones del punto, los algoritmos no encuentran puntos óptimos mejores que el estacionario inicial. Esto parece deberse a que, por la propia reformulación del problema, es más probable que no se pueda optimizar correctamente el problema del nivel inferior. Además, la tendencia indica que, mientras más fuertes sean las condiciones del punto, es más probable que las variables del nivel superior coincidan en el punto óptimo hallado por Julia y el punto estacionario inicial.
+
+
+
   
 
 
@@ -295,26 +241,18 @@ Después de analizar los puntos en este tipo de problemas, los resultados brinda
 
 El análisis de los experimentos realizados en este capítulo permite observar distintos comportamientos según el tipo de problema analizado.
 %Lineales 
-En los problemas lineales, se evidenció que, a medida que se imponen condiciones más fuertes en los puntos, aumenta la probabilidad de hallar óptimos en la vecindad del punto original. 
-Sin embargo, estas mismas condiciones también incrementan la posibilidad de que los algoritmos no logren encontrar una solución óptima y terminen en puntos insatisfactibles. 
-En particular, el método SOS1 presentó dificultades para obtener alguna solución, mientras que el método Big-M mostró problemas asociados a valores extremos. 
-Un comportamiento similar se observó en ProductMode, aunque este último requirió un mayor tiempo de cómputo. 
-Cabe destacar que en ningún caso el valor objetivo fue peor que el valor inicial estacionario.  
+En los problemas lineales, se evidenció que, a medida que se imponen condiciones más fuertes en los puntos, es más común que los métodos encuentren óptimos en la vecindad del punto original. 
+Sin embargo, estas mismas condiciones también incrementan la posibilidad de que los algoritmos no logren encontrar una solución óptima y terminen en puntos infactibles. 
+En particular, el método ProductMode fue el que  tuvo como salida un punto infactible más veces ,seguido del método SOS1, además de los factibles todos fueron óptimos locales y un comportamiento a destacar es que en caso que coincidiera con que SOS1 en devolver óptimos factibles era común que la evaluación de los estos fuera cercana.
+Además Big-M tuvo mayormente problemas asociados al valor de las cotas $M_p$ y $M_d$. 
+Cabe destacar que en ningún caso el valor objetivo fue peor que el valor inicial estacionario. 
 
 % Cuadráticos
-En los problemas cuadráticos, los algoritmos en general no presentaron dificultades para encontrar puntos óptimos, salvo en los casos de condiciones fuertemente estacionarias. 
-Se observó una mejora en la coincidencia entre el punto óptimo y el punto estacionario inicial cuando las condiciones eran más estrictas. 
-No obstante, en el caso de condiciones fuertemente estacionarias, esta tendencia podría deberse a la naturaleza de estos problemas, 
-lo que sugiere que los métodos implementados en Julia podrían enfrentar dificultades en dichos escenarios. 
- 
+En los problemas cuadráticos, excepto en el caso fuertemente estacionario no se encontraron dificultades en los algoritmos para encontrar un punto óptimo. En ellos existe una mejora entre los tipos de puntos con condiciones más fuertes respecto a que el óptimo hallado por Julia se encuentre en una vecindad del punto estacionario inicial. 
+Continuó la tendencia de ProductMode y SOS1 que si ambos encontrarán un óptimo la evaluación de este similar en ambos. 
+Y en estos Big-M solo pudo hallar puntos estacionarios en el problema ex9.2.3.
 % No convexos
-En el caso de los problemas no convexos, los resultados indican que, a medida que las condiciones del punto se fortalecen, 
-los algoritmos tienden a no encontrar puntos óptimos superiores al estacionario inicial. 
-Esto parece estar relacionado con la propia reformulación del problema, 
-que dificulta la optimización del nivel inferior. 
-Además, se observó una tendencia en la que, al aumentar la fortaleza de las condiciones del punto, 
-es más probable que las variables del nivel superior coincidan entre el punto óptimo hallado por Julia y 
-el punto estacionario inicial.  
+En el caso de los problemas no convexos, los resultados sugieren que, cuanto más fuertes son las condiciones del punto, los algoritmos no encuentran puntos óptimos mejores que el estacionario inicial. Esto parece deberse a que, por la propia reformulación del problema, es más probable que no se pueda optimizar correctamente el problema del nivel inferior. Además, la tendencia indica que, mientras más fuertes sean las condiciones del punto, es más probable que las variables del nivel superior coincidan en el punto óptimo hallado por Julia y el punto estacionario inicial.
 
 En conclusión, los resultados de los experimentos muestran que la fortaleza de las condiciones impuestas 
 sobre los puntos tiene un impacto significativo en el desempeño de los algoritmos de optimización. 

@@ -6,6 +6,8 @@ from enum import Enum,auto
 import random
 import uuid
 import requests 
+import pandas as pd
+from io import BytesIO
 from utils import *
 def get_guid():
     # Generar un GUID
@@ -559,6 +561,28 @@ class Page:
                 self.mult_func_generator=get_multiplicadores_m_estacionario
             else:
                 self.mult_func_generator=None
+                
+    def show_solve_problem(self,response_content:bytes):
+           # Leer el contenido del archivo Excel desde la respuesta
+        excel_data = BytesIO(response_content)
+
+        # Cargar el archivo Excel en un DataFrame de pandas
+        dfs:dict[str, pd.DataFrame] = pd.read_excel(excel_data,sheet_name=None)
+
+        to_show=ProblemShow(dfs)
+        
+        # Printear el lider
+        self._show_in_latex(to_show._leader_expr_to_latex(),name="Función objetivo del líder",key=f"result_leader_expr")
+        
+        self._show_in_latex(to_show._create_leader_rest_latex(),name="Restricciones del líder",key=f"result_leader_rest")
+        
+        # Printear el follower
+        
+        self._show_in_latex(to_show._follower_expr_to_latex(),name=f"Función objetivo del seguidor",key=f"result_follower_expr")
+        
+        self._show_in_latex(to_show._create_follower_rest_latex(),name="Restricciones del seguidor",key=f"result_follower_expr")
+        
+
     def problem_generator(self):
 
         st.title("Generar un Problema")
@@ -606,6 +630,8 @@ class Page:
                         
                         # Crear botón de descarga
                         st.success("Problema generado y enviado exitosamente!")
+                        # Mostrar el la pantalla
+                        self.show_solve_problem(response_content=response.content)
                         st.download_button(
                             label="Descargar Excel",
                             data=response.content,

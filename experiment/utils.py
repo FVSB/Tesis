@@ -375,6 +375,15 @@ class ExperimentLinearQuadratic:
             else:
                 self.leader_obj+=f" +{val}{self.follower_vars[j]}"
                 j+=1
+                
+    def _extract_bf_and_fix_obj_follower(self):
+        df=self.all_sheets["Vector_bf"]
+        count_filas=df.shape[0]
+        for j in range(count_filas):
+            val=df.iloc[j].to_list()[0]
+            self.follower_obj+=f" +{val}{self.follower_vars[j]}"
+            
+        
     def _compute_leader_obj_val(self):
         eval_value=eval_function(self.leader_obj,self.get_all_vars,self.point)
         print(f"El valor de la funcion del lider es {eval_value}")
@@ -385,6 +394,7 @@ class ExperimentLinearQuadratic:
         self._extract_follower_restrictions()
         self._extract_punto()
         self._extract_BF_and_fix_obj_leader()
+        self._extract_bf_and_fix_obj_follower()
         self._compute_leader_obj_val()
         latex_str=self._create_latex_string()
         self.in_latex_expresion=latex_str
@@ -574,7 +584,7 @@ model = BilevelModel()
         for i,rest in enumerate(restrictions):
             expr=rest.expr
             expr=expresion_a_latex(expr,self.get_all_vars)
-            temp+=f" {expr} \leq 0"
+            temp+=f" {expr} \\leq 0"
             if i<len(restrictions)-1:
                 temp+=f" {"\\"}{"\\"}"
                 temp+=" \n"

@@ -32,7 +32,7 @@ model = Model(Ipopt.Optimizer)
         # Make KKT
         
 
-         @NLconstraint(model,-2*x*y + 2.00*y^3+(l_1*(2.53))+(l_2*(-16))==0)  
+         @NLconstraint(model,-2*x*y + 2.00*y^3 + 0.54+(l_1*(2.53))+(l_2*(-16))==0)  
   
 
 

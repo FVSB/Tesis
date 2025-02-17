@@ -69,7 +69,7 @@ end
 
             ########################################
             #                                      #
-            #    Crear los puntos estacioarios     #
+            #    Crear los puntos estacionarios     #
             #                                      #
             ########################################
 """

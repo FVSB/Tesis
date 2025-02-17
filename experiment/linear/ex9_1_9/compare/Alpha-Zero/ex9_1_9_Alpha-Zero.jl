@@ -27,7 +27,7 @@ BilevelJuMP.@objective(Upper(model),Min, x + y + -1.20x +-0.20y)
 
 # Crear el Nivel Inferior
 
-BilevelJuMP.@objective(Lower(model),Min, -5x - y) 
+BilevelJuMP.@objective(Lower(model),Min, -5x - y +2.21y) 
 
                 # Restricciones Nivel Inferior
                 BilevelJuMP.@constraints(Lower(model),begin 

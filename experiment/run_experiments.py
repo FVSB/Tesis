@@ -66,7 +66,7 @@ def main():
         if opcion_seleccionada==NOCONVEXO:
             start_random_seed=1
             end_random_seed=6
-            root_folder="D:\\GitHub\\Tesis\\experiment\\nonconvex"
+            root_folder="D:\\GitHub\\Tesis\\experiment\\_nonconvex"
         elif opcion_seleccionada=="kk":
             start_random_seed=1
             end_random_seed=6
